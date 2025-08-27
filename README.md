@@ -2,8 +2,8 @@
 
 > Documentação completa do sistema de doação de sangue, uma API REST desenvolvida em Spring Boot para conectar doadores e hemocentros.
 
-[![Deploy Documentation](https://github.com/nisze/doe-sangue-doc/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/nisze/doe-sangue-doc/actions/workflows/deploy-docs.yml)
-[![Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://nisze.github.io/doe-sangue-doc/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-brightgreen?style=for-the-badge&logo=github)](https://nisze.github.io/doe-sangue-doc/)
+[![Documentação](https://img.shields.io/badge/Docs-Online-blue?style=for-the-badge&logo=readthedocs)](https://nisze.github.io/doe-sangue-doc/)
 
 ## 📋 Sobre o Projeto
 
