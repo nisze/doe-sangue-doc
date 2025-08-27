@@ -1,33 +1,73 @@
-# 📚 Gerador de Documentação DoeSangue
+# 🩸 Doe Sangue - Documentação Oficial
 
-Este diretório contém ferramentas para gerar documentação HTML e PDF do projeto DoeSangue.
+> Documentação completa do sistema de doação de sangue, uma API REST desenvolvida em Spring Boot para conectar doadores e hemocentros.
 
-## 🚀 Como Usar
+[![Deploy Documentation](https://github.com/nisze/doe-sangue-doc/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/nisze/doe-sangue-doc/actions/workflows/deploy-docs.yml)
+[![Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://nisze.github.io/doe-sangue-doc/)
 
-### Pré-requisitos
-- Node.js 18+ instalado
-- NPM ou Yarn
+## 📋 Sobre o Projeto
 
-### Instalação
+O **Doe Sangue** é um sistema que facilita a conexão entre doadores de sangue e hemocentros, permitindo o gerenciamento eficiente de doações e estoque sanguíneo.
+
+## 📚 Documentação
+
+### 🌐 Versão Online
+Acesse a documentação formatada em: **https://nisze.github.io/doe-sangue-doc/**
+
+### � Documentos Disponíveis
+
+1. **[Documentação das Entidades](DOCUMENTACAO-ENTIDADES.md)** - Detalhes das entidades do sistema
+2. **[Arquitetura do Sistema](architecture.md)** - Visão geral da arquitetura
+3. **[Controller Doador](DOADOR-CONTROLLER-DOCUMENTACAO.md)** - Documentação específica do controller
+4. **[Guia de Boas Práticas](GUIA-CONTROLLER-BOAS-PRATICAS.md)** - Padrões e convenções
+5. **[Documentação Swagger](SWAGGER-DOCUMENTACAO.md)** - Configuração da API docs
+6. **[Implementação Swagger](SWAGGER-RESUMO-IMPLEMENTACAO.md)** - Resumo da implementação
+7. **[Plano de Ação](PLANO-ACAO-SEMANAL.md)** - Cronograma de desenvolvimento
+8. **[Roadmap](ROADMAP-PROXIMOS-PASSOS.md)** - Próximas funcionalidades
+
+## 🚀 Como Gerar HTML Localmente
+
 ```bash
-cd docs
+# Instalar dependências
 npm install
+
+# Gerar documentação HTML
+node generate-html-fixed.js
 ```
 
-### Gerar apenas HTML
-```bash
-npm run generate
+Os arquivos HTML serão gerados na pasta `html/` com design responsivo e navegação.
+
+## 🛠️ Tecnologias
+
+- **Backend**: Spring Boot 3.5.5
+- **Banco**: SQL Server
+- **Segurança**: Spring Security + JWT
+- **Documentação**: SpringDoc OpenAPI 3.0
+- **Build**: Maven
+- **Deploy**: GitHub Actions + GitHub Pages
+
+## 📁 Estrutura do Repositório
+
+```
+📦 doe-sangue-doc
+├── 📄 *.md                    # Documentações em Markdown
+├── 📂 html/                   # Versões HTML geradas
+├── 📂 .github/workflows/      # GitHub Actions
+├── 🔧 generate-html-fixed.js  # Gerador HTML
+├── 📦 package.json           # Dependências Node.js
+└── 📖 README.md              # Este arquivo
 ```
 
-### Gerar apenas PDF (requer HTML já gerado)
-```bash
-npm run generate-pdf
-```
+## 🔄 Deploy Automático
 
-### Gerar HTML e PDF
-```bash
-npm run generate-all
-```
+A documentação é automaticamente atualizada no GitHub Pages sempre que há mudanças na branch `main`.
+
+## 📞 Contato
+
+Desenvolvido para a disciplina de Análise e Desenvolvimento de Sistemas.
+
+---
+*Salvando vidas através da tecnologia* ❤️
 
 ## 📁 Estrutura de Saída
 
