@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🗺️ Roadmap Completo - Sistema DoeSangue - DoeSangue Documentation</title>
     <style>
+        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
@@ -22,13 +23,16 @@
         
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 0 auto;
             padding: 20px;
             background: white;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         
+        /* Header */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -55,6 +59,7 @@
             opacity: 0.8;
         }
         
+        /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: #2c3e50;
             margin-bottom: 15px;
@@ -91,6 +96,7 @@
             text-align: justify;
         }
         
+        /* Lists */
         ul, ol {
             margin-bottom: 15px;
             padding-left: 30px;
@@ -100,6 +106,7 @@
             margin-bottom: 8px;
         }
         
+        /* Code */
         code {
             background: #f8f9fa;
             padding: 2px 6px;
@@ -126,6 +133,7 @@
             padding: 0;
         }
         
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -152,6 +160,7 @@
             background: #f8f9fa;
         }
         
+        /* Blockquotes */
         blockquote {
             border-left: 4px solid #3498db;
             padding: 15px 20px;
@@ -161,6 +170,7 @@
             font-style: italic;
         }
         
+        /* Links */
         a {
             color: #3498db;
             text-decoration: none;
@@ -172,6 +182,23 @@
             border-bottom: 1px solid #2980b9;
         }
         
+        /* Badges/Tags */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #3498db;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        
+        .badge.success { background: #27ae60; }
+        .badge.warning { background: #f39c12; }
+        .badge.danger { background: #e74c3c; }
+        .badge.info { background: #3498db; }
+        
+        /* Navigation */
         .nav {
             background: #2c3e50;
             padding: 15px 0;
@@ -205,6 +232,7 @@
             border: none;
         }
         
+        /* Footer */
         .footer {
             text-align: center;
             padding: 20px;
@@ -214,6 +242,32 @@
             font-size: 0.9em;
         }
         
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -240,26 +294,6 @@
             color: #666;
             font-size: 0.9em;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav li {
-                margin: 5px 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -267,7 +301,7 @@
         <div class="header">
             <h1>🩸 🗺️ Roadmap Completo - Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 20:45:39 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -275,10 +309,9 @@
                 <li><a href="index.html">🏠 Início</a></li>
                 <li><a href="architecture.html">🏗️ Arquitetura</a></li>
                 <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
-                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">🎮 Controller</a></li>
                 <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
                 <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
-                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
             </ul>
         </nav>
         
@@ -287,7 +320,7 @@
 <p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Status Atual:</strong> FASE 1 Implementada + Swagger Configurado</p>
 <hr>
 <h2>📊 Status Atual da Aplicação</h2>
-<h3>✅ <strong>O Que Já Temos (FASE 1):</strong></h3>
+<h3><span class="badge success">✅</span> <strong>O Que Já Temos (FASE 1):</strong></h3>
 <ul>
 <li><strong>5 Entidades Originais:</strong> User, UserRole, Hemocentro, Doador, TipoSanguineo</li>
 <li><strong>4 Entidades Novas:</strong> SetorAtuacao, UserSetor, DoencaEspecifica, DoadorDoenca</li>

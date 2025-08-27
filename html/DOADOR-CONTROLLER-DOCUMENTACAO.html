@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📚 Documentação Detalhada - DoadorController - DoeSangue Documentation</title>
     <style>
+        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
@@ -22,13 +23,16 @@
         
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 0 auto;
             padding: 20px;
             background: white;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         
+        /* Header */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -55,6 +59,7 @@
             opacity: 0.8;
         }
         
+        /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: #2c3e50;
             margin-bottom: 15px;
@@ -91,6 +96,7 @@
             text-align: justify;
         }
         
+        /* Lists */
         ul, ol {
             margin-bottom: 15px;
             padding-left: 30px;
@@ -100,6 +106,7 @@
             margin-bottom: 8px;
         }
         
+        /* Code */
         code {
             background: #f8f9fa;
             padding: 2px 6px;
@@ -126,6 +133,7 @@
             padding: 0;
         }
         
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -152,6 +160,7 @@
             background: #f8f9fa;
         }
         
+        /* Blockquotes */
         blockquote {
             border-left: 4px solid #3498db;
             padding: 15px 20px;
@@ -161,6 +170,7 @@
             font-style: italic;
         }
         
+        /* Links */
         a {
             color: #3498db;
             text-decoration: none;
@@ -172,6 +182,23 @@
             border-bottom: 1px solid #2980b9;
         }
         
+        /* Badges/Tags */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #3498db;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        
+        .badge.success { background: #27ae60; }
+        .badge.warning { background: #f39c12; }
+        .badge.danger { background: #e74c3c; }
+        .badge.info { background: #3498db; }
+        
+        /* Navigation */
         .nav {
             background: #2c3e50;
             padding: 15px 0;
@@ -205,6 +232,7 @@
             border: none;
         }
         
+        /* Footer */
         .footer {
             text-align: center;
             padding: 20px;
@@ -214,6 +242,32 @@
             font-size: 0.9em;
         }
         
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -240,26 +294,6 @@
             color: #666;
             font-size: 0.9em;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav li {
-                margin: 5px 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -267,7 +301,7 @@
         <div class="header">
             <h1>🩸 📚 Documentação Detalhada - DoadorController</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 15:18:59 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 20:45:39 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -314,11 +348,11 @@
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
-<li>✅ <strong>Paginação</strong> configurável (página, tamanho)</li>
-<li>✅ <strong>Ordenação</strong> por múltiplos campos</li>
-<li>✅ <strong>Filtros avançados</strong> (nome, CPF, tipo sanguíneo, idade, etc.)</li>
-<li>✅ <strong>Performance</strong> otimizada</li>
-<li>✅ <strong>Documentação completa</strong> com exemplos</li>
+<li><span class="badge success">✅</span> <strong>Paginação</strong> configurável (página, tamanho)</li>
+<li><span class="badge success">✅</span> <strong>Ordenação</strong> por múltiplos campos</li>
+<li><span class="badge success">✅</span> <strong>Filtros avançados</strong> (nome, CPF, tipo sanguíneo, idade, etc.)</li>
+<li><span class="badge success">✅</span> <strong>Performance</strong> otimizada</li>
+<li><span class="badge success">✅</span> <strong>Documentação completa</strong> com exemplos</li>
 </ul>
 <p><strong>Filtros Disponíveis:</strong></p>
 <ul>
@@ -335,22 +369,22 @@
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
-<li>✅ <strong>Dados completos</strong> do doador</li>
-<li>✅ <strong>CPF mascarado</strong> para segurança</li>
-<li>✅ <strong>Informações calculadas</strong> (idade, aptidão)</li>
-<li>✅ <strong>Histórico resumido</strong> de doações</li>
-<li>✅ <strong>Tratamento de erro 404</strong></li>
+<li><span class="badge success">✅</span> <strong>Dados completos</strong> do doador</li>
+<li><span class="badge success">✅</span> <strong>CPF mascarado</strong> para segurança</li>
+<li><span class="badge success">✅</span> <strong>Informações calculadas</strong> (idade, aptidão)</li>
+<li><span class="badge success">✅</span> <strong>Histórico resumido</strong> de doações</li>
+<li><span class="badge success">✅</span> <strong>Tratamento de erro 404</strong></li>
 </ul>
 <h3><strong>3. ➕ Cadastro de Novo Doador</strong></h3>
 <pre><code class="language-java">POST /api/doadores
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
-<li>✅ <strong>Validações completas</strong> (20+ regras)</li>
-<li>✅ <strong>CPF único</strong> no sistema</li>
-<li>✅ <strong>Compliance LGPD</strong> obrigatório</li>
-<li>✅ <strong>Dados obrigatórios</strong> validados</li>
-<li>✅ <strong>Resposta detalhada</strong> com status 201</li>
+<li><span class="badge success">✅</span> <strong>Validações completas</strong> (20+ regras)</li>
+<li><span class="badge success">✅</span> <strong>CPF único</strong> no sistema</li>
+<li><span class="badge success">✅</span> <strong>Compliance LGPD</strong> obrigatório</li>
+<li><span class="badge success">✅</span> <strong>Dados obrigatórios</strong> validados</li>
+<li><span class="badge success">✅</span> <strong>Resposta detalhada</strong> com status 201</li>
 </ul>
 <p><strong>Validações Implementadas:</strong></p>
 <ul>
@@ -367,31 +401,31 @@
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
-<li>✅ <strong>Campos atualizáveis</strong> definidos</li>
-<li>✅ <strong>Campos protegidos</strong> (CPF, nascimento)</li>
-<li>✅ <strong>Auditoria automática</strong> (updatedAt)</li>
-<li>✅ <strong>Validações mantidas</strong></li>
+<li><span class="badge success">✅</span> <strong>Campos atualizáveis</strong> definidos</li>
+<li><span class="badge success">✅</span> <strong>Campos protegidos</strong> (CPF, nascimento)</li>
+<li><span class="badge success">✅</span> <strong>Auditoria automática</strong> (updatedAt)</li>
+<li><span class="badge success">✅</span> <strong>Validações mantidas</strong></li>
 </ul>
 <h3><strong>5. 🩺 Verificação de Aptidão</strong></h3>
 <pre><code class="language-java">GET /api/doadores/{id}/aptidao
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
-<li>✅ <strong>Regras médicas</strong> aplicadas</li>
-<li>✅ <strong>Intervalos por gênero</strong> (60d M, 90d F)</li>
-<li>✅ <strong>Motivos detalhados</strong> se inapto</li>
-<li>✅ <strong>Próxima data permitida</strong></li>
-<li>✅ <strong>Recomendações médicas</strong></li>
+<li><span class="badge success">✅</span> <strong>Regras médicas</strong> aplicadas</li>
+<li><span class="badge success">✅</span> <strong>Intervalos por gênero</strong> (60d M, 90d F)</li>
+<li><span class="badge success">✅</span> <strong>Motivos detalhados</strong> se inapto</li>
+<li><span class="badge success">✅</span> <strong>Próxima data permitida</strong></li>
+<li><span class="badge success">✅</span> <strong>Recomendações médicas</strong></li>
 </ul>
 <h3><strong>6. 📊 Estatísticas Detalhadas</strong></h3>
 <pre><code class="language-java">GET /api/doadores/{id}/estatisticas
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
-<li>✅ <strong>Histórico completo</strong> de doações</li>
-<li>✅ <strong>Métricas calculadas</strong> (frequência, volume)</li>
-<li>✅ <strong>Gamificação</strong> (status fidelidade, metas)</li>
-<li>✅ <strong>Impacto social</strong> (vidas ajudadas)</li>
+<li><span class="badge success">✅</span> <strong>Histórico completo</strong> de doações</li>
+<li><span class="badge success">✅</span> <strong>Métricas calculadas</strong> (frequência, volume)</li>
+<li><span class="badge success">✅</span> <strong>Gamificação</strong> (status fidelidade, metas)</li>
+<li><span class="badge success">✅</span> <strong>Impacto social</strong> (vidas ajudadas)</li>
 </ul>
 <hr>
 <h2>🏗️ Arquitetura dos DTOs</h2>
@@ -446,6 +480,160 @@ private Boolean podeDoar;
 <li><strong>Campos de localização</strong> (estado, cidade)</li>
 </ul>
 <hr>
+<h2>🔍 <strong>public record</strong> vs <strong>public class</strong> para DTOs</h2>
+<h3><strong>📝 public record - Moderna e Concisa (Java 14+)</strong></h3>
+<p><strong>Características:</strong></p>
+<ul>
+<li><strong>Imutável por padrão</strong> - Todos os campos são <code>final</code></li>
+<li><strong>Código mais limpo</strong> - Sem boilerplate de getters/setters</li>
+<li><strong>Equals/hashCode automático</strong> - Implementados automaticamente</li>
+<li><strong>toString() útil</strong> - Mostra todos os campos</li>
+<li><strong>Construtor automático</strong> - Com todos os parâmetros</li>
+</ul>
+<p><strong>Exemplo prático:</strong></p>
+<pre><code class="language-java">@Schema(description = &quot;Dados para criação de doador&quot;)
+public record DoadorCreateDTO(
+    @Schema(description = &quot;Nome completo&quot;, example = &quot;João Silva&quot;)
+    @NotBlank(message = &quot;Nome completo é obrigatório&quot;)
+    @Size(min = 2, max = 100, message = &quot;Nome deve ter entre 2 e 100 caracteres&quot;)
+    String fullName,
+    
+    @Schema(description = &quot;CPF sem formatação&quot;, example = &quot;12345678901&quot;)
+    @Pattern(regexp = &quot;\\d{11}&quot;, message = &quot;CPF deve conter exatamente 11 dígitos numéricos&quot;)
+    String cpf,
+    
+    @Schema(description = &quot;Email para contato&quot;, example = &quot;joao.silva@email.com&quot;)
+    @Email(message = &quot;Email deve ter formato válido&quot;)
+    String email,
+    
+    @Schema(description = &quot;Consentimento LGPD&quot;, example = &quot;true&quot;)
+    @AssertTrue(message = &quot;Consentimento LGPD deve ser verdadeiro para prosseguir&quot;)
+    Boolean consentimentoLgpd
+) {}
+</code></pre>
+<p><strong><span class="badge success">✅</span> Vantagens:</strong></p>
+<ul>
+<li><strong>Menos código</strong> - Reduz significativamente o boilerplate</li>
+<li><strong>Imutabilidade</strong> - Mais seguro para transferência de dados</li>
+<li><strong>Modernidade</strong> - Padrão atual do Java para DTOs</li>
+<li><strong>Performance</strong> - Ligeiramente mais eficiente</li>
+</ul>
+<h3><strong>🏗️ public class - Tradicional e Flexível</strong></h3>
+<p><strong>Características:</strong></p>
+<ul>
+<li><strong>Mutável por padrão</strong> - Campos podem ser modificados</li>
+<li><strong>Código verbose</strong> - Requer getters/setters manuais ou Lombok</li>
+<li><strong>Flexibilidade total</strong> - Permite customização de comportamentos</li>
+<li><strong>Compatibilidade</strong> - Funciona em todas as versões do Java</li>
+</ul>
+<p><strong>Exemplo prático:</strong></p>
+<pre><code class="language-java">@Schema(description = &quot;Dados para criação de doador&quot;)
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class DoadorCreateDTO {
+    
+    @Schema(description = &quot;Nome completo&quot;, example = &quot;João Silva&quot;)
+    @NotBlank(message = &quot;Nome completo é obrigatório&quot;)
+    @Size(min = 2, max = 100, message = &quot;Nome deve ter entre 2 e 100 caracteres&quot;)
+    private String fullName;
+    
+    @Schema(description = &quot;CPF sem formatação&quot;, example = &quot;12345678901&quot;)
+    @Pattern(regexp = &quot;\\d{11}&quot;, message = &quot;CPF deve conter exatamente 11 dígitos numéricos&quot;)
+    private String cpf;
+    
+    @Schema(description = &quot;Email para contato&quot;, example = &quot;joao.silva@email.com&quot;)
+    @Email(message = &quot;Email deve ter formato válido&quot;)
+    private String email;
+    
+    @Schema(description = &quot;Consentimento LGPD&quot;, example = &quot;true&quot;)
+    @AssertTrue(message = &quot;Consentimento LGPD deve ser verdadeiro para prosseguir&quot;)
+    private Boolean consentimentoLgpd;
+    
+    // Lombok gera getters, setters, construtores
+}
+</code></pre>
+<p><strong><span class="badge success">✅</span> Vantagens:</strong></p>
+<ul>
+<li><strong>Flexibilidade</strong> - Permite validações customizadas</li>
+<li><strong>Compatibilidade</strong> - Funciona com bibliotecas mais antigas</li>
+<li><strong>Lombok</strong> - Reduz boilerplate com anotações</li>
+<li><strong>Debugging</strong> - Mais fácil para debug em algumas IDEs</li>
+</ul>
+<h3><strong>🎯 Quando Usar Cada Um</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Cenário</strong></th>
+<th><strong>Record</strong></th>
+<th><strong>Class</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DTOs simples de transferência</strong></td>
+<td><span class="badge success">✅</span> <strong>Preferível</strong></td>
+<td><span class="badge warning">⚠️</span> Adequado</td>
+</tr>
+<tr>
+<td><strong>Dados imutáveis</strong></td>
+<td><span class="badge success">✅</span> <strong>Ideal</strong></td>
+<td><span class="badge danger">❌</span> Requer esforço extra</td>
+</tr>
+<tr>
+<td><strong>APIs REST modernas</strong></td>
+<td><span class="badge success">✅</span> <strong>Recomendado</strong></td>
+<td><span class="badge warning">⚠️</span> Tradicional</td>
+</tr>
+<tr>
+<td><strong>Validações complexas</strong></td>
+<td><span class="badge warning">⚠️</span> Limitado</td>
+<td><span class="badge success">✅</span> <strong>Melhor</strong></td>
+</tr>
+<tr>
+<td><strong>Herança necessária</strong></td>
+<td><span class="badge danger">❌</span> Não suporta</td>
+<td><span class="badge success">✅</span> <strong>Necessário</strong></td>
+</tr>
+<tr>
+<td><strong>Java &lt; 14</strong></td>
+<td><span class="badge danger">❌</span> Não disponível</td>
+<td><span class="badge success">✅</span> <strong>Única opção</strong></td>
+</tr>
+<tr>
+<td><strong>Frameworks antigos</strong></td>
+<td><span class="badge warning">⚠️</span> Pode ter problemas</td>
+<td><span class="badge success">✅</span> <strong>Compatível</strong></td>
+</tr>
+</tbody></table>
+<h3><strong>💡 Recomendação para o Projeto DoeSangue</strong></h3>
+<p><strong>Para DTOs de Entrada/Saída:</strong></p>
+<pre><code class="language-java">// &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; RECOMENDADO - Record para dados simples
+public record DoadorCreateDTO(
+    @NotBlank String fullName,
+    @Pattern(regexp = &quot;\\d{11}&quot;) String cpf,
+    @Email String email
+) {}
+
+// &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; ALTERNATIVO - Class quando precisar de flexibilidade
+@Getter @Setter
+public class DoadorUpdateDTO {
+    private String fullName;
+    private String email;
+    
+    // Métodos customizados de validação
+    @AssertTrue
+    public boolean isValidUpdate() {
+        return fullName != null || email != null;
+    }
+}
+</code></pre>
+<p><strong>📚 Conclusão:</strong></p>
+<ul>
+<li><strong>Records</strong> são ideais para DTOs simples e modernos</li>
+<li><strong>Classes</strong> oferecem mais flexibilidade quando necessário</li>
+<li><strong>Ambos funcionam</strong> com Spring Boot e validações</li>
+<li><strong>Escolha baseada</strong> na complexidade e requisitos do projeto</li>
+</ul>
+<hr>
 <h2>📖 Documentação Swagger Avançada</h2>
 <h3><strong>🎨 Recursos Utilizados:</strong></h3>
 <h4><strong>1. Anotações de Operação</strong></h4>
@@ -481,7 +669,7 @@ private Boolean podeDoar;
 <h4><strong>3. Respostas Detalhadas</strong></h4>
 <pre><code class="language-java">@ApiResponse(
     responseCode = &quot;400&quot;, 
-    description = &quot;❌ Dados inválidos fornecidos&quot;,
+    description = &quot;&lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; Dados inválidos fornecidos&quot;,
     content = @Content(
         schema = @Schema(implementation = Map.class),
         examples = @ExampleObject(
@@ -656,23 +844,23 @@ private Boolean podeDoar;
 <h2>📚 Recursos de Aprendizado</h2>
 <h3><strong>Conceitos Aplicados:</strong></h3>
 <ul>
-<li>✅ <strong>REST API Design</strong> - Padrões RESTful</li>
-<li>✅ <strong>OpenAPI 3.0</strong> - Documentação automática</li>
-<li>✅ <strong>Bean Validation</strong> - Validações declarativas</li>
-<li>✅ <strong>DTO Pattern</strong> - Transferência de dados</li>
-<li>✅ <strong>Paginação</strong> - Listagens eficientes</li>
-<li>✅ <strong>Error Handling</strong> - Tratamento de erros</li>
-<li>✅ <strong>Security</strong> - Autenticação JWT</li>
-<li>✅ <strong>Documentation</strong> - Código autodocumentado</li>
+<li><span class="badge success">✅</span> <strong>REST API Design</strong> - Padrões RESTful</li>
+<li><span class="badge success">✅</span> <strong>OpenAPI 3.0</strong> - Documentação automática</li>
+<li><span class="badge success">✅</span> <strong>Bean Validation</strong> - Validações declarativas</li>
+<li><span class="badge success">✅</span> <strong>DTO Pattern</strong> - Transferência de dados</li>
+<li><span class="badge success">✅</span> <strong>Paginação</strong> - Listagens eficientes</li>
+<li><span class="badge success">✅</span> <strong>Error Handling</strong> - Tratamento de erros</li>
+<li><span class="badge success">✅</span> <strong>Security</strong> - Autenticação JWT</li>
+<li><span class="badge success">✅</span> <strong>Documentation</strong> - Código autodocumentado</li>
 </ul>
 <h3><strong>Boas Práticas Demonstradas:</strong></h3>
 <ul>
-<li>✅ <strong>Single Responsibility</strong> - Cada método uma responsabilidade</li>
-<li>✅ <strong>Separation of Concerns</strong> - DTOs separados por função</li>
-<li>✅ <strong>DRY Principle</strong> - Reutilização de validações</li>
-<li>✅ <strong>Clean Code</strong> - Código legível e bem estruturado</li>
-<li>✅ <strong>API First</strong> - Documentação guiando implementação</li>
-<li>✅ <strong>Security by Design</strong> - Segurança desde o início</li>
+<li><span class="badge success">✅</span> <strong>Single Responsibility</strong> - Cada método uma responsabilidade</li>
+<li><span class="badge success">✅</span> <strong>Separation of Concerns</strong> - DTOs separados por função</li>
+<li><span class="badge success">✅</span> <strong>DRY Principle</strong> - Reutilização de validações</li>
+<li><span class="badge success">✅</span> <strong>Clean Code</strong> - Código legível e bem estruturado</li>
+<li><span class="badge success">✅</span> <strong>API First</strong> - Documentação guiando implementação</li>
+<li><span class="badge success">✅</span> <strong>Security by Design</strong> - Segurança desde o início</li>
 </ul>
 <hr>
 <p><strong>🎯 Conclusão:</strong> Este controller serve como um <strong>template completo</strong> para desenvolvimento de APIs REST profissionais no Spring Boot, demonstrando desde validações básicas até documentação avançada e tratamento de erros. É um exemplo prático de como implementar APIs de qualidade industrial.</p>

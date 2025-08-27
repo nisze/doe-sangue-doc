@@ -389,10 +389,10 @@ async function convertMdToHtml(mdFilePath, outputDir) {
 }
 
 async function createIndexPage(outputDir) {
-    const indexContent = \`
+    const indexContent = `
     <div class="stats">
         <div class="stat-card">
-            <div class="stat-number">6</div>
+            <div class="stat-number">8</div>
             <div class="stat-label">Documentos</div>
         </div>
         <div class="stat-card">
@@ -425,6 +425,7 @@ async function createIndexPage(outputDir) {
     <h3>💻 Desenvolvimento e API</h3>
     <ul>
         <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html"><strong>Documentação do Controller</strong></a> - Exemplo completo de implementação de controller REST</li>
+        <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html"><strong>Guia de Boas Práticas</strong></a> - Boas práticas para controllers REST, DTOs e validações</li>
         <li><a href="SWAGGER-DOCUMENTACAO.html"><strong>Configuração Swagger</strong></a> - Documentação detalhada da configuração OpenAPI</li>
         <li><a href="SWAGGER-RESUMO-IMPLEMENTACAO.html"><strong>Resumo da Implementação Swagger</strong></a> - Guia prático de implementação</li>
     </ul>
@@ -509,7 +510,7 @@ async function createIndexPage(outputDir) {
         <li><strong>GitHub:</strong> <a href="https://github.com/nisze/doesangue_backend">github.com/nisze/doesangue_backend</a></li>
         <li><strong>Documentação API:</strong> <a href="http://localhost:8080/swagger-ui.html">localhost:8080/swagger-ui.html</a></li>
     </ul>
-    \`;
+    `;
     
     const finalHtml = HTML_TEMPLATE
         .replace(/{title}/g, "Documentação Completa do Sistema DoeSangue")
@@ -533,14 +534,15 @@ async function main() {
         // Criar diretório de saída
         await fs.ensureDir(outputDir);
         
-        console.log(\`📁 Diretório de origem: \${docsDir}\`);
-        console.log(\`📁 Diretório de saída: \${outputDir}\`);
+        console.log(`📁 Diretório de origem: ${docsDir}`);
+        console.log(`📁 Diretório de saída: ${outputDir}`);
         
         // Arquivos markdown para converter
         const mdFiles = [
             'architecture.md',
             'DOCUMENTACAO-ENTIDADES.md',
             'DOADOR-CONTROLLER-DOCUMENTACAO.md',
+            'GUIA-CONTROLLER-BOAS-PRATICAS.md',
             'PLANO-ACAO-SEMANAL.md',
             'ROADMAP-PROXIMOS-PASSOS.md',
             'SWAGGER-DOCUMENTACAO.md',
@@ -553,29 +555,29 @@ async function main() {
         for (const mdFile of mdFiles) {
             const mdPath = path.join(docsDir, mdFile);
             if (await fs.pathExists(mdPath)) {
-                console.log(\`📄 Convertendo \${mdFile}...\`);
+                console.log(`📄 Convertendo ${mdFile}...`);
                 const htmlFile = await convertMdToHtml(mdPath, outputDir);
                 if (htmlFile) {
                     convertedFiles.push(htmlFile);
-                    console.log(\`✅ Criado: \${path.basename(htmlFile)}\`);
+                    console.log(`✅ Criado: ${path.basename(htmlFile)}`);
                 } else {
-                    console.log(\`❌ Erro ao converter: \${mdFile}\`);
+                    console.log(`❌ Erro ao converter: ${mdFile}`);
                 }
             } else {
-                console.log(\`⚠️ Arquivo não encontrado: \${mdFile}\`);
+                console.log(`⚠️ Arquivo não encontrado: ${mdFile}`);
             }
         }
         
         // Criar página índice
         console.log('📋 Criando página índice...');
         const indexFile = await createIndexPage(outputDir);
-        console.log(\`✅ Criado: \${path.basename(indexFile)}\`);
+        console.log(`✅ Criado: ${path.basename(indexFile)}`);
         
         // Resumo final
-        console.log(\`\\n🎉 Conversão concluída!\`);
-        console.log(\`📊 \${convertedFiles.length} arquivos convertidos com sucesso\`);
-        console.log(\`🌐 Arquivos HTML salvos em: \${outputDir}\`);
-        console.log(\`🏠 Abra o arquivo: \${indexFile}\`);
+        console.log(`\n🎉 Conversão concluída!`);
+        console.log(`📊 ${convertedFiles.length} arquivos convertidos com sucesso`);
+        console.log(`🌐 Arquivos HTML salvos em: ${outputDir}`);
+        console.log(`🏠 Abra o arquivo: ${indexFile}`);
         
         return outputDir;
         

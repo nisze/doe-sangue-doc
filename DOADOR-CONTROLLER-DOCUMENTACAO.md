@@ -186,6 +186,133 @@ private Boolean podeDoar;
 
 ---
 
+## 🔍 **public record** vs **public class** para DTOs
+
+### **📝 public record - Moderna e Concisa (Java 14+)**
+
+**Características:**
+- **Imutável por padrão** - Todos os campos são `final`
+- **Código mais limpo** - Sem boilerplate de getters/setters
+- **Equals/hashCode automático** - Implementados automaticamente
+- **toString() útil** - Mostra todos os campos
+- **Construtor automático** - Com todos os parâmetros
+
+**Exemplo prático:**
+```java
+@Schema(description = "Dados para criação de doador")
+public record DoadorCreateDTO(
+    @Schema(description = "Nome completo", example = "João Silva")
+    @NotBlank(message = "Nome completo é obrigatório")
+    @Size(min = 2, max = 100, message = "Nome deve ter entre 2 e 100 caracteres")
+    String fullName,
+    
+    @Schema(description = "CPF sem formatação", example = "12345678901")
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter exatamente 11 dígitos numéricos")
+    String cpf,
+    
+    @Schema(description = "Email para contato", example = "joao.silva@email.com")
+    @Email(message = "Email deve ter formato válido")
+    String email,
+    
+    @Schema(description = "Consentimento LGPD", example = "true")
+    @AssertTrue(message = "Consentimento LGPD deve ser verdadeiro para prosseguir")
+    Boolean consentimentoLgpd
+) {}
+```
+
+**✅ Vantagens:**
+- **Menos código** - Reduz significativamente o boilerplate
+- **Imutabilidade** - Mais seguro para transferência de dados
+- **Modernidade** - Padrão atual do Java para DTOs
+- **Performance** - Ligeiramente mais eficiente
+
+### **🏗️ public class - Tradicional e Flexível**
+
+**Características:**
+- **Mutável por padrão** - Campos podem ser modificados
+- **Código verbose** - Requer getters/setters manuais ou Lombok
+- **Flexibilidade total** - Permite customização de comportamentos
+- **Compatibilidade** - Funciona em todas as versões do Java
+
+**Exemplo prático:**
+```java
+@Schema(description = "Dados para criação de doador")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class DoadorCreateDTO {
+    
+    @Schema(description = "Nome completo", example = "João Silva")
+    @NotBlank(message = "Nome completo é obrigatório")
+    @Size(min = 2, max = 100, message = "Nome deve ter entre 2 e 100 caracteres")
+    private String fullName;
+    
+    @Schema(description = "CPF sem formatação", example = "12345678901")
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter exatamente 11 dígitos numéricos")
+    private String cpf;
+    
+    @Schema(description = "Email para contato", example = "joao.silva@email.com")
+    @Email(message = "Email deve ter formato válido")
+    private String email;
+    
+    @Schema(description = "Consentimento LGPD", example = "true")
+    @AssertTrue(message = "Consentimento LGPD deve ser verdadeiro para prosseguir")
+    private Boolean consentimentoLgpd;
+    
+    // Lombok gera getters, setters, construtores
+}
+```
+
+**✅ Vantagens:**
+- **Flexibilidade** - Permite validações customizadas
+- **Compatibilidade** - Funciona com bibliotecas mais antigas
+- **Lombok** - Reduz boilerplate com anotações
+- **Debugging** - Mais fácil para debug em algumas IDEs
+
+### **🎯 Quando Usar Cada Um**
+
+| **Cenário** | **Record** | **Class** |
+|-------------|------------|-----------|
+| **DTOs simples de transferência** | ✅ **Preferível** | ⚠️ Adequado |
+| **Dados imutáveis** | ✅ **Ideal** | ❌ Requer esforço extra |
+| **APIs REST modernas** | ✅ **Recomendado** | ⚠️ Tradicional |
+| **Validações complexas** | ⚠️ Limitado | ✅ **Melhor** |
+| **Herança necessária** | ❌ Não suporta | ✅ **Necessário** |
+| **Java < 14** | ❌ Não disponível | ✅ **Única opção** |
+| **Frameworks antigos** | ⚠️ Pode ter problemas | ✅ **Compatível** |
+
+### **💡 Recomendação para o Projeto DoeSangue**
+
+**Para DTOs de Entrada/Saída:**
+```java
+// ✅ RECOMENDADO - Record para dados simples
+public record DoadorCreateDTO(
+    @NotBlank String fullName,
+    @Pattern(regexp = "\\d{11}") String cpf,
+    @Email String email
+) {}
+
+// ✅ ALTERNATIVO - Class quando precisar de flexibilidade
+@Getter @Setter
+public class DoadorUpdateDTO {
+    private String fullName;
+    private String email;
+    
+    // Métodos customizados de validação
+    @AssertTrue
+    public boolean isValidUpdate() {
+        return fullName != null || email != null;
+    }
+}
+```
+
+**📚 Conclusão:**
+- **Records** são ideais para DTOs simples e modernos
+- **Classes** oferecem mais flexibilidade quando necessário
+- **Ambos funcionam** com Spring Boot e validações
+- **Escolha baseada** na complexidade e requisitos do projeto
+
+---
+
 ## 📖 Documentação Swagger Avançada
 
 ### **🎨 Recursos Utilizados:**

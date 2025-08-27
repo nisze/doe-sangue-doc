@@ -167,7 +167,114 @@ public ResponseEntity<Void> excluir(
 
 ## 🎨 DTOs com Validações
 
-### **📥 DTO de Criação**
+### **� Escolhendo Entre `public record` e `public class`**
+
+#### **🆕 public record - Moderna e Imutável (Java 14+)**
+
+**Características:**
+- **Imutável por padrão** - Todos os campos são `final`
+- **Menos código** - Elimina getters/setters/equals/hashCode
+- **Construtor automático** - Com todos os parâmetros obrigatórios
+- **Performance** - Ligeiramente mais eficiente
+
+```java
+@Schema(description = "Dados para criação de recurso")
+public record RecursoCreateDTO(
+    @Schema(description = "Nome do recurso", example = "Recurso Exemplo")
+    @NotBlank(message = "Nome é obrigatório")
+    @Size(min = 2, max = 100, message = "Nome deve ter entre 2 e 100 caracteres")
+    String nome,
+    
+    @Schema(description = "Descrição", example = "Descrição do recurso")
+    @Size(max = 500, message = "Descrição não pode exceder 500 caracteres")
+    String descricao,
+    
+    @Schema(description = "Status ativo", example = "true")
+    @NotNull(message = "Status é obrigatório")
+    Boolean ativo,
+    
+    @Schema(description = "Valor monetário", example = "99.99")
+    @DecimalMin(value = "0.0", message = "Valor deve ser positivo")
+    BigDecimal valor
+) {}
+```
+
+#### **🏗️ public class - Tradicional e Flexível**
+
+**Características:**
+- **Mutável** - Campos podem ser modificados depois da criação
+- **Flexibilidade total** - Permite métodos customizados
+- **Compatibilidade** - Funciona com todas as versões Java
+- **Herança** - Suporta extends e implementações complexas
+
+```java
+@Schema(description = "Dados para criação de recurso")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+public class RecursoCreateDTO {
+    
+    @Schema(description = "Nome do recurso", example = "Recurso Exemplo")
+    @NotBlank(message = "Nome é obrigatório")
+    @Size(min = 2, max = 100, message = "Nome deve ter entre 2 e 100 caracteres")
+    private String nome;
+    
+    @Schema(description = "Descrição", example = "Descrição do recurso")
+    @Size(max = 500, message = "Descrição não pode exceder 500 caracteres")
+    private String descricao;
+    
+    @Schema(description = "Status ativo", example = "true")
+    @NotNull(message = "Status é obrigatório")
+    private Boolean ativo;
+    
+    @Schema(description = "Valor monetário", example = "99.99")
+    @DecimalMin(value = "0.0", message = "Valor deve ser positivo")
+    private BigDecimal valor;
+    
+    // Métodos customizados podem ser adicionados
+    @AssertTrue(message = "Validação customizada")
+    public boolean isValidCombination() {
+        return nome != null && !nome.trim().isEmpty();
+    }
+}
+```
+
+#### **🎯 Guia de Decisão**
+
+| **Cenário** | **Record** | **Class** |
+|-------------|------------|-----------|
+| **DTOs simples de entrada** | ✅ **Preferível** | ⚠️ Adequado |
+| **DTOs de resposta** | ✅ **Ideal** | ⚠️ Adequado |
+| **Dados que nunca mudam** | ✅ **Perfeito** | ❌ Desnecessário |
+| **Validações complexas** | ⚠️ Limitado | ✅ **Melhor** |
+| **Herança necessária** | ❌ Não suporta | ✅ **Obrigatório** |
+| **Java < 14** | ❌ Indisponível | ✅ **Única opção** |
+| **Bibliotecas legadas** | ⚠️ Compatibilidade | ✅ **Garantida** |
+
+#### **💡 Recomendação Geral**
+
+```java
+// ✅ PREFERÍVEL - Records para DTOs simples
+public record ProductCreateDTO(
+    @NotBlank String name,
+    @Positive BigDecimal price,
+    @NotNull Boolean active
+) {}
+
+// ✅ ALTERNATIVO - Classes quando precisar de flexibilidade
+@Getter @Setter
+public class ProductUpdateDTO {
+    private String name;
+    private BigDecimal price;
+    private Boolean active;
+    
+    @AssertTrue(message = "Pelo menos um campo deve ser fornecido")
+    public boolean hasAtLeastOneField() {
+        return name != null || price != null || active != null;
+    }
+}
+```
+
+### **�📥 DTO de Criação**
 
 ```java
 @Schema(description = "Dados para criação de recurso")

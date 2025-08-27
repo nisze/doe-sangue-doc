@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📚 Documentação Completa das Entidades - Sistema DoeSangue - DoeSangue Documentation</title>
     <style>
+        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
@@ -22,13 +23,16 @@
         
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 0 auto;
             padding: 20px;
             background: white;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         
+        /* Header */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -55,6 +59,7 @@
             opacity: 0.8;
         }
         
+        /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: #2c3e50;
             margin-bottom: 15px;
@@ -91,6 +96,7 @@
             text-align: justify;
         }
         
+        /* Lists */
         ul, ol {
             margin-bottom: 15px;
             padding-left: 30px;
@@ -100,6 +106,7 @@
             margin-bottom: 8px;
         }
         
+        /* Code */
         code {
             background: #f8f9fa;
             padding: 2px 6px;
@@ -126,6 +133,7 @@
             padding: 0;
         }
         
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -152,6 +160,7 @@
             background: #f8f9fa;
         }
         
+        /* Blockquotes */
         blockquote {
             border-left: 4px solid #3498db;
             padding: 15px 20px;
@@ -161,6 +170,7 @@
             font-style: italic;
         }
         
+        /* Links */
         a {
             color: #3498db;
             text-decoration: none;
@@ -172,6 +182,23 @@
             border-bottom: 1px solid #2980b9;
         }
         
+        /* Badges/Tags */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #3498db;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        
+        .badge.success { background: #27ae60; }
+        .badge.warning { background: #f39c12; }
+        .badge.danger { background: #e74c3c; }
+        .badge.info { background: #3498db; }
+        
+        /* Navigation */
         .nav {
             background: #2c3e50;
             padding: 15px 0;
@@ -205,6 +232,7 @@
             border: none;
         }
         
+        /* Footer */
         .footer {
             text-align: center;
             padding: 20px;
@@ -214,6 +242,32 @@
             font-size: 0.9em;
         }
         
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -240,26 +294,6 @@
             color: #666;
             font-size: 0.9em;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav li {
-                margin: 5px 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -267,7 +301,7 @@
         <div class="header">
             <h1>🩸 📚 Documentação Completa das Entidades - Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 20:45:39 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -275,10 +309,9 @@
                 <li><a href="index.html">🏠 Início</a></li>
                 <li><a href="architecture.html">🏗️ Arquitetura</a></li>
                 <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
-                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">🎮 Controller</a></li>
                 <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
                 <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
-                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
             </ul>
         </nav>
         
@@ -2726,10 +2759,10 @@ List&lt;LogAuditoriaLgpd&gt; campanhas = auditRepository.findByFinalidadeContain
 </code></pre>
 <p><strong>Requisitos LGPD Atendidos:</strong></p>
 <ul>
-<li>✅ <strong>Registro de acesso:</strong> Quem, quando, onde, por quê</li>
-<li>✅ <strong>Finalidade:</strong> Motivo do acesso aos dados</li>
-<li>✅ <strong>Rastreabilidade:</strong> Histórico completo de operações</li>
-<li>✅ <strong>Relatórios:</strong> Base para relatórios de conformidade</li>
+<li><span class="badge success">✅</span> <strong>Registro de acesso:</strong> Quem, quando, onde, por quê</li>
+<li><span class="badge success">✅</span> <strong>Finalidade:</strong> Motivo do acesso aos dados</li>
+<li><span class="badge success">✅</span> <strong>Rastreabilidade:</strong> Histórico completo de operações</li>
+<li><span class="badge success">✅</span> <strong>Relatórios:</strong> Base para relatórios de conformidade</li>
 </ul>
 <hr>
 <h2>🏷️ Anotações JPA Explicadas</h2>
@@ -2819,7 +2852,7 @@ private List&lt;Role&gt; roles;
 </code></pre>
 <p><strong>O que faz:</strong> Define relacionamento N:N através de tabela intermediária.
 <strong>Quando usar:</strong> Quando ambas as entidades podem ter múltiplas referências entre si.
-<strong>⚠️ Nota:</strong> No nosso projeto, preferimos tabela intermediária explícita (UserSetor) para campos extras.</p>
+<strong><span class="badge warning">⚠️</span> Nota:</strong> No nosso projeto, preferimos tabela intermediária explícita (UserSetor) para campos extras.</p>
 <h4><strong>@JoinColumn</strong></h4>
 <pre><code class="language-java">@JoinColumn(name = &quot;ID_ROLE&quot;, nullable = false)
 private UserRole userRole;
@@ -2957,7 +2990,7 @@ private List&lt;UserSetor&gt; setores = new ArrayList&lt;&gt;();
 @Column(name = &quot;STATUS&quot;, length = 20)
 private StatusDoenca status = StatusDoenca.ATIVO;
 </code></pre>
-<h4><strong>⚠️ Armadilhas Comuns:</strong></h4>
+<h4><strong><span class="badge warning">⚠️</span> Armadilhas Comuns:</strong></h4>
 <ul>
 <li><strong>EAGER em relacionamentos grandes</strong> → Performance ruim</li>
 <li><strong>CASCADE.ALL sem cuidado</strong> → Deleções acidentais  </li>
@@ -3165,31 +3198,31 @@ List&lt;EstoqueSangue&gt; criticos = estoqueRepository.findByStatusEstoque(Statu
 </code></pre>
 <hr>
 <h2>📈 Benefícios da Arquitetura</h2>
-<h3><strong>✅ Flexibilidade:</strong></h3>
+<h3><strong><span class="badge success">✅</span> Flexibilidade:</strong></h3>
 <ul>
 <li>Multi-setor simultâneo</li>
 <li>Workflow médico híbrido</li>
 <li>Extensibilidade futura</li>
 </ul>
-<h3><strong>✅ Integridade:</strong></h3>
+<h3><strong><span class="badge success">✅</span> Integridade:</strong></h3>
 <ul>
 <li>Constraints de banco</li>
 <li>Validações JPA</li>
 <li>Relacionamentos consistentes</li>
 </ul>
-<h3><strong>✅ Performance:</strong></h3>
+<h3><strong><span class="badge success">✅</span> Performance:</strong></h3>
 <ul>
 <li>Fetch strategies otimizadas</li>
 <li>Lazy loading inteligente</li>
 <li>Consultas específicas nos repositórios</li>
 </ul>
-<h3><strong>✅ Auditoria:</strong></h3>
+<h3><strong><span class="badge success">✅</span> Auditoria:</strong></h3>
 <ul>
 <li>Soft delete preserva histórico</li>
 <li>Timestamps automáticos</li>
 <li>Rastreabilidade de ações</li>
 </ul>
-<h3><strong>✅ Compliance:</strong></h3>
+<h3><strong><span class="badge success">✅</span> Compliance:</strong></h3>
 <ul>
 <li>LGPD (consentimentos granulares)</li>
 <li>Responsabilidade médica</li>
