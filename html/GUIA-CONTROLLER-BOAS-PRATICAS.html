@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Guia de Boas Práticas - Controllers REST com Spring Boot - DoeSangue Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 📚 Guia de Boas Práticas - Controllers REST com Spring Boot</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>📚 Guia de Boas Práticas - Controllers REST com Spring Boot</h1>
+<p><strong>Finalidade:</strong> Guia educativo para desenvolvimento de controllers REST profissionais<br><strong>Foco:</strong> Anotações, validações e documentação com Swagger</p>
+<hr>
+<h2>🎯 Objetivo deste Guia</h2>
+<p>Este documento apresenta as <strong>melhores práticas</strong> para desenvolvimento de controllers REST no Spring Boot, com foco em:</p>
+<ul>
+<li><strong>Anotações essenciais</strong> e seu uso correto</li>
+<li><strong>Validações robustas</strong> com Bean Validation</li>
+<li><strong>Documentação automática</strong> com Swagger/OpenAPI</li>
+<li><strong>Padrões de código limpo</strong> e manutenível</li>
+</ul>
+<hr>
+<h2>🏗️ Estrutura Básica de um Controller</h2>
+<h3><strong>📋 Anotações Principais</strong></h3>
+<pre><code class="language-java">@RestController                    // Marca a classe como controller REST
+@RequestMapping(&quot;/api/recurso&quot;)    // Define o path base
+@Tag(name = &quot;Recurso&quot;, description = &quot;Operações do recurso&quot;)  // Swagger
+@Validated                        // Habilita validações nos parâmetros
+public class RecursoController {
+    // implementação
+}
+</code></pre>
+<h3><strong>🔧 Injeção de Dependências</strong></h3>
+<pre><code class="language-java">private final RecursoService service;
+private final RecursoMapper mapper;
+
+public RecursoController(RecursoService service, RecursoMapper mapper) {
+    this.service = service;
+    this.mapper = mapper;
+}
+</code></pre>
+<hr>
+<h2>🚀 Padrões de Endpoints REST</h2>
+<h3><strong>1. 📋 Listagem com Paginação</strong></h3>
+<pre><code class="language-java">@GetMapping
+@Operation(
+    summary = &quot;Listar recursos com paginação&quot;,
+    description = &quot;Retorna lista paginada de recursos com filtros opcionais&quot;
+)
+@ApiResponses({
+    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Lista retornada com sucesso&quot;),
+    @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Parâmetros inválidos&quot;)
+})
+public ResponseEntity&lt;Page&lt;RecursoDTO&gt;&gt; listar(
+    @Parameter(description = &quot;Número da página (0-based)&quot;)
+    @RequestParam(defaultValue = &quot;0&quot;) @Min(0) int page,
+    
+    @Parameter(description = &quot;Tamanho da página&quot;)
+    @RequestParam(defaultValue = &quot;20&quot;) @Min(1) @Max(100) int size,
+    
+    @Parameter(description = &quot;Filtros de busca&quot;)
+    @Valid RecursoFiltroDTO filtros
+) {
+    Pageable pageable = PageRequest.of(page, size);
+    Page&lt;Recurso&gt; recursos = service.buscarComFiltros(filtros, pageable);
+    Page&lt;RecursoDTO&gt; dtos = recursos.map(mapper::toDTO);
+    return ResponseEntity.ok(dtos);
+}
+</code></pre>
+<h3><strong>2. 🔍 Busca por ID</strong></h3>
+<pre><code class="language-java">@GetMapping(&quot;/{id}&quot;)
+@Operation(summary = &quot;Buscar recurso por ID&quot;)
+@ApiResponses({
+    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Recurso encontrado&quot;),
+    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Recurso não encontrado&quot;)
+})
+public ResponseEntity&lt;RecursoDTO&gt; buscarPorId(
+    @Parameter(description = &quot;ID do recurso&quot;, required = true)
+    @PathVariable @Positive Long id
+) {
+    Recurso recurso = service.buscarPorId(id);
+    RecursoDTO dto = mapper.toDTO(recurso);
+    return ResponseEntity.ok(dto);
+}
+</code></pre>
+<h3><strong>3. ➕ Criação de Recurso</strong></h3>
+<pre><code class="language-java">@PostMapping
+@Operation(summary = &quot;Criar novo recurso&quot;)
+@ApiResponses({
+    @ApiResponse(responseCode = &quot;201&quot;, description = &quot;Recurso criado com sucesso&quot;),
+    @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Dados inválidos&quot;),
+    @ApiResponse(responseCode = &quot;409&quot;, description = &quot;Recurso já existe&quot;)
+})
+public ResponseEntity&lt;RecursoDTO&gt; criar(
+    @Parameter(description = &quot;Dados para criação do recurso&quot;)
+    @Valid @RequestBody RecursoCreateDTO createDTO
+) {
+    Recurso novoRecurso = mapper.toEntity(createDTO);
+    Recurso recursoSalvo = service.criar(novoRecurso);
+    RecursoDTO dto = mapper.toDTO(recursoSalvo);
+    
+    URI location = ServletUriComponentsBuilder
+        .fromCurrentRequest()
+        .path(&quot;/{id}&quot;)
+        .buildAndExpand(recursoSalvo.getId())
+        .toUri();
+        
+    return ResponseEntity.created(location).body(dto);
+}
+</code></pre>
+<h3><strong>4. 🔄 Atualização de Recurso</strong></h3>
+<pre><code class="language-java">@PutMapping(&quot;/{id}&quot;)
+@Operation(summary = &quot;Atualizar recurso existente&quot;)
+@ApiResponses({
+    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Recurso atualizado&quot;),
+    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Recurso não encontrado&quot;),
+    @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Dados inválidos&quot;)
+})
+public ResponseEntity&lt;RecursoDTO&gt; atualizar(
+    @Parameter(description = &quot;ID do recurso&quot;)
+    @PathVariable @Positive Long id,
+    
+    @Parameter(description = &quot;Dados para atualização&quot;)
+    @Valid @RequestBody RecursoUpdateDTO updateDTO
+) {
+    Recurso recursoAtualizado = service.atualizar(id, updateDTO);
+    RecursoDTO dto = mapper.toDTO(recursoAtualizado);
+    return ResponseEntity.ok(dto);
+}
+</code></pre>
+<h3><strong>5. 🗑️ Exclusão de Recurso</strong></h3>
+<pre><code class="language-java">@DeleteMapping(&quot;/{id}&quot;)
+@Operation(summary = &quot;Excluir recurso&quot;)
+@ApiResponses({
+    @ApiResponse(responseCode = &quot;204&quot;, description = &quot;Recurso excluído&quot;),
+    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Recurso não encontrado&quot;),
+    @ApiResponse(responseCode = &quot;409&quot;, description = &quot;Não é possível excluir&quot;)
+})
+public ResponseEntity&lt;Void&gt; excluir(
+    @Parameter(description = &quot;ID do recurso&quot;)
+    @PathVariable @Positive Long id
+) {
+    service.excluir(id);
+    return ResponseEntity.noContent().build();
+}
+</code></pre>
+<hr>
+<h2>🎨 DTOs com Validações</h2>
+<h3><strong>📥 DTO de Criação</strong></h3>
+<pre><code class="language-java">@Schema(description = &quot;Dados para criação de recurso&quot;)
+public class RecursoCreateDTO {
+    
+    @Schema(description = &quot;Nome do recurso&quot;, example = &quot;Recurso Exemplo&quot;)
+    @NotBlank(message = &quot;Nome é obrigatório&quot;)
+    @Size(min = 2, max = 100, message = &quot;Nome deve ter entre 2 e 100 caracteres&quot;)
+    private String nome;
+    
+    @Schema(description = &quot;Descrição detalhada&quot;, example = &quot;Descrição completa do recurso&quot;)
+    @Size(max = 500, message = &quot;Descrição não pode exceder 500 caracteres&quot;)
+    private String descricao;
+    
+    @Schema(description = &quot;Status ativo&quot;, example = &quot;true&quot;)
+    @NotNull(message = &quot;Status é obrigatório&quot;)
+    private Boolean ativo;
+    
+    @Schema(description = &quot;Categoria do recurso&quot;, example = &quot;CATEGORIA_A&quot;)
+    @NotNull(message = &quot;Categoria é obrigatória&quot;)
+    @Enumerated(EnumType.STRING)
+    private CategoriaEnum categoria;
+    
+    @Schema(description = &quot;Valor monetário&quot;, example = &quot;99.99&quot;)
+    @DecimalMin(value = &quot;0.0&quot;, message = &quot;Valor deve ser positivo&quot;)
+    @Digits(integer = 10, fraction = 2, message = &quot;Formato de valor inválido&quot;)
+    private BigDecimal valor;
+    
+    // getters e setters
+}
+</code></pre>
+<h3><strong>📤 DTO de Resposta</strong></h3>
+<pre><code class="language-java">@Schema(description = &quot;Dados de resposta do recurso&quot;)
+public class RecursoDTO {
+    
+    @Schema(description = &quot;ID único do recurso&quot;, accessMode = Schema.AccessMode.READ_ONLY)
+    private Long id;
+    
+    @Schema(description = &quot;Nome do recurso&quot;)
+    private String nome;
+    
+    @Schema(description = &quot;Descrição do recurso&quot;)
+    private String descricao;
+    
+    @Schema(description = &quot;Indica se está ativo&quot;)
+    private Boolean ativo;
+    
+    @Schema(description = &quot;Categoria do recurso&quot;)
+    private CategoriaEnum categoria;
+    
+    @Schema(description = &quot;Valor formatado para exibição&quot;, example = &quot;R$ 99,99&quot;)
+    private String valorFormatado;
+    
+    @Schema(description = &quot;Data de criação&quot;, accessMode = Schema.AccessMode.READ_ONLY)
+    private LocalDateTime criadoEm;
+    
+    @Schema(description = &quot;Data da última atualização&quot;, accessMode = Schema.AccessMode.READ_ONLY)
+    private LocalDateTime atualizadoEm;
+    
+    // getters e setters
+}
+</code></pre>
+<h3><strong>🔍 DTO de Filtros</strong></h3>
+<pre><code class="language-java">@Schema(description = &quot;Filtros para busca de recursos&quot;)
+public class RecursoFiltroDTO {
+    
+    @Schema(description = &quot;Buscar por nome (busca parcial)&quot;, example = &quot;exemplo&quot;)
+    private String nome;
+    
+    @Schema(description = &quot;Filtrar por categoria&quot;)
+    private CategoriaEnum categoria;
+    
+    @Schema(description = &quot;Filtrar apenas ativos&quot;)
+    private Boolean apenasAtivos;
+    
+    @Schema(description = &quot;Valor mínimo&quot;)
+    @DecimalMin(value = &quot;0.0&quot;, message = &quot;Valor mínimo deve ser positivo&quot;)
+    private BigDecimal valorMinimo;
+    
+    @Schema(description = &quot;Valor máximo&quot;)
+    @DecimalMin(value = &quot;0.0&quot;, message = &quot;Valor máximo deve ser positivo&quot;)
+    private BigDecimal valorMaximo;
+    
+    @Schema(description = &quot;Data inicial para filtro&quot;)
+    @Past(message = &quot;Data inicial deve estar no passado&quot;)
+    private LocalDate dataInicial;
+    
+    @Schema(description = &quot;Data final para filtro&quot;)
+    private LocalDate dataFinal;
+    
+    // getters e setters
+}
+</code></pre>
+<hr>
+<h2>📖 Documentação Swagger Avançada</h2>
+<h3><strong>🏷️ Tags e Operações</strong></h3>
+<pre><code class="language-java">@Tag(
+    name = &quot;Recursos&quot;, 
+    description = &quot;API para gerenciamento de recursos do sistema&quot;
+)
+@Operation(
+    summary = &quot;Operação resumida&quot;,
+    description = &quot;&quot;&quot;
+        Descrição detalhada da operação em **Markdown**.
+        
+        ### Funcionalidades:
+        - Item 1
+        - Item 2
+        
+        ### Casos de Uso:
+        - Caso A
+        - Caso B
+        &quot;&quot;&quot;,
+    tags = {&quot;Recursos&quot;}
+)
+</code></pre>
+<h3><strong>📝 Exemplos Completos</strong></h3>
+<pre><code class="language-java">@io.swagger.v3.oas.annotations.parameters.RequestBody(
+    description = &quot;Dados do recurso&quot;,
+    required = true,
+    content = @Content(
+        mediaType = &quot;application/json&quot;,
+        schema = @Schema(implementation = RecursoCreateDTO.class),
+        examples = {
+            @ExampleObject(
+                name = &quot;Exemplo Básico&quot;,
+                value = &quot;&quot;&quot;
+                    {
+                        &quot;nome&quot;: &quot;Produto Exemplo&quot;,
+                        &quot;descricao&quot;: &quot;Descrição do produto&quot;,
+                        &quot;ativo&quot;: true,
+                        &quot;categoria&quot;: &quot;CATEGORIA_A&quot;,
+                        &quot;valor&quot;: 99.99
+                    }
+                    &quot;&quot;&quot;
+            ),
+            @ExampleObject(
+                name = &quot;Exemplo Completo&quot;,
+                value = &quot;&quot;&quot;
+                    {
+                        &quot;nome&quot;: &quot;Produto Premium&quot;,
+                        &quot;descricao&quot;: &quot;Produto com todas as funcionalidades&quot;,
+                        &quot;ativo&quot;: true,
+                        &quot;categoria&quot;: &quot;CATEGORIA_PREMIUM&quot;,
+                        &quot;valor&quot;: 299.99
+                    }
+                    &quot;&quot;&quot;
+            )
+        }
+    )
+)
+</code></pre>
+<h3><strong>🔧 Respostas Documentadas</strong></h3>
+<pre><code class="language-java">@ApiResponses({
+    @ApiResponse(
+        responseCode = &quot;200&quot;,
+        description = &quot;✅ Operação realizada com sucesso&quot;,
+        content = @Content(
+            mediaType = &quot;application/json&quot;,
+            schema = @Schema(implementation = RecursoDTO.class)
+        )
+    ),
+    @ApiResponse(
+        responseCode = &quot;400&quot;,
+        description = &quot;❌ Dados inválidos fornecidos&quot;,
+        content = @Content(
+            mediaType = &quot;application/json&quot;,
+            examples = @ExampleObject(
+                value = &quot;&quot;&quot;
+                    {
+                        &quot;error&quot;: &quot;Bad Request&quot;,
+                        &quot;message&quot;: &quot;Dados inválidos&quot;,
+                        &quot;details&quot;: {
+                            &quot;nome&quot;: &quot;Nome é obrigatório&quot;,
+                            &quot;valor&quot;: &quot;Valor deve ser positivo&quot;
+                        },
+                        &quot;timestamp&quot;: &quot;2025-08-27T14:30:00Z&quot;
+                    }
+                    &quot;&quot;&quot;
+            )
+        )
+    ),
+    @ApiResponse(
+        responseCode = &quot;404&quot;,
+        description = &quot;🔍 Recurso não encontrado&quot;,
+        content = @Content(
+            mediaType = &quot;application/json&quot;,
+            examples = @ExampleObject(
+                value = &quot;&quot;&quot;
+                    {
+                        &quot;error&quot;: &quot;Not Found&quot;,
+                        &quot;message&quot;: &quot;Recurso com ID 123 não foi encontrado&quot;,
+                        &quot;timestamp&quot;: &quot;2025-08-27T14:30:00Z&quot;
+                    }
+                    &quot;&quot;&quot;
+            )
+        )
+    )
+})
+</code></pre>
+<hr>
+<h2>🔒 Segurança e Validações</h2>
+<h3><strong>🛡️ Validações de Entrada</strong></h3>
+<pre><code class="language-java">// Validações básicas
+@NotNull(message = &quot;Campo obrigatório&quot;)
+@NotBlank(message = &quot;Campo não pode estar vazio&quot;)
+@NotEmpty(message = &quot;Lista não pode estar vazia&quot;)
+
+// Validações de tamanho
+@Size(min = 2, max = 100, message = &quot;Tamanho inválido&quot;)
+@Length(min = 5, max = 50, message = &quot;Comprimento inválido&quot;)
+
+// Validações numéricas
+@Min(value = 0, message = &quot;Valor mínimo é 0&quot;)
+@Max(value = 100, message = &quot;Valor máximo é 100&quot;)
+@Positive(message = &quot;Deve ser positivo&quot;)
+@PositiveOrZero(message = &quot;Deve ser positivo ou zero&quot;)
+
+// Validações de formato
+@Email(message = &quot;Email inválido&quot;)
+@Pattern(regexp = &quot;\\d{11}&quot;, message = &quot;CPF deve ter 11 dígitos&quot;)
+@URL(message = &quot;URL inválida&quot;)
+
+// Validações de data
+@Past(message = &quot;Data deve estar no passado&quot;)
+@Future(message = &quot;Data deve estar no futuro&quot;)
+@PastOrPresent(message = &quot;Data deve ser passado ou presente&quot;)
+</code></pre>
+<h3><strong>🔐 Autorização</strong></h3>
+<pre><code class="language-java">@PreAuthorize(&quot;hasRole(&#39;ADMIN&#39;)&quot;)
+@Operation(security = @SecurityRequirement(name = &quot;bearerAuth&quot;))
+public ResponseEntity&lt;RecursoDTO&gt; operacaoRestrita() {
+    // implementação
+}
+</code></pre>
+<hr>
+<h2>🛠️ Tratamento de Erros</h2>
+<h3><strong>⚠️ Exception Handler Global</strong></h3>
+<pre><code class="language-java">@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map&lt;String, Object&gt; handleValidationErrors(MethodArgumentNotValidException ex) {
+        Map&lt;String, String&gt; errors = new HashMap&lt;&gt;();
+        ex.getBindingResult().getFieldErrors().forEach(error -&gt; 
+            errors.put(error.getField(), error.getDefaultMessage())
+        );
+        
+        return Map.of(
+            &quot;error&quot;, &quot;Validation Failed&quot;,
+            &quot;message&quot;, &quot;Dados inválidos&quot;,
+            &quot;details&quot;, errors,
+            &quot;timestamp&quot;, Instant.now()
+        );
+    }
+    
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map&lt;String, Object&gt; handleNotFound(EntityNotFoundException ex) {
+        return Map.of(
+            &quot;error&quot;, &quot;Not Found&quot;,
+            &quot;message&quot;, ex.getMessage(),
+            &quot;timestamp&quot;, Instant.now()
+        );
+    }
+}
+</code></pre>
+<hr>
+<h2>🧪 Testabilidade</h2>
+<h3><strong>🔬 Controller Test</strong></h3>
+<pre><code class="language-java">@WebMvcTest(RecursoController.class)
+class RecursoControllerTest {
+    
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private RecursoService service;
+    
+    @Test
+    void deveListarRecursos() throws Exception {
+        // given
+        Page&lt;Recurso&gt; recursos = new PageImpl&lt;&gt;(List.of(/* recursos */));
+        when(service.buscarComFiltros(any(), any())).thenReturn(recursos);
+        
+        // when &amp; then
+        mockMvc.perform(get(&quot;/api/recursos&quot;))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath(&quot;$.content&quot;).isArray());
+    }
+    
+    @Test
+    void deveCriarRecurso() throws Exception {
+        // given
+        String jsonRequest = &quot;&quot;&quot;
+            {
+                &quot;nome&quot;: &quot;Teste&quot;,
+                &quot;descricao&quot;: &quot;Descrição teste&quot;,
+                &quot;ativo&quot;: true,
+                &quot;categoria&quot;: &quot;CATEGORIA_A&quot;,
+                &quot;valor&quot;: 99.99
+            }
+            &quot;&quot;&quot;;
+        
+        // when &amp; then
+        mockMvc.perform(post(&quot;/api/recursos&quot;)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonRequest))
+            .andExpect(status().isCreated());
+    }
+}
+</code></pre>
+<hr>
+<h2>🎯 Boas Práticas Resumidas</h2>
+<h3><strong>✅ Fazer:</strong></h3>
+<ul>
+<li><strong>Use DTOs</strong> separados para entrada e saída</li>
+<li><strong>Valide todas as entradas</strong> com Bean Validation</li>
+<li><strong>Documente completamente</strong> com Swagger</li>
+<li><strong>Trate erros adequadamente</strong> com handlers globais</li>
+<li><strong>Implemente paginação</strong> para listagens</li>
+<li><strong>Use ResponseEntity</strong> para controle preciso de status</li>
+<li><strong>Separe responsabilidades</strong> (Controller → Service → Repository)</li>
+</ul>
+<h3><strong>❌ Evitar:</strong></h3>
+<ul>
+<li><strong>Expor entidades JPA</strong> diretamente</li>
+<li><strong>Misturar lógica de negócio</strong> no controller</li>
+<li><strong>Ignorar validações</strong> de entrada</li>
+<li><strong>Documentação incompleta</strong> ou ausente</li>
+<li><strong>Retornos inconsistentes</strong> de status HTTP</li>
+<li><strong>Métodos muito grandes</strong> ou complexos</li>
+</ul>
+<hr>
+<h2>📚 Recursos Adicionais</h2>
+<h3><strong>🔗 Links Úteis:</strong></h3>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/">Spring Boot Reference</a></li>
+<li><a href="https://beanvalidation.org/2.0/spec/">Bean Validation Specification</a></li>
+<li><a href="https://swagger.io/specification/">OpenAPI 3 Specification</a></li>
+<li><a href="https://docs.spring.io/spring-security/reference/">Spring Security Reference</a></li>
+</ul>
+<h3><strong>📖 Padrões Recomendados:</strong></h3>
+<ul>
+<li><strong>REST API Design</strong> - Princípios RESTful</li>
+<li><strong>Clean Code</strong> - Código limpo e legível</li>
+<li><strong>SOLID Principles</strong> - Princípios de design</li>
+<li><strong>Test-Driven Development</strong> - Desenvolvimento orientado a testes</li>
+</ul>
+<hr>
+<p><strong>🎯 Conclusão:</strong> Este guia fornece uma base sólida para desenvolvimento de controllers REST profissionais, focando em código limpo, documentação completa e boas práticas de validação e segurança.</p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>

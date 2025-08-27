@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Documentação Swagger/OpenAPI - Sistema DoeSangue - DoeSangue Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 📚 Documentação Swagger/OpenAPI - Sistema DoeSangue</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>📚 Documentação Swagger/OpenAPI - Sistema DoeSangue</h1>
+<p><strong>Versão:</strong> v1.0<br><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Framework:</strong> Spring Boot 3.5.5 + SpringDoc OpenAPI</p>
+<hr>
+<h2>📋 Índice</h2>
+<ol>
+<li><a href="#vis%C3%A3o-geral">Visão Geral</a></li>
+<li><a href="#configura%C3%A7%C3%A3o-atual">Configuração Atual</a></li>
+<li><a href="#como-funciona">Como Funciona</a></li>
+<li><a href="#depend%C3%AAncias">Dependências</a></li>
+<li><a href="#configura%C3%A7%C3%B5es-avan%C3%A7adas">Configurações Avançadas</a></li>
+<li><a href="#exemplos-de-uso">Exemplos de Uso</a></li>
+<li><a href="#endpoints-de-acesso">Endpoints de Acesso</a></li>
+<li><a href="#boas-pr%C3%A1ticas">Boas Práticas</a></li>
+</ol>
+<hr>
+<h2>🎯 Visão Geral</h2>
+<p>O <strong>Swagger/OpenAPI</strong> é uma ferramenta essencial para documentação automática de APIs REST. No projeto DoeSangue, utilizamos o <strong>SpringDoc OpenAPI 3</strong> para:</p>
+<ul>
+<li>📖 <strong>Documentação Automática:</strong> Gera documentação interativa das APIs</li>
+<li>🧪 <strong>Testes Integrados:</strong> Interface para testar endpoints diretamente</li>
+<li>📋 <strong>Validação de Contratos:</strong> Valida requests/responses automaticamente  </li>
+<li>🔄 <strong>Sincronização:</strong> Documentação sempre atualizada com o código</li>
+<li>🌐 <strong>Padrão da Indústria:</strong> OpenAPI 3.0 é o padrão mundial para APIs</li>
+</ul>
+<hr>
+<h2>⚙️ Configuração Atual</h2>
+<h3><strong>📄 Arquivo: <code>Swagger.java</code></strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.swagger;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class Swagger {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title(&quot;API Doe Sangue&quot;)
+                        .version(&quot;v1&quot;)
+                        .description(&quot;API para gerenciamento de doações de sangue&quot;));
+    }
+}
+</code></pre>
+<h3><strong>🔧 Análise da Configuração:</strong></h3>
+<h4><strong>@Configuration</strong></h4>
+<ul>
+<li><strong>O que faz:</strong> Marca a classe como configuração Spring</li>
+<li><strong>Resultado:</strong> Spring carrega automaticamente ao inicializar</li>
+</ul>
+<h4><strong>@Bean</strong></h4>
+<ul>
+<li><strong>O que faz:</strong> Registra o método como um bean Spring</li>
+<li><strong>Resultado:</strong> OpenAPI fica disponível para toda aplicação</li>
+</ul>
+<h4><strong>OpenAPI().info()</strong></h4>
+<ul>
+<li><strong>title:</strong> Nome da API exibido na documentação</li>
+<li><strong>version:</strong> Versão da API (importante para versionamento)</li>
+<li><strong>description:</strong> Descrição detalhada da API</li>
+</ul>
+<hr>
+<h2>🚀 Como Funciona</h2>
+<h3><strong>1. Processo de Inicialização:</strong></h3>
+<pre><code class="language-mermaid">graph TD
+    A[Spring Boot Inicia] --&gt; B[Carrega @Configuration]
+    B --&gt; C[Executa @Bean customOpenAPI]
+    C --&gt; D[SpringDoc Escaneia Controllers]
+    D --&gt; E[Gera Documentação OpenAPI]
+    E --&gt; F[Disponibiliza Swagger UI]
+</code></pre>
+<h3><strong>2. Fluxo de Documentação Automática:</strong></h3>
+<ol>
+<li><strong>Escaneamento:</strong> SpringDoc busca por classes anotadas com <code>@RestController</code></li>
+<li><strong>Análise:</strong> Examina métodos com <code>@GetMapping</code>, <code>@PostMapping</code>, etc.</li>
+<li><strong>Extração:</strong> Coleta informações de parâmetros, responses, DTOs</li>
+<li><strong>Geração:</strong> Cria especificação OpenAPI 3.0 JSON/YAML</li>
+<li><strong>Interface:</strong> Renderiza Swagger UI interativa</li>
+</ol>
+<h3><strong>3. Auto-Detecção de Endpoints:</strong></h3>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/api/doadores&quot;)
+public class DoadorController {
+    
+    @GetMapping
+    public ResponseEntity&lt;List&lt;DoadorDTO&gt;&gt; listarDoadores() {
+        // SpringDoc automaticamente detecta:
+        // - URL: GET /api/doadores
+        // - Response: List&lt;DoadorDTO&gt;
+        // - Status: 200 OK
+    }
+    
+    @PostMapping
+    public ResponseEntity&lt;DoadorDTO&gt; criarDoador(@RequestBody DoadorDTO doador) {
+        // SpringDoc automaticamente detecta:
+        // - URL: POST /api/doadores
+        // - Request Body: DoadorDTO
+        // - Response: DoadorDTO
+        // - Status: 201 CREATED
+    }
+}
+</code></pre>
+<hr>
+<h2>📦 Dependências</h2>
+<h3><strong>POM.XML - Dependência Principal:</strong></h3>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.8.9&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3><strong>📋 O que esta dependência inclui:</strong></h3>
+<ul>
+<li><strong>SpringDoc Core:</strong> Geração automática da especificação OpenAPI</li>
+<li><strong>Swagger UI:</strong> Interface web interativa para testar APIs</li>
+<li><strong>Integration:</strong> Integração nativa com Spring Boot 3.x</li>
+<li><strong>WebMVC Support:</strong> Suporte completo para Spring Web MVC</li>
+</ul>
+<h3><strong>🔄 Dependências Relacionadas:</strong></h3>
+<pre><code class="language-xml">&lt;!-- Para APIs REST --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Para validação automática --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Para HATEOAS (links na API) --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-hateoas&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<hr>
+<h2>🔧 Configurações Avançadas Recomendadas</h2>
+<h3><strong>1. Configuração Completa Melhorada:</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.swagger;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.servers.Server;
+import io.swagger.v3.oas.models.Components;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
+
+@Configuration
+public class SwaggerConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                // Informações da API
+                .info(new Info()
+                        .title(&quot;API DoeSangue - Sistema de Gerenciamento de Doações&quot;)
+                        .version(&quot;v1.0&quot;)
+                        .description(&quot;&quot;&quot;
+                            API REST para gerenciamento completo de doações de sangue.
+                            
+                            ## Funcionalidades Principais:
+                            - 🏥 Gestão de Hemocentros e Usuários
+                            - 🩸 Cadastro e Gestão de Doadores  
+                            - 📅 Sistema de Agendamentos
+                            - 🏥 Triagem Clínica
+                            - 💉 Registro de Doações
+                            - 📦 Controle de Estoque de Sangue
+                            - 🔔 Sistema de Notificações
+                            - 📋 Auditoria LGPD
+                            
+                            ## Arquitetura:
+                            - Spring Boot 3.5.5
+                            - JPA/Hibernate
+                            - SQL Server
+                            - Security + JWT
+                            &quot;&quot;&quot;)
+                        .contact(new Contact()
+                                .name(&quot;Equipe DoeSangue&quot;)
+                                .url(&quot;https://github.com/nisze/doesangue_backend&quot;))
+                        .license(new License()
+                                .name(&quot;MIT License&quot;)
+                                .url(&quot;https://opensource.org/licenses/MIT&quot;)))
+                
+                // Servidores
+                .servers(List.of(
+                        new Server()
+                                .url(&quot;http://localhost:8080&quot;)
+                                .description(&quot;Ambiente de Desenvolvimento&quot;),
+                        new Server()
+                                .url(&quot;https://api.doesangue.com.br&quot;)
+                                .description(&quot;Ambiente de Produção&quot;)))
+                
+                // Configuração de Segurança JWT
+                .components(new Components()
+                        .addSecuritySchemes(&quot;bearerAuth&quot;, new SecurityScheme()
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme(&quot;bearer&quot;)
+                                .bearerFormat(&quot;JWT&quot;)
+                                .description(&quot;Token JWT para autenticação&quot;)))
+                
+                // Aplicar segurança globalmente
+                .addSecurityItem(new SecurityRequirement()
+                        .addList(&quot;bearerAuth&quot;));
+    }
+}
+</code></pre>
+<h3><strong>2. Configurações em application.properties:</strong></h3>
+<pre><code class="language-properties"># Configurações SpringDoc/Swagger
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.operationsSorter=method
+springdoc.swagger-ui.tagsSorter=alpha
+springdoc.swagger-ui.tryItOutEnabled=true
+springdoc.swagger-ui.filter=true
+
+# Pacotes para escanear
+springdoc.packages-to-scan=com.faculdade.doesangue_api.controllers
+
+# Grupos de APIs
+springdoc.group-configs[0].group=institucional
+springdoc.group-configs[0].paths-to-match=/api/users/**, /api/hemocentros/**, /api/setores/**
+springdoc.group-configs[1].group=doadores
+springdoc.group-configs[1].paths-to-match=/api/doadores/**, /api/tipos-sanguineos/**, /api/doencas/**
+springdoc.group-configs[2].group=processo-doacao
+springdoc.group-configs[2].paths-to-match=/api/agendamentos/**, /api/triagens/**, /api/doacoes/**, /api/estoque/**
+springdoc.group-configs[3].group=sistema
+springdoc.group-configs[3].paths-to-match=/api/configs/**, /api/notificacoes/**, /api/audit/**
+</code></pre>
+<hr>
+<h2>📖 Exemplos de Uso em Controllers</h2>
+<h3><strong>1. Controller Básico com Documentação:</strong></h3>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/api/doadores&quot;)
+@Tag(name = &quot;Doadores&quot;, description = &quot;APIs para gestão de doadores de sangue&quot;)
+public class DoadorController {
+
+    @Operation(
+        summary = &quot;Listar todos os doadores&quot;,
+        description = &quot;Retorna lista paginada de doadores com filtros opcionais&quot;,
+        tags = {&quot;Doadores&quot;}
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Lista de doadores retornada com sucesso&quot;,
+                content = @Content(schema = @Schema(implementation = PageDoadorDTO.class))),
+        @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Parâmetros inválidos&quot;),
+        @ApiResponse(responseCode = &quot;401&quot;, description = &quot;Não autorizado&quot;),
+        @ApiResponse(responseCode = &quot;403&quot;, description = &quot;Acesso negado&quot;)
+    })
+    @GetMapping
+    public ResponseEntity&lt;Page&lt;DoadorDTO&gt;&gt; listarDoadores(
+            @Parameter(description = &quot;Número da página (0-based)&quot;, example = &quot;0&quot;)
+            @RequestParam(defaultValue = &quot;0&quot;) int page,
+            
+            @Parameter(description = &quot;Tamanho da página&quot;, example = &quot;20&quot;)  
+            @RequestParam(defaultValue = &quot;20&quot;) int size,
+            
+            @Parameter(description = &quot;Nome para filtro&quot;, example = &quot;João&quot;)
+            @RequestParam(required = false) String nome,
+            
+            @Parameter(description = &quot;Tipo sanguíneo para filtro&quot;, example = &quot;O+&quot;)
+            @RequestParam(required = false) String tipoSanguineo) {
+        
+        // Implementação...
+    }
+
+    @Operation(
+        summary = &quot;Criar novo doador&quot;,
+        description = &quot;Cadastra um novo doador no sistema&quot;
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = &quot;201&quot;, description = &quot;Doador criado com sucesso&quot;),
+        @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Dados inválidos&quot;),
+        @ApiResponse(responseCode = &quot;409&quot;, description = &quot;CPF já cadastrado&quot;)
+    })
+    @PostMapping
+    public ResponseEntity&lt;DoadorDTO&gt; criarDoador(
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                description = &quot;Dados do doador a ser cadastrado&quot;,
+                required = true,
+                content = @Content(schema = @Schema(implementation = DoadorCreateDTO.class))
+            )
+            @Valid @RequestBody DoadorCreateDTO doadorDTO) {
+        
+        // Implementação...
+    }
+}
+</code></pre>
+<h3><strong>2. DTOs Documentados:</strong></h3>
+<pre><code class="language-java">@Schema(description = &quot;Dados do doador para exibição&quot;)
+public class DoadorDTO {
+    
+    @Schema(description = &quot;ID único do doador&quot;, example = &quot;1&quot;, accessMode = Schema.AccessMode.READ_ONLY)
+    private Long id;
+    
+    @Schema(description = &quot;Nome completo do doador&quot;, example = &quot;João Silva Santos&quot;, maxLength = 100)
+    private String fullName;
+    
+    @Schema(description = &quot;CPF do doador&quot;, example = &quot;12345678901&quot;, pattern = &quot;\\d{11}&quot;)
+    private String cpf;
+    
+    @Schema(description = &quot;Tipo sanguíneo&quot;, example = &quot;O+&quot;, allowableValues = {&quot;A+&quot;, &quot;A-&quot;, &quot;B+&quot;, &quot;B-&quot;, &quot;AB+&quot;, &quot;AB-&quot;, &quot;O+&quot;, &quot;O-&quot;})
+    private String tipoSanguineo;
+    
+    @Schema(description = &quot;Data de nascimento&quot;, example = &quot;1990-05-15&quot;)
+    @JsonFormat(pattern = &quot;yyyy-MM-dd&quot;)
+    private LocalDate birthDate;
+    
+    @Schema(description = &quot;Se é primeira doação&quot;, example = &quot;false&quot;)
+    private Boolean primeiraDoacao;
+    
+    // Getters/Setters...
+}
+</code></pre>
+<hr>
+<h2>🌐 Endpoints de Acesso</h2>
+<h3><strong>📋 URLs Principais:</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Endpoint</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>URL Completa</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Swagger UI</strong></td>
+<td>Interface interativa</td>
+<td><code>http://localhost:8080/swagger-ui.html</code></td>
+</tr>
+<tr>
+<td><strong>API Docs JSON</strong></td>
+<td>Especificação OpenAPI</td>
+<td><code>http://localhost:8080/api-docs</code></td>
+</tr>
+<tr>
+<td><strong>API Docs YAML</strong></td>
+<td>Especificação OpenAPI</td>
+<td><code>http://localhost:8080/api-docs.yaml</code></td>
+</tr>
+</tbody></table>
+<h3><strong>🔗 Grupos de APIs (após configuração avançada):</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Grupo</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>URL</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Institucional</strong></td>
+<td>Users, Hemocentros, Setores</td>
+<td><code>/swagger-ui.html?configUrl=/api-docs/swagger-config#/institucional</code></td>
+</tr>
+<tr>
+<td><strong>Doadores</strong></td>
+<td>Doadores, Tipos Sanguíneos</td>
+<td><code>/swagger-ui.html?configUrl=/api-docs/swagger-config#/doadores</code></td>
+</tr>
+<tr>
+<td><strong>Processo Doação</strong></td>
+<td>Agendamentos, Triagem, Doações</td>
+<td><code>/swagger-ui.html?configUrl=/api-docs/swagger-config#/processo-doacao</code></td>
+</tr>
+<tr>
+<td><strong>Sistema</strong></td>
+<td>Configurações, Notificações</td>
+<td><code>/swagger-ui.html?configUrl=/api-docs/swagger-config#/sistema</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📱 Interface Swagger UI</h2>
+<h3><strong>🎯 Funcionalidades da Interface:</strong></h3>
+<h4><strong>1. Navegação:</strong></h4>
+<ul>
+<li><strong>Tags/Grupos:</strong> APIs organizadas por funcionalidade</li>
+<li><strong>Filtro:</strong> Busca por endpoint específico</li>
+<li><strong>Expand/Collapse:</strong> Visualização controlada</li>
+</ul>
+<h4><strong>2. Teste de APIs:</strong></h4>
+<ul>
+<li><strong>Try it out:</strong> Botão para testar endpoints</li>
+<li><strong>Parâmetros:</strong> Formulário para inserir dados</li>
+<li><strong>Execute:</strong> Execução real da API</li>
+<li><strong>Response:</strong> Visualização de resposta e status</li>
+</ul>
+<h4><strong>3. Documentação:</strong></h4>
+<ul>
+<li><strong>Schemas:</strong> Visualização de DTOs</li>
+<li><strong>Examples:</strong> Exemplos de request/response</li>
+<li><strong>Security:</strong> Informações de autenticação</li>
+</ul>
+<h3><strong>🔐 Autenticação na Interface:</strong></h3>
+<pre><code class="language-javascript">// No Swagger UI, clicar em &quot;Authorize&quot;
+// Inserir token JWT no formato:
+Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkb2VzYW5ndWUiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY5MzQxMjQwMH0...
+</code></pre>
+<hr>
+<h2>🎯 Boas Práticas</h2>
+<h3><strong>✅ Documentação de APIs:</strong></h3>
+<ol>
+<li><strong>Use @Operation:</strong> Descreva cada endpoint claramente</li>
+<li><strong>Defina @ApiResponses:</strong> Documente todos os status codes possíveis  </li>
+<li><strong>Anote @Parameter:</strong> Explique cada parâmetro</li>
+<li><strong>Schemas Completos:</strong> Use @Schema em DTOs</li>
+<li><strong>Exemplos Reais:</strong> Forneça exemplos práticos</li>
+</ol>
+<h3><strong>✅ Organização:</strong></h3>
+<ol>
+<li><strong>Tags Consistentes:</strong> Agrupe APIs logicamente</li>
+<li><strong>Versionamento:</strong> Mantenha versões claras</li>
+<li><strong>Grupos Separados:</strong> Divida por domínio/funcionalidade</li>
+<li><strong>Filtros:</strong> Configure filtros úteis na interface</li>
+</ol>
+<h3><strong>✅ Segurança:</strong></h3>
+<ol>
+<li><strong>Documente Autenticação:</strong> Explique como autenticar</li>
+<li><strong>Schemas de Security:</strong> Configure JWT corretamente</li>
+<li><strong>Ambiente Específico:</strong> URLs diferentes por ambiente</li>
+<li><strong>Sensitive Data:</strong> Não exponha dados sensíveis</li>
+</ol>
+<h3><strong>✅ Performance:</strong></h3>
+<ol>
+<li><strong>Lazy Loading:</strong> Configure carregamento inteligente</li>
+<li><strong>Cache:</strong> Use cache para especificação</li>
+<li><strong>Filtros de Scan:</strong> Limite escaneamento a pacotes específicos</li>
+<li><strong>Grupos Pequenos:</strong> Divida APIs grandes</li>
+</ol>
+<hr>
+<h2>🚦 Status Atual vs Recomendado</h2>
+<h3><strong>❌ Configuração Atual (Básica):</strong></h3>
+<ul>
+<li>✅ Swagger UI funcional</li>
+<li>✅ Informações básicas da API</li>
+<li>❌ Sem documentação de segurança</li>
+<li>❌ Sem grupos organizados</li>
+<li>❌ Sem exemplos detalhados</li>
+<li>❌ Sem configurações avançadas</li>
+</ul>
+<h3><strong>✅ Configuração Recomendada:</strong></h3>
+<ul>
+<li>✅ Documentação completa</li>
+<li>✅ Segurança JWT documentada</li>
+<li>✅ APIs organizadas em grupos</li>
+<li>✅ Exemplos práticos</li>
+<li>✅ Múltiplos ambientes</li>
+<li>✅ Schemas detalhados</li>
+</ul>
+<hr>
+<h2>🎯 Próximos Passos</h2>
+<h3><strong>1. Imediato:</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Aplicar configuração avançada do Swagger</li>
+<li><input disabled="" type="checkbox"> Adicionar documentação de segurança JWT</li>
+<li><input disabled="" type="checkbox"> Configurar grupos de APIs</li>
+</ul>
+<h3><strong>2. Desenvolvimento de Controllers:</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Criar controllers REST para cada entidade</li>
+<li><input disabled="" type="checkbox"> Adicionar anotações de documentação</li>
+<li><input disabled="" type="checkbox"> Implementar DTOs com schemas</li>
+</ul>
+<h3><strong>3. Otimização:</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Configurar cache de documentação</li>
+<li><input disabled="" type="checkbox"> Adicionar testes automatizados de APIs</li>
+<li><input disabled="" type="checkbox"> Integrar com pipeline CI/CD</li>
+</ul>
+<hr>
+<p><em>Esta documentação fornece uma base sólida para implementação e evolução da documentação API do sistema DoeSangue usando Swagger/OpenAPI.</em></p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>

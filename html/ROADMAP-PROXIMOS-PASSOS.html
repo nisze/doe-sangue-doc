@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗺️ Roadmap Completo - Sistema DoeSangue - DoeSangue Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 🗺️ Roadmap Completo - Sistema DoeSangue</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>🗺️ Roadmap Completo - Sistema DoeSangue</h1>
+<p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Status Atual:</strong> FASE 1 Implementada + Swagger Configurado</p>
+<hr>
+<h2>📊 Status Atual da Aplicação</h2>
+<h3>✅ <strong>O Que Já Temos (FASE 1):</strong></h3>
+<ul>
+<li><strong>5 Entidades Originais:</strong> User, UserRole, Hemocentro, Doador, TipoSanguineo</li>
+<li><strong>4 Entidades Novas:</strong> SetorAtuacao, UserSetor, DoencaEspecifica, DoadorDoenca</li>
+<li><strong>Swagger/OpenAPI:</strong> Configuração completa e profissional</li>
+<li><strong>Documentação:</strong> Entidades e APIs documentadas</li>
+<li><strong>Arquitetura:</strong> 4 agregados DDD definidos</li>
+<li><strong>Base de Dados:</strong> Schema SQL completo (17 tabelas)</li>
+</ul>
+<h3>🔄 <strong>O Que Falta Implementar:</strong></h3>
+<ul>
+<li><strong>Controllers REST</strong> para as entidades existentes</li>
+<li><strong>DTOs</strong> para entrada/saída de dados</li>
+<li><strong>Services</strong> com regras de negócio</li>
+<li><strong>Repositories</strong> customizados</li>
+<li><strong>FASE 2 Entidades:</strong> Triagem, Agendamento, Doação, Estoque</li>
+<li><strong>Sistema de Autenticação JWT</strong></li>
+<li><strong>Validações de Negócio</strong></li>
+<li><strong>Testes Automatizados</strong></li>
+</ul>
+<hr>
+<h2>🎯 FASE 2: Implementação de Controllers e APIs</h2>
+<h3><strong>Prioridade 1: Infraestrutura de APIs (1-2 semanas)</strong></h3>
+<h4><strong>2.1 Sistema de Autenticação</strong></h4>
+<pre><code class="language-java">// Controllers a implementar:
+@RestController(&quot;/api/auth&quot;)
+public class AuthController {
+    @PostMapping(&quot;/login&quot;)     // Login com JWT
+    @PostMapping(&quot;/refresh&quot;)   // Refresh token
+    @PostMapping(&quot;/logout&quot;)    // Logout
+    @GetMapping(&quot;/me&quot;)         // Dados do usuário logado
+}
+</code></pre>
+<p><strong>Tarefas:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Implementar <code>AuthController</code></li>
+<li><input disabled="" type="checkbox"> Criar <code>JwtService</code> para geração/validação de tokens</li>
+<li><input disabled="" type="checkbox"> Configurar Spring Security</li>
+<li><input disabled="" type="checkbox"> Criar <code>AuthDTO</code> (login/response)</li>
+<li><input disabled="" type="checkbox"> Implementar middleware de autenticação</li>
+</ul>
+<h4><strong>2.2 DTOs Base do Sistema</strong></h4>
+<pre><code class="language-java">// Criar DTOs para todas as entidades:
+- UserDTO, UserCreateDTO, UserUpdateDTO
+- DoadorDTO, DoadorCreateDTO, DoadorUpdateDTO  
+- HemocentroDTO, SetorAtuacaoDTO
+- TipoSanguineoDTO, DoencaEspecificaDTO
+</code></pre>
+<p><strong>Padrão de DTOs:</strong></p>
+<ul>
+<li><strong>ViewDTO:</strong> Para listagem/visualização</li>
+<li><strong>CreateDTO:</strong> Para criação (sem ID)</li>
+<li><strong>UpdateDTO:</strong> Para atualização (com ID)</li>
+<li><strong>DetailDTO:</strong> Para detalhes completos</li>
+</ul>
+<h4><strong>2.3 Controllers CRUD Básicos</strong></h4>
+<pre><code class="language-java">// Implementar controllers para entidades FASE 1:
+1. UserController           (/api/users)
+2. HemocentroController     (/api/hemocentros)  
+3. SetorAtuacaoController   (/api/setores)
+4. DoadorController         (/api/doadores)
+5. TipoSanguineoController  (/api/tipos-sanguineos)
+6. DoencaController         (/api/doencas)
+</code></pre>
+<p><strong>Padrão de Endpoints:</strong></p>
+<ul>
+<li><code>GET /api/resource</code> - Listar (paginado)</li>
+<li><code>GET /api/resource/{id}</code> - Buscar por ID</li>
+<li><code>POST /api/resource</code> - Criar</li>
+<li><code>PUT /api/resource/{id}</code> - Atualizar</li>
+<li><code>DELETE /api/resource/{id}</code> - Deletar (soft delete)</li>
+</ul>
+<h3><strong>Prioridade 2: Services e Regras de Negócio (2-3 semanas)</strong></h3>
+<h4><strong>2.4 Services com Validações</strong></h4>
+<pre><code class="language-java">@Service
+public class DoadorService {
+    // Regras específicas de doadores
+    public void validarIdadeMinima(LocalDate birthDate);
+    public void validarCpfUnico(String cpf);
+    public boolean podeDoar(Long doadorId);
+    public List&lt;DoencaEspecifica&gt; obterDoencasImpedientes(Long doadorId);
+}
+
+@Service  
+public class UserService {
+    // Gestão de usuários e permissões
+    public void validarCredenciais(String email, String senha);
+    public void gerenciarSetores(Long userId, List&lt;Long&gt; setorIds);
+    public boolean temPermissao(Long userId, String acao);
+}
+</code></pre>
+<h4><strong>2.5 Repositories Customizados</strong></h4>
+<pre><code class="language-java">// Queries específicas do negócio:
+public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+    List&lt;Doador&gt; findByTipoSanguineo(String tipo);
+    List&lt;Doador&gt; findAptosParaDoacao();
+    Page&lt;Doador&gt; findByHemocentro(Long hemocentroId, Pageable pageable);
+}
+
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    Optional&lt;User&gt; findByEmail(String email);
+    List&lt;User&gt; findByRole(UserRole role);
+    List&lt;User&gt; findBySetor(Long setorId);
+}
+</code></pre>
+<h4><strong>2.6 Validações de Integridade</strong></h4>
+<pre><code class="language-java">@Component
+public class DoadorValidator {
+    public void validarDadosCompletos(DoadorCreateDTO dto);
+    public void validarIdadeParaDoacao(LocalDate birthDate);
+    public void validarDoencasImpedientes(List&lt;Long&gt; doencaIds);
+}
+</code></pre>
+<hr>
+<h2>🩸 FASE 3: Processo Completo de Doação (3-4 semanas)</h2>
+<h3><strong>Prioridade 3: Entidades do Processo de Doação</strong></h3>
+<h4><strong>3.1 Implementar Entidades FASE 2</strong></h4>
+<pre><code class="language-java">// Criar e implementar:
+1. TriagemClinica    + TriagemController + TriagemService
+2. Agendamento       + AgendamentoController + AgendamentoService  
+3. Doacao            + DoacaoController + DoacaoService
+4. EstoqueSangue     + EstoqueController + EstoqueService
+</code></pre>
+<h4><strong>3.2 Workflow Completo de Doação</strong></h4>
+<pre><code class="language-java">@Service
+public class ProcessoDoacaoService {
+    
+    // 1. Agendamento
+    public AgendamentoDTO agendarDoacao(AgendamentoCreateDTO dto);
+    
+    // 2. Triagem Clínica  
+    public TriagemDTO realizarTriagem(TriagemCreateDTO dto);
+    
+    // 3. Validar Aptidão
+    public boolean validarAptidaoDoacao(Long triagemId);
+    
+    // 4. Registrar Doação
+    public DoacaoDTO registrarDoacao(DoacaoCreateDTO dto);
+    
+    // 5. Atualizar Estoque
+    public void atualizarEstoque(Long doacaoId);
+}
+</code></pre>
+<h4><strong>3.3 Regras de Negócio Críticas</strong></h4>
+<pre><code class="language-java">// Implementar validações:
+- Intervalo entre doações (60 dias homens, 90 dias mulheres)
+- Critérios de triagem (peso, pressão, hemoglobina)
+- Doenças que impedem doação
+- Gestão inteligente de estoque
+- Alertas de estoque crítico
+</code></pre>
+<h3><strong>Prioridade 4: Sistema de Suporte</strong></h3>
+<h4><strong>3.4 Entidades de Sistema</strong></h4>
+<pre><code class="language-java">// Implementar:
+1. ConfiguracaoSistema   + ConfigController
+2. Notificacao          + NotificacaoController  
+3. LogAuditoriaLgpd     + AuditoriaController
+</code></pre>
+<h4><strong>3.5 Funcionalidades Avançadas</strong></h4>
+<pre><code class="language-java">@Service
+public class NotificacaoService {
+    public void alertarEstoqueCritico(String tipoSanguineo);
+    public void notificarValidacaoMedica(Long doadorId);
+    public void enviarLembreteAgendamento(Long agendamentoId);
+}
+
+@Service
+public class AuditoriaService {
+    public void registrarAcesso(String tabela, Long registroId, String finalidade);
+    public List&lt;LogAuditoriaLgpd&gt; relatorioAcessoDoador(Long doadorId);
+}
+</code></pre>
+<hr>
+<h2>🧪 FASE 4: Qualidade e Produção (2-3 semanas)</h2>
+<h3><strong>Prioridade 5: Testes e Qualidade</strong></h3>
+<h4><strong>4.1 Testes Automatizados</strong></h4>
+<pre><code class="language-java">// Implementar:
+@SpringBootTest
+public class DoadorControllerTest {
+    @Test void deveCriarDoadorComSucesso();
+    @Test void naoDeveCriarDoadorComCpfDuplicado();
+    @Test void deveValidarIdadeMinima();
+}
+
+@DataJpaTest  
+public class DoadorRepositoryTest {
+    @Test void deveEncontrarDoadorPorTipoSanguineo();
+    @Test void deveBuscarAptosParaDoacao();
+}
+
+@MockitoTest
+public class ProcessoDoacaoServiceTest {
+    @Test void deveRealizarWorkflowCompletoDoacao();
+}
+</code></pre>
+<p><strong>Cobertura de Testes:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Unit Tests (Services, Repositories)</li>
+<li><input disabled="" type="checkbox"> Integration Tests (Controllers)</li>
+<li><input disabled="" type="checkbox"> E2E Tests (Workflow completo)</li>
+<li><input disabled="" type="checkbox"> Performance Tests (Carga)</li>
+</ul>
+<h4><strong>4.2 Documentação API Completa</strong></h4>
+<pre><code class="language-java">// Melhorar documentação Swagger:
+- Todos os endpoints documentados
+- Exemplos reais de JSON
+- Códigos de erro específicos  
+- Schemas completos dos DTOs
+</code></pre>
+<h4><strong>4.3 Configurações de Produção</strong></h4>
+<pre><code class="language-properties"># application-prod.properties
+spring.profiles.active=prod
+spring.datasource.url=${DATABASE_URL}
+logging.level.com.faculdade=WARN
+springdoc.swagger-ui.enabled=false  # Desabilitar em prod
+
+# application-dev.properties  
+spring.profiles.active=dev
+logging.level.com.faculdade=DEBUG
+springdoc.swagger-ui.enabled=true
+</code></pre>
+<h3><strong>Prioridade 6: Segurança e Performance</strong></h3>
+<h4><strong>4.4 Segurança Avançada</strong></h4>
+<pre><code class="language-java">@Configuration
+public class SecurityConfig {
+    // CORS configurado
+    // Rate limiting
+    // Validação de inputs
+    // Sanitização de dados
+    // Logs de segurança
+}
+</code></pre>
+<h4><strong>4.5 Performance e Cache</strong></h4>
+<pre><code class="language-java">@Service
+public class EstoqueService {
+    @Cacheable(&quot;estoque-critico&quot;)
+    public List&lt;EstoqueSangue&gt; buscarEstoqueCritico();
+    
+    @CacheEvict(&quot;estoque-critico&quot;)  
+    public void atualizarEstoque(Long estoqueId);
+}
+</code></pre>
+<hr>
+<h2>🚀 FASE 5: Deploy e Monitoramento (1-2 semanas)</h2>
+<h3><strong>Prioridade 7: Preparação para Produção</strong></h3>
+<h4><strong>5.1 Containerização</strong></h4>
+<pre><code class="language-dockerfile"># Dockerfile
+FROM openjdk:21-jdk-slim
+COPY target/doesangue-backend.jar app.jar
+EXPOSE 8080
+ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;/app.jar&quot;]
+</code></pre>
+<h4><strong>5.2 CI/CD Pipeline</strong></h4>
+<pre><code class="language-yaml"># .github/workflows/deploy.yml
+name: Deploy DoeSangue
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./mvnw test
+  deploy:
+    runs-on: ubuntu-latest  
+    steps:
+      - run: docker build -t doesangue .
+      - run: docker push $REGISTRY/doesangue
+</code></pre>
+<h4><strong>5.3 Monitoramento</strong></h4>
+<pre><code class="language-java">// Métricas e Health Checks
+@Component
+public class HealthIndicator implements HealthIndicator {
+    public Health health() {
+        // Verificar database
+        // Verificar serviços externos
+        // Verificar estoque crítico
+    }
+}
+</code></pre>
+<hr>
+<h2>📅 Cronograma Detalhado</h2>
+<h3><strong>Semanas 1-2: APIs Base</strong></h3>
+<ul>
+<li><strong>Semana 1:</strong> Auth + DTOs + UserController</li>
+<li><strong>Semana 2:</strong> DoadorController + HemocentroController + Swagger completo</li>
+</ul>
+<h3><strong>Semanas 3-5: Regras de Negócio</strong></h3>
+<ul>
+<li><strong>Semana 3:</strong> Services + Validações + Repositories</li>
+<li><strong>Semana 4:</strong> Controllers restantes + Testes unitários</li>
+<li><strong>Semana 5:</strong> Integração + Documentação</li>
+</ul>
+<h3><strong>Semanas 6-9: Processo de Doação</strong></h3>
+<ul>
+<li><strong>Semana 6:</strong> Entidades FASE 2 (Triagem + Agendamento)</li>
+<li><strong>Semana 7:</strong> Doacao + EstoqueSangue + Workflow</li>
+<li><strong>Semana 8:</strong> Sistema de Suporte (Config + Notificação + Auditoria)</li>
+<li><strong>Semana 9:</strong> Integração + Testes E2E</li>
+</ul>
+<h3><strong>Semanas 10-12: Produção</strong></h3>
+<ul>
+<li><strong>Semana 10:</strong> Testes completos + Performance</li>
+<li><strong>Semana 11:</strong> Segurança + Deploy + CI/CD  </li>
+<li><strong>Semana 12:</strong> Monitoramento + Documentação final</li>
+</ul>
+<hr>
+<h2>🎯 Entregáveis por FASE</h2>
+<h3><strong>FASE 2 (APIs Base):</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> 6 Controllers REST funcionais</li>
+<li><input disabled="" type="checkbox"> Sistema de autenticação JWT</li>
+<li><input disabled="" type="checkbox"> 15+ DTOs documentados</li>
+<li><input disabled="" type="checkbox"> Swagger UI completo</li>
+<li><input disabled="" type="checkbox"> Testes unitários básicos</li>
+</ul>
+<h3><strong>FASE 3 (Processo Doação):</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Workflow completo de doação</li>
+<li><input disabled="" type="checkbox"> 4 entidades novas implementadas</li>
+<li><input disabled="" type="checkbox"> Sistema de notificações</li>
+<li><input disabled="" type="checkbox"> Auditoria LGPD funcional</li>
+<li><input disabled="" type="checkbox"> Dashboard de estoque</li>
+</ul>
+<h3><strong>FASE 4 (Qualidade):</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Cobertura de testes &gt;80%</li>
+<li><input disabled="" type="checkbox"> Performance otimizada</li>
+<li><input disabled="" type="checkbox"> Segurança hardened</li>
+<li><input disabled="" type="checkbox"> Documentação completa</li>
+</ul>
+<h3><strong>FASE 5 (Produção):</strong></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Deploy automatizado</li>
+<li><input disabled="" type="checkbox"> Monitoramento ativo</li>
+<li><input disabled="" type="checkbox"> Backup configurado</li>
+<li><input disabled="" type="checkbox"> Logs estruturados</li>
+</ul>
+<hr>
+<h2>🚨 Riscos e Mitigações</h2>
+<h3><strong>Riscos Técnicos:</strong></h3>
+<ul>
+<li><strong>Performance do Banco:</strong> Implementar índices e cache</li>
+<li><strong>Segurança JWT:</strong> Configurar expiração e refresh</li>
+<li><strong>Integridade de Dados:</strong> Validações rigorosas + constraints</li>
+</ul>
+<h3><strong>Riscos de Negócio:</strong></h3>
+<ul>
+<li><strong>Regras Complexas:</strong> Validar com especialistas médicos</li>
+<li><strong>LGPD Compliance:</strong> Auditoria externa das implementações</li>
+<li><strong>Escalabilidade:</strong> Projetar para crescimento futuro</li>
+</ul>
+<hr>
+<h2>💡 Próximas Ações Imediatas</h2>
+<h3><strong>Esta Semana (27 Ago - 2 Set):</strong></h3>
+<ol>
+<li><strong>Implementar AuthController e JWT</strong></li>
+<li><strong>Criar DTOs base (User, Doador, Hemocentro)</strong></li>
+<li><strong>Configurar Spring Security</strong></li>
+<li><strong>Testar Swagger com endpoints reais</strong></li>
+</ol>
+<h3><strong>Próxima Semana (3-9 Set):</strong></h3>
+<ol>
+<li><strong>Implementar UserController completo</strong></li>
+<li><strong>Implementar DoadorController</strong>  </li>
+<li><strong>Criar Services com validações</strong></li>
+<li><strong>Testes de integração iniciais</strong></li>
+</ol>
+<hr>
+<p><strong>🎯 Objetivo Final:</strong> Sistema DoeSangue completo, seguro, escalável e pronto para produção, atendendo todos os requisitos de um hemocentro moderno com compliance LGPD total.</p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>

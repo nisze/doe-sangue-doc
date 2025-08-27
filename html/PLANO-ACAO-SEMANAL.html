@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Plano de Ação Imediato - Próximos 7 Dias - DoeSangue Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 🎯 Plano de Ação Imediato - Próximos 7 Dias</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>🎯 Plano de Ação Imediato - Próximos 7 Dias</h1>
+<p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Foco:</strong> Implementação das APIs Base e Autenticação</p>
+<hr>
+<h2>📋 Tarefas Prioritárias (Esta Semana)</h2>
+<h3><strong>DIA 1-2: Autenticação e Segurança</strong></h3>
+<h4><strong>✅ Tarefa 1: Implementar JWT Service</strong></h4>
+<pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/security/JwtService.java
+@Service
+public class JwtService {
+    public String generateToken(User user);
+    public String extractUsername(String token);
+    public boolean isTokenValid(String token, User user);
+    public boolean isTokenExpired(String token);
+}
+</code></pre>
+<h4><strong>✅ Tarefa 2: Configurar Spring Security</strong></h4>
+<pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/security/SecurityConfig.java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    // Configurar endpoints públicos/privados
+    // Configurar filtro JWT
+    // Configurar CORS
+}
+</code></pre>
+<h4><strong>✅ Tarefa 3: Controller de Autenticação</strong></h4>
+<pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/controllers/AuthController.java
+@RestController
+@RequestMapping(&quot;/api/auth&quot;)
+public class AuthController {
+    @PostMapping(&quot;/login&quot;)
+    @PostMapping(&quot;/refresh&quot;)  
+    @GetMapping(&quot;/me&quot;)
+}
+</code></pre>
+<h3><strong>DIA 3-4: DTOs e Validações</strong></h3>
+<h4><strong>✅ Tarefa 4: DTOs Base</strong></h4>
+<pre><code class="language-java">// Criar DTOs em: src/main/java/com/faculdade/doesangue_api/dtos/
+
+1. AuthLoginDTO         // Login request
+2. AuthResponseDTO      // Login response com token
+3. UserDTO              // User para visualização
+4. UserCreateDTO        // User para criação
+5. UserUpdateDTO        // User para atualização
+6. DoadorDTO            // Doador para visualização
+7. DoadorCreateDTO      // Doador para criação
+8. HemocentroDTO        // Hemocentro básico
+</code></pre>
+<h4><strong>✅ Tarefa 5: Validações Bean Validation</strong></h4>
+<pre><code class="language-java">// Adicionar anotações nos DTOs:
+@NotNull
+@NotBlank
+@Email
+@CPF
+@Size(min = 8, max = 100)
+@Pattern(regexp = &quot;...&quot;)
+</code></pre>
+<h3><strong>DIA 5-6: Controllers Base</strong></h3>
+<h4><strong>✅ Tarefa 6: UserController Completo</strong></h4>
+<pre><code class="language-java">// Implementar: src/main/java/com/faculdade/doesangue_api/controllers/UserController.java
+@RestController
+@RequestMapping(&quot;/api/users&quot;)
+public class UserController {
+    @GetMapping                 // Listar users paginado
+    @GetMapping(&quot;/{id}&quot;)        // Buscar por ID
+    @PostMapping                // Criar user
+    @PutMapping(&quot;/{id}&quot;)        // Atualizar user
+    @DeleteMapping(&quot;/{id}&quot;)     // Soft delete
+    @GetMapping(&quot;/{id}/setores&quot;) // Setores do user
+}
+</code></pre>
+<h4><strong>✅ Tarefa 7: DoadorController Inicial</strong></h4>
+<pre><code class="language-java">// Implementar: DoadorController com endpoints básicos
+@RestController
+@RequestMapping(&quot;/api/doadores&quot;)
+public class DoadorController {
+    @GetMapping                 // Listar doadores
+    @GetMapping(&quot;/{id}&quot;)        // Buscar por ID  
+    @PostMapping                // Criar doador
+    @PutMapping(&quot;/{id}&quot;)        // Atualizar doador
+}
+</code></pre>
+<h3><strong>DIA 7: Testes e Documentação</strong></h3>
+<h4><strong>✅ Tarefa 8: Testes Básicos</strong></h4>
+<pre><code class="language-java">// Criar testes em: src/test/java/
+1. AuthControllerTest
+2. UserControllerTest  
+3. JwtServiceTest
+</code></pre>
+<h4><strong>✅ Tarefa 9: Atualizar Swagger</strong></h4>
+<pre><code class="language-java">// Verificar se documentação está sendo gerada corretamente
+// Testar todos os endpoints no Swagger UI
+// Adicionar exemplos de JSON nos DTOs
+</code></pre>
+<hr>
+<h2>🛠️ Implementação Detalhada</h2>
+<h3><strong>1. Estrutura de Pastas a Criar:</strong></h3>
+<pre><code>src/main/java/com/faculdade/doesangue_api/
+├── controllers/
+│   ├── AuthController.java
+│   ├── UserController.java
+│   ├── DoadorController.java
+│   └── SystemController.java (já existe)
+├── dtos/
+│   ├── auth/
+│   │   ├── AuthLoginDTO.java
+│   │   └── AuthResponseDTO.java
+│   ├── user/
+│   │   ├── UserDTO.java
+│   │   ├── UserCreateDTO.java
+│   │   └── UserUpdateDTO.java
+│   └── doador/
+│       ├── DoadorDTO.java
+│       └── DoadorCreateDTO.java
+├── security/
+│   ├── JwtService.java
+│   ├── SecurityConfig.java
+│   └── JwtAuthenticationFilter.java
+├── services/
+│   ├── AuthService.java
+│   ├── UserService.java
+│   └── DoadorService.java
+└── exceptions/
+    ├── GlobalExceptionHandler.java
+    └── BusinessException.java
+</code></pre>
+<h3><strong>2. Dependências Necessárias (verificar no pom.xml):</strong></h3>
+<pre><code class="language-xml">&lt;!-- JWT já tem --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.auth0&lt;/groupId&gt;
+    &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Security já tem --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Validation já tem --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3><strong>3. Exemplo de DTO com Validação:</strong></h3>
+<pre><code class="language-java">@Schema(description = &quot;Dados para criação de usuário&quot;)
+public class UserCreateDTO {
+    
+    @Schema(description = &quot;Nome completo&quot;, example = &quot;João Silva Santos&quot;)
+    @NotBlank(message = &quot;Nome é obrigatório&quot;)
+    @Size(max = 100, message = &quot;Nome deve ter no máximo 100 caracteres&quot;)
+    private String fullName;
+    
+    @Schema(description = &quot;Email único&quot;, example = &quot;joao@email.com&quot;)
+    @NotBlank(message = &quot;Email é obrigatório&quot;)
+    @Email(message = &quot;Email deve ter formato válido&quot;)
+    private String email;
+    
+    @Schema(description = &quot;CPF único&quot;, example = &quot;12345678901&quot;)
+    @NotBlank(message = &quot;CPF é obrigatório&quot;)
+    @Pattern(regexp = &quot;\\d{11}&quot;, message = &quot;CPF deve ter 11 dígitos&quot;)
+    private String cpf;
+    
+    @Schema(description = &quot;Senha&quot;, example = &quot;senha123&quot;)
+    @NotBlank(message = &quot;Senha é obrigatória&quot;)
+    @Size(min = 8, message = &quot;Senha deve ter no mínimo 8 caracteres&quot;)
+    private String senha;
+    
+    @Schema(description = &quot;ID do role&quot;, example = &quot;1&quot;)
+    @NotNull(message = &quot;Role é obrigatório&quot;)
+    private Long roleId;
+    
+    @Schema(description = &quot;ID do hemocentro&quot;, example = &quot;1&quot;)
+    @NotNull(message = &quot;Hemocentro é obrigatório&quot;)
+    private Long hemocentroId;
+}
+</code></pre>
+<h3><strong>4. Exemplo de Controller com Documentação:</strong></h3>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/api/users&quot;)
+@Tag(name = &quot;Usuários&quot;, description = &quot;Gestão de usuários do sistema&quot;)
+@SecurityRequirement(name = &quot;bearerAuth&quot;)
+public class UserController {
+
+    @Operation(
+        summary = &quot;Listar usuários&quot;,
+        description = &quot;Retorna lista paginada de usuários com filtros opcionais&quot;
+    )
+    @ApiResponses({
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Lista retornada com sucesso&quot;),
+        @ApiResponse(responseCode = &quot;401&quot;, description = &quot;Não autorizado&quot;),
+        @ApiResponse(responseCode = &quot;403&quot;, description = &quot;Acesso negado&quot;)
+    })
+    @GetMapping
+    public ResponseEntity&lt;Page&lt;UserDTO&gt;&gt; listarUsuarios(
+            @Parameter(description = &quot;Página (0-based)&quot;, example = &quot;0&quot;)
+            @RequestParam(defaultValue = &quot;0&quot;) int page,
+            
+            @Parameter(description = &quot;Tamanho da página&quot;, example = &quot;20&quot;)
+            @RequestParam(defaultValue = &quot;20&quot;) int size,
+            
+            @Parameter(description = &quot;Filtro por nome&quot;, example = &quot;João&quot;)
+            @RequestParam(required = false) String nome,
+            
+            @Parameter(description = &quot;Filtro por role&quot;, example = &quot;MEDICO&quot;)
+            @RequestParam(required = false) String role) {
+        
+        // Implementação...
+        return ResponseEntity.ok(userService.listarUsuarios(page, size, nome, role));
+    }
+}
+</code></pre>
+<hr>
+<h2>🧪 Critérios de Aceitação</h2>
+<h3><strong>✅ Ao Final da Semana, Deve Estar Funcionando:</strong></h3>
+<ol>
+<li><p><strong>Autenticação:</strong></p>
+<ul>
+<li>Login em <code>/api/auth/login</code> retorna JWT válido</li>
+<li>Endpoints protegidos requerem token</li>
+<li>Swagger UI permite autenticação</li>
+</ul>
+</li>
+<li><p><strong>APIs Base:</strong></p>
+<ul>
+<li>CRUD completo de usuários</li>
+<li>CRUD básico de doadores</li>
+<li>Paginação funcionando</li>
+<li>Validações ativas</li>
+</ul>
+</li>
+<li><p><strong>Documentação:</strong></p>
+<ul>
+<li>Swagger UI com todos os endpoints</li>
+<li>Exemplos de JSON funcionais</li>
+<li>Grupos organizados corretamente</li>
+</ul>
+</li>
+<li><p><strong>Qualidade:</strong></p>
+<ul>
+<li>Testes básicos passando</li>
+<li>Logs estruturados</li>
+<li>Tratamento de erros</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>🎯 Testes de Aceitação</h2>
+<h3><strong>Cenários para Testar:</strong></h3>
+<h4><strong>Autenticação:</strong></h4>
+<pre><code class="language-bash"># 1. Login bem-sucedido
+POST /api/auth/login
+{
+  &quot;email&quot;: &quot;admin@doesangue.com&quot;,
+  &quot;senha&quot;: &quot;admin123&quot;
+}
+# Esperado: 200 + JWT token
+
+# 2. Login com credenciais inválidas  
+# Esperado: 401 Unauthorized
+
+# 3. Acesso a endpoint protegido sem token
+GET /api/users
+# Esperado: 401 Unauthorized
+
+# 4. Acesso com token válido
+GET /api/users
+Authorization: Bearer &lt;token&gt;
+# Esperado: 200 + lista de usuários
+</code></pre>
+<h4><strong>CRUD de Usuários:</strong></h4>
+<pre><code class="language-bash"># 1. Criar usuário
+POST /api/users
+{
+  &quot;fullName&quot;: &quot;Dr. João Silva&quot;,
+  &quot;email&quot;: &quot;joao@hospital.com&quot;,
+  &quot;cpf&quot;: &quot;12345678901&quot;,
+  &quot;senha&quot;: &quot;senha123&quot;,
+  &quot;roleId&quot;: 2,
+  &quot;hemocentroId&quot;: 1
+}
+# Esperado: 201 Created
+
+# 2. Buscar usuário criado
+GET /api/users/{id}
+# Esperado: 200 + dados do usuário
+
+# 3. Listar usuários paginado
+GET /api/users?page=0&amp;size=10
+# Esperado: 200 + página de usuários
+</code></pre>
+<hr>
+<h2>🚀 Comandos para Testar</h2>
+<h3><strong>Iniciar Aplicação:</strong></h3>
+<pre><code class="language-bash">cd doesangue_backend
+./mvnw spring-boot:run
+</code></pre>
+<h3><strong>Acessar Swagger:</strong></h3>
+<pre><code>http://localhost:8080/swagger-ui.html
+</code></pre>
+<h3><strong>Health Check:</strong></h3>
+<pre><code>http://localhost:8080/api/system/health
+</code></pre>
+<hr>
+<h2>📞 Próximas Reuniões</h2>
+<h3><strong>Checkpoint Diário (Daily):</strong></h3>
+<ul>
+<li><strong>Horário:</strong> 9h00</li>
+<li><strong>Duração:</strong> 15min</li>
+<li><strong>Foco:</strong> Progresso do dia, bloqueios, próximas tarefas</li>
+</ul>
+<h3><strong>Review Semanal (Sexta):</strong></h3>
+<ul>
+<li><strong>Horário:</strong> 16h00</li>
+<li><strong>Duração:</strong> 1h</li>
+<li><strong>Foco:</strong> Demo das funcionalidades, retrospectiva, planejamento</li>
+</ul>
+<hr>
+<p><strong>🎯 Meta da Semana:</strong> APIs de autenticação e usuários funcionais, testáveis via Swagger UI, com documentação completa e testes básicos implementados.</p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>

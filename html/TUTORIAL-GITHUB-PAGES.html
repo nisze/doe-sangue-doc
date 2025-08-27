@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Tutorial: Deploy de Documentação no GitHub Pages - DoeSangue Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 📚 Tutorial: Deploy de Documentação no GitHub Pages</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 15:46:23 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html">🎮 Guia Controllers</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+                <li><a href="TUTORIAL-GITHUB-PAGES.html">📚 Tutorial</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>📚 Tutorial: Deploy de Documentação no GitHub Pages</h1>
+<p><strong>Objetivo:</strong> Criar documentação HTML automaticamente gerada e hospedada no GitHub Pages</p>
+<hr>
+<h2>🎯 O que você vai conseguir:</h2>
+<ul>
+<li><strong>Documentação profissional</strong> em HTML com design responsivo</li>
+<li><strong>Deploy automático</strong> sempre que fizer push no repositório</li>
+<li><strong>URL pública</strong> para compartilhar a documentação</li>
+<li><strong>Geração de PDF</strong> através do navegador</li>
+</ul>
+<hr>
+<h2>📋 Passo 1: Estrutura de Pastas</h2>
+<p>Crie esta estrutura no seu repositório:</p>
+<pre><code>seu-repositorio/
+├── docs/
+│   ├── README.md                    # Documentação principal
+│   ├── arquitetura.md              # Arquitetura do sistema
+│   ├── guia-desenvolvimento.md     # Guia para desenvolvedores
+│   ├── package.json                # Dependências Node.js
+│   └── generate-html.js            # Gerador HTML
+├── .github/workflows/
+│   └── deploy-docs.yml             # GitHub Actions
+└── (outros arquivos do projeto)
+</code></pre>
+<hr>
+<h2>📝 Passo 2: Criar package.json</h2>
+<p>Arquivo: <code>docs/package.json</code></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;documentacao&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Gerador de documentação HTML&quot;,
+  &quot;scripts&quot;: {
+    &quot;generate&quot;: &quot;node generate-html.js&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;marked&quot;: &quot;^9.1.2&quot;,
+    &quot;fs-extra&quot;: &quot;^11.1.1&quot;
+  }
+}
+</code></pre>
+<hr>
+<h2>🛠️ Passo 3: Criar o Gerador HTML</h2>
+<p>Arquivo: <code>docs/generate-html.js</code></p>
+<pre><code class="language-javascript">const fs = require(&#39;fs-extra&#39;);
+const path = require(&#39;path&#39;);
+const { marked } = require(&#39;marked&#39;);
+
+// Template HTML com estilo profissional
+const HTML_TEMPLATE = \`
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;{title} - Documentação&lt;/title&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li { margin: 0 15px; }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover { background: #34495e; }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: &#39;Consolas&#39;, &#39;Monaco&#39;, monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover { background: #f8f9fa; }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container { margin: 10px; padding: 15px; }
+            .header h1 { font-size: 2em; }
+            .nav ul { flex-direction: column; align-items: center; }
+            .nav li { margin: 5px 0; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;header&quot;&gt;
+            &lt;h1&gt;📚 {title}&lt;/h1&gt;
+            &lt;div class=&quot;subtitle&quot;&gt;Documentação do Projeto&lt;/div&gt;
+            &lt;div class=&quot;meta&quot;&gt;Gerado em 27/08/2025, 15:46:23&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;nav class=&quot;nav&quot;&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;🏠 Início&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;README.html&quot;&gt;📖 README&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;arquitetura.html&quot;&gt;🏗️ Arquitetura&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;guia-desenvolvimento.html&quot;&gt;💻 Desenvolvimento&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+        
+        &lt;div class=&quot;content&quot;&gt;
+            {content}
+        &lt;/div&gt;
+        
+        &lt;div class=&quot;footer&quot;&gt;
+            &lt;p&gt;📋 Documentação gerada automaticamente&lt;/p&gt;
+            &lt;p&gt;💻 Desenvolvido com ❤️&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+\`;
+
+function extractTitleFromMarkdown(content) {
+    const lines = content.split(&#39;\\n&#39;);
+    for (const line of lines) {
+        if (line.startsWith(&#39;# &#39;)) {
+            return line.substring(2).trim();
+        }
+    }
+    return &quot;Documentação&quot;;
+}
+
+async function convertMdToHtml(mdFilePath, outputDir) {
+    try {
+        const mdContent = await fs.readFile(mdFilePath, &#39;utf-8&#39;);
+        const title = extractTitleFromMarkdown(mdContent);
+        const htmlContent = marked(mdContent);
+        
+        const finalHtml = HTML_TEMPLATE
+            .replace(/{title}/g, title)
+            .replace(/{content}/g, htmlContent)
+            .replace(/27/08/2025, 15:46:23/g, new Date().toLocaleString(&#39;pt-BR&#39;));
+        
+        const fileName = path.basename(mdFilePath, &#39;.md&#39;) + &#39;.html&#39;;
+        const outputFile = path.join(outputDir, fileName);
+        await fs.writeFile(outputFile, finalHtml, &#39;utf-8&#39;);
+        
+        return outputFile;
+    } catch (error) {
+        console.error(\`Erro ao converter \${mdFilePath}: \${error.message}\`);
+        return null;
+    }
+}
+
+async function createIndexPage(outputDir) {
+    const indexContent = \`
+    &lt;h2&gt;📚 Documentação Disponível&lt;/h2&gt;
+    
+    &lt;blockquote&gt;
+        &lt;strong&gt;🎯 Bem-vindo à documentação do projeto!&lt;/strong&gt;&lt;br&gt;
+        Navegue pelas seções usando o menu superior.
+    &lt;/blockquote&gt;
+    
+    &lt;h3&gt;📖 Seções Disponíveis&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;README.html&quot;&gt;&lt;strong&gt;README&lt;/strong&gt;&lt;/a&gt; - Informações gerais do projeto&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;arquitetura.html&quot;&gt;&lt;strong&gt;Arquitetura&lt;/strong&gt;&lt;/a&gt; - Estrutura e design do sistema&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;guia-desenvolvimento.html&quot;&gt;&lt;strong&gt;Guia de Desenvolvimento&lt;/strong&gt;&lt;/a&gt; - Como contribuir&lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;h3&gt;📄 Como gerar PDF&lt;/h3&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Abra qualquer página da documentação&lt;/li&gt;
+        &lt;li&gt;Pressione &lt;code&gt;Ctrl + P&lt;/code&gt;&lt;/li&gt;
+        &lt;li&gt;Selecione &quot;Salvar como PDF&quot;&lt;/li&gt;
+        &lt;li&gt;Marque &quot;Gráficos de fundo&quot;&lt;/li&gt;
+        &lt;li&gt;Clique em &quot;Salvar&quot;&lt;/li&gt;
+    &lt;/ol&gt;
+    \`;
+    
+    const finalHtml = HTML_TEMPLATE
+        .replace(/{title}/g, &quot;Documentação do Projeto&quot;)
+        .replace(/{content}/g, indexContent)
+        .replace(/27/08/2025, 15:46:23/g, new Date().toLocaleString(&#39;pt-BR&#39;));
+    
+    const indexFile = path.join(outputDir, &#39;index.html&#39;);
+    await fs.writeFile(indexFile, finalHtml, &#39;utf-8&#39;);
+    return indexFile;
+}
+
+async function main() {
+    try {
+        console.log(&#39;🚀 Iniciando geração da documentação...&#39;);
+        
+        const docsDir = __dirname;
+        const outputDir = path.join(docsDir, &#39;html&#39;);
+        
+        await fs.ensureDir(outputDir);
+        
+        // Arquivos markdown para converter
+        const mdFiles = [
+            &#39;README.md&#39;,
+            &#39;arquitetura.md&#39;,
+            &#39;guia-desenvolvimento.md&#39;
+        ];
+        
+        const convertedFiles = [];
+        
+        // Converter cada arquivo
+        for (const mdFile of mdFiles) {
+            const mdPath = path.join(docsDir, mdFile);
+            if (await fs.pathExists(mdPath)) {
+                console.log(\`📄 Convertendo \${mdFile}...\`);
+                const htmlFile = await convertMdToHtml(mdPath, outputDir);
+                if (htmlFile) {
+                    convertedFiles.push(htmlFile);
+                    console.log(\`✅ Criado: \${path.basename(htmlFile)}\`);
+                }
+            } else {
+                console.log(\`⚠️ Arquivo não encontrado: \${mdFile}\`);
+            }
+        }
+        
+        // Criar página índice
+        console.log(&#39;📋 Criando página índice...&#39;);
+        const indexFile = await createIndexPage(outputDir);
+        console.log(\`✅ Criado: \${path.basename(indexFile)}\`);
+        
+        console.log(\`\\n🎉 Geração concluída!\`);
+        console.log(\`📊 \${convertedFiles.length} arquivos convertidos\`);
+        console.log(\`🌐 Arquivos HTML em: \${outputDir}\`);
+        
+    } catch (error) {
+        console.error(&#39;❌ Erro:&#39;, error.message);
+        process.exit(1);
+    }
+}
+
+if (require.main === module) {
+    main();
+}
+
+module.exports = { main };
+</code></pre>
+<hr>
+<h2>⚙️ Passo 4: Criar GitHub Actions</h2>
+<p>Arquivo: <code>.github/workflows/deploy-docs.yml</code></p>
+<pre><code class="language-yaml">name: Deploy Documentation
+
+on:
+  push:
+    branches: [ main ]
+    paths: [&#39;docs/**&#39;]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: &quot;pages&quot;
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📁 Checkout
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: &#39;18&#39;
+        cache: &#39;npm&#39;
+        cache-dependency-path: docs/package.json
+        
+    - name: 📦 Install dependencies
+      run: |
+        cd docs
+        npm install
+        
+    - name: 🔨 Generate HTML
+      run: |
+        cd docs
+        node generate-html.js
+        
+    - name: 📋 Setup Pages
+      uses: actions/configure-pages@v3
+      
+    - name: 📤 Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: docs/html
+        
+    - name: 🚀 Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
+</code></pre>
+<hr>
+<h2>📝 Passo 5: Criar Documentação de Exemplo</h2>
+<h3>Arquivo: <code>docs/README.md</code></h3>
+<pre><code class="language-markdown"># 📚 Meu Projeto
+
+Descrição do seu projeto aqui.
+
+## 🚀 Como usar
+
+Instruções de instalação e uso.
+
+## 🛠️ Tecnologias
+
+- Node.js
+- React
+- MongoDB
+
+## 📞 Contato
+
+Informações de contato.
+</code></pre>
+<h3>Arquivo: <code>docs/arquitetura.md</code></h3>
+<pre><code class="language-markdown"># 🏗️ Arquitetura do Sistema
+
+## Visão Geral
+
+Descrição da arquitetura do sistema.
+
+## Componentes
+
+### Frontend
+- React.js
+- TypeScript
+
+### Backend
+- Node.js
+- Express
+
+### Banco de Dados
+- MongoDB
+</code></pre>
+<h3>Arquivo: <code>docs/guia-desenvolvimento.md</code></h3>
+<pre><code class="language-markdown"># 💻 Guia de Desenvolvimento
+
+## Configuração do Ambiente
+
+1. Clone o repositório
+2. Instale as dependências
+3. Configure as variáveis de ambiente
+
+## Padrões de Código
+
+- Use ESLint
+- Siga o Prettier
+- Escreva testes
+
+## Como Contribuir
+
+1. Fork o projeto
+2. Crie uma branch
+3. Faça suas alterações
+4. Abra um Pull Request
+</code></pre>
+<hr>
+<h2>🚀 Passo 6: Fazer Deploy</h2>
+<h3>1. Fazer commit e push:</h3>
+<pre><code class="language-bash">git add .
+git commit -m &quot;feat: Add documentation and GitHub Pages deploy&quot;
+git push origin main
+</code></pre>
+<h3>2. Habilitar GitHub Pages:</h3>
+<ol>
+<li>Vá para <strong>Settings</strong> do repositório</li>
+<li>Scroll até <strong>Pages</strong></li>
+<li>Em <strong>Source</strong>, selecione <strong>GitHub Actions</strong></li>
+</ol>
+<h3>3. Aguardar deploy:</h3>
+<ul>
+<li>Vá para a aba <strong>Actions</strong> para ver o progresso</li>
+<li>Em 2-5 minutos estará online</li>
+</ul>
+<hr>
+<h2>🎯 Resultado Final</h2>
+<p>Sua documentação estará disponível em:
+<strong><a href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">https://SEU-USUARIO.github.io/SEU-REPOSITORIO/</a></strong></p>
+<h3>✨ Recursos incluídos:</h3>
+<ul>
+<li><strong>Design responsivo</strong> 📱</li>
+<li><strong>Navegação entre páginas</strong> 🔗</li>
+<li><strong>Geração de PDF</strong> 📄</li>
+<li><strong>Deploy automático</strong> 🤖</li>
+<li><strong>URL pública</strong> 🌐</li>
+</ul>
+<hr>
+<h2>🔧 Customização</h2>
+<h3>Para adicionar mais páginas:</h3>
+<ol>
+<li>Crie novos arquivos <code>.md</code> na pasta <code>docs/</code></li>
+<li>Adicione os nomes no array <code>mdFiles</code> do <code>generate-html.js</code></li>
+<li>Adicione links na navegação do template HTML</li>
+<li>Commit e push - deploy automático!</li>
+</ol>
+<h3>Para mudar o estilo:</h3>
+<ul>
+<li>Edite a seção <code>&lt;style&gt;</code> no <code>HTML_TEMPLATE</code></li>
+<li>Cores, fonts, layout - tudo customizável</li>
+</ul>
+<hr>
+<h2>🎉 Pronto!</h2>
+<p>Agora você tem documentação profissional com deploy automático! </p>
+<p><strong>Sempre que atualizar os arquivos <code>.md</code> e fazer push, a documentação será regenerada automaticamente.</strong> ⚡</p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>

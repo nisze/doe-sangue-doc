@@ -1,0 +1,16 @@
+{
+  "name": "doesangue-docs-generator",
+  "version": "1.0.0",
+  "description": "Gerador de documentação HTML e PDF para o projeto DoeSangue",
+  "main": "generate-html-fixed.js",
+  "dependencies": {
+    "marked": "^9.1.2",
+    "fs-extra": "^11.1.1",
+    "puppeteer": "^21.3.6"
+  },
+  "scripts": {
+    "generate": "node generate-html-fixed.js",
+    "generate-pdf": "node generate-pdf.js",
+    "generate-all": "node generate-html-fixed.js && node generate-pdf.js"
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador PDF - DoeSangue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .instruction {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .file-list {
+            display: grid;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .file-name {
+            font-weight: bold;
+            color: #495057;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn-success {
+            background: #28a745;
+        }
+        .btn-success:hover {
+            background: #1e7e34;
+        }
+        .steps {
+            counter-reset: step-counter;
+        }
+        .step {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        .step::before {
+            content: "Passo " counter(step-counter) ": ";
+            font-weight: bold;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 Gerador de PDF - Documentação DoeSangue</h1>
+        
+        <div class="instruction">
+            <h3>🎯 Como gerar PDFs das documentações:</h3>
+            <p>Use a função de impressão do navegador para salvar as páginas HTML como PDF com formatação perfeita.</p>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                Abra qualquer documentação HTML clicando nos links abaixo
+            </div>
+            <div class="step">
+                Pressione <code>Ctrl + P</code> (Windows) ou <code>Cmd + P</code> (Mac)
+            </div>
+            <div class="step">
+                Selecione "Salvar como PDF" como impressora
+            </div>
+            <div class="step">
+                Configure as opções:
+                <ul>
+                    <li>Orientação: Retrato</li>
+                    <li>Páginas: Todas</li>
+                    <li>Margens: Padrão</li>
+                    <li>✅ Gráficos de fundo (importante!)</li>
+                </ul>
+            </div>
+            <div class="step">
+                Clique em "Salvar" e escolha onde salvar o PDF
+            </div>
+        </div>
+        
+        <h2>📚 Documentações Disponíveis</h2>
+        
+        <div class="file-list">
+            <div class="file-item">
+                <span class="file-name">🏠 Página Inicial</span>
+                <a href="index.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">🏗️ Arquitetura do Sistema</span>
+                <a href="architecture.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">📊 Documentação das Entidades</span>
+                <a href="DOCUMENTACAO-ENTIDADES.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">🎮 Guia de Boas Práticas - Controllers</span>
+                <a href="GUIA-CONTROLLER-BOAS-PRATICAS.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">📖 Configuração Swagger</span>
+                <a href="SWAGGER-DOCUMENTACAO.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">🔧 Resumo Implementação Swagger</span>
+                <a href="SWAGGER-RESUMO-IMPLEMENTACAO.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">🗺️ Roadmap e Próximos Passos</span>
+                <a href="ROADMAP-PROXIMOS-PASSOS.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+            <div class="file-item">
+                <span class="file-name">📋 Plano de Ação Semanal</span>
+                <a href="PLANO-ACAO-SEMANAL.html" target="_blank" class="btn">Abrir HTML</a>
+            </div>
+        </div>
+        
+        <div class="instruction">
+            <h3>💡 Dicas para PDF de qualidade:</h3>
+            <ul>
+                <li><strong>Gráficos de fundo:</strong> Sempre marque esta opção para manter cores e gradientes</li>
+                <li><strong>Margens:</strong> Use margens padrão para melhor legibilidade</li>
+                <li><strong>Qualidade:</strong> O PDF manterá toda a formatação, incluindo links clicáveis</li>
+                <li><strong>Tamanho:</strong> Cada documento gera um PDF de 5-15 páginas dependendo do conteúdo</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="btn btn-success">🚀 Começar - Abrir Documentação Principal</a>
+        </div>
+    </div>
+</body>
+</html>
