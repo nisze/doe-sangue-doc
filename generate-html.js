@@ -392,7 +392,7 @@ async function createIndexPage(outputDir) {
     const indexContent = `
     <div class="stats">
         <div class="stat-card">
-            <div class="stat-number">8</div>
+            <div class="stat-number">9</div>
             <div class="stat-label">Documentos</div>
         </div>
         <div class="stat-card">
@@ -426,6 +426,7 @@ async function createIndexPage(outputDir) {
     <ul>
         <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html"><strong>Documentação do Controller</strong></a> - Exemplo completo de implementação de controller REST</li>
         <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html"><strong>Guia de Boas Práticas</strong></a> - Boas práticas para controllers REST, DTOs e validações</li>
+        <li><a href="TUTORIAL-JPA-SPECIFICATIONS.html"><strong>Tutorial JPA Specifications</strong></a> - Implementação de filtros dinâmicos com Spring Data JPA</li>
         <li><a href="SWAGGER-DOCUMENTACAO.html"><strong>Configuração Swagger</strong></a> - Documentação detalhada da configuração OpenAPI</li>
         <li><a href="SWAGGER-RESUMO-IMPLEMENTACAO.html"><strong>Resumo da Implementação Swagger</strong></a> - Guia prático de implementação</li>
     </ul>
@@ -546,7 +547,8 @@ async function main() {
             'PLANO-ACAO-SEMANAL.md',
             'ROADMAP-PROXIMOS-PASSOS.md',
             'SWAGGER-DOCUMENTACAO.md',
-            'SWAGGER-RESUMO-IMPLEMENTACAO.md'
+            'SWAGGER-RESUMO-IMPLEMENTACAO.md',
+            'TUTORIAL-JPA-SPECIFICATIONS.md'
         ];
         
         const convertedFiles = [];

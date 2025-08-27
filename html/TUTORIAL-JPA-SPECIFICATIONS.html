@@ -1,0 +1,998 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Tutorial Completo - JPA Specifications para Filtros Dinâmicos - DoeSangue Documentation</title>
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Code */
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        /* Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        /* Badges/Tags */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #3498db;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        
+        .badge.success { background: #27ae60; }
+        .badge.warning { background: #f39c12; }
+        .badge.danger { background: #e74c3c; }
+        .badge.info { background: #3498db; }
+        
+        /* Navigation */
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 🔍 Tutorial Completo - JPA Specifications para Filtros Dinâmicos</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 20:58:04 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">🎮 Controller</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>🔍 Tutorial Completo - JPA Specifications para Filtros Dinâmicos</h1>
+<p><strong>Finalidade:</strong> Guia prático para implementar filtros dinâmicos usando JPA Specifications<br><strong>Foco:</strong> Implementação do filtro <code>DoadorRequestFilterDTO</code> com Specifications<br><strong>Tecnologia:</strong> Spring Data JPA, Criteria API</p>
+<hr>
+<h2>🎯 Objetivo deste Tutorial</h2>
+<p>Este tutorial ensina como implementar <strong>filtros dinâmicos</strong> usando <strong>JPA Specifications</strong>, permitindo consultas flexíveis e eficientes baseadas nos campos do <code>DoadorRequestFilterDTO</code>.</p>
+<h3><strong><span class="badge success">✅</span> O que você vai aprender:</strong></h3>
+<ul>
+<li>Configurar JPA Specifications no projeto</li>
+<li>Criar Specifications customizadas para cada campo</li>
+<li>Implementar Repository com filtros dinâmicos</li>
+<li>Usar no Controller com paginação</li>
+<li>Otimizar consultas com Criteria API</li>
+</ul>
+<hr>
+<h2>🏗️ Estrutura da Implementação</h2>
+<h3><strong>📊 Seu DTO Atual:</strong></h3>
+<pre><code class="language-java">public record DoadorRequestFilterDTO(
+    String cpf,
+    String fullName,
+    String email,
+    String telefonePrincipal,
+    String tipoSanguineo,
+    String cidade,
+    String estado,
+    String empresa,
+    String pesoKg,
+    String doadorHabitual
+) {}
+</code></pre>
+<h3><strong>🎯 Resultado Final:</strong></h3>
+<ul>
+<li><span class="badge success">✅</span> Filtros opcionais (só aplica se não for null/vazio)</li>
+<li><span class="badge success">✅</span> Busca parcial para texto (LIKE)</li>
+<li><span class="badge success">✅</span> Paginação integrada</li>
+<li><span class="badge success">✅</span> Performance otimizada</li>
+<li><span class="badge success">✅</span> Type safety completo</li>
+</ul>
+<hr>
+<h2>📋 Passo 1: Configuração do Repository</h2>
+<h3><strong>🔧 Atualizar DoadorRepository</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.repository;
+
+import com.faculdade.doesangue_api.entities.Doador;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DoadorRepository extends 
+    JpaRepository&lt;Doador, Long&gt;, 
+    JpaSpecificationExecutor&lt;Doador&gt; {  // 👈 Interface necessária para Specifications
+    
+    // Métodos existentes permanecem...
+    
+    // Método opcional para busca com Specification customizada
+    default Page&lt;Doador&gt; findWithFilters(Specification&lt;Doador&gt; spec, Pageable pageable) {
+        return findAll(spec, pageable);
+    }
+}
+</code></pre>
+<hr>
+<h2>📋 Passo 2: Criar a Classe de Specifications</h2>
+<h3><strong>🔨 DoadorSpecifications.java</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.specifications;
+
+import com.faculdade.doesangue_api.dto.doador.DoadorRequestFilterDTO;
+import com.faculdade.doesangue_api.entities.Doador;
+import com.faculdade.doesangue_api.entities.TipoSanguineo;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Predicate;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.util.StringUtils;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DoadorSpecifications {
+
+    /**
+     * 🎯 Método principal - Constrói Specification baseada no FilterDTO
+     */
+    public static Specification&lt;Doador&gt; withFilters(DoadorRequestFilterDTO filters) {
+        return (root, query, criteriaBuilder) -&gt; {
+            List&lt;Predicate&gt; predicates = new ArrayList&lt;&gt;();
+
+            // 📄 Filtro por CPF (busca exata)
+            if (StringUtils.hasText(filters.cpf())) {
+                predicates.add(
+                    criteriaBuilder.equal(
+                        root.get(&quot;cpf&quot;), 
+                        filters.cpf().replaceAll(&quot;[^0-9]&quot;, &quot;&quot;) // Remove formatação
+                    )
+                );
+            }
+
+            // 👤 Filtro por Nome (busca parcial - LIKE)
+            if (StringUtils.hasText(filters.fullName())) {
+                predicates.add(
+                    criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get(&quot;fullName&quot;)),
+                        &quot;%&quot; + filters.fullName().toLowerCase() + &quot;%&quot;
+                    )
+                );
+            }
+
+            // 📧 Filtro por Email (busca parcial)
+            if (StringUtils.hasText(filters.email())) {
+                predicates.add(
+                    criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get(&quot;email&quot;)),
+                        &quot;%&quot; + filters.email().toLowerCase() + &quot;%&quot;
+                    )
+                );
+            }
+
+            // 📞 Filtro por Telefone (busca parcial)
+            if (StringUtils.hasText(filters.telefonePrincipal())) {
+                predicates.add(
+                    criteriaBuilder.like(
+                        root.get(&quot;telefonePrincipal&quot;),
+                        &quot;%&quot; + filters.telefonePrincipal().replaceAll(&quot;[^0-9]&quot;, &quot;&quot;) + &quot;%&quot;
+                    )
+                );
+            }
+
+            // 🩸 Filtro por Tipo Sanguíneo (JOIN com entidade relacionada)
+            if (StringUtils.hasText(filters.tipoSanguineo())) {
+                Join&lt;Doador, TipoSanguineo&gt; tipoSanguineoJoin = 
+                    root.join(&quot;tipoSanguineo&quot;, JoinType.LEFT);
+                
+                predicates.add(
+                    criteriaBuilder.like(
+                        criteriaBuilder.lower(
+                            criteriaBuilder.concat(
+                                tipoSanguineoJoin.get(&quot;tipoAbo&quot;),
+                                tipoSanguineoJoin.get(&quot;fatorRh&quot;)
+                            )
+                        ),
+                        &quot;%&quot; + filters.tipoSanguineo().toLowerCase() + &quot;%&quot;
+                    )
+                );
+            }
+
+            // 🏙️ Filtro por Cidade (busca parcial)
+            if (StringUtils.hasText(filters.cidade())) {
+                predicates.add(
+                    criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get(&quot;cidade&quot;)),
+                        &quot;%&quot; + filters.cidade().toLowerCase() + &quot;%&quot;
+                    )
+                );
+            }
+
+            // 🗺️ Filtro por Estado (busca exata)
+            if (StringUtils.hasText(filters.estado())) {
+                predicates.add(
+                    criteriaBuilder.equal(
+                        criteriaBuilder.upper(root.get(&quot;estado&quot;)),
+                        filters.estado().toUpperCase()
+                    )
+                );
+            }
+
+            // 🏢 Filtro por Empresa (busca parcial)
+            if (StringUtils.hasText(filters.empresa())) {
+                predicates.add(
+                    criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get(&quot;empresa&quot;)),
+                        &quot;%&quot; + filters.empresa().toLowerCase() + &quot;%&quot;
+                    )
+                );
+            }
+
+            // ⚖️ Filtro por Peso (range - maior ou igual)
+            if (StringUtils.hasText(filters.pesoKg())) {
+                try {
+                    BigDecimal peso = new BigDecimal(filters.pesoKg());
+                    predicates.add(
+                        criteriaBuilder.greaterThanOrEqualTo(
+                            root.get(&quot;pesoKg&quot;), 
+                            peso
+                        )
+                    );
+                } catch (NumberFormatException e) {
+                    // Ignora se não for um número válido
+                }
+            }
+
+            // 🔄 Filtro por Doador Habitual (boolean)
+            if (StringUtils.hasText(filters.doadorHabitual())) {
+                Boolean isHabitual = Boolean.parseBoolean(filters.doadorHabitual());
+                predicates.add(
+                    criteriaBuilder.equal(
+                        root.get(&quot;doadorHabitual&quot;), 
+                        isHabitual
+                    )
+                );
+            }
+
+            // 🚫 Sempre excluir registros deletados (soft delete)
+            predicates.add(
+                criteriaBuilder.isNull(root.get(&quot;deletedAt&quot;))
+            );
+
+            // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Combina todos os predicates com AND
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        };
+    }
+
+    /**
+     * 🔍 Specifications individuais para casos específicos
+     */
+    
+    public static Specification&lt;Doador&gt; hasCpf(String cpf) {
+        return (root, query, criteriaBuilder) -&gt; 
+            StringUtils.hasText(cpf) 
+                ? criteriaBuilder.equal(root.get(&quot;cpf&quot;), cpf.replaceAll(&quot;[^0-9]&quot;, &quot;&quot;))
+                : criteriaBuilder.conjunction();
+    }
+
+    public static Specification&lt;Doador&gt; hasNameLike(String name) {
+        return (root, query, criteriaBuilder) -&gt; 
+            StringUtils.hasText(name)
+                ? criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get(&quot;fullName&quot;)),
+                    &quot;%&quot; + name.toLowerCase() + &quot;%&quot;
+                )
+                : criteriaBuilder.conjunction();
+    }
+
+    public static Specification&lt;Doador&gt; hasEmailLike(String email) {
+        return (root, query, criteriaBuilder) -&gt; 
+            StringUtils.hasText(email)
+                ? criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get(&quot;email&quot;)),
+                    &quot;%&quot; + email.toLowerCase() + &quot;%&quot;
+                )
+                : criteriaBuilder.conjunction();
+    }
+
+    public static Specification&lt;Doador&gt; isActive() {
+        return (root, query, criteriaBuilder) -&gt; 
+            criteriaBuilder.isNull(root.get(&quot;deletedAt&quot;));
+    }
+
+    public static Specification&lt;Doador&gt; inCity(String cidade) {
+        return (root, query, criteriaBuilder) -&gt; 
+            StringUtils.hasText(cidade)
+                ? criteriaBuilder.like(
+                    criteriaBuilder.lower(root.get(&quot;cidade&quot;)),
+                    &quot;%&quot; + cidade.toLowerCase() + &quot;%&quot;
+                )
+                : criteriaBuilder.conjunction();
+    }
+
+    public static Specification&lt;Doador&gt; inState(String estado) {
+        return (root, query, criteriaBuilder) -&gt; 
+            StringUtils.hasText(estado)
+                ? criteriaBuilder.equal(
+                    criteriaBuilder.upper(root.get(&quot;estado&quot;)),
+                    estado.toUpperCase()
+                )
+                : criteriaBuilder.conjunction();
+    }
+}
+</code></pre>
+<hr>
+<h2>📋 Passo 3: Atualizar o Service</h2>
+<h3><strong>🔧 DoadorService.java</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.service;
+
+import com.faculdade.doesangue_api.dto.doador.DoadorRequestFilterDTO;
+import com.faculdade.doesangue_api.entities.Doador;
+import com.faculdade.doesangue_api.repository.DoadorRepository;
+import com.faculdade.doesangue_api.specifications.DoadorSpecifications;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional(readOnly = true)
+public class DoadorService {
+
+    private final DoadorRepository doadorRepository;
+
+    public DoadorService(DoadorRepository doadorRepository) {
+        this.doadorRepository = doadorRepository;
+    }
+
+    /**
+     * 🔍 Busca com filtros dinâmicos usando Specifications
+     * 
+     * @param filters - DTO com filtros opcionais
+     * @param pageable - Configuração de paginação
+     * @return Page&lt;Doador&gt; - Resultados paginados
+     */
+    public Page&lt;Doador&gt; buscarComFiltros(DoadorRequestFilterDTO filters, Pageable pageable) {
+        Specification&lt;Doador&gt; spec = DoadorSpecifications.withFilters(filters);
+        return doadorRepository.findAll(spec, pageable);
+    }
+
+    /**
+     * 🎯 Busca usando Specifications compostas (exemplo avançado)
+     */
+    public Page&lt;Doador&gt; buscarDoadoresAtivosNaCidade(String cidade, Pageable pageable) {
+        Specification&lt;Doador&gt; spec = Specification
+            .where(DoadorSpecifications.isActive())
+            .and(DoadorSpecifications.inCity(cidade));
+            
+        return doadorRepository.findAll(spec, pageable);
+    }
+
+    /**
+     * 📊 Exemplo de combinação de Specifications
+     */
+    public Page&lt;Doador&gt; buscarDoadoresComCriterios(
+            String nome, 
+            String cidade, 
+            String estado, 
+            Pageable pageable) {
+        
+        Specification&lt;Doador&gt; spec = Specification
+            .where(DoadorSpecifications.isActive())
+            .and(DoadorSpecifications.hasNameLike(nome))
+            .and(DoadorSpecifications.inCity(cidade))
+            .and(DoadorSpecifications.inState(estado));
+            
+        return doadorRepository.findAll(spec, pageable);
+    }
+
+    // Outros métodos existentes...
+}
+</code></pre>
+<hr>
+<h2>📋 Passo 4: Atualizar o Controller</h2>
+<h3><strong>🎮 DoadorController.java</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.controller;
+
+import com.faculdade.doesangue_api.dto.doador.DoadorRequestFilterDTO;
+import com.faculdade.doesangue_api.dto.doador.DoadorDTO;
+import com.faculdade.doesangue_api.entities.Doador;
+import com.faculdade.doesangue_api.service.DoadorService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/api/doadores&quot;)
+@Tag(name = &quot;Doadores&quot;, description = &quot;API para gerenciamento de doadores de sangue&quot;)
+@Validated
+public class DoadorController {
+
+    private final DoadorService doadorService;
+    private final DoadorMapper doadorMapper;
+
+    public DoadorController(DoadorService doadorService, DoadorMapper doadorMapper) {
+        this.doadorService = doadorService;
+        this.doadorMapper = doadorMapper;
+    }
+
+    /**
+     * 🔍 Endpoint principal com filtros dinâmicos
+     */
+    @GetMapping
+    @Operation(
+        summary = &quot;🔍 Listar doadores com filtros dinâmicos&quot;,
+        description = &quot;&quot;&quot;
+            Lista doadores com filtros opcionais usando JPA Specifications.
+            
+            **Funcionalidades:**
+            - &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Todos os filtros são opcionais
+            - &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Busca parcial para texto (nome, email, cidade)
+            - &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Busca exata para CPF e estado
+            - &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Filtro por peso mínimo
+            - &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Paginação e ordenação
+            - &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Performance otimizada
+            
+            **Exemplos de uso:**
+            - `GET /api/doadores?fullName=João&amp;cidade=São Paulo&amp;page=0&amp;size=10`
+            - `GET /api/doadores?tipoSanguineo=O+&amp;doadorHabitual=true`
+            - `GET /api/doadores?estado=SP&amp;pesoKg=60&amp;sort=fullName,asc`
+            &quot;&quot;&quot;
+    )
+    @ApiResponses({
+        @ApiResponse(responseCode = &quot;200&quot;, description = &quot;&lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Lista retornada com sucesso&quot;),
+        @ApiResponse(responseCode = &quot;400&quot;, description = &quot;&lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; Parâmetros inválidos&quot;)
+    })
+    public ResponseEntity&lt;Page&lt;DoadorDTO&gt;&gt; listarComFiltros(
+            
+            @Parameter(description = &quot;CPF para busca exata (apenas números)&quot;)
+            @RequestParam(required = false) String cpf,
+            
+            @Parameter(description = &quot;Nome completo para busca parcial&quot;)
+            @RequestParam(required = false) String fullName,
+            
+            @Parameter(description = &quot;Email para busca parcial&quot;)
+            @RequestParam(required = false) String email,
+            
+            @Parameter(description = &quot;Telefone para busca parcial&quot;)
+            @RequestParam(required = false) String telefonePrincipal,
+            
+            @Parameter(description = &quot;Tipo sanguíneo (ex: O+, A-, AB+)&quot;)
+            @RequestParam(required = false) String tipoSanguineo,
+            
+            @Parameter(description = &quot;Cidade para busca parcial&quot;)
+            @RequestParam(required = false) String cidade,
+            
+            @Parameter(description = &quot;Estado (UF - 2 caracteres)&quot;)
+            @RequestParam(required = false) String estado,
+            
+            @Parameter(description = &quot;Empresa para busca parcial&quot;)
+            @RequestParam(required = false) String empresa,
+            
+            @Parameter(description = &quot;Peso mínimo em kg&quot;)
+            @RequestParam(required = false) String pesoKg,
+            
+            @Parameter(description = &quot;Filtrar doadores habituais (true/false)&quot;)
+            @RequestParam(required = false) String doadorHabitual,
+            
+            @Parameter(description = &quot;Número da página (0-based)&quot;)
+            @RequestParam(defaultValue = &quot;0&quot;) @Min(0) int page,
+            
+            @Parameter(description = &quot;Tamanho da página&quot;)
+            @RequestParam(defaultValue = &quot;20&quot;) @Min(1) @Max(100) int size,
+            
+            @Parameter(description = &quot;Campo para ordenação&quot;)
+            @RequestParam(defaultValue = &quot;fullName&quot;) String sort,
+            
+            @Parameter(description = &quot;Direção da ordenação (asc/desc)&quot;)
+            @RequestParam(defaultValue = &quot;asc&quot;) String direction
+    ) {
+        
+        // 📊 Criar DTO de filtros
+        DoadorRequestFilterDTO filters = new DoadorRequestFilterDTO(
+            cpf, fullName, email, telefonePrincipal, tipoSanguineo,
+            cidade, estado, empresa, pesoKg, doadorHabitual
+        );
+        
+        // 📄 Configurar paginação e ordenação
+        Sort.Direction sortDirection = &quot;desc&quot;.equalsIgnoreCase(direction) 
+            ? Sort.Direction.DESC 
+            : Sort.Direction.ASC;
+        
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, sort));
+        
+        // 🔍 Executar busca com filtros
+        Page&lt;Doador&gt; doadoresPage = doadorService.buscarComFiltros(filters, pageable);
+        
+        // 🔄 Converter para DTO
+        Page&lt;DoadorDTO&gt; doadoresDTO = doadoresPage.map(doadorMapper::toDTO);
+        
+        return ResponseEntity.ok(doadoresDTO);
+    }
+
+    /**
+     * 🎯 Endpoint específico para busca por cidade (exemplo simples)
+     */
+    @GetMapping(&quot;/por-cidade/{cidade}&quot;)
+    @Operation(summary = &quot;Buscar doadores ativos por cidade&quot;)
+    public ResponseEntity&lt;Page&lt;DoadorDTO&gt;&gt; buscarPorCidade(
+            @PathVariable String cidade,
+            Pageable pageable) {
+        
+        Page&lt;Doador&gt; doadores = doadorService.buscarDoadoresAtivosNaCidade(cidade, pageable);
+        Page&lt;DoadorDTO&gt; doadoresDTO = doadores.map(doadorMapper::toDTO);
+        
+        return ResponseEntity.ok(doadoresDTO);
+    }
+
+    // Outros endpoints existentes...
+}
+</code></pre>
+<hr>
+<h2>📋 Passo 5: Testes e Validação</h2>
+<h3><strong>🧪 Exemplo de Teste Unitário</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.specifications;
+
+import com.faculdade.doesangue_api.dto.doador.DoadorRequestFilterDTO;
+import com.faculdade.doesangue_api.entities.Doador;
+import com.faculdade.doesangue_api.repository.DoadorRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@DataJpaTest
+class DoadorSpecificationsTest {
+
+    @Autowired
+    private DoadorRepository doadorRepository;
+
+    @Test
+    void deveFilterarPorNome() {
+        // Given
+        DoadorRequestFilterDTO filters = new DoadorRequestFilterDTO(
+            null, &quot;João&quot;, null, null, null, null, null, null, null, null
+        );
+        
+        // When
+        Specification&lt;Doador&gt; spec = DoadorSpecifications.withFilters(filters);
+        Page&lt;Doador&gt; resultado = doadorRepository.findAll(spec, PageRequest.of(0, 10));
+        
+        // Then
+        assertThat(resultado.getContent())
+            .allMatch(doador -&gt; doador.getFullName().toLowerCase().contains(&quot;joão&quot;));
+    }
+
+    @Test
+    void deveFilterarPorCidadeEEstado() {
+        // Given
+        DoadorRequestFilterDTO filters = new DoadorRequestFilterDTO(
+            null, null, null, null, null, &quot;São Paulo&quot;, &quot;SP&quot;, null, null, null
+        );
+        
+        // When
+        Specification&lt;Doador&gt; spec = DoadorSpecifications.withFilters(filters);
+        Page&lt;Doador&gt; resultado = doadorRepository.findAll(spec, PageRequest.of(0, 10));
+        
+        // Then
+        assertThat(resultado.getContent())
+            .allMatch(doador -&gt; 
+                doador.getCidade().toLowerCase().contains(&quot;são paulo&quot;) &amp;&amp;
+                doador.getEstado().equals(&quot;SP&quot;)
+            );
+    }
+}
+</code></pre>
+<hr>
+<h2>🚀 Uso Prático - Exemplos de Requisições</h2>
+<h3><strong>📱 Exemplos de Chamadas da API</strong></h3>
+<pre><code class="language-bash"># 1. Buscar todos os doadores (sem filtros)
+GET /api/doadores?page=0&amp;size=20
+
+# 2. Buscar por nome
+GET /api/doadores?fullName=João Silva&amp;page=0&amp;size=10
+
+# 3. Buscar por cidade e estado
+GET /api/doadores?cidade=São Paulo&amp;estado=SP
+
+# 4. Buscar doadores habituais tipo O+
+GET /api/doadores?tipoSanguineo=O+&amp;doadorHabitual=true
+
+# 5. Buscar por peso mínimo e ordenar por nome
+GET /api/doadores?pesoKg=60&amp;sort=fullName&amp;direction=asc
+
+# 6. Filtro complexo com múltiplos campos
+GET /api/doadores?fullName=Maria&amp;cidade=Rio&amp;estado=RJ&amp;empresa=Hospital&amp;page=0&amp;size=5
+
+# 7. Buscar por CPF específico
+GET /api/doadores?cpf=12345678901
+
+# 8. Buscar por email parcial
+GET /api/doadores?email=gmail.com
+</code></pre>
+<hr>
+<h2>💡 Dicas e Boas Práticas</h2>
+<h3><strong><span class="badge success">✅</span> Performance:</strong></h3>
+<ul>
+<li>Use <code>LEFT JOIN</code> para relacionamentos opcionais</li>
+<li>Evite <code>EAGER</code> loading desnecessário</li>
+<li>Considere índices para campos filtrados frequentemente</li>
+</ul>
+<h3><strong><span class="badge success">✅</span> Segurança:</strong></h3>
+<ul>
+<li>Sempre valide entrada de dados</li>
+<li>Use <code>StringUtils.hasText()</code> para verificar strings</li>
+<li>Limite tamanho da página (máximo 100)</li>
+</ul>
+<h3><strong><span class="badge success">✅</span> Flexibilidade:</strong></h3>
+<ul>
+<li>Specifications são composáveis</li>
+<li>Pode combinar com outros métodos do repository</li>
+<li>Reutilizável em diferentes contextos</li>
+</ul>
+<h3><strong><span class="badge success">✅</span> Manutenibilidade:</strong></h3>
+<ul>
+<li>Separe Specifications por entidade</li>
+<li>Use nomes descritivos para métodos</li>
+<li>Documente comportamento de cada filtro</li>
+</ul>
+<hr>
+<h2>🔧 Configurações Opcionais</h2>
+<h3><strong>📊 Custom Repository (Avançado)</strong></h3>
+<pre><code class="language-java">@Repository
+public interface DoadorRepository extends 
+    JpaRepository&lt;Doador, Long&gt;, 
+    JpaSpecificationExecutor&lt;Doador&gt;,
+    DoadorRepositoryCustom {
+}
+
+interface DoadorRepositoryCustom {
+    Page&lt;DoadorProjection&gt; findDoadoresProjection(
+        DoadorRequestFilterDTO filters, 
+        Pageable pageable
+    );
+}
+
+@Component
+class DoadorRepositoryImpl implements DoadorRepositoryCustom {
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+    
+    @Override
+    public Page&lt;DoadorProjection&gt; findDoadoresProjection(
+            DoadorRequestFilterDTO filters, 
+            Pageable pageable) {
+        
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery&lt;DoadorProjection&gt; query = cb.createQuery(DoadorProjection.class);
+        Root&lt;Doador&gt; root = query.from(Doador.class);
+        
+        // Projeção customizada para melhor performance
+        query.select(cb.construct(
+            DoadorProjection.class,
+            root.get(&quot;id&quot;),
+            root.get(&quot;fullName&quot;),
+            root.get(&quot;email&quot;),
+            root.get(&quot;cidade&quot;)
+        ));
+        
+        // Aplicar filtros usando Specifications
+        Specification&lt;Doador&gt; spec = DoadorSpecifications.withFilters(filters);
+        Predicate predicate = spec.toPredicate(root, query, cb);
+        query.where(predicate);
+        
+        // Executar query...
+        return new PageImpl&lt;&gt;(results, pageable, total);
+    }
+}
+</code></pre>
+<hr>
+<h2>📚 Recursos Adicionais</h2>
+<h3><strong>📖 Links Úteis:</strong></h3>
+<ul>
+<li><a href="https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html">Spring Data JPA Specifications</a></li>
+<li><a href="https://docs.oracle.com/javaee/7/tutorial/persistence-criteria.htm">Criteria API Guide</a></li>
+<li><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods">Spring Data JPA Query Methods</a></li>
+</ul>
+<h3><strong>🔍 Próximos Passos:</strong></h3>
+<ol>
+<li>Implementar cache para consultas frequentes</li>
+<li>Adicionar métricas de performance</li>
+<li>Criar DSL customizada para queries complexas</li>
+<li>Implementar filtros geoespaciais</li>
+</ol>
+<hr>
+<p><em>Este tutorial fornece uma implementação completa e profissional de JPA Specifications para o projeto DoeSangue, garantindo filtros dinâmicos, performance otimizada e código maintível.</em></p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>
