@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 📚 Documentação Detalhada - DoadorController</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,15 +316,11 @@
         </nav>
         
         <div class="content">
-            <h1>📚 Documentação Detalhada - DoadorController</h1>
-<p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Autor:</strong> Winston (Dev Agent)<br><strong>Finalidade:</strong> Estudo de caso para desenvolvimento de controllers REST</p>
+            <h1 id="-documentao-detalhada-doadorcontroller">📚 Documentação Detalhada - DoadorController</h1><p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Autor:</strong> Winston (Dev Agent)<br><strong>Finalidade:</strong> Estudo de caso para desenvolvimento de controllers REST</p>
 <hr>
-<h2>🎯 Objetivo deste Controller</h2>
-<p>O <code>DoadorController</code> foi criado como um <strong>exemplo completo</strong> demonstrando as melhores práticas para desenvolvimento de APIs REST no Spring Boot com documentação Swagger profissional. Este controller serve como <strong>template de referência</strong> para implementação de outros controllers no sistema.</p>
+<h2 id="-objetivo-deste-controller">🎯 Objetivo deste Controller</h2><p>O <code>DoadorController</code> foi criado como um <strong>exemplo completo</strong> demonstrando as melhores práticas para desenvolvimento de APIs REST no Spring Boot com documentação Swagger profissional. Este controller serve como <strong>template de referência</strong> para implementação de outros controllers no sistema.</p>
 <hr>
-<h2>📋 Estrutura do Controller</h2>
-<h3><strong>🗂️ Arquivos Criados:</strong></h3>
-<pre><code>src/main/java/com/faculdade/doesangue_api/
+<h2 id="-estrutura-do-controller">📋 Estrutura do Controller</h2><h3 id="strong-arquivos-criadosstrong"><strong>🗂️ Arquivos Criados:</strong></h3><pre><code>src/main/java/com/faculdade/doesangue_api/
 ├── controllers/
 │   └── DoadorController.java           # Controller principal
 └── dtos/
@@ -332,8 +328,7 @@
     ├── DoadorDTO.java                 # DTO para resposta
     └── DoadorFiltroDTO.java           # DTO para filtros
 </code></pre>
-<h3><strong>📊 Estatísticas do Código:</strong></h3>
-<ul>
+<h3 id="strong-estatsticas-do-cdigostrong"><strong>📊 Estatísticas do Código:</strong></h3><ul>
 <li><strong>700+ linhas</strong> de código documentado</li>
 <li><strong>6 endpoints</strong> REST completos</li>
 <li><strong>50+ anotações</strong> Swagger</li>
@@ -342,9 +337,7 @@
 <li><strong>Documentação multilíngue</strong> (PT/EN)</li>
 </ul>
 <hr>
-<h2>🚀 Funcionalidades Implementadas</h2>
-<h3><strong>1. 📋 Listagem Paginada com Filtros</strong></h3>
-<pre><code class="language-java">GET /api/doadores?page=0&amp;size=20&amp;nome=João&amp;tipoSanguineo=O+
+<h2 id="-funcionalidades-implementadas">🚀 Funcionalidades Implementadas</h2><h3 id="strong1-listagem-paginada-com-filtrosstrong"><strong>1. 📋 Listagem Paginada com Filtros</strong></h3><pre><code class="language-java">GET /api/doadores?page=0&amp;size=20&amp;nome=João&amp;tipoSanguineo=O+
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
@@ -364,8 +357,7 @@
 <li><code>idadeMinima/idadeMaxima</code> - Faixa etária</li>
 <li><code>apenasAptos</code> - Apenas doadores aptos</li>
 </ul>
-<h3><strong>2. 🔍 Busca por ID</strong></h3>
-<pre><code class="language-java">GET /api/doadores/{id}
+<h3 id="strong2-busca-por-idstrong"><strong>2. 🔍 Busca por ID</strong></h3><pre><code class="language-java">GET /api/doadores/{id}
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
@@ -375,8 +367,7 @@
 <li><span class="badge success">✅</span> <strong>Histórico resumido</strong> de doações</li>
 <li><span class="badge success">✅</span> <strong>Tratamento de erro 404</strong></li>
 </ul>
-<h3><strong>3. ➕ Cadastro de Novo Doador</strong></h3>
-<pre><code class="language-java">POST /api/doadores
+<h3 id="strong3-cadastro-de-novo-doadorstrong"><strong>3. ➕ Cadastro de Novo Doador</strong></h3><pre><code class="language-java">POST /api/doadores
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
@@ -396,8 +387,7 @@
 <li>Endereço: campos obrigatórios</li>
 <li>Consentimento LGPD: obrigatório (true)</li>
 </ul>
-<h3><strong>4. 🔄 Atualização de Dados</strong></h3>
-<pre><code class="language-java">PUT /api/doadores/{id}
+<h3 id="strong4-atualizao-de-dadosstrong"><strong>4. 🔄 Atualização de Dados</strong></h3><pre><code class="language-java">PUT /api/doadores/{id}
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
@@ -406,8 +396,7 @@
 <li><span class="badge success">✅</span> <strong>Auditoria automática</strong> (updatedAt)</li>
 <li><span class="badge success">✅</span> <strong>Validações mantidas</strong></li>
 </ul>
-<h3><strong>5. 🩺 Verificação de Aptidão</strong></h3>
-<pre><code class="language-java">GET /api/doadores/{id}/aptidao
+<h3 id="strong5-verificao-de-aptidostrong"><strong>5. 🩺 Verificação de Aptidão</strong></h3><pre><code class="language-java">GET /api/doadores/{id}/aptidao
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
@@ -417,8 +406,7 @@
 <li><span class="badge success">✅</span> <strong>Próxima data permitida</strong></li>
 <li><span class="badge success">✅</span> <strong>Recomendações médicas</strong></li>
 </ul>
-<h3><strong>6. 📊 Estatísticas Detalhadas</strong></h3>
-<pre><code class="language-java">GET /api/doadores/{id}/estatisticas
+<h3 id="strong6-estatsticas-detalhadasstrong"><strong>6. 📊 Estatísticas Detalhadas</strong></h3><pre><code class="language-java">GET /api/doadores/{id}/estatisticas
 </code></pre>
 <p><strong>Características:</strong></p>
 <ul>
@@ -428,9 +416,7 @@
 <li><span class="badge success">✅</span> <strong>Impacto social</strong> (vidas ajudadas)</li>
 </ul>
 <hr>
-<h2>🏗️ Arquitetura dos DTOs</h2>
-<h3><strong>🔨 DoadorCreateDTO - Para Criação</strong></h3>
-<p><strong>Características:</strong></p>
+<h2 id="-arquitetura-dos-dtos">🏗️ Arquitetura dos DTOs</h2><h3 id="strong-doadorcreatedto-para-criaostrong"><strong>🔨 DoadorCreateDTO - Para Criação</strong></h3><p><strong>Características:</strong></p>
 <ul>
 <li><strong>20 campos</strong> com validações específicas</li>
 <li><strong>Anotações Swagger</strong> detalhadas</li>
@@ -452,8 +438,7 @@ private String email;
 @AssertTrue(message = &quot;Consentimento LGPD deve ser verdadeiro para prosseguir&quot;)
 private Boolean consentimentoLgpd;
 </code></pre>
-<h3><strong>📤 DoadorDTO - Para Resposta</strong></h3>
-<p><strong>Características:</strong></p>
+<h3 id="strong-doadordto-para-respostastrong"><strong>📤 DoadorDTO - Para Resposta</strong></h3><p><strong>Características:</strong></p>
 <ul>
 <li><strong>Dados calculados</strong> (idade, aptidão)</li>
 <li><strong>Campos mascarados</strong> (CPF para privacidade)</li>
@@ -471,8 +456,7 @@ private Integer idade;
 @Schema(description = &quot;Indica se pode doar no momento&quot;, accessMode = Schema.AccessMode.READ_ONLY)
 private Boolean podeDoar;
 </code></pre>
-<h3><strong>🔍 DoadorFiltroDTO - Para Filtros</strong></h3>
-<p><strong>Características:</strong></p>
+<h3 id="strong-doadorfiltrodto-para-filtrosstrong"><strong>🔍 DoadorFiltroDTO - Para Filtros</strong></h3><p><strong>Características:</strong></p>
 <ul>
 <li><strong>Filtros opcionais</strong> todos</li>
 <li><strong>Ranges de valores</strong> (idade, datas)</li>
@@ -480,9 +464,7 @@ private Boolean podeDoar;
 <li><strong>Campos de localização</strong> (estado, cidade)</li>
 </ul>
 <hr>
-<h2>🔍 <strong>public record</strong> vs <strong>public class</strong> para DTOs</h2>
-<h3><strong>📝 public record - Moderna e Concisa (Java 14+)</strong></h3>
-<p><strong>Características:</strong></p>
+<h2 id="-strongpublic-recordstrong-vs-strongpublic-classstrong-para-dtos">🔍 <strong>public record</strong> vs <strong>public class</strong> para DTOs</h2><h3 id="strong-public-record-moderna-e-concisa-java-14strong"><strong>📝 public record - Moderna e Concisa (Java 14+)</strong></h3><p><strong>Características:</strong></p>
 <ul>
 <li><strong>Imutável por padrão</strong> - Todos os campos são <code>final</code></li>
 <li><strong>Código mais limpo</strong> - Sem boilerplate de getters/setters</li>
@@ -518,8 +500,7 @@ public record DoadorCreateDTO(
 <li><strong>Modernidade</strong> - Padrão atual do Java para DTOs</li>
 <li><strong>Performance</strong> - Ligeiramente mais eficiente</li>
 </ul>
-<h3><strong>🏗️ public class - Tradicional e Flexível</strong></h3>
-<p><strong>Características:</strong></p>
+<h3 id="strong-public-class-tradicional-e-flexvelstrong"><strong>🏗️ public class - Tradicional e Flexível</strong></h3><p><strong>Características:</strong></p>
 <ul>
 <li><strong>Mutável por padrão</strong> - Campos podem ser modificados</li>
 <li><strong>Código verbose</strong> - Requer getters/setters manuais ou Lombok</li>
@@ -559,8 +540,7 @@ public class DoadorCreateDTO {
 <li><strong>Lombok</strong> - Reduz boilerplate com anotações</li>
 <li><strong>Debugging</strong> - Mais fácil para debug em algumas IDEs</li>
 </ul>
-<h3><strong>🎯 Quando Usar Cada Um</strong></h3>
-<table>
+<h3 id="strong-quando-usar-cada-umstrong"><strong>🎯 Quando Usar Cada Um</strong></h3><table>
 <thead>
 <tr>
 <th><strong>Cenário</strong></th>
@@ -604,8 +584,7 @@ public class DoadorCreateDTO {
 <td><span class="badge success">✅</span> <strong>Compatível</strong></td>
 </tr>
 </tbody></table>
-<h3><strong>💡 Recomendação para o Projeto DoeSangue</strong></h3>
-<p><strong>Para DTOs de Entrada/Saída:</strong></p>
+<h3 id="strong-recomendao-para-o-projeto-doesanguestrong"><strong>💡 Recomendação para o Projeto DoeSangue</strong></h3><p><strong>Para DTOs de Entrada/Saída:</strong></p>
 <pre><code class="language-java">// &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; RECOMENDADO - Record para dados simples
 public record DoadorCreateDTO(
     @NotBlank String fullName,
@@ -634,10 +613,7 @@ public class DoadorUpdateDTO {
 <li><strong>Escolha baseada</strong> na complexidade e requisitos do projeto</li>
 </ul>
 <hr>
-<h2>📖 Documentação Swagger Avançada</h2>
-<h3><strong>🎨 Recursos Utilizados:</strong></h3>
-<h4><strong>1. Anotações de Operação</strong></h4>
-<pre><code class="language-java">@Operation(
+<h2 id="-documentao-swagger-avanada">📖 Documentação Swagger Avançada</h2><h3 id="strong-recursos-utilizadosstrong"><strong>🎨 Recursos Utilizados:</strong></h3><h4 id="strong1-anotaes-de-operaostrong"><strong>1. Anotações de Operação</strong></h4><pre><code class="language-java">@Operation(
     summary = &quot;📋 Listar doadores com filtros avançados&quot;,
     description = &quot;&quot;&quot;
         Descrição detalhada em markdown...
@@ -653,8 +629,7 @@ public class DoadorUpdateDTO {
     tags = {&quot;Doadores&quot;}
 )
 </code></pre>
-<h4><strong>2. Exemplos JSON Completos</strong></h4>
-<pre><code class="language-java">@ExampleObject(
+<h4 id="strong2-exemplos-json-completosstrong"><strong>2. Exemplos JSON Completos</strong></h4><pre><code class="language-java">@ExampleObject(
     name = &quot;Exemplo completo de cadastro&quot;,
     value = &quot;&quot;&quot;
         {
@@ -666,8 +641,7 @@ public class DoadorUpdateDTO {
         &quot;&quot;&quot;
 )
 </code></pre>
-<h4><strong>3. Respostas Detalhadas</strong></h4>
-<pre><code class="language-java">@ApiResponse(
+<h4 id="strong3-respostas-detalhadasstrong"><strong>3. Respostas Detalhadas</strong></h4><pre><code class="language-java">@ApiResponse(
     responseCode = &quot;400&quot;, 
     description = &quot;&lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; Dados inválidos fornecidos&quot;,
     content = @Content(
@@ -687,16 +661,14 @@ public class DoadorUpdateDTO {
     )
 )
 </code></pre>
-<h4><strong>4. Parâmetros Documentados</strong></h4>
-<pre><code class="language-java">@Parameter(
+<h4 id="strong4-parmetros-documentadosstrong"><strong>4. Parâmetros Documentados</strong></h4><pre><code class="language-java">@Parameter(
     description = &quot;Número da página (iniciando em 0)&quot;, 
     example = &quot;0&quot;,
     schema = @Schema(minimum = &quot;0&quot;, defaultValue = &quot;0&quot;)
 )
 @RequestParam(defaultValue = &quot;0&quot;) int page
 </code></pre>
-<h3><strong>🎯 Benefícios da Documentação:</strong></h3>
-<ol>
+<h3 id="strong-benefcios-da-documentaostrong"><strong>🎯 Benefícios da Documentação:</strong></h3><ol>
 <li><strong>Auto-explicativa</strong> - Desenvolvedores entendem sem explicação</li>
 <li><strong>Testável</strong> - Todos os endpoints testáveis via Swagger UI</li>
 <li><strong>Exemplos reais</strong> - JSON examples que funcionam</li>
@@ -704,23 +676,16 @@ public class DoadorUpdateDTO {
 <li><strong>Validações claras</strong> - Regras explícitas para cada campo</li>
 </ol>
 <hr>
-<h2>🧪 Como Testar o Controller</h2>
-<h3><strong>1. Iniciar a Aplicação</strong></h3>
-<pre><code class="language-bash">cd doesangue_backend
+<h2 id="-como-testar-o-controller">🧪 Como Testar o Controller</h2><h3 id="strong1-iniciar-a-aplicaostrong"><strong>1. Iniciar a Aplicação</strong></h3><pre><code class="language-bash">cd doesangue_backend
 ./mvnw spring-boot:run
 </code></pre>
-<h3><strong>2. Acessar Swagger UI</strong></h3>
-<pre><code>http://localhost:8080/swagger-ui.html
+<h3 id="strong2-acessar-swagger-uistrong"><strong>2. Acessar Swagger UI</strong></h3><pre><code>http://localhost:8080/swagger-ui.html
 </code></pre>
-<h3><strong>3. Testar Endpoints</strong></h3>
-<h4><strong>Listar Doadores:</strong></h4>
-<pre><code>GET /api/doadores?page=0&amp;size=5&amp;nome=João
+<h3 id="strong3-testar-endpointsstrong"><strong>3. Testar Endpoints</strong></h3><h4 id="stronglistar-doadoresstrong"><strong>Listar Doadores:</strong></h4><pre><code>GET /api/doadores?page=0&amp;size=5&amp;nome=João
 </code></pre>
-<h4><strong>Buscar por ID:</strong></h4>
-<pre><code>GET /api/doadores/1
+<h4 id="strongbuscar-por-idstrong"><strong>Buscar por ID:</strong></h4><pre><code>GET /api/doadores/1
 </code></pre>
-<h4><strong>Cadastrar Doador:</strong></h4>
-<pre><code>POST /api/doadores
+<h4 id="strongcadastrar-doadorstrong"><strong>Cadastrar Doador:</strong></h4><pre><code>POST /api/doadores
 {
     &quot;fullName&quot;: &quot;Novo Doador Teste&quot;,
     &quot;cpf&quot;: &quot;99999999999&quot;,
@@ -739,20 +704,16 @@ public class DoadorUpdateDTO {
     &quot;consentimentoLgpd&quot;: true
 }
 </code></pre>
-<h4><strong>Verificar Aptidão:</strong></h4>
-<pre><code>GET /api/doadores/1/aptidao
+<h4 id="strongverificar-aptidostrong"><strong>Verificar Aptidão:</strong></h4><pre><code>GET /api/doadores/1/aptidao
 </code></pre>
-<h3><strong>4. Testar Validações</strong></h3>
-<h4><strong>CPF Duplicado:</strong></h4>
-<pre><code>POST /api/doadores
+<h3 id="strong4-testar-validaesstrong"><strong>4. Testar Validações</strong></h3><h4 id="strongcpf-duplicadostrong"><strong>CPF Duplicado:</strong></h4><pre><code>POST /api/doadores
 {
     &quot;cpf&quot;: &quot;12345678901&quot;,  // CPF que já existe
     // outros campos...
 }
 </code></pre>
 <p><strong>Resultado esperado:</strong> 409 Conflict</p>
-<h4><strong>Dados Inválidos:</strong></h4>
-<pre><code>POST /api/doadores
+<h4 id="strongdados-invlidosstrong"><strong>Dados Inválidos:</strong></h4><pre><code>POST /api/doadores
 {
     &quot;fullName&quot;: &quot;&quot;,           // Nome vazio
     &quot;cpf&quot;: &quot;123&quot;,            // CPF inválido
@@ -762,9 +723,7 @@ public class DoadorUpdateDTO {
 </code></pre>
 <p><strong>Resultado esperado:</strong> 400 Bad Request com detalhes</p>
 <hr>
-<h2>🎓 Conceitos Demonstrados</h2>
-<h3><strong>1. Spring Boot / Spring Web</strong></h3>
-<ul>
+<h2 id="-conceitos-demonstrados">🎓 Conceitos Demonstrados</h2><h3 id="strong1-spring-boot-spring-webstrong"><strong>1. Spring Boot / Spring Web</strong></h3><ul>
 <li><code>@RestController</code> - Marca classe como controller REST</li>
 <li><code>@RequestMapping</code> - Define base path da API</li>
 <li><code>@GetMapping/@PostMapping/@PutMapping</code> - Mapeia HTTP methods</li>
@@ -773,8 +732,7 @@ public class DoadorUpdateDTO {
 <li><code>@RequestBody</code> - Mapeia body do request para objeto</li>
 <li><code>@Valid</code> - Ativa validações Bean Validation</li>
 </ul>
-<h3><strong>2. Bean Validation</strong></h3>
-<ul>
+<h3 id="strong2-bean-validationstrong"><strong>2. Bean Validation</strong></h3><ul>
 <li><code>@NotNull/@NotBlank</code> - Validações de nulidade</li>
 <li><code>@Size</code> - Validação de tamanho</li>
 <li><code>@Pattern</code> - Validação com regex</li>
@@ -783,8 +741,7 @@ public class DoadorUpdateDTO {
 <li><code>@Positive</code> - Número deve ser positivo</li>
 <li><code>@AssertTrue</code> - Booleano deve ser verdadeiro</li>
 </ul>
-<h3><strong>3. Swagger/OpenAPI 3</strong></h3>
-<ul>
+<h3 id="strong3-swaggeropenapi-3strong"><strong>3. Swagger/OpenAPI 3</strong></h3><ul>
 <li><code>@Tag</code> - Agrupa endpoints por categoria</li>
 <li><code>@Operation</code> - Documenta operação</li>
 <li><code>@ApiResponse/@ApiResponses</code> - Documenta respostas</li>
@@ -793,47 +750,40 @@ public class DoadorUpdateDTO {
 <li><code>@ExampleObject</code> - Fornece exemplos</li>
 <li><code>@SecurityRequirement</code> - Define requisitos de segurança</li>
 </ul>
-<h3><strong>4. DTOs (Data Transfer Objects)</strong></h3>
-<ul>
+<h3 id="strong4-dtos-data-transfer-objectsstrong"><strong>4. DTOs (Data Transfer Objects)</strong></h3><ul>
 <li><strong>Separação de responsabilidades</strong> - DTOs diferentes para diferentes operações</li>
 <li><strong>Validações específicas</strong> - Cada DTO com suas validações</li>
 <li><strong>Documentação integrada</strong> - Schema documentado no DTO</li>
 <li><strong>Transformação de dados</strong> - Entre entity e DTO</li>
 </ul>
-<h3><strong>5. Paginação</strong></h3>
-<ul>
+<h3 id="strong5-paginaostrong"><strong>5. Paginação</strong></h3><ul>
 <li><code>Page&lt;T&gt;</code> - Interface padrão Spring Data</li>
 <li><code>PageRequest</code> - Requisição de página</li>
 <li><code>PageImpl</code> - Implementação de página</li>
 <li>Query parameters padrão (page, size, sort)</li>
 </ul>
-<h3><strong>6. Tratamento de Erros</strong></h3>
-<ul>
+<h3 id="strong6-tratamento-de-errosstrong"><strong>6. Tratamento de Erros</strong></h3><ul>
 <li>Status HTTP apropriados (200, 201, 400, 404, 409)</li>
 <li>Respostas estruturadas para erros</li>
 <li>Mensagens descritivas</li>
 <li>Detalhes de validação</li>
 </ul>
 <hr>
-<h2>🎯 Próximos Passos</h2>
-<h3><strong>Para Este Controller:</strong></h3>
-<ol>
+<h2 id="-prximos-passos">🎯 Próximos Passos</h2><h3 id="strongpara-este-controllerstrong"><strong>Para Este Controller:</strong></h3><ol>
 <li><strong>Implementar Service layer</strong> - DoadorService com regras de negócio</li>
 <li><strong>Implementar Repository</strong> - DoadorRepository com queries customizadas</li>
 <li><strong>Integrar com entidades JPA</strong> - Mapear para Doador entity</li>
 <li><strong>Adicionar testes</strong> - Unit e integration tests</li>
 <li><strong>Implementar segurança</strong> - JWT authentication</li>
 </ol>
-<h3><strong>Para Outros Controllers:</strong></h3>
-<ol>
+<h3 id="strongpara-outros-controllersstrong"><strong>Para Outros Controllers:</strong></h3><ol>
 <li><strong>UserController</strong> - Gestão de usuários</li>
 <li><strong>HemocentroController</strong> - Gestão de hemocentros</li>
 <li><strong>AuthController</strong> - Autenticação JWT</li>
 <li><strong>TriagemController</strong> - Triagem clínica</li>
 <li><strong>AgendamentoController</strong> - Agendamentos</li>
 </ol>
-<h3><strong>Melhorias Arquiteturais:</strong></h3>
-<ol>
+<h3 id="strongmelhorias-arquiteturaisstrong"><strong>Melhorias Arquiteturais:</strong></h3><ol>
 <li><strong>Exception Handler global</strong> - Tratamento centralizado de erros</li>
 <li><strong>Audit logs</strong> - Auditoria automática de operações</li>
 <li><strong>Cache</strong> - Cache para consultas frequentes</li>
@@ -841,9 +791,7 @@ public class DoadorUpdateDTO {
 <li><strong>Rate limiting</strong> - Controle de taxa de requisições</li>
 </ol>
 <hr>
-<h2>📚 Recursos de Aprendizado</h2>
-<h3><strong>Conceitos Aplicados:</strong></h3>
-<ul>
+<h2 id="-recursos-de-aprendizado">📚 Recursos de Aprendizado</h2><h3 id="strongconceitos-aplicadosstrong"><strong>Conceitos Aplicados:</strong></h3><ul>
 <li><span class="badge success">✅</span> <strong>REST API Design</strong> - Padrões RESTful</li>
 <li><span class="badge success">✅</span> <strong>OpenAPI 3.0</strong> - Documentação automática</li>
 <li><span class="badge success">✅</span> <strong>Bean Validation</strong> - Validações declarativas</li>
@@ -853,8 +801,7 @@ public class DoadorUpdateDTO {
 <li><span class="badge success">✅</span> <strong>Security</strong> - Autenticação JWT</li>
 <li><span class="badge success">✅</span> <strong>Documentation</strong> - Código autodocumentado</li>
 </ul>
-<h3><strong>Boas Práticas Demonstradas:</strong></h3>
-<ul>
+<h3 id="strongboas-prticas-demonstradasstrong"><strong>Boas Práticas Demonstradas:</strong></h3><ul>
 <li><span class="badge success">✅</span> <strong>Single Responsibility</strong> - Cada método uma responsabilidade</li>
 <li><span class="badge success">✅</span> <strong>Separation of Concerns</strong> - DTOs separados por função</li>
 <li><span class="badge success">✅</span> <strong>DRY Principle</strong> - Reutilização de validações</li>

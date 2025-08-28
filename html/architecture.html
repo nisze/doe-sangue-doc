@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 🏗️ Arquitetura do Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,13 +316,9 @@
         </nav>
         
         <div class="content">
-            <h1>🏗️ Arquitetura do Sistema DoeSangue</h1>
-<p><strong>Versão:</strong> v1.0<br><strong>Data:</strong> 27 de Agosto de 2025  </p>
-<h2>📋 Visão Geral</h2>
-<p>Sistema de gestão completa para doação de sangue baseado em arquitetura em camadas, seguindo rigorosamente o schema de banco de dados MVP fornecido.</p>
-<h2>🎯 Objetivos Arquiteturais</h2>
-<h3>Princípios de Design</h3>
-<ul>
+            <h1 id="-arquitetura-do-sistema-doesangue">🏗️ Arquitetura do Sistema DoeSangue</h1><p><strong>Versão:</strong> v1.0<br><strong>Data:</strong> 27 de Agosto de 2025  </p>
+<h2 id="-viso-geral">📋 Visão Geral</h2><p>Sistema de gestão completa para doação de sangue baseado em arquitetura em camadas, seguindo rigorosamente o schema de banco de dados MVP fornecido.</p>
+<h2 id="-objetivos-arquiteturais">🎯 Objetivos Arquiteturais</h2><h3 id="princpios-de-design">Princípios de Design</h3><ul>
 <li><strong>Holistic System Thinking</strong> - Cada componente integrado ao sistema maior</li>
 <li><strong>User Experience Drives Architecture</strong> - Jornadas de usuário orientam decisões</li>
 <li><strong>Pragmatic Technology Selection</strong> - Spring Boot + JPA para rapidez e confiabilidade</li>
@@ -330,9 +326,7 @@
 <li><strong>Security at Every Layer</strong> - Defesa em profundidade</li>
 <li><strong>Data-Centric Design</strong> - Modelo de dados orienta arquitetura</li>
 </ul>
-<h2>🏢 Arquitetura de Alto Nível</h2>
-<h3>Stack Tecnológico</h3>
-<pre><code>Frontend (Futuro)
+<h2 id="-arquitetura-de-alto-nvel">🏢 Arquitetura de Alto Nível</h2><h3 id="stack-tecnolgico">Stack Tecnológico</h3><pre><code>Frontend (Futuro)
 ├── React/Angular/Vue.js
 ├── REST API Integration
 └── Material-UI/Bootstrap
@@ -354,36 +348,28 @@ Infrastructure
 ├── Azure/AWS deployment
 └── CI/CD pipelines
 </code></pre>
-<h2>📊 Modelo de Domínio</h2>
-<h3>Agregados Principais</h3>
-<h4>1. <strong>Agregado INSTITUTIONAL</strong></h4>
-<pre><code>Hemocentro (Root)
+<h2 id="-modelo-de-domnio">📊 Modelo de Domínio</h2><h3 id="agregados-principais">Agregados Principais</h3><h4 id="1-strongagregado-institutionalstrong">1. <strong>Agregado INSTITUTIONAL</strong></h4><pre><code>Hemocentro (Root)
 ├── SetorAtuacao
 ├── User
 ├── UserRole
 └── UserSetor (Association)
 </code></pre>
-<h4>2. <strong>Agregado DONOR</strong></h4>
-<pre><code>Doador (Root)
+<h4 id="2-strongagregado-donorstrong">2. <strong>Agregado DONOR</strong></h4><pre><code>Doador (Root)
 ├── TipoSanguineo
 ├── DoadorDoenca (Association)
 ├── DoencaEspecifica
 └── ConsentimentoLgpd
 </code></pre>
-<h4>3. <strong>Agregado DONATION_PROCESS</strong></h4>
-<pre><code>Doacao (Root)
+<h4 id="3-strongagregado-donation_processstrong">3. <strong>Agregado DONATION_PROCESS</strong></h4><pre><code>Doacao (Root)
 ├── Agendamento
 ├── TriagemClinica
 └── EstoqueSangue
 </code></pre>
-<h4>4. <strong>Agregado SYSTEM_SUPPORT</strong></h4>
-<pre><code>ConfiguracaoSistema
+<h4 id="4-strongagregado-system_supportstrong">4. <strong>Agregado SYSTEM_SUPPORT</strong></h4><pre><code>ConfiguracaoSistema
 ├── Notificacao
 └── LogAuditoriaLgpd
 </code></pre>
-<h2>🏛️ Arquitetura em Camadas</h2>
-<h3>Layer 1: Presentation Layer</h3>
-<pre><code>📱 Controllers (REST API)
+<h2 id="-arquitetura-em-camadas">🏛️ Arquitetura em Camadas</h2><h3 id="layer-1-presentation-layer">Layer 1: Presentation Layer</h3><pre><code>📱 Controllers (REST API)
 ├── DoadorController
 ├── UserController  
 ├── HemocentroController
@@ -392,8 +378,7 @@ Infrastructure
 ├── EstoqueController
 └── ConfigController
 </code></pre>
-<h3>Layer 2: Application Layer</h3>
-<pre><code>🔧 Services (Business Logic)
+<h3 id="layer-2-application-layer">Layer 2: Application Layer</h3><pre><code>🔧 Services (Business Logic)
 ├── DoadorService
 ├── TriagemService
 ├── DoacaoService
@@ -402,8 +387,7 @@ Infrastructure
 ├── ElegibilidadeService
 └── AuditoriaService
 </code></pre>
-<h3>Layer 3: Domain Layer</h3>
-<pre><code>🎯 Entities + Domain Services
+<h3 id="layer-3-domain-layer">Layer 3: Domain Layer</h3><pre><code>🎯 Entities + Domain Services
 ├── Entities (17 entidades mapeadas)
 ├── Value Objects (Enums)
 ├── Domain Services
@@ -412,16 +396,13 @@ Infrastructure
 │   └── ElegibilidadeDoadorService
 └── Repositories (Interfaces)
 </code></pre>
-<h3>Layer 4: Infrastructure Layer</h3>
-<pre><code>🗄️ Data Access + External Services
+<h3 id="layer-4-infrastructure-layer">Layer 4: Infrastructure Layer</h3><pre><code>🗄️ Data Access + External Services
 ├── JPA Repositories
 ├── Database Configuration
 ├── External APIs (Future)
 └── File Storage
 </code></pre>
-<h2>🔐 Segurança Multi-Camada</h2>
-<h3>Autenticação &amp; Autorização</h3>
-<pre><code class="language-java">@Configuration
+<h2 id="-segurana-multi-camada">🔐 Segurança Multi-Camada</h2><h3 id="autenticao-amp-autorizao">Autenticação &amp; Autorização</h3><pre><code class="language-java">@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     
@@ -435,16 +416,13 @@ public class SecurityConfig {
     User -&gt; Multiple Sectors (TRIAGEM + COLETA simultaneously)
 }
 </code></pre>
-<h3>LGPD Compliance Framework</h3>
-<pre><code class="language-java">// Built-in Privacy Controls
+<h3 id="lgpd-compliance-framework">LGPD Compliance Framework</h3><pre><code class="language-java">// Built-in Privacy Controls
 ├── ConsentimentoLgpd - Granular consent tracking
 ├── LogAuditoriaLgpd - Complete audit trail
 ├── Soft Delete - Data retention compliance
 └── Data Minimization - Only necessary fields
 </code></pre>
-<h2>🩸 Fluxos de Processo Críticos</h2>
-<h3>1. <strong>Jornada do Doador</strong></h3>
-<pre><code class="language-mermaid">graph LR
+<h2 id="-fluxos-de-processo-crticos">🩸 Fluxos de Processo Críticos</h2><h3 id="1-strongjornada-do-doadorstrong">1. <strong>Jornada do Doador</strong></h3><pre><code class="language-mermaid">graph LR
     A[Cadastro] --&gt; B[Agendamento]
     B --&gt; C[Triagem]
     C --&gt; D{Apto?}
@@ -453,24 +431,20 @@ public class SecurityConfig {
     E --&gt; G[Estoque]
     F --&gt; B
 </code></pre>
-<h3>2. <strong>Validação Médica de Doenças</strong></h3>
-<pre><code class="language-mermaid">graph TD
+<h3 id="2-strongvalidao-mdica-de-doenasstrong">2. <strong>Validação Médica de Doenças</strong></h3><pre><code class="language-mermaid">graph TD
     A[Doador declara doença] --&gt; B[DoadorDoenca criada]
     B --&gt; C[Status: Aguardando validação]
     C --&gt; D[Médico revisa]
     D --&gt; E[Validação médica]
     E --&gt; F[Status: Validado]
 </code></pre>
-<h3>3. <strong>Gestão Multi-Setor</strong></h3>
-<pre><code class="language-mermaid">graph LR
+<h3 id="3-stronggesto-multi-setorstrong">3. <strong>Gestão Multi-Setor</strong></h3><pre><code class="language-mermaid">graph LR
     A[User] --&gt; B[UserSetor: TRIAGEM]
     A --&gt; C[UserSetor: COLETA]
     B --&gt; D[Setor Principal: TRIAGEM]
     C --&gt; E[Setor Secundário: COLETA]
 </code></pre>
-<h2>📊 Estrutura de Dados Otimizada</h2>
-<h3>Relacionamentos Principais</h3>
-<pre><code class="language-sql">-- Hierarquia Institucional
+<h2 id="-estrutura-de-dados-otimizada">📊 Estrutura de Dados Otimizada</h2><h3 id="relacionamentos-principais">Relacionamentos Principais</h3><pre><code class="language-sql">-- Hierarquia Institucional
 Hemocentro 1:N User
 User N:M SetorAtuacao (via UserSetor)
 
@@ -485,8 +459,7 @@ Doador 1:N TriagemClinica
 TriagemClinica 1:N Doacao
 TipoSanguineo 1:1 EstoqueSangue
 </code></pre>
-<h3>Índices Estratégicos</h3>
-<pre><code class="language-sql">-- Performance Crítica
+<h3 id="ndices-estratgicos">Índices Estratégicos</h3><pre><code class="language-sql">-- Performance Crítica
 CREATE INDEX IX_DOADORES_CPF ON DOADORES(CPF);
 CREATE INDEX IX_DOACOES_DATA ON DOACOES(DATA_DOACAO DESC);
 CREATE INDEX IX_DOADOR_DOENCAS_VALIDACAO ON DOADOR_DOENCAS(VALIDADO_POR_MEDICO);
@@ -495,10 +468,7 @@ CREATE INDEX IX_DOADOR_DOENCAS_VALIDACAO ON DOADOR_DOENCAS(VALIDADO_POR_MEDICO);
 CREATE INDEX IX_USER_SETORES_ATIVO ON USER_SETORES(ID_USER, ATIVO);
 CREATE INDEX IX_USER_SETORES_PRINCIPAL ON USER_SETORES(IS_SETOR_PRINCIPAL);
 </code></pre>
-<h2>🔧 Componentes de Negócio</h2>
-<h3>Domain Services Especializados</h3>
-<h4>1. <strong>ElegibilidadeService</strong></h4>
-<pre><code class="language-java">@Service
+<h2 id="-componentes-de-negcio">🔧 Componentes de Negócio</h2><h3 id="domain-services-especializados">Domain Services Especializados</h3><h4 id="1-strongelegibilidadeservicestrong">1. <strong>ElegibilidadeService</strong></h4><pre><code class="language-java">@Service
 public class ElegibilidadeService {
     
     // Verifica 95 doenças impeditivas
@@ -511,8 +481,7 @@ public class ElegibilidadeService {
     public LocalDate calcularProximaDoacaoPermitida(Doador doador);
 }
 </code></pre>
-<h4>2. <strong>CompatibilidadeSanguineaService</strong></h4>
-<pre><code class="language-java">@Service  
+<h4 id="2-strongcompatibilidadesanguineaservicestrong">2. <strong>CompatibilidadeSanguineaService</strong></h4><pre><code class="language-java">@Service  
 public class CompatibilidadeSanguineaService {
     
     // Lógica baseada em TipoSanguineo.podeDoarPara
@@ -522,8 +491,7 @@ public class CompatibilidadeSanguineaService {
     public EstoqueStatus avaliarEstoqueCritico();
 }
 </code></pre>
-<h4>3. <strong>ValidacaoMedicaService</strong></h4>
-<pre><code class="language-java">@Service
+<h4 id="3-strongvalidacaomedicaservicestrong">3. <strong>ValidacaoMedicaService</strong></h4><pre><code class="language-java">@Service
 public class ValidacaoMedicaService {
     
     // Workflow híbrido: Doador declara + Médico valida
@@ -533,9 +501,7 @@ public class ValidacaoMedicaService {
     public DoadorDoenca detectarDoencaTriagem(Long triagem, DoencaEspecifica doenca);
 }
 </code></pre>
-<h2>📱 API Design Estratégico</h2>
-<h3>RESTful Endpoints</h3>
-<pre><code class="language-java">// Doador Management
+<h2 id="-api-design-estratgico">📱 API Design Estratégico</h2><h3 id="restful-endpoints">RESTful Endpoints</h3><pre><code class="language-java">// Doador Management
 GET    /api/doadores                    // Lista paginada
 POST   /api/doadores                    // Cadastro completo
 GET    /api/doadores/{id}               // Detalhes + doenças
@@ -563,8 +529,7 @@ GET    /api/estoque                     // Status por tipo sanguíneo
 PUT    /api/estoque/{tipoId}            // Atualizar estoque
 GET    /api/estoque/criticos            // Tipos em nível crítico
 </code></pre>
-<h3>Padrões de Response</h3>
-<pre><code class="language-java">// Standard API Response
+<h3 id="padres-de-response">Padrões de Response</h3><pre><code class="language-java">// Standard API Response
 {
     &quot;success&quot;: true,
     &quot;data&quot;: { ... },
@@ -583,9 +548,7 @@ GET    /api/estoque/criticos            // Tipos em nível crítico
     &quot;timestamp&quot;: &quot;2025-08-27T10:30:00Z&quot;
 }
 </code></pre>
-<h2>📊 Monitoring &amp; Analytics</h2>
-<h3>Dashboard Metrics</h3>
-<pre><code class="language-java">// Real-time KPIs
+<h2 id="-monitoring-amp-analytics">📊 Monitoring &amp; Analytics</h2><h3 id="dashboard-metrics">Dashboard Metrics</h3><pre><code class="language-java">// Real-time KPIs
 ├── Doadores ativos por tipo sanguíneo
 ├── Estoque crítico (&lt; nível mínimo)
 ├── Doações por período
@@ -594,17 +557,14 @@ GET    /api/estoque/criticos            // Tipos em nível crítico
 ├── Validações médicas pendentes
 └── Usuários por setor (multi-sector view)
 </code></pre>
-<h3>LGPD Audit Trail</h3>
-<pre><code class="language-java">// Compliance Tracking
+<h3 id="lgpd-audit-trail">LGPD Audit Trail</h3><pre><code class="language-java">// Compliance Tracking
 ├── Todas as operações em dados pessoais
 ├── Finalidade de cada acesso
 ├── Origem IP e usuário responsável
 ├── Consentimentos ativos/revogados
 └── Relatórios de conformidade
 </code></pre>
-<h2>🚀 Deployment Strategy</h2>
-<h3>Environment Configuration</h3>
-<pre><code class="language-yaml"># application-prod.yml
+<h2 id="-deployment-strategy">🚀 Deployment Strategy</h2><h3 id="environment-configuration">Environment Configuration</h3><pre><code class="language-yaml"># application-prod.yml
 spring:
   datasource:
     url: jdbc:sqlserver://prod-db:1433;databaseName=DB_DOESANGUE_MVP
@@ -627,15 +587,12 @@ spring:
     console:
       enabled: true
 </code></pre>
-<h3>Docker Configuration</h3>
-<pre><code class="language-dockerfile">FROM openjdk:17-jdk-slim
+<h3 id="docker-configuration">Docker Configuration</h3><pre><code class="language-dockerfile">FROM openjdk:17-jdk-slim
 COPY target/doesangue-backend.jar app.jar
 EXPOSE 8080
 ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;/app.jar&quot;]
 </code></pre>
-<h2>🔄 Migration Strategy</h2>
-<h3>Implementação Faseada</h3>
-<pre><code>FASE 1 (2 semanas) - Core MVP
+<h2 id="-migration-strategy">🔄 Migration Strategy</h2><h3 id="implementao-faseada">Implementação Faseada</h3><pre><code>FASE 1 (2 semanas) - Core MVP
 ├── Entidades básicas (User, Doador, TipoSanguineo, Hemocentro)
 ├── Autenticação básica
 └── CRUD operations
@@ -658,25 +615,20 @@ FASE 4 (1 semana) - Production Ready
 ├── Monitoring integration
 └── Deployment automation
 </code></pre>
-<h2>🎯 Success Metrics</h2>
-<h3>Technical Metrics</h3>
-<ul>
+<h2 id="-success-metrics">🎯 Success Metrics</h2><h3 id="technical-metrics">Technical Metrics</h3><ul>
 <li><strong>Database Coverage:</strong> 100% (17/17 tabelas)</li>
 <li><strong>API Response Time:</strong> &lt; 200ms (95th percentile)</li>
 <li><strong>System Uptime:</strong> &gt; 99.5%</li>
 <li><strong>LGPD Compliance:</strong> 100% audit coverage</li>
 </ul>
-<h3>Business Metrics</h3>
-<ul>
+<h3 id="business-metrics">Business Metrics</h3><ul>
 <li><strong>User Adoption:</strong> Multi-sector usage tracking</li>
 <li><strong>Process Efficiency:</strong> Triagem-to-donation conversion rate</li>
 <li><strong>Data Quality:</strong> Medical validation completion rate</li>
 <li><strong>Operational Excellence:</strong> Blood shortage prevention</li>
 </ul>
 <hr>
-<h2>📚 Technical Documentation</h2>
-<h3>Code Standards</h3>
-<ul>
+<h2 id="-technical-documentation">📚 Technical Documentation</h2><h3 id="code-standards">Code Standards</h3><ul>
 <li><strong>Java 17+</strong> with modern features</li>
 <li><strong>Spring Boot 3.x</strong> for rapid development</li>
 <li><strong>JPA/Hibernate</strong> for ORM</li>
@@ -684,8 +636,7 @@ FASE 4 (1 semana) - Production Ready
 <li><strong>JUnit 5</strong> for testing</li>
 <li><strong>SonarQube</strong> for code quality</li>
 </ul>
-<h3>Database Standards</h3>
-<ul>
+<h3 id="database-standards">Database Standards</h3><ul>
 <li><strong>Foreign Keys</strong> enforced for referential integrity</li>
 <li><strong>Indexes</strong> optimized for query patterns</li>
 <li><strong>Audit Columns</strong> for all entities</li>

@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 🗺️ Roadmap Completo - Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,12 +316,9 @@
         </nav>
         
         <div class="content">
-            <h1>🗺️ Roadmap Completo - Sistema DoeSangue</h1>
-<p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Status Atual:</strong> FASE 1 Implementada + Swagger Configurado</p>
+            <h1 id="-roadmap-completo-sistema-doesangue">🗺️ Roadmap Completo - Sistema DoeSangue</h1><p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Status Atual:</strong> FASE 1 Implementada + Swagger Configurado</p>
 <hr>
-<h2>📊 Status Atual da Aplicação</h2>
-<h3><span class="badge success">✅</span> <strong>O Que Já Temos (FASE 1):</strong></h3>
-<ul>
+<h2 id="-status-atual-da-aplicao">📊 Status Atual da Aplicação</h2><h3 id="span-classbadge-successspan-strongo-que-j-temos-fase-1strong"><span class="badge success">✅</span> <strong>O Que Já Temos (FASE 1):</strong></h3><ul>
 <li><strong>5 Entidades Originais:</strong> User, UserRole, Hemocentro, Doador, TipoSanguineo</li>
 <li><strong>4 Entidades Novas:</strong> SetorAtuacao, UserSetor, DoencaEspecifica, DoadorDoenca</li>
 <li><strong>Swagger/OpenAPI:</strong> Configuração completa e profissional</li>
@@ -329,8 +326,7 @@
 <li><strong>Arquitetura:</strong> 4 agregados DDD definidos</li>
 <li><strong>Base de Dados:</strong> Schema SQL completo (17 tabelas)</li>
 </ul>
-<h3>🔄 <strong>O Que Falta Implementar:</strong></h3>
-<ul>
+<h3 id="-strongo-que-falta-implementarstrong">🔄 <strong>O Que Falta Implementar:</strong></h3><ul>
 <li><strong>Controllers REST</strong> para as entidades existentes</li>
 <li><strong>DTOs</strong> para entrada/saída de dados</li>
 <li><strong>Services</strong> com regras de negócio</li>
@@ -341,10 +337,7 @@
 <li><strong>Testes Automatizados</strong></li>
 </ul>
 <hr>
-<h2>🎯 FASE 2: Implementação de Controllers e APIs</h2>
-<h3><strong>Prioridade 1: Infraestrutura de APIs (1-2 semanas)</strong></h3>
-<h4><strong>2.1 Sistema de Autenticação</strong></h4>
-<pre><code class="language-java">// Controllers a implementar:
+<h2 id="-fase-2-implementao-de-controllers-e-apis">🎯 FASE 2: Implementação de Controllers e APIs</h2><h3 id="strongprioridade-1-infraestrutura-de-apis-1-2-semanasstrong"><strong>Prioridade 1: Infraestrutura de APIs (1-2 semanas)</strong></h3><h4 id="strong21-sistema-de-autenticaostrong"><strong>2.1 Sistema de Autenticação</strong></h4><pre><code class="language-java">// Controllers a implementar:
 @RestController(&quot;/api/auth&quot;)
 public class AuthController {
     @PostMapping(&quot;/login&quot;)     // Login com JWT
@@ -361,8 +354,7 @@ public class AuthController {
 <li><input disabled="" type="checkbox"> Criar <code>AuthDTO</code> (login/response)</li>
 <li><input disabled="" type="checkbox"> Implementar middleware de autenticação</li>
 </ul>
-<h4><strong>2.2 DTOs Base do Sistema</strong></h4>
-<pre><code class="language-java">// Criar DTOs para todas as entidades:
+<h4 id="strong22-dtos-base-do-sistemastrong"><strong>2.2 DTOs Base do Sistema</strong></h4><pre><code class="language-java">// Criar DTOs para todas as entidades:
 - UserDTO, UserCreateDTO, UserUpdateDTO
 - DoadorDTO, DoadorCreateDTO, DoadorUpdateDTO  
 - HemocentroDTO, SetorAtuacaoDTO
@@ -375,8 +367,7 @@ public class AuthController {
 <li><strong>UpdateDTO:</strong> Para atualização (com ID)</li>
 <li><strong>DetailDTO:</strong> Para detalhes completos</li>
 </ul>
-<h4><strong>2.3 Controllers CRUD Básicos</strong></h4>
-<pre><code class="language-java">// Implementar controllers para entidades FASE 1:
+<h4 id="strong23-controllers-crud-bsicosstrong"><strong>2.3 Controllers CRUD Básicos</strong></h4><pre><code class="language-java">// Implementar controllers para entidades FASE 1:
 1. UserController           (/api/users)
 2. HemocentroController     (/api/hemocentros)  
 3. SetorAtuacaoController   (/api/setores)
@@ -392,9 +383,7 @@ public class AuthController {
 <li><code>PUT /api/resource/{id}</code> - Atualizar</li>
 <li><code>DELETE /api/resource/{id}</code> - Deletar (soft delete)</li>
 </ul>
-<h3><strong>Prioridade 2: Services e Regras de Negócio (2-3 semanas)</strong></h3>
-<h4><strong>2.4 Services com Validações</strong></h4>
-<pre><code class="language-java">@Service
+<h3 id="strongprioridade-2-services-e-regras-de-negcio-2-3-semanasstrong"><strong>Prioridade 2: Services e Regras de Negócio (2-3 semanas)</strong></h3><h4 id="strong24-services-com-validaesstrong"><strong>2.4 Services com Validações</strong></h4><pre><code class="language-java">@Service
 public class DoadorService {
     // Regras específicas de doadores
     public void validarIdadeMinima(LocalDate birthDate);
@@ -411,8 +400,7 @@ public class UserService {
     public boolean temPermissao(Long userId, String acao);
 }
 </code></pre>
-<h4><strong>2.5 Repositories Customizados</strong></h4>
-<pre><code class="language-java">// Queries específicas do negócio:
+<h4 id="strong25-repositories-customizadosstrong"><strong>2.5 Repositories Customizados</strong></h4><pre><code class="language-java">// Queries específicas do negócio:
 public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     List&lt;Doador&gt; findByTipoSanguineo(String tipo);
     List&lt;Doador&gt; findAptosParaDoacao();
@@ -425,8 +413,7 @@ public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
     List&lt;User&gt; findBySetor(Long setorId);
 }
 </code></pre>
-<h4><strong>2.6 Validações de Integridade</strong></h4>
-<pre><code class="language-java">@Component
+<h4 id="strong26-validaes-de-integridadestrong"><strong>2.6 Validações de Integridade</strong></h4><pre><code class="language-java">@Component
 public class DoadorValidator {
     public void validarDadosCompletos(DoadorCreateDTO dto);
     public void validarIdadeParaDoacao(LocalDate birthDate);
@@ -434,17 +421,13 @@ public class DoadorValidator {
 }
 </code></pre>
 <hr>
-<h2>🩸 FASE 3: Processo Completo de Doação (3-4 semanas)</h2>
-<h3><strong>Prioridade 3: Entidades do Processo de Doação</strong></h3>
-<h4><strong>3.1 Implementar Entidades FASE 2</strong></h4>
-<pre><code class="language-java">// Criar e implementar:
+<h2 id="-fase-3-processo-completo-de-doao-3-4-semanas">🩸 FASE 3: Processo Completo de Doação (3-4 semanas)</h2><h3 id="strongprioridade-3-entidades-do-processo-de-doaostrong"><strong>Prioridade 3: Entidades do Processo de Doação</strong></h3><h4 id="strong31-implementar-entidades-fase-2strong"><strong>3.1 Implementar Entidades FASE 2</strong></h4><pre><code class="language-java">// Criar e implementar:
 1. TriagemClinica    + TriagemController + TriagemService
 2. Agendamento       + AgendamentoController + AgendamentoService  
 3. Doacao            + DoacaoController + DoacaoService
 4. EstoqueSangue     + EstoqueController + EstoqueService
 </code></pre>
-<h4><strong>3.2 Workflow Completo de Doação</strong></h4>
-<pre><code class="language-java">@Service
+<h4 id="strong32-workflow-completo-de-doaostrong"><strong>3.2 Workflow Completo de Doação</strong></h4><pre><code class="language-java">@Service
 public class ProcessoDoacaoService {
     
     // 1. Agendamento
@@ -463,23 +446,19 @@ public class ProcessoDoacaoService {
     public void atualizarEstoque(Long doacaoId);
 }
 </code></pre>
-<h4><strong>3.3 Regras de Negócio Críticas</strong></h4>
-<pre><code class="language-java">// Implementar validações:
+<h4 id="strong33-regras-de-negcio-crticasstrong"><strong>3.3 Regras de Negócio Críticas</strong></h4><pre><code class="language-java">// Implementar validações:
 - Intervalo entre doações (60 dias homens, 90 dias mulheres)
 - Critérios de triagem (peso, pressão, hemoglobina)
 - Doenças que impedem doação
 - Gestão inteligente de estoque
 - Alertas de estoque crítico
 </code></pre>
-<h3><strong>Prioridade 4: Sistema de Suporte</strong></h3>
-<h4><strong>3.4 Entidades de Sistema</strong></h4>
-<pre><code class="language-java">// Implementar:
+<h3 id="strongprioridade-4-sistema-de-suportestrong"><strong>Prioridade 4: Sistema de Suporte</strong></h3><h4 id="strong34-entidades-de-sistemastrong"><strong>3.4 Entidades de Sistema</strong></h4><pre><code class="language-java">// Implementar:
 1. ConfiguracaoSistema   + ConfigController
 2. Notificacao          + NotificacaoController  
 3. LogAuditoriaLgpd     + AuditoriaController
 </code></pre>
-<h4><strong>3.5 Funcionalidades Avançadas</strong></h4>
-<pre><code class="language-java">@Service
+<h4 id="strong35-funcionalidades-avanadasstrong"><strong>3.5 Funcionalidades Avançadas</strong></h4><pre><code class="language-java">@Service
 public class NotificacaoService {
     public void alertarEstoqueCritico(String tipoSanguineo);
     public void notificarValidacaoMedica(Long doadorId);
@@ -493,10 +472,7 @@ public class AuditoriaService {
 }
 </code></pre>
 <hr>
-<h2>🧪 FASE 4: Qualidade e Produção (2-3 semanas)</h2>
-<h3><strong>Prioridade 5: Testes e Qualidade</strong></h3>
-<h4><strong>4.1 Testes Automatizados</strong></h4>
-<pre><code class="language-java">// Implementar:
+<h2 id="-fase-4-qualidade-e-produo-2-3-semanas">🧪 FASE 4: Qualidade e Produção (2-3 semanas)</h2><h3 id="strongprioridade-5-testes-e-qualidadestrong"><strong>Prioridade 5: Testes e Qualidade</strong></h3><h4 id="strong41-testes-automatizadosstrong"><strong>4.1 Testes Automatizados</strong></h4><pre><code class="language-java">// Implementar:
 @SpringBootTest
 public class DoadorControllerTest {
     @Test void deveCriarDoadorComSucesso();
@@ -522,15 +498,13 @@ public class ProcessoDoacaoServiceTest {
 <li><input disabled="" type="checkbox"> E2E Tests (Workflow completo)</li>
 <li><input disabled="" type="checkbox"> Performance Tests (Carga)</li>
 </ul>
-<h4><strong>4.2 Documentação API Completa</strong></h4>
-<pre><code class="language-java">// Melhorar documentação Swagger:
+<h4 id="strong42-documentao-api-completastrong"><strong>4.2 Documentação API Completa</strong></h4><pre><code class="language-java">// Melhorar documentação Swagger:
 - Todos os endpoints documentados
 - Exemplos reais de JSON
 - Códigos de erro específicos  
 - Schemas completos dos DTOs
 </code></pre>
-<h4><strong>4.3 Configurações de Produção</strong></h4>
-<pre><code class="language-properties"># application-prod.properties
+<h4 id="strong43-configuraes-de-produostrong"><strong>4.3 Configurações de Produção</strong></h4><pre><code class="language-properties"># application-prod.properties
 spring.profiles.active=prod
 spring.datasource.url=${DATABASE_URL}
 logging.level.com.faculdade=WARN
@@ -541,9 +515,7 @@ spring.profiles.active=dev
 logging.level.com.faculdade=DEBUG
 springdoc.swagger-ui.enabled=true
 </code></pre>
-<h3><strong>Prioridade 6: Segurança e Performance</strong></h3>
-<h4><strong>4.4 Segurança Avançada</strong></h4>
-<pre><code class="language-java">@Configuration
+<h3 id="strongprioridade-6-segurana-e-performancestrong"><strong>Prioridade 6: Segurança e Performance</strong></h3><h4 id="strong44-segurana-avanadastrong"><strong>4.4 Segurança Avançada</strong></h4><pre><code class="language-java">@Configuration
 public class SecurityConfig {
     // CORS configurado
     // Rate limiting
@@ -552,8 +524,7 @@ public class SecurityConfig {
     // Logs de segurança
 }
 </code></pre>
-<h4><strong>4.5 Performance e Cache</strong></h4>
-<pre><code class="language-java">@Service
+<h4 id="strong45-performance-e-cachestrong"><strong>4.5 Performance e Cache</strong></h4><pre><code class="language-java">@Service
 public class EstoqueService {
     @Cacheable(&quot;estoque-critico&quot;)
     public List&lt;EstoqueSangue&gt; buscarEstoqueCritico();
@@ -563,17 +534,13 @@ public class EstoqueService {
 }
 </code></pre>
 <hr>
-<h2>🚀 FASE 5: Deploy e Monitoramento (1-2 semanas)</h2>
-<h3><strong>Prioridade 7: Preparação para Produção</strong></h3>
-<h4><strong>5.1 Containerização</strong></h4>
-<pre><code class="language-dockerfile"># Dockerfile
+<h2 id="-fase-5-deploy-e-monitoramento-1-2-semanas">🚀 FASE 5: Deploy e Monitoramento (1-2 semanas)</h2><h3 id="strongprioridade-7-preparao-para-produostrong"><strong>Prioridade 7: Preparação para Produção</strong></h3><h4 id="strong51-containerizaostrong"><strong>5.1 Containerização</strong></h4><pre><code class="language-dockerfile"># Dockerfile
 FROM openjdk:21-jdk-slim
 COPY target/doesangue-backend.jar app.jar
 EXPOSE 8080
 ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;/app.jar&quot;]
 </code></pre>
-<h4><strong>5.2 CI/CD Pipeline</strong></h4>
-<pre><code class="language-yaml"># .github/workflows/deploy.yml
+<h4 id="strong52-cicd-pipelinestrong"><strong>5.2 CI/CD Pipeline</strong></h4><pre><code class="language-yaml"># .github/workflows/deploy.yml
 name: Deploy DoeSangue
 on: push
 jobs:
@@ -588,8 +555,7 @@ jobs:
       - run: docker build -t doesangue .
       - run: docker push $REGISTRY/doesangue
 </code></pre>
-<h4><strong>5.3 Monitoramento</strong></h4>
-<pre><code class="language-java">// Métricas e Health Checks
+<h4 id="strong53-monitoramentostrong"><strong>5.3 Monitoramento</strong></h4><pre><code class="language-java">// Métricas e Health Checks
 @Component
 public class HealthIndicator implements HealthIndicator {
     public Health health() {
@@ -600,88 +566,72 @@ public class HealthIndicator implements HealthIndicator {
 }
 </code></pre>
 <hr>
-<h2>📅 Cronograma Detalhado</h2>
-<h3><strong>Semanas 1-2: APIs Base</strong></h3>
-<ul>
+<h2 id="-cronograma-detalhado">📅 Cronograma Detalhado</h2><h3 id="strongsemanas-1-2-apis-basestrong"><strong>Semanas 1-2: APIs Base</strong></h3><ul>
 <li><strong>Semana 1:</strong> Auth + DTOs + UserController</li>
 <li><strong>Semana 2:</strong> DoadorController + HemocentroController + Swagger completo</li>
 </ul>
-<h3><strong>Semanas 3-5: Regras de Negócio</strong></h3>
-<ul>
+<h3 id="strongsemanas-3-5-regras-de-negciostrong"><strong>Semanas 3-5: Regras de Negócio</strong></h3><ul>
 <li><strong>Semana 3:</strong> Services + Validações + Repositories</li>
 <li><strong>Semana 4:</strong> Controllers restantes + Testes unitários</li>
 <li><strong>Semana 5:</strong> Integração + Documentação</li>
 </ul>
-<h3><strong>Semanas 6-9: Processo de Doação</strong></h3>
-<ul>
+<h3 id="strongsemanas-6-9-processo-de-doaostrong"><strong>Semanas 6-9: Processo de Doação</strong></h3><ul>
 <li><strong>Semana 6:</strong> Entidades FASE 2 (Triagem + Agendamento)</li>
 <li><strong>Semana 7:</strong> Doacao + EstoqueSangue + Workflow</li>
 <li><strong>Semana 8:</strong> Sistema de Suporte (Config + Notificação + Auditoria)</li>
 <li><strong>Semana 9:</strong> Integração + Testes E2E</li>
 </ul>
-<h3><strong>Semanas 10-12: Produção</strong></h3>
-<ul>
+<h3 id="strongsemanas-10-12-produostrong"><strong>Semanas 10-12: Produção</strong></h3><ul>
 <li><strong>Semana 10:</strong> Testes completos + Performance</li>
 <li><strong>Semana 11:</strong> Segurança + Deploy + CI/CD  </li>
 <li><strong>Semana 12:</strong> Monitoramento + Documentação final</li>
 </ul>
 <hr>
-<h2>🎯 Entregáveis por FASE</h2>
-<h3><strong>FASE 2 (APIs Base):</strong></h3>
-<ul>
+<h2 id="-entregveis-por-fase">🎯 Entregáveis por FASE</h2><h3 id="strongfase-2-apis-basestrong"><strong>FASE 2 (APIs Base):</strong></h3><ul>
 <li><input disabled="" type="checkbox"> 6 Controllers REST funcionais</li>
 <li><input disabled="" type="checkbox"> Sistema de autenticação JWT</li>
 <li><input disabled="" type="checkbox"> 15+ DTOs documentados</li>
 <li><input disabled="" type="checkbox"> Swagger UI completo</li>
 <li><input disabled="" type="checkbox"> Testes unitários básicos</li>
 </ul>
-<h3><strong>FASE 3 (Processo Doação):</strong></h3>
-<ul>
+<h3 id="strongfase-3-processo-doaostrong"><strong>FASE 3 (Processo Doação):</strong></h3><ul>
 <li><input disabled="" type="checkbox"> Workflow completo de doação</li>
 <li><input disabled="" type="checkbox"> 4 entidades novas implementadas</li>
 <li><input disabled="" type="checkbox"> Sistema de notificações</li>
 <li><input disabled="" type="checkbox"> Auditoria LGPD funcional</li>
 <li><input disabled="" type="checkbox"> Dashboard de estoque</li>
 </ul>
-<h3><strong>FASE 4 (Qualidade):</strong></h3>
-<ul>
+<h3 id="strongfase-4-qualidadestrong"><strong>FASE 4 (Qualidade):</strong></h3><ul>
 <li><input disabled="" type="checkbox"> Cobertura de testes &gt;80%</li>
 <li><input disabled="" type="checkbox"> Performance otimizada</li>
 <li><input disabled="" type="checkbox"> Segurança hardened</li>
 <li><input disabled="" type="checkbox"> Documentação completa</li>
 </ul>
-<h3><strong>FASE 5 (Produção):</strong></h3>
-<ul>
+<h3 id="strongfase-5-produostrong"><strong>FASE 5 (Produção):</strong></h3><ul>
 <li><input disabled="" type="checkbox"> Deploy automatizado</li>
 <li><input disabled="" type="checkbox"> Monitoramento ativo</li>
 <li><input disabled="" type="checkbox"> Backup configurado</li>
 <li><input disabled="" type="checkbox"> Logs estruturados</li>
 </ul>
 <hr>
-<h2>🚨 Riscos e Mitigações</h2>
-<h3><strong>Riscos Técnicos:</strong></h3>
-<ul>
+<h2 id="-riscos-e-mitigaes">🚨 Riscos e Mitigações</h2><h3 id="strongriscos-tcnicosstrong"><strong>Riscos Técnicos:</strong></h3><ul>
 <li><strong>Performance do Banco:</strong> Implementar índices e cache</li>
 <li><strong>Segurança JWT:</strong> Configurar expiração e refresh</li>
 <li><strong>Integridade de Dados:</strong> Validações rigorosas + constraints</li>
 </ul>
-<h3><strong>Riscos de Negócio:</strong></h3>
-<ul>
+<h3 id="strongriscos-de-negciostrong"><strong>Riscos de Negócio:</strong></h3><ul>
 <li><strong>Regras Complexas:</strong> Validar com especialistas médicos</li>
 <li><strong>LGPD Compliance:</strong> Auditoria externa das implementações</li>
 <li><strong>Escalabilidade:</strong> Projetar para crescimento futuro</li>
 </ul>
 <hr>
-<h2>💡 Próximas Ações Imediatas</h2>
-<h3><strong>Esta Semana (27 Ago - 2 Set):</strong></h3>
-<ol>
+<h2 id="-prximas-aes-imediatas">💡 Próximas Ações Imediatas</h2><h3 id="strongesta-semana-27-ago-2-setstrong"><strong>Esta Semana (27 Ago - 2 Set):</strong></h3><ol>
 <li><strong>Implementar AuthController e JWT</strong></li>
 <li><strong>Criar DTOs base (User, Doador, Hemocentro)</strong></li>
 <li><strong>Configurar Spring Security</strong></li>
 <li><strong>Testar Swagger com endpoints reais</strong></li>
 </ol>
-<h3><strong>Próxima Semana (3-9 Set):</strong></h3>
-<ol>
+<h3 id="strongprxima-semana-3-9-setstrong"><strong>Próxima Semana (3-9 Set):</strong></h3><ol>
 <li><strong>Implementar UserController completo</strong></li>
 <li><strong>Implementar DoadorController</strong>  </li>
 <li><strong>Criar Services com validações</strong></li>

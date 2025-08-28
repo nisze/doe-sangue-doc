@@ -365,6 +365,24 @@ async function convertMdToHtml(mdFilePath, outputDir) {
         // Melhorar markdown
         const enhancedMd = enhanceMarkdown(mdContent);
         
+        // Configurar marked para gerar IDs nos headers
+        const renderer = new marked.Renderer();
+        renderer.heading = function(text, level) {
+            const id = text
+                .toLowerCase()
+                .replace(/[^\w\-\s]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/\-+/g, '-')
+                .trim();
+            return `<h${level} id="${id}">${text}</h${level}>`;
+        };
+        
+        marked.setOptions({
+            renderer: renderer,
+            headerIds: true,
+            headerPrefix: '',
+        });
+        
         // Converter para HTML
         const htmlContent = marked(enhancedMd);
         

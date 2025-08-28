@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 📚 Guia de Boas Práticas - Controllers REST com Spring Boot</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,11 +316,9 @@
         </nav>
         
         <div class="content">
-            <h1>📚 Guia de Boas Práticas - Controllers REST com Spring Boot</h1>
-<p><strong>Finalidade:</strong> Guia educativo para desenvolvimento de controllers REST profissionais<br><strong>Foco:</strong> Anotações, validações e documentação com Swagger</p>
+            <h1 id="-guia-de-boas-prticas-controllers-rest-com-spring-boot">📚 Guia de Boas Práticas - Controllers REST com Spring Boot</h1><p><strong>Finalidade:</strong> Guia educativo para desenvolvimento de controllers REST profissionais<br><strong>Foco:</strong> Anotações, validações e documentação com Swagger</p>
 <hr>
-<h2>🎯 Objetivo deste Guia</h2>
-<p>Este documento apresenta as <strong>melhores práticas</strong> para desenvolvimento de controllers REST no Spring Boot, com foco em:</p>
+<h2 id="-objetivo-deste-guia">🎯 Objetivo deste Guia</h2><p>Este documento apresenta as <strong>melhores práticas</strong> para desenvolvimento de controllers REST no Spring Boot, com foco em:</p>
 <ul>
 <li><strong>Anotações essenciais</strong> e seu uso correto</li>
 <li><strong>Validações robustas</strong> com Bean Validation</li>
@@ -328,9 +326,7 @@
 <li><strong>Padrões de código limpo</strong> e manutenível</li>
 </ul>
 <hr>
-<h2>🏗️ Estrutura Básica de um Controller</h2>
-<h3><strong>📋 Anotações Principais</strong></h3>
-<pre><code class="language-java">@RestController                    // Marca a classe como controller REST
+<h2 id="-estrutura-bsica-de-um-controller">🏗️ Estrutura Básica de um Controller</h2><h3 id="strong-anotaes-principaisstrong"><strong>📋 Anotações Principais</strong></h3><pre><code class="language-java">@RestController                    // Marca a classe como controller REST
 @RequestMapping(&quot;/api/recurso&quot;)    // Define o path base
 @Tag(name = &quot;Recurso&quot;, description = &quot;Operações do recurso&quot;)  // Swagger
 @Validated                        // Habilita validações nos parâmetros
@@ -338,8 +334,7 @@ public class RecursoController {
     // implementação
 }
 </code></pre>
-<h3><strong>🔧 Injeção de Dependências</strong></h3>
-<pre><code class="language-java">private final RecursoService service;
+<h3 id="strong-injeo-de-dependnciasstrong"><strong>🔧 Injeção de Dependências</strong></h3><pre><code class="language-java">private final RecursoService service;
 private final RecursoMapper mapper;
 
 public RecursoController(RecursoService service, RecursoMapper mapper) {
@@ -348,9 +343,7 @@ public RecursoController(RecursoService service, RecursoMapper mapper) {
 }
 </code></pre>
 <hr>
-<h2>🚀 Padrões de Endpoints REST</h2>
-<h3><strong>1. 📋 Listagem com Paginação</strong></h3>
-<pre><code class="language-java">@GetMapping
+<h2 id="-padres-de-endpoints-rest">🚀 Padrões de Endpoints REST</h2><h3 id="strong1-listagem-com-paginaostrong"><strong>1. 📋 Listagem com Paginação</strong></h3><pre><code class="language-java">@GetMapping
 @Operation(
     summary = &quot;Listar recursos com paginação&quot;,
     description = &quot;Retorna lista paginada de recursos com filtros opcionais&quot;
@@ -375,8 +368,7 @@ public ResponseEntity&lt;Page&lt;RecursoDTO&gt;&gt; listar(
     return ResponseEntity.ok(dtos);
 }
 </code></pre>
-<h3><strong>2. 🔍 Busca por ID</strong></h3>
-<pre><code class="language-java">@GetMapping(&quot;/{id}&quot;)
+<h3 id="strong2-busca-por-idstrong"><strong>2. 🔍 Busca por ID</strong></h3><pre><code class="language-java">@GetMapping(&quot;/{id}&quot;)
 @Operation(summary = &quot;Buscar recurso por ID&quot;)
 @ApiResponses({
     @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Recurso encontrado&quot;),
@@ -391,8 +383,7 @@ public ResponseEntity&lt;RecursoDTO&gt; buscarPorId(
     return ResponseEntity.ok(dto);
 }
 </code></pre>
-<h3><strong>3. ➕ Criação de Recurso</strong></h3>
-<pre><code class="language-java">@PostMapping
+<h3 id="strong3-criao-de-recursostrong"><strong>3. ➕ Criação de Recurso</strong></h3><pre><code class="language-java">@PostMapping
 @Operation(summary = &quot;Criar novo recurso&quot;)
 @ApiResponses({
     @ApiResponse(responseCode = &quot;201&quot;, description = &quot;Recurso criado com sucesso&quot;),
@@ -416,8 +407,7 @@ public ResponseEntity&lt;RecursoDTO&gt; criar(
     return ResponseEntity.created(location).body(dto);
 }
 </code></pre>
-<h3><strong>4. 🔄 Atualização de Recurso</strong></h3>
-<pre><code class="language-java">@PutMapping(&quot;/{id}&quot;)
+<h3 id="strong4-atualizao-de-recursostrong"><strong>4. 🔄 Atualização de Recurso</strong></h3><pre><code class="language-java">@PutMapping(&quot;/{id}&quot;)
 @Operation(summary = &quot;Atualizar recurso existente&quot;)
 @ApiResponses({
     @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Recurso atualizado&quot;),
@@ -436,8 +426,7 @@ public ResponseEntity&lt;RecursoDTO&gt; atualizar(
     return ResponseEntity.ok(dto);
 }
 </code></pre>
-<h3><strong>5. 🗑️ Exclusão de Recurso</strong></h3>
-<pre><code class="language-java">@DeleteMapping(&quot;/{id}&quot;)
+<h3 id="strong5-excluso-de-recursostrong"><strong>5. 🗑️ Exclusão de Recurso</strong></h3><pre><code class="language-java">@DeleteMapping(&quot;/{id}&quot;)
 @Operation(summary = &quot;Excluir recurso&quot;)
 @ApiResponses({
     @ApiResponse(responseCode = &quot;204&quot;, description = &quot;Recurso excluído&quot;),
@@ -453,10 +442,7 @@ public ResponseEntity&lt;Void&gt; excluir(
 }
 </code></pre>
 <hr>
-<h2>🎨 DTOs com Validações</h2>
-<h3><strong>� Escolhendo Entre <code>public record</code> e <code>public class</code></strong></h3>
-<h4><strong>🆕 public record - Moderna e Imutável (Java 14+)</strong></h4>
-<p><strong>Características:</strong></p>
+<h2 id="-dtos-com-validaes">🎨 DTOs com Validações</h2><h3 id="strong-escolhendo-entre-codepublic-recordcode-e-codepublic-classcodestrong"><strong>� Escolhendo Entre <code>public record</code> e <code>public class</code></strong></h3><h4 id="strong-public-record-moderna-e-imutvel-java-14strong"><strong>🆕 public record - Moderna e Imutável (Java 14+)</strong></h4><p><strong>Características:</strong></p>
 <ul>
 <li><strong>Imutável por padrão</strong> - Todos os campos são <code>final</code></li>
 <li><strong>Menos código</strong> - Elimina getters/setters/equals/hashCode</li>
@@ -483,8 +469,7 @@ public record RecursoCreateDTO(
     BigDecimal valor
 ) {}
 </code></pre>
-<h4><strong>🏗️ public class - Tradicional e Flexível</strong></h4>
-<p><strong>Características:</strong></p>
+<h4 id="strong-public-class-tradicional-e-flexvelstrong"><strong>🏗️ public class - Tradicional e Flexível</strong></h4><p><strong>Características:</strong></p>
 <ul>
 <li><strong>Mutável</strong> - Campos podem ser modificados depois da criação</li>
 <li><strong>Flexibilidade total</strong> - Permite métodos customizados</li>
@@ -520,8 +505,7 @@ public class RecursoCreateDTO {
     }
 }
 </code></pre>
-<h4><strong>🎯 Guia de Decisão</strong></h4>
-<table>
+<h4 id="strong-guia-de-decisostrong"><strong>🎯 Guia de Decisão</strong></h4><table>
 <thead>
 <tr>
 <th><strong>Cenário</strong></th>
@@ -565,8 +549,7 @@ public class RecursoCreateDTO {
 <td><span class="badge success">✅</span> <strong>Garantida</strong></td>
 </tr>
 </tbody></table>
-<h4><strong>💡 Recomendação Geral</strong></h4>
-<pre><code class="language-java">// &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; PREFERÍVEL - Records para DTOs simples
+<h4 id="strong-recomendao-geralstrong"><strong>💡 Recomendação Geral</strong></h4><pre><code class="language-java">// &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; PREFERÍVEL - Records para DTOs simples
 public record ProductCreateDTO(
     @NotBlank String name,
     @Positive BigDecimal price,
@@ -586,8 +569,7 @@ public class ProductUpdateDTO {
     }
 }
 </code></pre>
-<h3><strong>�📥 DTO de Criação</strong></h3>
-<pre><code class="language-java">@Schema(description = &quot;Dados para criação de recurso&quot;)
+<h3 id="strong-dto-de-criaostrong"><strong>�📥 DTO de Criação</strong></h3><pre><code class="language-java">@Schema(description = &quot;Dados para criação de recurso&quot;)
 public class RecursoCreateDTO {
     
     @Schema(description = &quot;Nome do recurso&quot;, example = &quot;Recurso Exemplo&quot;)
@@ -616,8 +598,7 @@ public class RecursoCreateDTO {
     // getters e setters
 }
 </code></pre>
-<h3><strong>📤 DTO de Resposta</strong></h3>
-<pre><code class="language-java">@Schema(description = &quot;Dados de resposta do recurso&quot;)
+<h3 id="strong-dto-de-respostastrong"><strong>📤 DTO de Resposta</strong></h3><pre><code class="language-java">@Schema(description = &quot;Dados de resposta do recurso&quot;)
 public class RecursoDTO {
     
     @Schema(description = &quot;ID único do recurso&quot;, accessMode = Schema.AccessMode.READ_ONLY)
@@ -647,8 +628,7 @@ public class RecursoDTO {
     // getters e setters
 }
 </code></pre>
-<h3><strong>🔍 DTO de Filtros</strong></h3>
-<pre><code class="language-java">@Schema(description = &quot;Filtros para busca de recursos&quot;)
+<h3 id="strong-dto-de-filtrosstrong"><strong>🔍 DTO de Filtros</strong></h3><pre><code class="language-java">@Schema(description = &quot;Filtros para busca de recursos&quot;)
 public class RecursoFiltroDTO {
     
     @Schema(description = &quot;Buscar por nome (busca parcial)&quot;, example = &quot;exemplo&quot;)
@@ -679,9 +659,7 @@ public class RecursoFiltroDTO {
 }
 </code></pre>
 <hr>
-<h2>📖 Documentação Swagger Avançada</h2>
-<h3><strong>🏷️ Tags e Operações</strong></h3>
-<pre><code class="language-java">@Tag(
+<h2 id="-documentao-swagger-avanada">📖 Documentação Swagger Avançada</h2><h3 id="strong-tags-e-operaesstrong"><strong>🏷️ Tags e Operações</strong></h3><pre><code class="language-java">@Tag(
     name = &quot;Recursos&quot;, 
     description = &quot;API para gerenciamento de recursos do sistema&quot;
 )
@@ -701,8 +679,7 @@ public class RecursoFiltroDTO {
     tags = {&quot;Recursos&quot;}
 )
 </code></pre>
-<h3><strong>📝 Exemplos Completos</strong></h3>
-<pre><code class="language-java">@io.swagger.v3.oas.annotations.parameters.RequestBody(
+<h3 id="strong-exemplos-completosstrong"><strong>📝 Exemplos Completos</strong></h3><pre><code class="language-java">@io.swagger.v3.oas.annotations.parameters.RequestBody(
     description = &quot;Dados do recurso&quot;,
     required = true,
     content = @Content(
@@ -737,8 +714,7 @@ public class RecursoFiltroDTO {
     )
 )
 </code></pre>
-<h3><strong>🔧 Respostas Documentadas</strong></h3>
-<pre><code class="language-java">@ApiResponses({
+<h3 id="strong-respostas-documentadasstrong"><strong>🔧 Respostas Documentadas</strong></h3><pre><code class="language-java">@ApiResponses({
     @ApiResponse(
         responseCode = &quot;200&quot;,
         description = &quot;&lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Operação realizada com sucesso&quot;,
@@ -786,9 +762,7 @@ public class RecursoFiltroDTO {
 })
 </code></pre>
 <hr>
-<h2>🔒 Segurança e Validações</h2>
-<h3><strong>🛡️ Validações de Entrada</strong></h3>
-<pre><code class="language-java">// Validações básicas
+<h2 id="-segurana-e-validaes">🔒 Segurança e Validações</h2><h3 id="strong-validaes-de-entradastrong"><strong>🛡️ Validações de Entrada</strong></h3><pre><code class="language-java">// Validações básicas
 @NotNull(message = &quot;Campo obrigatório&quot;)
 @NotBlank(message = &quot;Campo não pode estar vazio&quot;)
 @NotEmpty(message = &quot;Lista não pode estar vazia&quot;)
@@ -813,17 +787,14 @@ public class RecursoFiltroDTO {
 @Future(message = &quot;Data deve estar no futuro&quot;)
 @PastOrPresent(message = &quot;Data deve ser passado ou presente&quot;)
 </code></pre>
-<h3><strong>🔐 Autorização</strong></h3>
-<pre><code class="language-java">@PreAuthorize(&quot;hasRole(&#39;ADMIN&#39;)&quot;)
+<h3 id="strong-autorizaostrong"><strong>🔐 Autorização</strong></h3><pre><code class="language-java">@PreAuthorize(&quot;hasRole(&#39;ADMIN&#39;)&quot;)
 @Operation(security = @SecurityRequirement(name = &quot;bearerAuth&quot;))
 public ResponseEntity&lt;RecursoDTO&gt; operacaoRestrita() {
     // implementação
 }
 </code></pre>
 <hr>
-<h2>🛠️ Tratamento de Erros</h2>
-<h3><strong><span class="badge warning">⚠️</span> Exception Handler Global</strong></h3>
-<pre><code class="language-java">@RestControllerAdvice
+<h2 id="-tratamento-de-erros">🛠️ Tratamento de Erros</h2><h3 id="strongspan-classbadge-warningspan-exception-handler-globalstrong"><strong><span class="badge warning">⚠️</span> Exception Handler Global</strong></h3><pre><code class="language-java">@RestControllerAdvice
 public class GlobalExceptionHandler {
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -854,9 +825,7 @@ public class GlobalExceptionHandler {
 }
 </code></pre>
 <hr>
-<h2>🧪 Testabilidade</h2>
-<h3><strong>🔬 Controller Test</strong></h3>
-<pre><code class="language-java">@WebMvcTest(RecursoController.class)
+<h2 id="-testabilidade">🧪 Testabilidade</h2><h3 id="strong-controller-teststrong"><strong>🔬 Controller Test</strong></h3><pre><code class="language-java">@WebMvcTest(RecursoController.class)
 class RecursoControllerTest {
     
     @Autowired
@@ -899,9 +868,7 @@ class RecursoControllerTest {
 }
 </code></pre>
 <hr>
-<h2>🎯 Boas Práticas Resumidas</h2>
-<h3><strong><span class="badge success">✅</span> Fazer:</strong></h3>
-<ul>
+<h2 id="-boas-prticas-resumidas">🎯 Boas Práticas Resumidas</h2><h3 id="strongspan-classbadge-successspan-fazerstrong"><strong><span class="badge success">✅</span> Fazer:</strong></h3><ul>
 <li><strong>Use DTOs</strong> separados para entrada e saída</li>
 <li><strong>Valide todas as entradas</strong> com Bean Validation</li>
 <li><strong>Documente completamente</strong> com Swagger</li>
@@ -910,8 +877,7 @@ class RecursoControllerTest {
 <li><strong>Use ResponseEntity</strong> para controle preciso de status</li>
 <li><strong>Separe responsabilidades</strong> (Controller → Service → Repository)</li>
 </ul>
-<h3><strong><span class="badge danger">❌</span> Evitar:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-dangerspan-evitarstrong"><strong><span class="badge danger">❌</span> Evitar:</strong></h3><ul>
 <li><strong>Expor entidades JPA</strong> diretamente</li>
 <li><strong>Misturar lógica de negócio</strong> no controller</li>
 <li><strong>Ignorar validações</strong> de entrada</li>
@@ -920,16 +886,13 @@ class RecursoControllerTest {
 <li><strong>Métodos muito grandes</strong> ou complexos</li>
 </ul>
 <hr>
-<h2>📚 Recursos Adicionais</h2>
-<h3><strong>🔗 Links Úteis:</strong></h3>
-<ul>
+<h2 id="-recursos-adicionais">📚 Recursos Adicionais</h2><h3 id="strong-links-teisstrong"><strong>🔗 Links Úteis:</strong></h3><ul>
 <li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/">Spring Boot Reference</a></li>
 <li><a href="https://beanvalidation.org/2.0/spec/">Bean Validation Specification</a></li>
 <li><a href="https://swagger.io/specification/">OpenAPI 3 Specification</a></li>
 <li><a href="https://docs.spring.io/spring-security/reference/">Spring Security Reference</a></li>
 </ul>
-<h3><strong>📖 Padrões Recomendados:</strong></h3>
-<ul>
+<h3 id="strong-padres-recomendadosstrong"><strong>📖 Padrões Recomendados:</strong></h3><ul>
 <li><strong>REST API Design</strong> - Princípios RESTful</li>
 <li><strong>Clean Code</strong> - Código limpo e legível</li>
 <li><strong>SOLID Principles</strong> - Princípios de design</li>

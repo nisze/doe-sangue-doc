@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 📚 Documentação Completa das Entidades - Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,11 +316,9 @@
         </nav>
         
         <div class="content">
-            <h1>📚 Documentação Completa das Entidades - Sistema DoeSangue</h1>
-<p><strong>Versão:</strong> v2.0<br><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Desenvolvedor:</strong> Dev Team</p>
+            <h1 id="-documentao-completa-das-entidades-sistema-doesangue">📚 Documentação Completa das Entidades - Sistema DoeSangue</h1><p><strong>Versão:</strong> v2.0<br><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Desenvolvedor:</strong> Dev Team</p>
 <hr>
-<h2>📋 Índice</h2>
-<ol>
+<h2 id="-ndice">📋 Índice</h2><ol>
 <li><a href="#vis%C3%A3o-geral-do-sistema">Visão Geral do Sistema</a></li>
 <li><a href="#agregados-de-dom%C3%ADnio">Agregados de Domínio</a></li>
 <li><a href="#entidades-detalhadas">Entidades Detalhadas</a></li>
@@ -331,18 +329,15 @@
 <li><a href="#guia-de-boas-pr%C3%A1ticas">Guia de Boas Práticas</a></li>
 </ol>
 <hr>
-<h2>🎯 Visão Geral do Sistema</h2>
-<p>O Sistema DoeSangue é arquitetado em <strong>4 agregados principais</strong> seguindo padrões DDD (Domain-Driven Design), com <strong>17 entidades</strong> que cobrem todo o ciclo de doação de sangue.</p>
-<h3><strong>📊 Estatísticas do Sistema:</strong></h3>
-<ul>
+<h2 id="-viso-geral-do-sistema">🎯 Visão Geral do Sistema</h2><p>O Sistema DoeSangue é arquitetado em <strong>4 agregados principais</strong> seguindo padrões DDD (Domain-Driven Design), com <strong>17 entidades</strong> que cobrem todo o ciclo de doação de sangue.</p>
+<h3 id="strong-estatsticas-do-sistemastrong"><strong>📊 Estatísticas do Sistema:</strong></h3><ul>
 <li><strong>17 Entidades JPA</strong> mapeadas</li>
 <li><strong>4 Agregados</strong> de domínio</li>
 <li><strong>6 Enums</strong> para type safety</li>
 <li><strong>100% Cobertura</strong> do schema SQL</li>
 <li><strong>Multi-setor</strong> e <strong>Workflow médico</strong> implementados</li>
 </ul>
-<h3><strong>🏗️ Arquitetura Geral:</strong></h3>
-<pre><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+<h3 id="strong-arquitetura-geralstrong"><strong>🏗️ Arquitetura Geral:</strong></h3><pre><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   INSTITUTIONAL │    │      DONOR      │    │ DONATION_PROCESS│    │ SYSTEM_SUPPORT  │
 │                 │    │                 │    │                 │    │                 │
 │ • Hemocentro    │    │ • Doador        │    │ • TriagemClinica│    │ • ConfigSistema │
@@ -353,42 +348,34 @@
 └─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
 </code></pre>
 <hr>
-<h2>🏢 Agregados de Domínio</h2>
-<h3><strong>1. Agregado INSTITUTIONAL</strong></h3>
-<p><strong>Responsabilidade:</strong> Gestão de usuários, hemocentros e estrutura organizacional</p>
+<h2 id="-agregados-de-domnio">🏢 Agregados de Domínio</h2><h3 id="strong1-agregado-institutionalstrong"><strong>1. Agregado INSTITUTIONAL</strong></h3><p><strong>Responsabilidade:</strong> Gestão de usuários, hemocentros e estrutura organizacional</p>
 <pre><code class="language-java">Hemocentro (Aggregate Root)
 ├── User (Entity)
 │   └── UserSetor (Association Entity)
 ├── UserRole (Entity)  
 └── SetorAtuacao (Entity)
 </code></pre>
-<h3><strong>2. Agregado DONOR</strong></h3>
-<p><strong>Responsabilidade:</strong> Gestão de doadores, tipos sanguíneos e histórico médico</p>
+<h3 id="strong2-agregado-donorstrong"><strong>2. Agregado DONOR</strong></h3><p><strong>Responsabilidade:</strong> Gestão de doadores, tipos sanguíneos e histórico médico</p>
 <pre><code class="language-java">Doador (Aggregate Root)
 ├── TipoSanguineo (Entity)
 ├── DoadorDoenca (Association Entity)
 ├── DoencaEspecifica (Entity)
 └── ConsentimentoLgpd (Entity)
 </code></pre>
-<h3><strong>3. Agregado DONATION_PROCESS</strong></h3>
-<p><strong>Responsabilidade:</strong> Processo completo de doação desde agendamento até estoque</p>
+<h3 id="strong3-agregado-donation_processstrong"><strong>3. Agregado DONATION_PROCESS</strong></h3><p><strong>Responsabilidade:</strong> Processo completo de doação desde agendamento até estoque</p>
 <pre><code class="language-java">Doacao (Aggregate Root)
 ├── Agendamento (Entity)
 ├── TriagemClinica (Entity)
 └── EstoqueSangue (Entity)
 </code></pre>
-<h3><strong>4. Agregado SYSTEM_SUPPORT</strong></h3>
-<p><strong>Responsabilidade:</strong> Configurações, notificações e auditoria</p>
+<h3 id="strong4-agregado-system_supportstrong"><strong>4. Agregado SYSTEM_SUPPORT</strong></h3><p><strong>Responsabilidade:</strong> Configurações, notificações e auditoria</p>
 <pre><code class="language-java">ConfiguracaoSistema (Aggregate Root)
 ├── Notificacao (Entity)
 └── LogAuditoriaLgpd (Entity)
 </code></pre>
 <hr>
-<h2>🏛️ Entidades Detalhadas</h2>
-<h3><strong>AGREGADO INSTITUTIONAL</strong> 🏢</h3>
-<hr>
-<h4><strong>1. Hemocentro</strong> - 🏥 Instituições de Saúde</h4>
-<pre><code class="language-java">@Entity
+<h2 id="-entidades-detalhadas">🏛️ Entidades Detalhadas</h2><h3 id="strongagregado-institutionalstrong-"><strong>AGREGADO INSTITUTIONAL</strong> 🏢</h3><hr>
+<h4 id="strong1-hemocentrostrong-instituies-de-sade"><strong>1. Hemocentro</strong> - 🏥 Instituições de Saúde</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;HEMOCENTROS&quot;)
 public class Hemocentro {
     @Id
@@ -398,8 +385,7 @@ public class Hemocentro {
     // ... demais campos
 }
 </code></pre>
-<h5><strong>📊 Estrutura Completa:</strong></h5>
-<table>
+<h5 id="strong-estrutura-completastrong"><strong>📊 Estrutura Completa:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Categoria</strong></th>
@@ -571,15 +557,13 @@ public class Hemocentro {
 <td>ANVISA (padrão)</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Características Especiais:</strong></h5>
-<ul>
+<h5 id="strong-caractersticas-especiaisstrong"><strong>🎯 Características Especiais:</strong></h5><ul>
 <li><strong>Hierarquia Institucional:</strong> Suporta rede de hemocentros</li>
 <li><strong>Compliance Regulatório:</strong> Dados ANVISA completos</li>
 <li><strong>Gestão Operacional:</strong> Capacidade e horários</li>
 <li><strong>Responsabilidade Médica:</strong> CRM obrigatório</li>
 </ul>
-<h5><strong>🔗 Relacionamentos:</strong></h5>
-<pre><code class="language-java">// 1:N com Users (hemocentro principal dos usuários)
+<h5 id="strong-relacionamentosstrong"><strong>🔗 Relacionamentos:</strong></h5><pre><code class="language-java">// 1:N com Users (hemocentro principal dos usuários)
 @OneToMany(mappedBy = &quot;hemocentroPrincipal&quot;)
 private List&lt;User&gt; usuarios;
 
@@ -588,8 +572,7 @@ private List&lt;User&gt; usuarios;
 private List&lt;Doador&gt; doadores;
 </code></pre>
 <hr>
-<h4><strong>2. User</strong> - 👤 Usuários do Sistema</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong2-userstrong-usurios-do-sistema"><strong>2. User</strong> - 👤 Usuários do Sistema</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;USERS&quot;)
 public class User {
     @Id
@@ -599,8 +582,7 @@ public class User {
     // ... demais campos
 }
 </code></pre>
-<h5><strong>📊 Estrutura Completa:</strong></h5>
-<table>
+<h5 id="strong-estrutura-completastrong"><strong>📊 Estrutura Completa:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Categoria</strong></th>
@@ -737,8 +719,7 @@ public class User {
 <td>Última atualização</td>
 </tr>
 </tbody></table>
-<h5><strong>🔗 Relacionamentos:</strong></h5>
-<pre><code class="language-java">// N:1 com UserRole (EAGER - sempre precisa para autorização)
+<h5 id="strong-relacionamentosstrong"><strong>🔗 Relacionamentos:</strong></h5><pre><code class="language-java">// N:1 com UserRole (EAGER - sempre precisa para autorização)
 @ManyToOne(fetch = FetchType.EAGER)
 @JoinColumn(name = &quot;ID_ROLE&quot;, nullable = false)
 private UserRole userRole;
@@ -752,16 +733,14 @@ private Hemocentro hemocentroPrincipal;
 @OneToMany(mappedBy = &quot;user&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 private List&lt;UserSetor&gt; setores = new ArrayList&lt;&gt;();
 </code></pre>
-<h5><strong>🎯 Características Especiais:</strong></h5>
-<ul>
+<h5 id="strong-caractersticas-especiaisstrong"><strong>🎯 Características Especiais:</strong></h5><ul>
 <li><strong>Multi-Setor:</strong> Um usuário pode atuar em vários setores</li>
 <li><strong>Rastreabilidade Profissional:</strong> CRM/COREN obrigatório para médicos</li>
 <li><strong>Segurança:</strong> Senha hash + auditoria de acesso</li>
 <li><strong>Flexibilidade:</strong> Endereço e contatos opcionais</li>
 </ul>
 <hr>
-<h4><strong>3. UserRole</strong> - 🔐 Perfis de Acesso</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong3-userrolestrong-perfis-de-acesso"><strong>3. UserRole</strong> - 🔐 Perfis de Acesso</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;USER_ROLES&quot;)
 public class UserRole {
     @Id
@@ -779,8 +758,7 @@ public class UserRole {
     private Boolean ativo = true;
 }
 </code></pre>
-<h5><strong>📊 Hierarquia RBAC:</strong></h5>
-<table>
+<h5 id="strong-hierarquia-rbacstrong"><strong>📊 Hierarquia RBAC:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Role</strong></th>
@@ -814,16 +792,14 @@ public class UserRole {
 <td>Atendimento ao público</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Características:</strong></h5>
-<ul>
+<h5 id="strong-caractersticasstrong"><strong>🎯 Características:</strong></h5><ul>
 <li><strong>Hierárquico:</strong> Níveis numéricos para fácil comparação</li>
 <li><strong>Extensível:</strong> Novos roles facilmente adicionados</li>
 <li><strong>Ativação:</strong> Controle de ativo/inativo</li>
 <li><strong>Único:</strong> Nome do role único no sistema</li>
 </ul>
 <hr>
-<h4><strong>4. SetorAtuacao</strong> - 🏢 Setores de Trabalho</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong4-setoratuacaostrong-setores-de-trabalho"><strong>4. SetorAtuacao</strong> - 🏢 Setores de Trabalho</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;SETORES_ATUACAO&quot;)
 public class SetorAtuacao {
     @Id
@@ -841,8 +817,7 @@ public class SetorAtuacao {
     private Boolean ativo = true;
 }
 </code></pre>
-<h5><strong>📋 Setores Padrão:</strong></h5>
-<table>
+<h5 id="strong-setores-padrostrong"><strong>📋 Setores Padrão:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Setor</strong></th>
@@ -891,16 +866,14 @@ public class SetorAtuacao {
 <td>Responsabilidade médica</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Características:</strong></h5>
-<ul>
+<h5 id="strong-caractersticasstrong"><strong>🎯 Características:</strong></h5><ul>
 <li><strong>Flexível:</strong> Novos setores facilmente adicionados</li>
 <li><strong>Único:</strong> Nome do setor único</li>
 <li><strong>Soft Delete:</strong> Campo ativo para histórico</li>
 <li><strong>Descritivo:</strong> Descrição opcional para documentação</li>
 </ul>
 <hr>
-<h4><strong>5. UserSetor</strong> - 🔄 Relacionamento Multi-Setor</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong5-usersetorstrong-relacionamento-multi-setor"><strong>5. UserSetor</strong> - 🔄 Relacionamento Multi-Setor</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;USER_SETORES&quot;, 
        uniqueConstraints = @UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;}))
 public class UserSetor {
@@ -944,8 +917,7 @@ public class UserSetor {
     }
 }
 </code></pre>
-<h5><strong>🎯 Características Avançadas:</strong></h5>
-<p><strong>Multi-Setor Simultâneo:</strong></p>
+<h5 id="strong-caractersticas-avanadasstrong"><strong>🎯 Características Avançadas:</strong></h5><p><strong>Multi-Setor Simultâneo:</strong></p>
 <pre><code class="language-java">// Exemplo: Enfermeira Maria
 // TRIAGEM (principal) - manhã
 // COLETA (secundário) - tarde  
@@ -966,8 +938,7 @@ public class UserSetor {
 <pre><code class="language-java">@UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;})
 // Impede duplicação de usuário no mesmo setor ativo
 </code></pre>
-<h5><strong>🔗 Relacionamentos:</strong></h5>
-<pre><code class="language-java">// N:1 com User (LAZY - carrega sob demanda)
+<h5 id="strong-relacionamentosstrong"><strong>🔗 Relacionamentos:</strong></h5><pre><code class="language-java">// N:1 com User (LAZY - carrega sob demanda)
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = &quot;ID_USER&quot;, nullable = false)
 private User user;
@@ -978,10 +949,8 @@ private User user;
 private SetorAtuacao setor;
 </code></pre>
 <hr>
-<h3><strong>AGREGADO DONOR</strong> 🩸</h3>
-<hr>
-<h4><strong>6. Doador</strong> - 👤 Doadores de Sangue</h4>
-<pre><code class="language-java">@Entity
+<h3 id="strongagregado-donorstrong-"><strong>AGREGADO DONOR</strong> 🩸</h3><hr>
+<h4 id="strong6-doadorstrong-doadores-de-sangue"><strong>6. Doador</strong> - 👤 Doadores de Sangue</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;DOADORES&quot;)
 public class Doador {
     @Id
@@ -991,8 +960,7 @@ public class Doador {
     // ... campos extensos
 }
 </code></pre>
-<h5><strong>📊 Estrutura Completa:</strong></h5>
-<table>
+<h5 id="strong-estrutura-completastrong"><strong>📊 Estrutura Completa:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Categoria</strong></th>
@@ -1276,8 +1244,7 @@ public class Doador {
 <td>Soft delete</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Características Especiais:</strong></h5>
-<p><strong>Endereçamento Dual:</strong></p>
+<h5 id="strong-caractersticas-especiaisstrong"><strong>🎯 Características Especiais:</strong></h5><p><strong>Endereçamento Dual:</strong></p>
 <ul>
 <li>Endereço residencial completo</li>
 <li>Endereço profissional opcional</li>
@@ -1301,8 +1268,7 @@ private BigDecimal pesoKg; // Ex: 070.50 kg
 @JoinColumn(name = &quot;ID_TIPO_SANGUINEO&quot;, nullable = false)
 private TipoSanguineo tipoSanguineo; // Relacionamento obrigatório
 </code></pre>
-<h5><strong>🔗 Relacionamentos:</strong></h5>
-<pre><code class="language-java">// N:1 com TipoSanguineo (EAGER - sempre necessário)
+<h5 id="strong-relacionamentosstrong"><strong>🔗 Relacionamentos:</strong></h5><pre><code class="language-java">// N:1 com TipoSanguineo (EAGER - sempre necessário)
 @ManyToOne
 @JoinColumn(name = &quot;ID_TIPO_SANGUINEO&quot;, nullable = false)
 private TipoSanguineo tipoSanguineo;
@@ -1322,8 +1288,7 @@ private User cadastradoPor;
 private List&lt;DoadorDoenca&gt; doencas = new ArrayList&lt;&gt;();
 </code></pre>
 <hr>
-<h4><strong>7. TipoSanguineo</strong> - 🧬 Tipos Sanguíneos</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong7-tiposanguineostrong-tipos-sanguneos"><strong>7. TipoSanguineo</strong> - 🧬 Tipos Sanguíneos</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;TIPOS_SANGUINEOS&quot;)
 public class TipoSanguineo {
     @Id
@@ -1359,8 +1324,7 @@ public class TipoSanguineo {
     private LocalDateTime updatedAt;
 }
 </code></pre>
-<h5><strong>📊 Tipos Sanguíneos e Compatibilidade:</strong></h5>
-<table>
+<h5 id="strong-tipos-sanguneos-e-compatibilidadestrong"><strong>📊 Tipos Sanguíneos e Compatibilidade:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Tipo</strong></th>
@@ -1418,8 +1382,7 @@ public class TipoSanguineo {
 <td>2.5%</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Características Especiais:</strong></h5>
-<p><strong>Modelagem Científica:</strong></p>
+<h5 id="strong-caractersticas-especiaisstrong"><strong>🎯 Características Especiais:</strong></h5><p><strong>Modelagem Científica:</strong></p>
 <pre><code class="language-java">// Constraints do banco de dados
 CHECK (TIPO_ABO IN (&#39;A&#39;, &#39;B&#39;, &#39;AB&#39;, &#39;O&#39;))
 CHECK (FATOR_RH IN (&#39;+&#39;, &#39;-&#39;))
@@ -1437,8 +1400,7 @@ private BigDecimal prevalenciaPercentual; // 36.0 para O+
 private String descricaoCompleta; // Impede duplicação (A+, A+)
 </code></pre>
 <hr>
-<h4><strong>8. DoencaEspecifica</strong> - 🏥 Catálogo de Doenças</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong8-doencaespecificastrong-catlogo-de-doenas"><strong>8. DoencaEspecifica</strong> - 🏥 Catálogo de Doenças</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;DOENCAS_ESPECIFICAS&quot;)
 public class DoencaEspecifica {
     @Id
@@ -1461,8 +1423,7 @@ public class DoencaEspecifica {
     private Boolean ativo = true;
 }
 </code></pre>
-<h5><strong>📋 Categorização por IDs Fixos:</strong></h5>
-<table>
+<h5 id="strong-categorizao-por-ids-fixosstrong"><strong>📋 Categorização por IDs Fixos:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Categoria</strong></th>
@@ -1526,8 +1487,7 @@ public class DoencaEspecifica {
 <td>Outras condições</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Design Estratégico:</strong></h5>
-<p><strong>IDs Fixos para Estatísticas:</strong></p>
+<h5 id="strong-design-estratgicostrong"><strong>🎯 Design Estratégico:</strong></h5><p><strong>IDs Fixos para Estatísticas:</strong></p>
 <pre><code class="language-java">@Id
 @Column(name = &quot;ID_DOENCA&quot;)
 private Integer idDoenca; // SEM @GeneratedValue
@@ -1541,8 +1501,7 @@ private String categoria; // CARDIOVASCULAR, METABOLICA, etc.
 <pre><code class="language-java">@Column(name = &quot;IMPEDE_DOACAO&quot;, nullable = false)
 private Boolean impedeDoacao; // true = impede, false = permite com avaliação
 </code></pre>
-<h5><strong>📊 Exemplos de Doenças:</strong></h5>
-<pre><code class="language-java">// Diabetes Tipo 1 - Impede doação
+<h5 id="strong-exemplos-de-doenasstrong"><strong>📊 Exemplos de Doenças:</strong></h5><pre><code class="language-java">// Diabetes Tipo 1 - Impede doação
 ID: 11, Nome: &quot;Diabetes Mellitus Tipo 1&quot;, Categoria: &quot;METABOLICA&quot;, 
 Impede: true, Obs: &quot;Impede doação definitivamente&quot;
 
@@ -1555,8 +1514,7 @@ ID: 33, Nome: &quot;HIV/AIDS&quot;, Categoria: &quot;INFECCIOSA&quot;,
 Impede: true, Obs: &quot;Impede doação definitivamente&quot;
 </code></pre>
 <hr>
-<h4><strong>9. DoadorDoenca</strong> - 🩺 Histórico Médico com Validação</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong9-doadordoencastrong-histrico-mdico-com-validao"><strong>9. DoadorDoenca</strong> - 🩺 Histórico Médico com Validação</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;DOADOR_DOENCAS&quot;,
        uniqueConstraints = @UniqueConstraint(columnNames = {&quot;ID_DOADOR&quot;, &quot;ID_DOENCA&quot;}))
 public class DoadorDoenca {
@@ -1617,8 +1575,7 @@ public class DoadorDoenca {
     }
 }
 </code></pre>
-<h5><strong>🎯 Workflow Médico Híbrido:</strong></h5>
-<p><strong>Cenário 1 - Doador Declara:</strong></p>
+<h5 id="strong-workflow-mdico-hbridostrong"><strong>🎯 Workflow Médico Híbrido:</strong></h5><p><strong>Cenário 1 - Doador Declara:</strong></p>
 <pre><code class="language-java">// 1. Doador informa que tem diabetes
 DoadorDoenca diabetes = new DoadorDoenca();
 diabetes.setOrigemDeteccao(DECLARADA_DOADOR);
@@ -1644,8 +1601,7 @@ DoadorDoenca hepatite = new DoadorDoenca();
 hepatite.setOrigemDeteccao(EXAME_LABORATORIAL);
 hepatite.setValidadoPorMedico(false); // Médico deve avaliar resultado
 </code></pre>
-<h5><strong>📊 Estados da Doença:</strong></h5>
-<pre><code class="language-java">public enum StatusDoenca {
+<h5 id="strong-estados-da-doenastrong"><strong>📊 Estados da Doença:</strong></h5><pre><code class="language-java">public enum StatusDoenca {
     ATIVO,      // Doença ativa/presente
     CURADO,     // Doença curada/superada  
     CONTROLADO  // Doença controlada com tratamento
@@ -1657,8 +1613,7 @@ public enum OrigemDeteccao {
     EXAME_LABORATORIAL     // Resultado de exame
 }
 </code></pre>
-<h5><strong>🔒 Integridade de Dados:</strong></h5>
-<p><strong>Unique Constraint:</strong></p>
+<h5 id="strong-integridade-de-dadosstrong"><strong>🔒 Integridade de Dados:</strong></h5><p><strong>Unique Constraint:</strong></p>
 <pre><code class="language-java">@UniqueConstraint(columnNames = {&quot;ID_DOADOR&quot;, &quot;ID_DOENCA&quot;})
 // Um doador não pode ter a mesma doença duplicada
 </code></pre>
@@ -1667,8 +1622,7 @@ public enum OrigemDeteccao {
 @JoinColumn(name = &quot;ID_DOENCA&quot;, nullable = false)   // Doença obrigatória  
 @JoinColumn(name = &quot;CADASTRADO_POR&quot;, nullable = false) // Auditoria obrigatória
 </code></pre>
-<h5><strong>📈 Rastreabilidade Completa:</strong></h5>
-<pre><code class="language-java">// Quem cadastrou
+<h5 id="strong-rastreabilidade-completastrong"><strong>📈 Rastreabilidade Completa:</strong></h5><pre><code class="language-java">// Quem cadastrou
 private User cadastradoPor;          // Usuário que registrou
 private LocalDateTime cadastradoEm;  // Quando foi registrado
 
@@ -1681,8 +1635,7 @@ private LocalDateTime dataValidacaoMedica; // Quando foi validado
 private Boolean validadoPorMedico;      // Status de validação
 </code></pre>
 <hr>
-<h4><strong>10. ConsentimentoLgpd</strong> - 🔒 Compliance de Privacidade</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong10-consentimentolgpdstrong-compliance-de-privacidade"><strong>10. ConsentimentoLgpd</strong> - 🔒 Compliance de Privacidade</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;CONSENTIMENTOS_LGPD&quot;)
 public class ConsentimentoLgpd {
     @Id
@@ -1710,8 +1663,7 @@ public class ConsentimentoLgpd {
     private LocalDateTime dataRevogacao;
 }
 </code></pre>
-<h5><strong>📋 Tipos de Consentimento:</strong></h5>
-<table>
+<h5 id="strong-tipos-de-consentimentostrong"><strong>📋 Tipos de Consentimento:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Tipo</strong></th>
@@ -1745,8 +1697,7 @@ public class ConsentimentoLgpd {
 <td>&quot;Aceito receber newsletters e materiais informativos&quot;</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Características LGPD:</strong></h5>
-<p><strong>Granularidade:</strong></p>
+<h5 id="strong-caractersticas-lgpdstrong"><strong>🎯 Características LGPD:</strong></h5><p><strong>Granularidade:</strong></p>
 <ul>
 <li>Consentimentos específicos por finalidade</li>
 <li>Possibilidade de aceitar uns e recusar outros</li>
@@ -1760,15 +1711,13 @@ private LocalDateTime dataRevogacao;     // Quando foi revogado (se aplicável)
 // Permite histórico de mudanças de opinião
 </code></pre>
 <hr>
-<h3>1. <strong>User</strong> - Usuários do Sistema</h3>
-<pre><code class="language-java">@Entity
+<h3 id="1-stronguserstrong-usurios-do-sistema">1. <strong>User</strong> - Usuários do Sistema</h3><pre><code class="language-java">@Entity
 @Table(name=&quot;USERS&quot;)
 public class User {
     // Campos e relacionamentos...
 }
 </code></pre>
-<h4><strong>📊 Campos Principais:</strong></h4>
-<table>
+<h4 id="strong-campos-principaisstrong"><strong>📊 Campos Principais:</strong></h4><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1808,8 +1757,7 @@ public class User {
 <td>Senha criptografada</td>
 </tr>
 </tbody></table>
-<h4><strong>🏥 Dados Profissionais:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;REGISTRO_PROFISSIONAL&quot;, length = 20)
+<h4 id="strong-dados-profissionaisstrong"><strong>🏥 Dados Profissionais:</strong></h4><pre><code class="language-java">@Column(name = &quot;REGISTRO_PROFISSIONAL&quot;, length = 20)
 private String registroProfissional; // CRM, COREN, CRF, etc.
 
 @Column(name = &quot;CONSELHO_CLASSE&quot;, length = 10) 
@@ -1819,14 +1767,12 @@ private String conselhoClasse; // CRM, COREN, CRF
 private String ufRegistro; // Estado do registro
 </code></pre>
 <p><strong>💡 Explicação:</strong> Permite rastreabilidade profissional completa, essencial para responsabilidade médica e auditoria.</p>
-<h4><strong>🏠 Endereço Completo:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;LOGRADOURO&quot;, length = 100)
+<h4 id="strong-endereo-completostrong"><strong>🏠 Endereço Completo:</strong></h4><pre><code class="language-java">@Column(name = &quot;LOGRADOURO&quot;, length = 100)
 private String logradouro;
 // ... demais campos de endereço
 </code></pre>
 <p><strong>💡 Explicação:</strong> Endereço completo para contato e documentação institucional.</p>
-<h4><strong>🔗 Relacionamentos:</strong></h4>
-<pre><code class="language-java">// Relacionamento com Role (N:1)
+<h4 id="strong-relacionamentosstrong"><strong>🔗 Relacionamentos:</strong></h4><pre><code class="language-java">// Relacionamento com Role (N:1)
 @ManyToOne(fetch = FetchType.EAGER)
 @JoinColumn(name = &quot;ID_ROLE&quot;, nullable = false)
 private UserRole userRole;
@@ -1847,15 +1793,13 @@ private List&lt;UserSetor&gt; setores = new ArrayList&lt;&gt;();
 <li><strong>LAZY</strong> para <code>setores</code>: Lista pode ser grande, carrega quando necessário</li>
 </ul>
 <hr>
-<h3>2. <strong>UserRole</strong> - Perfis de Acesso</h3>
-<pre><code class="language-java">@Entity
+<h3 id="2-stronguserrolestrong-perfis-de-acesso">2. <strong>UserRole</strong> - Perfis de Acesso</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;USER_ROLES&quot;)
 public class UserRole {
     // Implementação...
 }
 </code></pre>
-<h4><strong>📊 Estrutura RBAC (Role-Based Access Control):</strong></h4>
-<pre><code class="language-java">@Id
+<h4 id="strong-estrutura-rbac-role-based-access-controlstrong"><strong>📊 Estrutura RBAC (Role-Based Access Control):</strong></h4><pre><code class="language-java">@Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = &quot;ID_ROLE&quot;)
 private Long idRole;
@@ -1877,15 +1821,13 @@ private Boolean ativo = true;
 <li><strong>Nível 1 (Futuro):</strong> Consulta limitada</li>
 </ul>
 <hr>
-<h3>3. <strong>Doador</strong> - Doadores de Sangue</h3>
-<pre><code class="language-java">@Entity
+<h3 id="3-strongdoadorstrong-doadores-de-sangue">3. <strong>Doador</strong> - Doadores de Sangue</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;DOADORES&quot;)
 public class Doador {
     // Implementação completa...
 }
 </code></pre>
-<h4><strong>👤 Dados Pessoais Básicos:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;FULL_NAME&quot;, length = 100, nullable = false)
+<h4 id="strong-dados-pessoais-bsicosstrong"><strong>👤 Dados Pessoais Básicos:</strong></h4><pre><code class="language-java">@Column(name = &quot;FULL_NAME&quot;, length = 100, nullable = false)
 private String fullName;
 
 @Column(name = &quot;CPF&quot;, length = 11, nullable = false, unique = true)
@@ -1901,8 +1843,7 @@ private LocalDate birthDate;
 private String gender; // M, F, O
 </code></pre>
 <p><strong>💡 Constraint Check:</strong> O banco implementa <code>CHECK (GENDER IN (&#39;M&#39;,&#39;F&#39;,&#39;O&#39;))</code> para validação.</p>
-<h4><strong>🏠 Sistema de Endereços Dual:</strong></h4>
-<pre><code class="language-java">// Endereço Residencial
+<h4 id="strong-sistema-de-endereos-dualstrong"><strong>🏠 Sistema de Endereços Dual:</strong></h4><pre><code class="language-java">// Endereço Residencial
 @Column(name = &quot;LOGRADOURO&quot;, length = 100)
 private String logradouro;
 // ... campos residenciais
@@ -1913,8 +1854,7 @@ private String logradouroTrabalho;
 // ... campos profissionais
 </code></pre>
 <p><strong>💡 Design Avançado:</strong> Suporta dois endereços completos para maior flexibilidade de contato.</p>
-<h4><strong>🩸 Dados Médicos:</strong></h4>
-<pre><code class="language-java">@ManyToOne
+<h4 id="strong-dados-mdicosstrong"><strong>🩸 Dados Médicos:</strong></h4><pre><code class="language-java">@ManyToOne
 @JoinColumn(name = &quot;ID_TIPO_SANGUINEO&quot;, nullable = false)
 private TipoSanguineo tipoSanguineo;
 
@@ -1925,8 +1865,7 @@ private BigDecimal pesoKg; // Precisão decimal para peso
 private Integer alturaCm;
 </code></pre>
 <p><strong>💡 Tipos de Dados:</strong> <code>BigDecimal</code> para peso garante precisão em cálculos médicos.</p>
-<h4><strong>🔒 Compliance LGPD:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;ACEITA_CONTATO_CAMPANHAS&quot;)
+<h4 id="strong-compliance-lgpdstrong"><strong>🔒 Compliance LGPD:</strong></h4><pre><code class="language-java">@Column(name = &quot;ACEITA_CONTATO_CAMPANHAS&quot;)
 private Boolean aceitaContatoCampanhas;
 
 @Column(name = &quot;ACEITA_CONTATO_EMERGENCIA&quot;) 
@@ -1936,8 +1875,7 @@ private Boolean aceitaContatoEmergencia;
 private Boolean aceitaPesquisasCientificas;
 </code></pre>
 <p><strong>💡 Privacidade:</strong> Consentimentos granulares para diferentes finalidades.</p>
-<h4><strong>🔗 Relacionamentos:</strong></h4>
-<pre><code class="language-java">// Relacionamento com Doenças (1:N) - NOVO FASE 1
+<h4 id="strong-relacionamentosstrong"><strong>🔗 Relacionamentos:</strong></h4><pre><code class="language-java">// Relacionamento com Doenças (1:N) - NOVO FASE 1
 @OneToMany(mappedBy = &quot;doador&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 private List&lt;DoadorDoenca&gt; doencas = new ArrayList&lt;&gt;();
 
@@ -1952,15 +1890,13 @@ private LocalDateTime deletedAt;
 </code></pre>
 <p><strong>💡 Cascade ALL:</strong> Doenças são removidas automaticamente se doador for excluído.</p>
 <hr>
-<h3>4. <strong>TipoSanguineo</strong> - Tipos Sanguíneos ABO/RH</h3>
-<pre><code class="language-java">@Entity
+<h3 id="4-strongtiposanguineostrong-tipos-sanguneos-aborh">4. <strong>TipoSanguineo</strong> - Tipos Sanguíneos ABO/RH</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;TIPOS_SANGUINEOS&quot;)
 public class TipoSanguineo {
     // Implementação científica...
 }
 </code></pre>
-<h4><strong>🧬 Modelagem Científica:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;TIPO_ABO&quot;, length = 2, nullable = false)
+<h4 id="strong-modelagem-cientficastrong"><strong>🧬 Modelagem Científica:</strong></h4><pre><code class="language-java">@Column(name = &quot;TIPO_ABO&quot;, length = 2, nullable = false)
 private String tipoAbo; // A, B, AB, O
 
 @Column(name = &quot;FATOR_RH&quot;, length = 1, nullable = false)  
@@ -1970,8 +1906,7 @@ private String fatorRh; // +, -
 private String descricaoCompleta; // A+, O-, etc.
 </code></pre>
 <p><strong>💡 Constraint:</strong> Banco valida <code>CHECK (TIPO_ABO IN (&#39;A&#39;, &#39;B&#39;, &#39;AB&#39;, &#39;O&#39;))</code> e <code>CHECK (FATOR_RH IN (&#39;+&#39;, &#39;-&#39;))</code>.</p>
-<h4><strong>🔄 Regras de Compatibilidade:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;PODE_DOAR_PARA&quot;, length = 100)
+<h4 id="strong-regras-de-compatibilidadestrong"><strong>🔄 Regras de Compatibilidade:</strong></h4><pre><code class="language-java">@Column(name = &quot;PODE_DOAR_PARA&quot;, length = 100)
 private String podeDoarPara; // &quot;O+,A+,B+,AB+&quot;
 
 @Column(name = &quot;PODE_RECEBER_DE&quot;, length = 100) 
@@ -1982,15 +1917,13 @@ private BigDecimal prevalenciaPercentual; // 36.0 para O+
 </code></pre>
 <p><strong>💡 Business Logic:</strong> Strings permitem lógica flexível de compatibilidade + dados epidemiológicos.</p>
 <hr>
-<h3>5. <strong>Hemocentro</strong> - Instituições de Saúde</h3>
-<pre><code class="language-java">@Entity
+<h3 id="5-stronghemocentrostrong-instituies-de-sade">5. <strong>Hemocentro</strong> - Instituições de Saúde</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;HEMOCENTROS&quot;)
 public class Hemocentro {
     // Implementação institucional...
 }
 </code></pre>
-<h4><strong>🏥 Dados Institucionais:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;CODIGO_HEMOCENTRO&quot;, length = 20, nullable = false, unique = true)
+<h4 id="strong-dados-institucionaisstrong"><strong>🏥 Dados Institucionais:</strong></h4><pre><code class="language-java">@Column(name = &quot;CODIGO_HEMOCENTRO&quot;, length = 20, nullable = false, unique = true)
 private String codigoHemocentro; // Código ANVISA/MS
 
 @Column(name = &quot;CNPJ&quot;, length = 14, unique = true)
@@ -2000,8 +1933,7 @@ private String cnpj;
 private String tipoHemocentro; // COORDENADOR, REGIONAL, LOCAL, NUCLEO
 </code></pre>
 <p><strong>💡 Classificação:</strong> Suporta hierarquia completa da rede de hemocentros.</p>
-<h4><strong>👨‍⚕️ Responsabilidade Técnica:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;DIRETOR_TECNICO&quot;, length = 100)
+<h4 id="strong-responsabilidade-tcnicastrong"><strong>👨‍⚕️ Responsabilidade Técnica:</strong></h4><pre><code class="language-java">@Column(name = &quot;DIRETOR_TECNICO&quot;, length = 100)
 private String diretorTecnico;
 
 @Column(name = &quot;CRM_DIRETOR&quot;, length = 20)
@@ -2011,8 +1943,7 @@ private String crmDiretor;
 private String responsavelTecnico;
 </code></pre>
 <p><strong>💡 Compliance:</strong> Atende exigências legais de responsabilidade médica.</p>
-<h4><strong>⚙️ Dados Operacionais:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;CAPACIDADE_COLETAS_DIA&quot;)
+<h4 id="strong-dados-operacionaisstrong"><strong>⚙️ Dados Operacionais:</strong></h4><pre><code class="language-java">@Column(name = &quot;CAPACIDADE_COLETAS_DIA&quot;)
 private Integer capacidadeColetasDia;
 
 @Column(name = &quot;HORARIO_FUNCIONAMENTO&quot;, length = 100)
@@ -2023,9 +1954,7 @@ private Boolean funcionaFeriados;
 </code></pre>
 <p><strong>💡 Planejamento:</strong> Suporta gestão operacional e agendamentos.</p>
 <hr>
-<h2>🚀 Entidades FASE 1 (Implementadas)</h2>
-<h3>6. <strong>SetorAtuacao</strong> - Setores de Trabalho</h3>
-<pre><code class="language-java">@Entity
+<h2 id="-entidades-fase-1-implementadas">🚀 Entidades FASE 1 (Implementadas)</h2><h3 id="6-strongsetoratuacaostrong-setores-de-trabalho">6. <strong>SetorAtuacao</strong> - Setores de Trabalho</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;SETORES_ATUACAO&quot;)
 public class SetorAtuacao {
     @Id
@@ -2043,14 +1972,12 @@ public class SetorAtuacao {
     private Boolean ativo = true;
 }
 </code></pre>
-<h4><strong>🎯 Características:</strong></h4>
-<ul>
+<h4 id="strong-caractersticasstrong"><strong>🎯 Características:</strong></h4><ul>
 <li><strong>Unique Constraint:</strong> <code>nomeSetor</code> único previne duplicatas</li>
 <li><strong>Soft Delete:</strong> Campo <code>ativo</code> para desativação sem perder histórico</li>
 <li><strong>Descrição Opcional:</strong> Flexibilidade para documentar cada setor</li>
 </ul>
-<h4><strong>📋 Setores Padrão:</strong></h4>
-<ol>
+<h4 id="strong-setores-padrostrong"><strong>📋 Setores Padrão:</strong></h4><ol>
 <li><strong>TRIAGEM</strong> - Triagem clínica e entrevista</li>
 <li><strong>COLETA</strong> - Coleta de sangue e procedimentos</li>
 <li><strong>LABORATORIO</strong> - Análises laboratoriais</li>
@@ -2061,16 +1988,14 @@ public class SetorAtuacao {
 <li><strong>DIRECAO_TECNICA</strong> - Direção técnica</li>
 </ol>
 <hr>
-<h3>7. <strong>UserSetor</strong> - Relacionamento Multi-Setor</h3>
-<pre><code class="language-java">@Entity
+<h3 id="7-strongusersetorstrong-relacionamento-multi-setor">7. <strong>UserSetor</strong> - Relacionamento Multi-Setor</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;USER_SETORES&quot;, 
        uniqueConstraints = @UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;}))
 public class UserSetor {
     // Implementação N:N...
 }
 </code></pre>
-<h4><strong>🔗 Relacionamentos N:N:</strong></h4>
-<pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
+<h4 id="strong-relacionamentos-nnstrong"><strong>🔗 Relacionamentos N:N:</strong></h4><pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = &quot;ID_USER&quot;, nullable = false)
 private User user;
 
@@ -2079,13 +2004,11 @@ private User user;
 private SetorAtuacao setor;
 </code></pre>
 <p><strong>💡 Fetch LAZY:</strong> Otimização para não carregar objetos relacionados desnecessariamente.</p>
-<h4><strong>⭐ Setor Principal:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;IS_SETOR_PRINCIPAL&quot;)
+<h4 id="strong-setor-principalstrong"><strong>⭐ Setor Principal:</strong></h4><pre><code class="language-java">@Column(name = &quot;IS_SETOR_PRINCIPAL&quot;)
 private Boolean setorPrincipal = false;
 </code></pre>
 <p><strong>💡 Business Rule:</strong> Apenas um setor pode ser principal por usuário ativo.</p>
-<h4><strong>📅 Controle Temporal:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;DATA_INICIO&quot;)
+<h4 id="strong-controle-temporalstrong"><strong>📅 Controle Temporal:</strong></h4><pre><code class="language-java">@Column(name = &quot;DATA_INICIO&quot;)
 private LocalDate dataInicio;
 
 @Column(name = &quot;DATA_FIM&quot;)
@@ -2095,12 +2018,10 @@ private LocalDate dataFim;
 private Boolean ativo = true;
 </code></pre>
 <p><strong>💡 Histórico:</strong> Permite rastrear períodos de atuação em cada setor.</p>
-<h4><strong>🔒 Unique Constraint:</strong></h4>
-<pre><code class="language-java">@UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;})
+<h4 id="strong-unique-constraintstrong"><strong>🔒 Unique Constraint:</strong></h4><pre><code class="language-java">@UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;})
 </code></pre>
 <p><strong>💡 Integridade:</strong> Impede que usuário tenha vínculo duplicado ativo com mesmo setor.</p>
-<h4><strong>🕰️ Auto-Preenchimento:</strong></h4>
-<pre><code class="language-java">@PrePersist
+<h4 id="strong-auto-preenchimentostrong"><strong>🕰️ Auto-Preenchimento:</strong></h4><pre><code class="language-java">@PrePersist
 protected void onCreate() {
     createdAt = LocalDateTime.now();
     if (dataInicio == null) {
@@ -2110,8 +2031,7 @@ protected void onCreate() {
 </code></pre>
 <p><strong>💡 JPA Lifecycle:</strong> <code>@PrePersist</code> executa antes de salvar no banco.</p>
 <hr>
-<h3>8. <strong>DoencaEspecifica</strong> - Catálogo de Doenças</h3>
-<pre><code class="language-java">@Entity
+<h3 id="8-strongdoencaespecificastrong-catlogo-de-doenas">8. <strong>DoencaEspecifica</strong> - Catálogo de Doenças</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;DOENCAS_ESPECIFICAS&quot;)
 public class DoencaEspecifica {
     @Id
@@ -2121,8 +2041,7 @@ public class DoencaEspecifica {
     // Campos...
 }
 </code></pre>
-<h4><strong>🔢 ID Fixo Estratégico:</strong></h4>
-<p><strong>💡 Design Decision:</strong> <code>@Id</code> sem <code>@GeneratedValue</code> permite IDs fixos para controle estatístico:</p>
+<h4 id="strong-id-fixo-estratgicostrong"><strong>🔢 ID Fixo Estratégico:</strong></h4><p><strong>💡 Design Decision:</strong> <code>@Id</code> sem <code>@GeneratedValue</code> permite IDs fixos para controle estatístico:</p>
 <ul>
 <li><strong>IDs 1-10:</strong> Doenças cardiovasculares</li>
 <li><strong>IDs 11-20:</strong> Doenças metabólicas/endócrinas  </li>
@@ -2134,8 +2053,7 @@ public class DoencaEspecifica {
 <li><strong>IDs 81-90:</strong> Doenças psiquiátricas</li>
 <li><strong>IDs 91-100:</strong> Outras doenças</li>
 </ul>
-<h4><strong>📊 Categorização:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;CATEGORIA&quot;, length = 50, nullable = false)
+<h4 id="strong-categorizaostrong"><strong>📊 Categorização:</strong></h4><pre><code class="language-java">@Column(name = &quot;CATEGORIA&quot;, length = 50, nullable = false)
 private String categoria; // CARDIOVASCULAR, METABOLICA, INFECCIOSA, etc.
 
 @Column(name = &quot;IMPEDE_DOACAO&quot;, nullable = false)
@@ -2143,16 +2061,14 @@ private Boolean impedeDoacao; // true = impede doação
 </code></pre>
 <p><strong>💡 Business Logic:</strong> Permite filtros por categoria e decisões automáticas de elegibilidade.</p>
 <hr>
-<h3>9. <strong>DoadorDoenca</strong> - Histórico Médico com Validação</h3>
-<pre><code class="language-java">@Entity
+<h3 id="9-strongdoadordoencastrong-histrico-mdico-com-validao">9. <strong>DoadorDoenca</strong> - Histórico Médico com Validação</h3><pre><code class="language-java">@Entity
 @Table(name = &quot;DOADOR_DOENCAS&quot;,
        uniqueConstraints = @UniqueConstraint(columnNames = {&quot;ID_DOADOR&quot;, &quot;ID_DOENCA&quot;}))
 public class DoadorDoenca {
     // Implementação complexa...
 }
 </code></pre>
-<h4><strong>🔗 Relacionamentos Principais:</strong></h4>
-<pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
+<h4 id="strong-relacionamentos-principaisstrong"><strong>🔗 Relacionamentos Principais:</strong></h4><pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = &quot;ID_DOADOR&quot;, nullable = false)
 private Doador doador;
 
@@ -2160,8 +2076,7 @@ private Doador doador;
 @JoinColumn(name = &quot;ID_DOENCA&quot;, nullable = false)
 private DoencaEspecifica doenca;
 </code></pre>
-<h4><strong>📊 Status e Origem:</strong></h4>
-<pre><code class="language-java">@Enumerated(EnumType.STRING)
+<h4 id="strong-status-e-origemstrong"><strong>📊 Status e Origem:</strong></h4><pre><code class="language-java">@Enumerated(EnumType.STRING)
 @Column(name = &quot;STATUS_ATUAL&quot;, length = 20)
 private StatusDoenca statusAtual = StatusDoenca.ATIVO;
 
@@ -2170,8 +2085,7 @@ private StatusDoenca statusAtual = StatusDoenca.ATIVO;
 private OrigemDeteccao origemDeteccao = OrigemDeteccao.DECLARADA_DOADOR;
 </code></pre>
 <p><strong>💡 Enum Strategy:</strong> <code>EnumType.STRING</code> armazena texto legível no banco (vs. ordinais).</p>
-<h4><strong>👨‍⚕️ Workflow de Validação Médica:</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;VALIDADO_POR_MEDICO&quot;)
+<h4 id="strong-workflow-de-validao-mdicastrong"><strong>👨‍⚕️ Workflow de Validação Médica:</strong></h4><pre><code class="language-java">@Column(name = &quot;VALIDADO_POR_MEDICO&quot;)
 private Boolean validadoPorMedico = false;
 
 @ManyToOne(fetch = FetchType.LAZY)
@@ -2187,15 +2101,12 @@ private LocalDateTime dataValidacaoMedica;
 <li><strong>Médico valida</strong> → <code>validadoPorMedico = true</code> + timestamp</li>
 <li><strong>Rastreabilidade completa</strong> preservada</li>
 </ol>
-<h4><strong>🔒 Unique Constraint:</strong></h4>
-<pre><code class="language-java">@UniqueConstraint(columnNames = {&quot;ID_DOADOR&quot;, &quot;ID_DOENCA&quot;})
+<h4 id="strong-unique-constraintstrong"><strong>🔒 Unique Constraint:</strong></h4><pre><code class="language-java">@UniqueConstraint(columnNames = {&quot;ID_DOADOR&quot;, &quot;ID_DOENCA&quot;})
 </code></pre>
 <p><strong>💡 Integridade:</strong> Um doador não pode ter a mesma doença duplicada.</p>
 <hr>
-<h3><strong>AGREGADO DONATION_PROCESS</strong> 🩸</h3>
-<hr>
-<h4><strong>11. TriagemClinica</strong> - 🏥 Avaliação Clínica</h4>
-<pre><code class="language-java">@Entity
+<h3 id="strongagregado-donation_processstrong-"><strong>AGREGADO DONATION_PROCESS</strong> 🩸</h3><hr>
+<h4 id="strong11-triagemclinicastrong-avaliao-clnica"><strong>11. TriagemClinica</strong> - 🏥 Avaliação Clínica</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;TRIAGEM_CLINICA&quot;)
 public class TriagemClinica {
     @Id
@@ -2233,8 +2144,7 @@ public class TriagemClinica {
     private String observacoes;
 }
 </code></pre>
-<h5><strong>📊 Critérios de Triagem:</strong></h5>
-<table>
+<h5 id="strong-critrios-de-triagemstrong"><strong>📊 Critérios de Triagem:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Parâmetro</strong></th>
@@ -2268,8 +2178,7 @@ public class TriagemClinica {
 <td>Calculado via birthDate</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Workflow de Triagem:</strong></h5>
-<p><strong>Processo Completo:</strong></p>
+<h5 id="strong-workflow-de-triagemstrong"><strong>🎯 Workflow de Triagem:</strong></h5><p><strong>Processo Completo:</strong></p>
 <pre><code class="language-java">// 1. Enfermeiro/Médico realiza triagem
 TriagemClinica triagem = new TriagemClinica();
 triagem.setDoador(doador);
@@ -2295,8 +2204,7 @@ if (!triagem.getAptoDoacao()) {
 <li><code>aptoDoacao = false</code>: Inapto temporária ou definitivamente</li>
 </ul>
 <hr>
-<h4><strong>12. Agendamento</strong> - 📅 Sistema de Agendas</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong12-agendamentostrong-sistema-de-agendas"><strong>12. Agendamento</strong> - 📅 Sistema de Agendas</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;AGENDAMENTOS&quot;)
 public class Agendamento {
     @Id
@@ -2326,16 +2234,14 @@ public class Agendamento {
     private String observacoes;
 }
 </code></pre>
-<h5><strong>📋 Status do Agendamento:</strong></h5>
-<pre><code class="language-java">public enum StatusAgendamento {
+<h5 id="strong-status-do-agendamentostrong"><strong>📋 Status do Agendamento:</strong></h5><pre><code class="language-java">public enum StatusAgendamento {
     AGENDADO,       // Agendamento confirmado
     COMPARECEU,     // Doador compareceu
     NAO_COMPARECEU, // Doador faltou
     CANCELADO       // Agendamento cancelado
 }
 </code></pre>
-<h5><strong>🎯 Ciclo de Vida do Agendamento:</strong></h5>
-<pre><code>AGENDADO → COMPARECEU → [Triagem] → [Doação]
+<h5 id="strong-ciclo-de-vida-do-agendamentostrong"><strong>🎯 Ciclo de Vida do Agendamento:</strong></h5><pre><code>AGENDADO → COMPARECEU → [Triagem] → [Doação]
     ↓
 CANCELADO
     ↓
@@ -2359,8 +2265,7 @@ if (doadorCompareceu) {
 }
 </code></pre>
 <hr>
-<h4><strong>13. Doacao</strong> - 💉 Registro de Doações</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong13-doacaostrong-registro-de-doaes"><strong>13. Doacao</strong> - 💉 Registro de Doações</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;DOACOES&quot;)
 public class Doacao {
     @Id
@@ -2403,16 +2308,14 @@ public class Doacao {
     private LocalDateTime createdAt;
 }
 </code></pre>
-<h5><strong>📋 Status da Bolsa:</strong></h5>
-<pre><code class="language-java">public enum StatusBolsa {
+<h5 id="strong-status-da-bolsastrong"><strong>📋 Status da Bolsa:</strong></h5><pre><code class="language-java">public enum StatusBolsa {
     COLETADA,     // Sangue coletado
     APROVADA,     // Aprovada nos testes
     REJEITADA,    // Rejeitada nos testes
     TRANSFUNDIDA  // Utilizada em transfusão
 }
 </code></pre>
-<h5><strong>🎯 Workflow da Doação:</strong></h5>
-<pre><code>Triagem APROVADA → Coleta → Testes → Estoque → Transfusão
+<h5 id="strong-workflow-da-doaostrong"><strong>🎯 Workflow da Doação:</strong></h5><pre><code>Triagem APROVADA → Coleta → Testes → Estoque → Transfusão
                      ↓        ↓        ↓         ↓
                  COLETADA → APROVADA → Disponível → TRANSFUNDIDA
                             ↓
@@ -2443,8 +2346,7 @@ if (testesAprovados) {
     // Descartar bolsa
 }
 </code></pre>
-<h5><strong>🔗 Relacionamentos Críticos:</strong></h5>
-<pre><code class="language-java">// Triagem obrigatória antes da doação
+<h5 id="strong-relacionamentos-crticosstrong"><strong>🔗 Relacionamentos Críticos:</strong></h5><pre><code class="language-java">// Triagem obrigatória antes da doação
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = &quot;ID_TRIAGEM&quot;, nullable = false)
 private TriagemClinica triagem;
@@ -2456,8 +2358,7 @@ private User responsavel;
 </code></pre>
 <p><strong>Business Rule:</strong> Toda doação DEVE ter uma triagem aprovada associada.</p>
 <hr>
-<h4><strong>14. EstoqueSangue</strong> - 📦 Controle de Inventory</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong14-estoquesanguestrong-controle-de-inventory"><strong>14. EstoqueSangue</strong> - 📦 Controle de Inventory</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;ESTOQUE_SANGUE&quot;)
 public class EstoqueSangue {
     @Id
@@ -2486,16 +2387,14 @@ public class EstoqueSangue {
     private LocalDateTime ultimaAtualizacao;
 }
 </code></pre>
-<h5><strong>📊 Níveis de Estoque:</strong></h5>
-<pre><code class="language-java">public enum StatusEstoque {
+<h5 id="strong-nveis-de-estoquestrong"><strong>📊 Níveis de Estoque:</strong></h5><pre><code class="language-java">public enum StatusEstoque {
     CRITICO,  // &lt; nível mínimo
     BAIXO,    // &gt;= mínimo e &lt; 50% do ideal
     ADEQUADO, // &gt;= 50% do ideal e &lt; ideal
     ALTO      // &gt;= ideal
 }
 </code></pre>
-<h5><strong>🎯 Gestão Inteligente:</strong></h5>
-<p><strong>Cálculo Automático de Status:</strong></p>
+<h5 id="strong-gesto-inteligentestrong"><strong>🎯 Gestão Inteligente:</strong></h5><p><strong>Cálculo Automático de Status:</strong></p>
 <pre><code class="language-java">public StatusEstoque calcularStatus() {
     if (quantidadeBolsas &lt; nivelMinimo) {
         return CRITICO;
@@ -2521,10 +2420,8 @@ AB+: 25 bolsas (ADEQUADO - Receptor universal)
 // Baseado na compatibilidade e raridade
 </code></pre>
 <hr>
-<h3><strong>AGREGADO SYSTEM_SUPPORT</strong> ⚙️</h3>
-<hr>
-<h4><strong>15. ConfiguracaoSistema</strong> - ⚙️ Configurações Dinâmicas</h4>
-<pre><code class="language-java">@Entity
+<h3 id="strongagregado-system_supportstrong-"><strong>AGREGADO SYSTEM_SUPPORT</strong> ⚙️</h3><hr>
+<h4 id="strong15-configuracaosistemastrong-configuraes-dinmicas"><strong>15. ConfiguracaoSistema</strong> - ⚙️ Configurações Dinâmicas</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;CONFIGURACOES_SISTEMA&quot;)
 public class ConfiguracaoSistema {
     @Id
@@ -2545,8 +2442,7 @@ public class ConfiguracaoSistema {
     private LocalDateTime updatedAt;
 }
 </code></pre>
-<h5><strong>📋 Configurações Típicas:</strong></h5>
-<table>
+<h5 id="strong-configuraes-tpicasstrong"><strong>📋 Configurações Típicas:</strong></h5><table>
 <thead>
 <tr>
 <th><strong>Chave</strong></th>
@@ -2605,8 +2501,7 @@ public class ConfiguracaoSistema {
 <td>g/dL mínimo mulheres</td>
 </tr>
 </tbody></table>
-<h5><strong>🎯 Vantagens:</strong></h5>
-<ul>
+<h5 id="strong-vantagensstrong"><strong>🎯 Vantagens:</strong></h5><ul>
 <li><strong>Flexibilidade:</strong> Alterar regras sem redeploy</li>
 <li><strong>Auditoria:</strong> Controle de quando foi alterado</li>
 <li><strong>Centralização:</strong> Todas as configs em um lugar</li>
@@ -2628,8 +2523,7 @@ public class ConfigService {
 }
 </code></pre>
 <hr>
-<h4><strong>16. Notificacao</strong> - 🔔 Sistema de Alertas</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong16-notificacaostrong-sistema-de-alertas"><strong>16. Notificacao</strong> - 🔔 Sistema de Alertas</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;NOTIFICACOES&quot;)
 public class Notificacao {
     @Id
@@ -2658,16 +2552,14 @@ public class Notificacao {
     private LocalDateTime criadaEm;
 }
 </code></pre>
-<h5><strong>📋 Tipos de Notificação:</strong></h5>
-<pre><code class="language-java">public enum TipoNotificacao {
+<h5 id="strong-tipos-de-notificaostrong"><strong>📋 Tipos de Notificação:</strong></h5><pre><code class="language-java">public enum TipoNotificacao {
     INFO,     // Informação geral
     WARNING,  // Aviso/atenção
     ERROR,    // Erro/problema
     SUCCESS   // Sucesso/confirmação
 }
 </code></pre>
-<h5><strong>🎯 Casos de Uso:</strong></h5>
-<p><strong>Notificações de Estoque:</strong></p>
+<h5 id="strong-casos-de-usostrong"><strong>🎯 Casos de Uso:</strong></h5><p><strong>Notificações de Estoque:</strong></p>
 <pre><code class="language-java">// Estoque crítico
 Notificacao notif = new Notificacao();
 notif.setTitulo(&quot;Estoque Crítico: O-&quot;);
@@ -2692,8 +2584,7 @@ notif.setTipo(SUCCESS);
 notif.setUsuario(enfermeiro);
 </code></pre>
 <hr>
-<h4><strong>17. LogAuditoriaLgpd</strong> - 📋 Auditoria LGPD</h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong17-logauditorialgpdstrong-auditoria-lgpd"><strong>17. LogAuditoriaLgpd</strong> - 📋 Auditoria LGPD</h4><pre><code class="language-java">@Entity
 @Table(name = &quot;LOG_AUDITORIA_LGPD&quot;)
 public class LogAuditoriaLgpd {
     @Id
@@ -2725,16 +2616,14 @@ public class LogAuditoriaLgpd {
     private String finalidadeAcesso;
 }
 </code></pre>
-<h5><strong>📋 Tipos de Operação:</strong></h5>
-<pre><code class="language-java">public enum TipoOperacao {
+<h5 id="strong-tipos-de-operaostrong"><strong>📋 Tipos de Operação:</strong></h5><pre><code class="language-java">public enum TipoOperacao {
     SELECT, // Consulta de dados
     INSERT, // Criação de registro
     UPDATE, // Atualização de dados
     DELETE  // Exclusão de dados
 }
 </code></pre>
-<h5><strong>🎯 Compliance LGPD:</strong></h5>
-<p><strong>Auditoria Automática:</strong></p>
+<h5 id="strong-compliance-lgpdstrong"><strong>🎯 Compliance LGPD:</strong></h5><p><strong>Auditoria Automática:</strong></p>
 <pre><code class="language-java">// Exemplo de log automático
 LogAuditoriaLgpd log = new LogAuditoriaLgpd();
 log.setTabela(&quot;DOADORES&quot;);
@@ -2765,43 +2654,34 @@ List&lt;LogAuditoriaLgpd&gt; campanhas = auditRepository.findByFinalidadeContain
 <li><span class="badge success">✅</span> <strong>Relatórios:</strong> Base para relatórios de conformidade</li>
 </ul>
 <hr>
-<h2>🏷️ Anotações JPA Explicadas</h2>
-<h3><strong>📊 Anotações de Entidade:</strong></h3>
-<h4><strong>@Entity</strong></h4>
-<pre><code class="language-java">@Entity
+<h2 id="-anotaes-jpa-explicadas">🏷️ Anotações JPA Explicadas</h2><h3 id="strong-anotaes-de-entidadestrong"><strong>📊 Anotações de Entidade:</strong></h3><h4 id="strongentitystrong"><strong>@Entity</strong></h4><pre><code class="language-java">@Entity
 public class User { }
 </code></pre>
 <p><strong>O que faz:</strong> Marca a classe como uma entidade JPA que será mapeada para uma tabela no banco de dados.
 <strong>Quando usar:</strong> Sempre que criar uma classe que representa uma tabela.</p>
-<h4><strong>@Table</strong></h4>
-<pre><code class="language-java">@Table(name = &quot;USERS&quot;)
+<h4 id="strongtablestrong"><strong>@Table</strong></h4><pre><code class="language-java">@Table(name = &quot;USERS&quot;)
 public class User { }
 </code></pre>
 <p><strong>O que faz:</strong> Define o nome da tabela no banco. Se omitido, usa o nome da classe.
 <strong>Quando usar:</strong> Quando o nome da tabela for diferente do nome da classe.</p>
-<h4><strong>@NoArgsConstructor / @AllArgsConstructor (Lombok)</strong></h4>
-<pre><code class="language-java">@NoArgsConstructor  // Cria construtor vazio: User()
+<h4 id="strongnoargsconstructor-allargsconstructor-lombokstrong"><strong>@NoArgsConstructor / @AllArgsConstructor (Lombok)</strong></h4><pre><code class="language-java">@NoArgsConstructor  // Cria construtor vazio: User()
 @AllArgsConstructor // Cria construtor com todos os campos: User(id, name, email...)
 public class User { }
 </code></pre>
 <p><strong>O que faz:</strong> Gera automaticamente construtores durante a compilação.
 <strong>Quando usar:</strong> Sempre. JPA precisa do construtor vazio, e o completo facilita testes.</p>
-<h4><strong>@Getter / @Setter (Lombok)</strong></h4>
-<pre><code class="language-java">@Getter @Setter // Gera todos os getters e setters automaticamente
+<h4 id="stronggetter-setter-lombokstrong"><strong>@Getter / @Setter (Lombok)</strong></h4><pre><code class="language-java">@Getter @Setter // Gera todos os getters e setters automaticamente
 public class User { }
 </code></pre>
 <p><strong>O que faz:</strong> Cria métodos <code>getName()</code>, <code>setName()</code>, etc. para todos os campos.
 <strong>Quando usar:</strong> Sempre, para evitar código repetitivo.</p>
 <hr>
-<h3><strong>🔑 Anotações de Campo/Chave Primária:</strong></h3>
-<h4><strong>@Id</strong></h4>
-<pre><code class="language-java">@Id
+<h3 id="strong-anotaes-de-campochave-primriastrong"><strong>🔑 Anotações de Campo/Chave Primária:</strong></h3><h4 id="strongidstrong"><strong>@Id</strong></h4><pre><code class="language-java">@Id
 private Long idUser;
 </code></pre>
 <p><strong>O que faz:</strong> Marca o campo como chave primária da tabela.
 <strong>Quando usar:</strong> Sempre, toda entidade precisa de uma chave primária.</p>
-<h4><strong>@GeneratedValue</strong></h4>
-<pre><code class="language-java">@GeneratedValue(strategy = GenerationType.IDENTITY)
+<h4 id="stronggeneratedvaluestrong"><strong>@GeneratedValue</strong></h4><pre><code class="language-java">@GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long idUser;
 </code></pre>
 <p><strong>O que faz:</strong> Define como o valor da chave primária será gerado.</p>
@@ -2811,8 +2691,7 @@ private Long idUser;
 <li><code>AUTO</code>: JPA escolhe automaticamente
 <strong>Quando usar:</strong> Sempre com @Id, exceto quando você define o ID manualmente.</li>
 </ul>
-<h4><strong>@Column</strong></h4>
-<pre><code class="language-java">@Column(name = &quot;FULL_NAME&quot;, length = 100, nullable = false, unique = true)
+<h4 id="strongcolumnstrong"><strong>@Column</strong></h4><pre><code class="language-java">@Column(name = &quot;FULL_NAME&quot;, length = 100, nullable = false, unique = true)
 private String fullName;
 </code></pre>
 <p><strong>O que faz:</strong> Configura como o campo será mapeado para a coluna no banco.</p>
@@ -2824,16 +2703,13 @@ private String fullName;
 <strong>Quando usar:</strong> Para customizar o mapeamento ou adicionar constraints.</li>
 </ul>
 <hr>
-<h3><strong>🔗 Anotações de Relacionamento:</strong></h3>
-<h4><strong>@ManyToOne</strong> (Muitos para Um)</h4>
-<pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
+<h3 id="strong-anotaes-de-relacionamentostrong"><strong>🔗 Anotações de Relacionamento:</strong></h3><h4 id="strongmanytoonestrong-muitos-para-um"><strong>@ManyToOne</strong> (Muitos para Um)</h4><pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = &quot;ID_ROLE&quot;)
 private UserRole userRole;
 </code></pre>
 <p><strong>O que faz:</strong> Define relacionamento N:1. Muitos usuários podem ter o mesmo role.
 <strong>Quando usar:</strong> Quando muitas entidades referenciam uma única entidade (FK no lado &quot;many&quot;).</p>
-<h4><strong>@OneToMany</strong> (Um para Muitos)</h4>
-<pre><code class="language-java">@OneToMany(mappedBy = &quot;user&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+<h4 id="strongonetomanystrong-um-para-muitos"><strong>@OneToMany</strong> (Um para Muitos)</h4><pre><code class="language-java">@OneToMany(mappedBy = &quot;user&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 private List&lt;UserSetor&gt; setores;
 </code></pre>
 <p><strong>O que faz:</strong> Define relacionamento 1:N. Um usuário pode ter muitos setores.</p>
@@ -2843,8 +2719,7 @@ private List&lt;UserSetor&gt; setores;
 <li><code>fetch</code>: Quando carregar os filhos
 <strong>Quando usar:</strong> Para acessar entidades filhas a partir da entidade pai.</li>
 </ul>
-<h4><strong>@ManyToMany</strong> (Muitos para Muitos)</h4>
-<pre><code class="language-java">@ManyToMany
+<h4 id="strongmanytomanystrong-muitos-para-muitos"><strong>@ManyToMany</strong> (Muitos para Muitos)</h4><pre><code class="language-java">@ManyToMany
 @JoinTable(name = &quot;USER_ROLES&quot;,
     joinColumns = @JoinColumn(name = &quot;user_id&quot;),
     inverseJoinColumns = @JoinColumn(name = &quot;role_id&quot;))
@@ -2853,24 +2728,20 @@ private List&lt;Role&gt; roles;
 <p><strong>O que faz:</strong> Define relacionamento N:N através de tabela intermediária.
 <strong>Quando usar:</strong> Quando ambas as entidades podem ter múltiplas referências entre si.
 <strong><span class="badge warning">⚠️</span> Nota:</strong> No nosso projeto, preferimos tabela intermediária explícita (UserSetor) para campos extras.</p>
-<h4><strong>@JoinColumn</strong></h4>
-<pre><code class="language-java">@JoinColumn(name = &quot;ID_ROLE&quot;, nullable = false)
+<h4 id="strongjoincolumnstrong"><strong>@JoinColumn</strong></h4><pre><code class="language-java">@JoinColumn(name = &quot;ID_ROLE&quot;, nullable = false)
 private UserRole userRole;
 </code></pre>
 <p><strong>O que faz:</strong> Define o nome da coluna de chave estrangeira.
 <strong>Quando usar:</strong> Em relacionamentos @ManyToOne e @OneToOne para customizar a FK.</p>
 <hr>
-<h3><strong>⚡ Estratégias de Fetch (Carregamento):</strong></h3>
-<h4><strong>FetchType.LAZY</strong></h4>
-<pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
+<h3 id="strong-estratgias-de-fetch-carregamentostrong"><strong>⚡ Estratégias de Fetch (Carregamento):</strong></h3><h4 id="strongfetchtypelazystrong"><strong>FetchType.LAZY</strong></h4><pre><code class="language-java">@ManyToOne(fetch = FetchType.LAZY)
 private Hemocentro hemocentro;
 </code></pre>
 <p><strong>O que faz:</strong> Carrega o relacionamento apenas quando acessado (proxy).
 <strong>Vantagem:</strong> Performance - não carrega dados desnecessários.
 <strong>Desvantagem:</strong> Pode causar LazyInitializationException se sessão estiver fechada.
 <strong>Quando usar:</strong> Padrão recomendado, especialmente para relacionamentos grandes.</p>
-<h4><strong>FetchType.EAGER</strong></h4>
-<pre><code class="language-java">@ManyToOne(fetch = FetchType.EAGER)
+<h4 id="strongfetchtypeeagerstrong"><strong>FetchType.EAGER</strong></h4><pre><code class="language-java">@ManyToOne(fetch = FetchType.EAGER)
 private UserRole userRole;
 </code></pre>
 <p><strong>O que faz:</strong> Carrega o relacionamento imediatamente junto com a entidade principal.
@@ -2878,35 +2749,28 @@ private UserRole userRole;
 <strong>Desvantagem:</strong> Pode causar problemas de performance e N+1 queries.
 <strong>Quando usar:</strong> Apenas para relacionamentos pequenos e sempre necessários.</p>
 <hr>
-<h3><strong>🔄 Estratégias de Cascade (Propagação):</strong></h3>
-<h4><strong>CascadeType.ALL</strong></h4>
-<pre><code class="language-java">@OneToMany(mappedBy = &quot;doador&quot;, cascade = CascadeType.ALL)
+<h3 id="strong-estratgias-de-cascade-propagaostrong"><strong>🔄 Estratégias de Cascade (Propagação):</strong></h3><h4 id="strongcascadetypeallstrong"><strong>CascadeType.ALL</strong></h4><pre><code class="language-java">@OneToMany(mappedBy = &quot;doador&quot;, cascade = CascadeType.ALL)
 private List&lt;DoadorDoenca&gt; doencas;
 </code></pre>
 <p><strong>O que faz:</strong> Propaga TODAS as operações (persist, merge, remove, refresh, detach).
 <strong>Quando usar:</strong> Relacionamentos pai-filho onde filhos não existem sem o pai.</p>
-<h4><strong>CascadeType.PERSIST</strong></h4>
-<pre><code class="language-java">@OneToMany(cascade = CascadeType.PERSIST)
+<h4 id="strongcascadetypepersiststrong"><strong>CascadeType.PERSIST</strong></h4><pre><code class="language-java">@OneToMany(cascade = CascadeType.PERSIST)
 private List&lt;UserSetor&gt; setores;
 </code></pre>
 <p><strong>O que faz:</strong> Propaga apenas operações de criação (save).
 <strong>Quando usar:</strong> Quando quer salvar filhos automaticamente, mas não deletar.</p>
-<h4><strong>CascadeType.MERGE</strong></h4>
-<pre><code class="language-java">@OneToMany(cascade = CascadeType.MERGE)
+<h4 id="strongcascadetypemergestrong"><strong>CascadeType.MERGE</strong></h4><pre><code class="language-java">@OneToMany(cascade = CascadeType.MERGE)
 private List&lt;UserSetor&gt; setores;
 </code></pre>
 <p><strong>O que faz:</strong> Propaga apenas operações de atualização.
 <strong>Quando usar:</strong> Quando quer atualizar filhos automaticamente.</p>
-<h4><strong>CascadeType.REMOVE</strong></h4>
-<pre><code class="language-java">@OneToMany(cascade = CascadeType.REMOVE)
+<h4 id="strongcascadetyperemovestrong"><strong>CascadeType.REMOVE</strong></h4><pre><code class="language-java">@OneToMany(cascade = CascadeType.REMOVE)
 private List&lt;UserSetor&gt; setores;
 </code></pre>
 <p><strong>O que faz:</strong> Propaga apenas operações de exclusão.
 <strong>Quando usar:</strong> Relacionamentos onde filhos devem ser deletados com o pai.</p>
 <hr>
-<h3><strong>🏷️ Anotações de Enum:</strong></h3>
-<h4><strong>@Enumerated(EnumType.STRING)</strong></h4>
-<pre><code class="language-java">@Enumerated(EnumType.STRING)
+<h3 id="strong-anotaes-de-enumstrong"><strong>🏷️ Anotações de Enum:</strong></h3><h4 id="strongenumeratedenumtypestringstrong"><strong>@Enumerated(EnumType.STRING)</strong></h4><pre><code class="language-java">@Enumerated(EnumType.STRING)
 @Column(name = &quot;STATUS_ATUAL&quot;)
 private StatusDoenca statusAtual;
 </code></pre>
@@ -2914,8 +2778,7 @@ private StatusDoenca statusAtual;
 <strong>Vantagem:</strong> Legível no banco, estável se reordenar enum.
 <strong>Desvantagem:</strong> Ocupa mais espaço.
 <strong>Quando usar:</strong> Sempre recomendado para manutenibilidade.</p>
-<h4><strong>@Enumerated(EnumType.ORDINAL)</strong></h4>
-<pre><code class="language-java">@Enumerated(EnumType.ORDINAL)
+<h4 id="strongenumeratedenumtypeordinalstrong"><strong>@Enumerated(EnumType.ORDINAL)</strong></h4><pre><code class="language-java">@Enumerated(EnumType.ORDINAL)
 private StatusDoenca statusAtual;
 </code></pre>
 <p><strong>O que faz:</strong> Armazena a posição do enum como número (0, 1, 2).
@@ -2923,33 +2786,28 @@ private StatusDoenca statusAtual;
 <strong>Desvantagem:</strong> Quebra se reordenar enum, ilegível no banco.
 <strong>Quando usar:</strong> Evitar, usar apenas se performance for crítica.</p>
 <hr>
-<h3><strong>⏰ Anotações de Lifecycle (Ciclo de Vida):</strong></h3>
-<h4><strong>@PrePersist</strong></h4>
-<pre><code class="language-java">@PrePersist
+<h3 id="strong-anotaes-de-lifecycle-ciclo-de-vidastrong"><strong>⏰ Anotações de Lifecycle (Ciclo de Vida):</strong></h3><h4 id="strongprepersiststrong"><strong>@PrePersist</strong></h4><pre><code class="language-java">@PrePersist
 protected void onCreate() {
     createdAt = LocalDateTime.now();
 }
 </code></pre>
 <p><strong>O que faz:</strong> Executa método antes de salvar entidade no banco pela primeira vez.
 <strong>Quando usar:</strong> Para preencher campos automáticos na criação (timestamps, IDs).</p>
-<h4><strong>@PreUpdate</strong></h4>
-<pre><code class="language-java">@PreUpdate
+<h4 id="strongpreupdatestrong"><strong>@PreUpdate</strong></h4><pre><code class="language-java">@PreUpdate
 protected void onUpdate() {
     updatedAt = LocalDateTime.now();
 }
 </code></pre>
 <p><strong>O que faz:</strong> Executa método antes de atualizar entidade existente.
 <strong>Quando usar:</strong> Para atualizar campos automáticos (updatedAt, version).</p>
-<h4><strong>@PostLoad</strong></h4>
-<pre><code class="language-java">@PostLoad
+<h4 id="strongpostloadstrong"><strong>@PostLoad</strong></h4><pre><code class="language-java">@PostLoad
 protected void onLoad() {
     // Lógica após carregar do banco
 }
 </code></pre>
 <p><strong>O que faz:</strong> Executa método após carregar entidade do banco.
 <strong>Quando usar:</strong> Para processamento ou validação após carregar dados.</p>
-<h4><strong>@PostPersist</strong></h4>
-<pre><code class="language-java">@PostPersist
+<h4 id="strongpostpersiststrong"><strong>@PostPersist</strong></h4><pre><code class="language-java">@PostPersist
 protected void afterSave() {
     // Lógica após salvar (já tem ID)
 }
@@ -2957,21 +2815,16 @@ protected void afterSave() {
 <p><strong>O que faz:</strong> Executa método após salvar entidade (já com ID gerado).
 <strong>Quando usar:</strong> Para ações que precisam do ID gerado (logs, notificações).</p>
 <hr>
-<h3><strong>🔒 Anotações de Constraint (Restrições):</strong></h3>
-<h4><strong>@UniqueConstraint</strong></h4>
-<pre><code class="language-java">@Table(uniqueConstraints = @UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;}))
+<h3 id="strong-anotaes-de-constraint-restriesstrong"><strong>🔒 Anotações de Constraint (Restrições):</strong></h3><h4 id="stronguniqueconstraintstrong"><strong>@UniqueConstraint</strong></h4><pre><code class="language-java">@Table(uniqueConstraints = @UniqueConstraint(columnNames = {&quot;ID_USER&quot;, &quot;ID_SETOR&quot;, &quot;ATIVO&quot;}))
 </code></pre>
 <p><strong>O que faz:</strong> Cria constraint de unicidade composta no banco.
 <strong>Quando usar:</strong> Para regras de negócio que envolvem múltiplas colunas.</p>
-<h4><strong>@Index</strong></h4>
-<pre><code class="language-java">@Table(indexes = @Index(columnList = &quot;cpf, email&quot;))
+<h4 id="strongindexstrong"><strong>@Index</strong></h4><pre><code class="language-java">@Table(indexes = @Index(columnList = &quot;cpf, email&quot;))
 </code></pre>
 <p><strong>O que faz:</strong> Cria índices no banco para melhorar performance de consultas.
 <strong>Quando usar:</strong> Em campos frequentemente usados em WHERE, ORDER BY, JOIN.</p>
 <hr>
-<h3><strong>💡 Dicas de Uso:</strong></h3>
-<h4><strong>Combinações Comuns:</strong></h4>
-<pre><code class="language-java">// Chave primária padrão
+<h3 id="strong-dicas-de-usostrong"><strong>💡 Dicas de Uso:</strong></h3><h4 id="strongcombinaes-comunsstrong"><strong>Combinações Comuns:</strong></h4><pre><code class="language-java">// Chave primária padrão
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = &quot;ID_USER&quot;)
@@ -2990,8 +2843,7 @@ private List&lt;UserSetor&gt; setores = new ArrayList&lt;&gt;();
 @Column(name = &quot;STATUS&quot;, length = 20)
 private StatusDoenca status = StatusDoenca.ATIVO;
 </code></pre>
-<h4><strong><span class="badge warning">⚠️</span> Armadilhas Comuns:</strong></h4>
-<ul>
+<h4 id="strongspan-classbadge-warningspan-armadilhas-comunsstrong"><strong><span class="badge warning">⚠️</span> Armadilhas Comuns:</strong></h4><ul>
 <li><strong>EAGER em relacionamentos grandes</strong> → Performance ruim</li>
 <li><strong>CASCADE.ALL sem cuidado</strong> → Deleções acidentais  </li>
 <li><strong>Enum ORDINAL</strong> → Quebra ao reordenar</li>
@@ -2999,9 +2851,7 @@ private StatusDoenca status = StatusDoenca.ATIVO;
 <li><strong>Relacionamentos bidirecionais sem mappedBy</strong> → Tabelas extras</li>
 </ul>
 <hr>
-<h2>🔗 Relacionamentos e Estratégias</h2>
-<h3><strong>1. User ↔ UserSetor ↔ SetorAtuacao (Many-to-Many)</strong></h3>
-<pre><code>User (1) ←→ (N) UserSetor (N) ←→ (1) SetorAtuacao
+<h2 id="-relacionamentos-e-estratgias">🔗 Relacionamentos e Estratégias</h2><h3 id="strong1-user-usersetor-setoratuacao-many-to-manystrong"><strong>1. User ↔ UserSetor ↔ SetorAtuacao (Many-to-Many)</strong></h3><pre><code>User (1) ←→ (N) UserSetor (N) ←→ (1) SetorAtuacao
 </code></pre>
 <p><strong>Vantagens da Tabela Intermediária:</strong></p>
 <ul>
@@ -3009,8 +2859,7 @@ private StatusDoenca status = StatusDoenca.ATIVO;
 <li>Controle de histórico</li>
 <li>Soft delete independente</li>
 </ul>
-<h3><strong>2. Doador ↔ DoadorDoenca ↔ DoencaEspecifica (Many-to-Many)</strong></h3>
-<pre><code>Doador (1) ←→ (N) DoadorDoenca (N) ←→ (1) DoencaEspecifica  
+<h3 id="strong2-doador-doadordoenca-doencaespecifica-many-to-manystrong"><strong>2. Doador ↔ DoadorDoenca ↔ DoencaEspecifica (Many-to-Many)</strong></h3><pre><code>Doador (1) ←→ (N) DoadorDoenca (N) ←→ (1) DoencaEspecifica  
 </code></pre>
 <p><strong>Vantagens:</strong></p>
 <ul>
@@ -3019,37 +2868,30 @@ private StatusDoenca status = StatusDoenca.ATIVO;
 <li>Rastreabilidade de origem</li>
 <li>Auditoria completa</li>
 </ul>
-<h3><strong>3. User → UserRole (Many-to-One)</strong></h3>
-<pre><code>User (N) ←→ (1) UserRole
+<h3 id="strong3-user-userrole-many-to-onestrong"><strong>3. User → UserRole (Many-to-One)</strong></h3><pre><code>User (N) ←→ (1) UserRole
 </code></pre>
 <p><strong>EAGER Loading:</strong> Role sempre necessário para autorização.</p>
-<h3><strong>4. User → Hemocentro (Many-to-One)</strong></h3>
-<pre><code>User (N) ←→ (1) Hemocentro
+<h3 id="strong4-user-hemocentro-many-to-onestrong"><strong>4. User → Hemocentro (Many-to-One)</strong></h3><pre><code>User (N) ←→ (1) Hemocentro
 </code></pre>
 <p><strong>LAZY Loading:</strong> Hemocentro carregado sob demanda.</p>
 <hr>
-<h2>🎨 Padrões de Design Utilizados</h2>
-<h3><strong>1. Domain-Driven Design (DDD)</strong></h3>
-<ul>
+<h2 id="-padres-de-design-utilizados">🎨 Padrões de Design Utilizados</h2><h3 id="strong1-domain-driven-design-dddstrong"><strong>1. Domain-Driven Design (DDD)</strong></h3><ul>
 <li><strong>Entities:</strong> Objetos com identidade única (<code>User</code>, <code>Doador</code>)</li>
 <li><strong>Value Objects:</strong> Enums (<code>StatusDoenca</code>, <code>OrigemDeteccao</code>)</li>
 <li><strong>Aggregates:</strong> Agrupamentos lógicos de entidades relacionadas</li>
 </ul>
-<h3><strong>2. Repository Pattern</strong></h3>
-<pre><code class="language-java">public interface UserSetorRepository extends JpaRepository&lt;UserSetor, Long&gt; {
+<h3 id="strong2-repository-patternstrong"><strong>2. Repository Pattern</strong></h3><pre><code class="language-java">public interface UserSetorRepository extends JpaRepository&lt;UserSetor, Long&gt; {
     List&lt;UserSetor&gt; findByUserAndAtivoTrue(User user);
     // Métodos específicos do domínio
 }
 </code></pre>
-<h3><strong>3. Soft Delete Pattern</strong></h3>
-<pre><code class="language-java">@Column(name = &quot;DELETED_AT&quot;)
+<h3 id="strong3-soft-delete-patternstrong"><strong>3. Soft Delete Pattern</strong></h3><pre><code class="language-java">@Column(name = &quot;DELETED_AT&quot;)
 private LocalDateTime deletedAt; // NULL = ativo, preenchido = deletado
 
 @Column(name = &quot;ATIVO&quot;) 
 private Boolean ativo = true; // true = ativo, false = inativo
 </code></pre>
-<h3><strong>4. Audit Trail Pattern</strong></h3>
-<pre><code class="language-java">@Column(name = &quot;CREATED_AT&quot;)
+<h3 id="strong4-audit-trail-patternstrong"><strong>4. Audit Trail Pattern</strong></h3><pre><code class="language-java">@Column(name = &quot;CREATED_AT&quot;)
 private LocalDateTime createdAt;
 
 @Column(name = &quot;UPDATED_AT&quot;) 
@@ -3059,8 +2901,7 @@ private LocalDateTime updatedAt;
 @JoinColumn(name = &quot;CADASTRADO_POR&quot;)
 private User cadastradoPor;
 </code></pre>
-<h3><strong>5. State Machine Pattern</strong></h3>
-<pre><code class="language-java">// Workflow: DECLARADA_DOADOR → VALIDAÇÃO_PENDENTE → VALIDADA
+<h3 id="strong5-state-machine-patternstrong"><strong>5. State Machine Pattern</strong></h3><pre><code class="language-java">// Workflow: DECLARADA_DOADOR → VALIDAÇÃO_PENDENTE → VALIDADA
 public enum StatusDoenca {
     ATIVO, CURADO, CONTROLADO
 }
@@ -3070,60 +2911,49 @@ public enum OrigemDeteccao {
 }
 </code></pre>
 <hr>
-<h2>🎯 Boas Práticas Implementadas</h2>
-<h3><strong>1. Nomeação Consistente:</strong></h3>
-<ul>
+<h2 id="-boas-prticas-implementadas">🎯 Boas Práticas Implementadas</h2><h3 id="strong1-nomeao-consistentestrong"><strong>1. Nomeação Consistente:</strong></h3><ul>
 <li>Entidades em PascalCase (<code>UserSetor</code>)</li>
 <li>Campos em camelCase (<code>setorPrincipal</code>)</li>
 <li>Tabelas em UPPER_SNAKE_CASE (<code>USER_SETORES</code>)</li>
 <li>Colunas em UPPER_SNAKE_CASE (<code>IS_SETOR_PRINCIPAL</code>)</li>
 </ul>
-<h3><strong>2. Tipos de Dados Apropriados:</strong></h3>
-<ul>
+<h3 id="strong2-tipos-de-dados-apropriadosstrong"><strong>2. Tipos de Dados Apropriados:</strong></h3><ul>
 <li><code>BigDecimal</code> para valores monetários/precisão</li>
 <li><code>LocalDateTime</code> para timestamps</li>
 <li><code>LocalDate</code> para datas sem horário</li>
 <li><code>Boolean</code> para flags (não primitive boolean)</li>
 </ul>
-<h3><strong>3. Constraints de Integridade:</strong></h3>
-<ul>
+<h3 id="strong3-constraints-de-integridadestrong"><strong>3. Constraints de Integridade:</strong></h3><ul>
 <li><code>@UniqueConstraint</code> para regras de negócio</li>
 <li><code>nullable = false</code> para campos obrigatórios</li>
 <li><code>unique = true</code> para valores únicos</li>
 </ul>
-<h3><strong>4. Performance:</strong></h3>
-<ul>
+<h3 id="strong4-performancestrong"><strong>4. Performance:</strong></h3><ul>
 <li>Fetch LAZY por padrão</li>
 <li>Fetch EAGER apenas quando necessário</li>
 <li>Índices implícitos em FKs</li>
 </ul>
-<h3><strong>5. Manutenibilidade:</strong></h3>
-<ul>
+<h3 id="strong5-manutenibilidadestrong"><strong>5. Manutenibilidade:</strong></h3><ul>
 <li>Lombok para reduzir boilerplate</li>
 <li>Enums para valores fixos</li>
 <li>Relacionamentos bidirecionais quando necessário</li>
 </ul>
 <hr>
-<h2>🏷️ Enums e Value Objects Completos</h2>
-<h3><strong>Enums Implementados:</strong></h3>
-<h4><strong>1. StatusDoenca</strong></h4>
-<pre><code class="language-java">public enum StatusDoenca {
+<h2 id="-enums-e-value-objects-completos">🏷️ Enums e Value Objects Completos</h2><h3 id="strongenums-implementadosstrong"><strong>Enums Implementados:</strong></h3><h4 id="strong1-statusdoencastrong"><strong>1. StatusDoenca</strong></h4><pre><code class="language-java">public enum StatusDoenca {
     ATIVO,      // Doença presente/ativa
     CURADO,     // Doença superada/curada
     CONTROLADO  // Doença controlada com tratamento
 }
 </code></pre>
 <p><strong>Uso:</strong> Define o estado atual de uma doença no histórico do doador.</p>
-<h4><strong>2. OrigemDeteccao</strong></h4>
-<pre><code class="language-java">public enum OrigemDeteccao {
+<h4 id="strong2-origemdeteccaostrong"><strong>2. OrigemDeteccao</strong></h4><pre><code class="language-java">public enum OrigemDeteccao {
     DECLARADA_DOADOR,      // Informado pelo doador
     DETECTADA_MEDICO,      // Detectado por profissional
     EXAME_LABORATORIAL     // Identificado em exame
 }
 </code></pre>
 <p><strong>Uso:</strong> Rastreia como uma doença foi identificada no sistema.</p>
-<h4><strong>3. StatusAgendamento</strong></h4>
-<pre><code class="language-java">public enum StatusAgendamento {
+<h4 id="strong3-statusagendamentostrong"><strong>3. StatusAgendamento</strong></h4><pre><code class="language-java">public enum StatusAgendamento {
     AGENDADO,       // Confirmado
     COMPARECEU,     // Doador presente
     NAO_COMPARECEU, // Ausência
@@ -3131,8 +2961,7 @@ public enum OrigemDeteccao {
 }
 </code></pre>
 <p><strong>Uso:</strong> Controla o ciclo de vida dos agendamentos de doação.</p>
-<h4><strong>4. StatusBolsa</strong></h4>
-<pre><code class="language-java">public enum StatusBolsa {
+<h4 id="strong4-statusbolsastrong"><strong>4. StatusBolsa</strong></h4><pre><code class="language-java">public enum StatusBolsa {
     COLETADA,     // Sangue coletado
     APROVADA,     // Testes aprovados
     REJEITADA,    // Testes reprovados
@@ -3140,8 +2969,7 @@ public enum OrigemDeteccao {
 }
 </code></pre>
 <p><strong>Uso:</strong> Rastreia o estado de cada bolsa de sangue desde coleta até uso.</p>
-<h4><strong>5. StatusEstoque</strong></h4>
-<pre><code class="language-java">public enum StatusEstoque {
+<h4 id="strong5-statusestoquestrong"><strong>5. StatusEstoque</strong></h4><pre><code class="language-java">public enum StatusEstoque {
     CRITICO,  // Abaixo do mínimo
     BAIXO,    // Entre mínimo e 50% ideal
     ADEQUADO, // Entre 50% e 100% ideal
@@ -3149,8 +2977,7 @@ public enum OrigemDeteccao {
 }
 </code></pre>
 <p><strong>Uso:</strong> Indica níveis de estoque para gestão inteligente de sangue.</p>
-<h4><strong>6. TipoNotificacao</strong></h4>
-<pre><code class="language-java">public enum TipoNotificacao {
+<h4 id="strong6-tiponotificacaostrong"><strong>6. TipoNotificacao</strong></h4><pre><code class="language-java">public enum TipoNotificacao {
     INFO,     // Informação
     WARNING,  // Aviso
     ERROR,    // Erro
@@ -3158,8 +2985,7 @@ public enum OrigemDeteccao {
 }
 </code></pre>
 <p><strong>Uso:</strong> Categoriza notificações para apresentação adequada na UI.</p>
-<h4><strong>7. TipoOperacao</strong></h4>
-<pre><code class="language-java">public enum TipoOperacao {
+<h4 id="strong7-tipooperacaostrong"><strong>7. TipoOperacao</strong></h4><pre><code class="language-java">public enum TipoOperacao {
     SELECT, // Consulta
     INSERT, // Criação
     UPDATE, // Atualização
@@ -3167,63 +2993,52 @@ public enum OrigemDeteccao {
 }
 </code></pre>
 <p><strong>Uso:</strong> Auditoria LGPD - registra tipo de operação nos dados.</p>
-<h3><strong>🎯 Vantagens dos Enums:</strong></h3>
-<ul>
+<h3 id="strong-vantagens-dos-enumsstrong"><strong>🎯 Vantagens dos Enums:</strong></h3><ul>
 <li><strong>Type Safety:</strong> Compilador impede valores inválidos</li>
 <li><strong>Legibilidade:</strong> Código autodocumentado</li>
 <li><strong>Manutenibilidade:</strong> Mudanças centralizadas</li>
 <li><strong>Performance:</strong> Otimização JVM automática</li>
 <li><strong>Validação:</strong> Constraint automática no banco</li>
 </ul>
-<h3><strong>🔧 Padrões de Uso:</strong></h3>
-<h4><strong>Persistência JPA:</strong></h4>
-<pre><code class="language-java">@Enumerated(EnumType.STRING)
+<h3 id="strong-padres-de-usostrong"><strong>🔧 Padrões de Uso:</strong></h3><h4 id="strongpersistncia-jpastrong"><strong>Persistência JPA:</strong></h4><pre><code class="language-java">@Enumerated(EnumType.STRING)
 @Column(name = &quot;STATUS&quot;, length = 20)
 private StatusAgendamento status = StatusAgendamento.AGENDADO;
 </code></pre>
-<h4><strong>Validação de Negócio:</strong></h4>
-<pre><code class="language-java">public void aprovarTriagem() {
+<h4 id="strongvalidao-de-negciostrong"><strong>Validação de Negócio:</strong></h4><pre><code class="language-java">public void aprovarTriagem() {
     if (this.aptoDoacao) {
         // Pode prosseguir para doação
         agendamento.setStatus(StatusAgendamento.COMPARECEU);
     }
 }
 </code></pre>
-<h4><strong>Consultas Tipadas:</strong></h4>
-<pre><code class="language-java">// Buscar bolsas aprovadas
+<h4 id="strongconsultas-tipadasstrong"><strong>Consultas Tipadas:</strong></h4><pre><code class="language-java">// Buscar bolsas aprovadas
 List&lt;Doacao&gt; aprovadas = doacaoRepository.findByStatusBolsa(StatusBolsa.APROVADA);
 
 // Estoque crítico
 List&lt;EstoqueSangue&gt; criticos = estoqueRepository.findByStatusEstoque(StatusEstoque.CRITICO);
 </code></pre>
 <hr>
-<h2>📈 Benefícios da Arquitetura</h2>
-<h3><strong><span class="badge success">✅</span> Flexibilidade:</strong></h3>
-<ul>
+<h2 id="-benefcios-da-arquitetura">📈 Benefícios da Arquitetura</h2><h3 id="strongspan-classbadge-successspan-flexibilidadestrong"><strong><span class="badge success">✅</span> Flexibilidade:</strong></h3><ul>
 <li>Multi-setor simultâneo</li>
 <li>Workflow médico híbrido</li>
 <li>Extensibilidade futura</li>
 </ul>
-<h3><strong><span class="badge success">✅</span> Integridade:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-successspan-integridadestrong"><strong><span class="badge success">✅</span> Integridade:</strong></h3><ul>
 <li>Constraints de banco</li>
 <li>Validações JPA</li>
 <li>Relacionamentos consistentes</li>
 </ul>
-<h3><strong><span class="badge success">✅</span> Performance:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-successspan-performancestrong"><strong><span class="badge success">✅</span> Performance:</strong></h3><ul>
 <li>Fetch strategies otimizadas</li>
 <li>Lazy loading inteligente</li>
 <li>Consultas específicas nos repositórios</li>
 </ul>
-<h3><strong><span class="badge success">✅</span> Auditoria:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-successspan-auditoriastrong"><strong><span class="badge success">✅</span> Auditoria:</strong></h3><ul>
 <li>Soft delete preserva histórico</li>
 <li>Timestamps automáticos</li>
 <li>Rastreabilidade de ações</li>
 </ul>
-<h3><strong><span class="badge success">✅</span> Compliance:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-successspan-compliancestrong"><strong><span class="badge success">✅</span> Compliance:</strong></h3><ul>
 <li>LGPD (consentimentos granulares)</li>
 <li>Responsabilidade médica</li>
 <li>Auditoria de acesso</li>

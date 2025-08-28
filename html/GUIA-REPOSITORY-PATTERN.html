@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 📊 Repository Pattern e Spring Data JPA - Guia Completo</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,10 +316,8 @@
         </nav>
         
         <div class="content">
-            <h1>📊 Repository Pattern e Spring Data JPA - Guia Completo</h1>
-<p><strong>Finalidade:</strong> Guia fundamental sobre Repository Pattern e Spring Data JPA<br><strong>Foco:</strong> Conceitos, implementação e boas práticas<br><strong>Tecnologia:</strong> Spring Data JPA, Repository Pattern, Query Methods</p>
-<h2>🔗 Links Rápidos para Documentação Oficial</h2>
-<table>
+            <h1 id="-repository-pattern-e-spring-data-jpa-guia-completo">📊 Repository Pattern e Spring Data JPA - Guia Completo</h1><p><strong>Finalidade:</strong> Guia fundamental sobre Repository Pattern e Spring Data JPA<br><strong>Foco:</strong> Conceitos, implementação e boas práticas<br><strong>Tecnologia:</strong> Spring Data JPA, Repository Pattern, Query Methods</p>
+<h2 id="-links-rpidos-para-documentao-oficial">🔗 Links Rápidos para Documentação Oficial</h2><table>
 <thead>
 <tr>
 <th><strong>Recurso</strong></th>
@@ -355,11 +353,8 @@
 </tbody></table>
 <p>💡 <strong>Mais links detalhados disponíveis na <a href="#-documenta%C3%A7%C3%A3o-oficial-e-refer%C3%AAncias">seção de documentação oficial</a> no final deste guia.</strong></p>
 <hr>
-<h2>🎯 O que é Repository Pattern?</h2>
-<h3><strong>🏗️ Conceito Fundamental</strong></h3>
-<p>O <strong>Repository Pattern</strong> é um padrão de design que encapsula a lógica necessária para acessar fontes de dados. Ele centraliza funcionalidades comuns de acesso a dados, proporcionando melhor manutenibilidade e desacoplamento da infraestrutura ou tecnologia usada para acessar bancos de dados.</p>
-<h3><strong>💡 Analogia Prática:</strong></h3>
-<p>Imagine o Repository como um <strong>&quot;bibliotecário digital&quot;</strong>:</p>
+<h2 id="-o-que-repository-pattern">🎯 O que é Repository Pattern?</h2><h3 id="strong-conceito-fundamentalstrong"><strong>🏗️ Conceito Fundamental</strong></h3><p>O <strong>Repository Pattern</strong> é um padrão de design que encapsula a lógica necessária para acessar fontes de dados. Ele centraliza funcionalidades comuns de acesso a dados, proporcionando melhor manutenibilidade e desacoplamento da infraestrutura ou tecnologia usada para acessar bancos de dados.</p>
+<h3 id="strong-analogia-prticastrong"><strong>💡 Analogia Prática:</strong></h3><p>Imagine o Repository como um <strong>&quot;bibliotecário digital&quot;</strong>:</p>
 <ul>
 <li>📚 <strong>Você pede</strong> um livro (entidade) pelo título (ID)</li>
 <li>🔍 <strong>Ele busca</strong> na estante (banco de dados)</li>
@@ -367,8 +362,7 @@
 <li>📝 <strong>Organiza</strong> novos livros (save) na estante</li>
 <li>🗑️ <strong>Remove</strong> livros antigos (delete) quando necessário</li>
 </ul>
-<h3><strong><span class="badge success">✅</span> Benefícios do Repository Pattern:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-successspan-benefcios-do-repository-patternstrong"><strong><span class="badge success">✅</span> Benefícios do Repository Pattern:</strong></h3><ul>
 <li><strong>🔄 Abstração</strong> - Esconde detalhes de acesso aos dados</li>
 <li><strong>🧪 Testabilidade</strong> - Fácil mock para testes unitários</li>
 <li><strong>🔄 Reutilização</strong> - Centraliza operações comuns</li>
@@ -376,15 +370,11 @@
 <li><strong>🛡️ Manutenibilidade</strong> - Mudanças isoladas em um local</li>
 </ul>
 <hr>
-<h2>🚀 Spring Data JPA - O Poder da Automação</h2>
-<h3><strong>🎯 O que é Spring Data JPA?</strong></h3>
-<blockquote>
+<h2 id="-spring-data-jpa-o-poder-da-automao">🚀 Spring Data JPA - O Poder da Automação</h2><h3 id="strong-o-que-spring-data-jpastrong"><strong>🎯 O que é Spring Data JPA?</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#preface">Spring Data JPA Introduction</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#getting-started">Getting Started</a></p>
 </blockquote>
 <p>Spring Data JPA é um framework que <strong>automatiza</strong> a implementação do Repository Pattern, gerando automaticamente implementações baseadas em convenções de nomenclatura.</p>
-<h3><strong>🔥 Funcionalidades Principais:</strong></h3>
-<h4><strong>1. 🤖 Implementação Automática</strong></h4>
-<pre><code class="language-java">// Você define apenas a interface
+<h3 id="strong-funcionalidades-principaisstrong"><strong>🔥 Funcionalidades Principais:</strong></h3><h4 id="strong1-implementao-automticastrong"><strong>1. 🤖 Implementação Automática</strong></h4><pre><code class="language-java">// Você define apenas a interface
 public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     // Spring Data JPA implementa automaticamente!
 }
@@ -398,8 +388,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 // - existsById(id)
 // E muito mais!
 </code></pre>
-<h4><strong>2. 📝 Query Methods por Convenção</strong></h4>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h4 id="strong2-query-methods-por-convenostrong"><strong>2. 📝 Query Methods por Convenção</strong></h4><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     
     // Spring entende e gera SQL automaticamente!
     List&lt;Doador&gt; findByFullName(String fullName);
@@ -413,8 +402,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     // E assim por diante...
 }
 </code></pre>
-<h4><strong>3. 📊 Paginação e Ordenação Nativas</strong></h4>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h4 id="strong3-paginao-e-ordenao-nativasstrong"><strong>3. 📊 Paginação e Ordenação Nativas</strong></h4><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     
     // Paginação automática
     Page&lt;Doador&gt; findByEstado(String estado, Pageable pageable);
@@ -427,9 +415,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 }
 </code></pre>
 <hr>
-<h2>📋 Hierarquia de Interfaces Repository</h2>
-<h3><strong>🏗️ Estrutura Completa</strong></h3>
-<blockquote>
+<h2 id="-hierarquia-de-interfaces-repository">📋 Hierarquia de Interfaces Repository</h2><h3 id="strong-estrutura-completastrong"><strong>🏗️ Estrutura Completa</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.core-concepts">Repository Hierarchy</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories">Interface Overview</a></p>
 </blockquote>
 <pre><code class="language-java">// 1. 🔧 Repository (Base) - Marker interface
@@ -444,9 +430,7 @@ PagingAndSortingRepository&lt;T, ID&gt; extends CrudRepository&lt;T, ID&gt;
 // 4. 🚀 JpaRepository - Funcionalidades JPA específicas
 JpaRepository&lt;T, ID&gt; extends PagingAndSortingRepository&lt;T, ID&gt;
 </code></pre>
-<h3><strong>🎯 Quando Usar Cada Interface:</strong></h3>
-<h4><strong>1. <code>Repository&lt;T, ID&gt;</code> - Interface Marker</strong></h4>
-<pre><code class="language-java">// Quando você quer controle total
+<h3 id="strong-quando-usar-cada-interfacestrong"><strong>🎯 Quando Usar Cada Interface:</strong></h3><h4 id="strong1-coderepositoryltt-idgtcode-interface-markerstrong"><strong>1. <code>Repository&lt;T, ID&gt;</code> - Interface Marker</strong></h4><pre><code class="language-java">// Quando você quer controle total
 public interface DoadorRepository extends Repository&lt;Doador, Long&gt; {
     // Define apenas os métodos que precisa
     Optional&lt;Doador&gt; findById(Long id);
@@ -454,8 +438,7 @@ public interface DoadorRepository extends Repository&lt;Doador, Long&gt; {
     // Não herda nenhum método automático
 }
 </code></pre>
-<h4><strong>2. <code>CrudRepository&lt;T, ID&gt;</code> - CRUD Básico</strong></h4>
-<pre><code class="language-java">public interface DoadorRepository extends CrudRepository&lt;Doador, Long&gt; {
+<h4 id="strong2-codecrudrepositoryltt-idgtcode-crud-bsicostrong"><strong>2. <code>CrudRepository&lt;T, ID&gt;</code> - CRUD Básico</strong></h4><pre><code class="language-java">public interface DoadorRepository extends CrudRepository&lt;Doador, Long&gt; {
     // Herda automaticamente:
     // save(S entity)
     // saveAll(Iterable&lt;S&gt; entities)
@@ -469,15 +452,13 @@ public interface DoadorRepository extends Repository&lt;Doador, Long&gt; {
     // deleteAll()
 }
 </code></pre>
-<h4><strong>3. <code>PagingAndSortingRepository&lt;T, ID&gt;</code> - Com Paginação</strong></h4>
-<pre><code class="language-java">public interface DoadorRepository extends PagingAndSortingRepository&lt;Doador, Long&gt; {
+<h4 id="strong3-codepagingandsortingrepositoryltt-idgtcode-com-paginaostrong"><strong>3. <code>PagingAndSortingRepository&lt;T, ID&gt;</code> - Com Paginação</strong></h4><pre><code class="language-java">public interface DoadorRepository extends PagingAndSortingRepository&lt;Doador, Long&gt; {
     // Herda tudo do CrudRepository +
     // findAll(Sort sort)
     // findAll(Pageable pageable)
 }
 </code></pre>
-<h4><strong>4. <code>JpaRepository&lt;T, ID&gt;</code> - Completo (RECOMENDADO)</strong></h4>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h4 id="strong4-codejparepositoryltt-idgtcode-completo-recomendadostrong"><strong>4. <code>JpaRepository&lt;T, ID&gt;</code> - Completo (RECOMENDADO)</strong></h4><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     // Herda tudo dos anteriores +
     // flush()
     // saveAndFlush(S entity)
@@ -489,9 +470,7 @@ public interface DoadorRepository extends Repository&lt;Doador, Long&gt; {
 }
 </code></pre>
 <hr>
-<h2>🔧 Implementação Prática - Projeto DoeSangue</h2>
-<h3><strong>📋 Passo 1: Definir a Interface Repository</strong></h3>
-<blockquote>
+<h2 id="-implementao-prtica-projeto-doesangue">🔧 Implementação Prática - Projeto DoeSangue</h2><h3 id="strong-passo-1-definir-a-interface-repositorystrong"><strong>📋 Passo 1: Definir a Interface Repository</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.definition">Defining Repository Interfaces</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation">Repository Methods</a></p>
 </blockquote>
 <pre><code class="language-java">package com.faculdade.doesangue_api.repository;
@@ -623,8 +602,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     List&lt;Doador&gt; findByDeletedAtIsNotNull();
 }
 </code></pre>
-<h3><strong>📋 Passo 2: Usar no Service</strong></h3>
-<blockquote>
+<h3 id="strong-passo-2-usar-no-servicestrong"><strong>📋 Passo 2: Usar no Service</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-stereotypes">Service Layer</a> | <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction">Transaction Management</a></p>
 </blockquote>
 <pre><code class="language-java">package com.faculdade.doesangue_api.service;
@@ -752,8 +730,7 @@ public class DoadorService {
     }
 }
 </code></pre>
-<h3><strong>📋 Passo 3: Usar no Controller</strong></h3>
-<pre><code class="language-java">package com.faculdade.doesangue_api.controller;
+<h3 id="strong-passo-3-usar-no-controllerstrong"><strong>📋 Passo 3: Usar no Controller</strong></h3><pre><code class="language-java">package com.faculdade.doesangue_api.controller;
 
 import com.faculdade.doesangue_api.entities.Doador;
 import com.faculdade.doesangue_api.service.DoadorService;
@@ -804,9 +781,7 @@ public class DoadorController {
 }
 </code></pre>
 <hr>
-<h2>🔍 Query Methods - Convenções de Nomenclatura</h2>
-<h3><strong>📚 Keywords Principais</strong></h3>
-<blockquote>
+<h2 id="-query-methods-convenes-de-nomenclatura">🔍 Query Methods - Convenções de Nomenclatura</h2><h3 id="strong-keywords-principaisstrong"><strong>📚 Keywords Principais</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords">Supported Keywords</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation">Query Creation Examples</a></p>
 </blockquote>
 <table>
@@ -893,8 +868,7 @@ public class DoadorController {
 <td><code>WHERE age = ?1 ORDER BY name ASC</code></td>
 </tr>
 </tbody></table>
-<h3><strong>🎯 Exemplos Práticos para DoeSangue:</strong></h3>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h3 id="strong-exemplos-prticos-para-doesanguestrong"><strong>🎯 Exemplos Práticos para DoeSangue:</strong></h3><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 
     // Busca simples
     List&lt;Doador&gt; findByFullName(String fullName);
@@ -948,9 +922,7 @@ public class DoadorController {
 }
 </code></pre>
 <hr>
-<h2>🧪 Testes com Repository</h2>
-<h3><strong>🔧 Teste Unitário com @DataJpaTest</strong></h3>
-<blockquote>
+<h2 id="-testes-com-repository">🧪 Testes com Repository</h2><h3 id="strong-teste-unitrio-com-datajpateststrong"><strong>🔧 Teste Unitário com @DataJpaTest</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/testing.html#testing.spring-boot-applications.testing-autoconfigured-jpa">Testing Data Layer</a> | <a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html">@DataJpaTest</a></p>
 </blockquote>
 <pre><code class="language-java">package com.faculdade.doesangue_api.repository;
@@ -1081,9 +1053,7 @@ class DoadorRepositoryTest {
 }
 </code></pre>
 <hr>
-<h2>💡 Boas Práticas e Dicas Avançadas</h2>
-<h3><strong><span class="badge success">✅</span> Convenções de Nomenclatura</strong></h3>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h2 id="-boas-prticas-e-dicas-avanadas">💡 Boas Práticas e Dicas Avançadas</h2><h3 id="strongspan-classbadge-successspan-convenes-de-nomenclaturastrong"><strong><span class="badge success">✅</span> Convenções de Nomenclatura</strong></h3><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 
     // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; GOOD: Nomes descritivos e claros
     List&lt;Doador&gt; findByFullNameContainingIgnoreCase(String nome);
@@ -1096,8 +1066,7 @@ class DoadorRepositoryTest {
     List&lt;Doador&gt; getStuff(); // Muito genérico
 }
 </code></pre>
-<h3><strong><span class="badge success">✅</span> Performance e Otimização</strong></h3>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h3 id="strongspan-classbadge-successspan-performance-e-otimizaostrong"><strong><span class="badge success">✅</span> Performance e Otimização</strong></h3><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 
     // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Use Slice quando não precisar do total de elementos
     Slice&lt;Doador&gt; findByEstado(String estado, Pageable pageable);
@@ -1115,8 +1084,7 @@ class DoadorRepositoryTest {
     boolean existsByCpfCustom(@Param(&quot;cpf&quot;) String cpf);
 }
 </code></pre>
-<h3><strong><span class="badge success">✅</span> Tratamento de Null e Optional</strong></h3>
-<pre><code class="language-java">@Service
+<h3 id="strongspan-classbadge-successspan-tratamento-de-null-e-optionalstrong"><strong><span class="badge success">✅</span> Tratamento de Null e Optional</strong></h3><pre><code class="language-java">@Service
 public class DoadorService {
 
     // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; GOOD: Use Optional para retornos que podem ser nulos
@@ -1140,21 +1108,16 @@ public class DoadorService {
 }
 </code></pre>
 <hr>
-<h2>📊 Índices de Banco de Dados - Performance e Otimização</h2>
-<h3><strong>🎯 O que são Índices?</strong></h3>
-<blockquote>
+<h2 id="-ndices-de-banco-de-dados-performance-e-otimizao">📊 Índices de Banco de Dados - Performance e Otimização</h2><h3 id="strong-o-que-so-ndicesstrong"><strong>🎯 O que são Índices?</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html">MySQL Indexes</a> | <a href="https://www.postgresql.org/docs/current/indexes.html">PostgreSQL Indexes</a> | <a href="https://jakarta.ee/specifications/persistence/3.1/apidocs/jakarta.persistence/jakarta/persistence/index">JPA Index Annotation</a></p>
 </blockquote>
 <p><strong>Índices</strong> são estruturas de dados especiais que melhoram a velocidade de operações de consulta em uma tabela de banco de dados. Funcionam como um <strong>&quot;índice de livro&quot;</strong> - permitem localizar dados rapidamente sem varrer toda a tabela.</p>
-<h3><strong>🏗️ Analogia Prática:</strong></h3>
-<p>Imagine uma <strong>biblioteca com 10.000 livros</strong>:</p>
+<h3 id="strong-analogia-prticastrong"><strong>🏗️ Analogia Prática:</strong></h3><p>Imagine uma <strong>biblioteca com 10.000 livros</strong>:</p>
 <ul>
 <li><strong>📚 Sem índice</strong> - Você precisa verificar livro por livro para encontrar &quot;Dom Casmurro&quot;</li>
 <li><strong>📇 Com índice</strong> - Você consulta o catálogo por título e vai direto à estante correta</li>
 </ul>
-<h3><strong>🚀 Por que Usar Índices?</strong></h3>
-<h4><strong>1. 🔍 Performance de Consultas</strong></h4>
-<pre><code class="language-sql">-- SEM ÍNDICE: Busca sequencial em 1 milhão de registros
+<h3 id="strong-por-que-usar-ndicesstrong"><strong>🚀 Por que Usar Índices?</strong></h3><h4 id="strong1-performance-de-consultasstrong"><strong>1. 🔍 Performance de Consultas</strong></h4><pre><code class="language-sql">-- SEM ÍNDICE: Busca sequencial em 1 milhão de registros
 SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
 -- Tempo: ~500ms (varre toda a tabela)
 
@@ -1163,8 +1126,7 @@ CREATE INDEX idx_doador_cpf ON doador(cpf);
 SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
 -- Tempo: ~2ms (acesso direto)
 </code></pre>
-<h4><strong>2. 📈 Escalabilidade</strong></h4>
-<pre><code class="language-java">// Repository que se beneficia de índices
+<h4 id="strong2-escalabilidadestrong"><strong>2. 📈 Escalabilidade</strong></h4><pre><code class="language-java">// Repository que se beneficia de índices
 public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     
     // Busca por CPF - DEVE ter índice único
@@ -1180,8 +1142,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     List&lt;Doador&gt; findByAtivoTrueOrderByCreatedAtDesc();
 }
 </code></pre>
-<h4><strong>3. 🎯 Integridade Referencial</strong></h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong3-integridade-referencialstrong"><strong>3. 🎯 Integridade Referencial</strong></h4><pre><code class="language-java">@Entity
 @Table(name = &quot;doador&quot;)
 public class Doador {
     
@@ -1196,8 +1157,7 @@ public class Doador {
     private String email;
 }
 </code></pre>
-<h3><strong><span class="badge success">✅</span> Principais Benefícios dos Índices</strong></h3>
-<table>
+<h3 id="strongspan-classbadge-successspan-principais-benefcios-dos-ndicesstrong"><strong><span class="badge success">✅</span> Principais Benefícios dos Índices</strong></h3><table>
 <thead>
 <tr>
 <th><strong>Benefício</strong></th>
@@ -1236,17 +1196,14 @@ public class Doador {
 <td>Consultas complexas otimizadas</td>
 </tr>
 </tbody></table>
-<h3><strong>🎯 Tipos de Índices e Quando Usar</strong></h3>
-<h4><strong>1. 🔑 Primary Key Index (Automático)</strong></h4>
-<pre><code class="language-java">@Entity
+<h3 id="strong-tipos-de-ndices-e-quando-usarstrong"><strong>🎯 Tipos de Índices e Quando Usar</strong></h3><h4 id="strong1-primary-key-index-automticostrong"><strong>1. 🔑 Primary Key Index (Automático)</strong></h4><pre><code class="language-java">@Entity
 public class Doador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // MySQL cria CLUSTERED INDEX automaticamente
 }
 </code></pre>
-<h4><strong>2. 🔐 Unique Index (Constraints)</strong></h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong2-unique-index-constraintsstrong"><strong>2. 🔐 Unique Index (Constraints)</strong></h4><pre><code class="language-java">@Entity
 @Table(name = &quot;doador&quot;, indexes = {
     @Index(name = &quot;idx_doador_cpf&quot;, columnList = &quot;cpf&quot;, unique = true),
     @Index(name = &quot;idx_doador_email&quot;, columnList = &quot;email&quot;, unique = true)
@@ -1260,8 +1217,7 @@ public class Doador {
     private String email; // Índice único para login/validação
 }
 </code></pre>
-<h4><strong>3. 📊 Single Column Index</strong></h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong3-single-column-indexstrong"><strong>3. 📊 Single Column Index</strong></h4><pre><code class="language-java">@Entity
 @Table(name = &quot;doador&quot;, indexes = {
     @Index(name = &quot;idx_doador_cidade&quot;, columnList = &quot;cidade&quot;),
     @Index(name = &quot;idx_doador_estado&quot;, columnList = &quot;estado&quot;),
@@ -1276,8 +1232,7 @@ public class Doador {
     private LocalDateTime createdAt; // Para ordenação temporal
 }
 </code></pre>
-<h4><strong>4. 🎯 Composite Index (Múltiplas Colunas)</strong></h4>
-<pre><code class="language-java">@Entity
+<h4 id="strong4-composite-index-mltiplas-colunasstrong"><strong>4. 🎯 Composite Index (Múltiplas Colunas)</strong></h4><pre><code class="language-java">@Entity
 @Table(name = &quot;doador&quot;, indexes = {
     // Índice composto para filtros combinados
     @Index(name = &quot;idx_doador_cidade_estado&quot;, columnList = &quot;cidade, estado&quot;),
@@ -1293,16 +1248,13 @@ public class Doador {
     // cidade, estado != estado, cidade
 }
 </code></pre>
-<h4><strong>5. 🔍 Functional Index (Casos Especiais)</strong></h4>
-<pre><code class="language-sql">-- Para busca case-insensitive em nomes
+<h4 id="strong5-functional-index-casos-especiaisstrong"><strong>5. 🔍 Functional Index (Casos Especiais)</strong></h4><pre><code class="language-sql">-- Para busca case-insensitive em nomes
 CREATE INDEX idx_doador_nome_lower ON doador(LOWER(full_name));
 
 -- Para busca por prefixo de telefone
 CREATE INDEX idx_doador_ddd ON doador(LEFT(telefone_principal, 2));
 </code></pre>
-<h3><strong>🔧 Implementação Prática com JPA</strong></h3>
-<h4><strong>📋 Exemplo Completo - Entidade Doador Otimizada</strong></h4>
-<pre><code class="language-java">@Entity
+<h3 id="strong-implementao-prtica-com-jpastrong"><strong>🔧 Implementação Prática com JPA</strong></h3><h4 id="strong-exemplo-completo-entidade-doador-otimizadastrong"><strong>📋 Exemplo Completo - Entidade Doador Otimizada</strong></h4><pre><code class="language-java">@Entity
 @Table(name = &quot;doador&quot;, indexes = {
     // 🔐 Índices únicos para integridade
     @Index(name = &quot;idx_doador_cpf&quot;, columnList = &quot;cpf&quot;, unique = true),
@@ -1363,8 +1315,7 @@ public class Doador {
     private TipoSanguineo tipoSanguineo; // Foreign key (índice automático)
 }
 </code></pre>
-<h4><strong>📊 Repository Otimizado com Índices</strong></h4>
-<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+<h4 id="strong-repository-otimizado-com-ndicesstrong"><strong>📊 Repository Otimizado com Índices</strong></h4><pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 
     // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_cpf (único)
     Optional&lt;Doador&gt; findByCpf(String cpf);
@@ -1389,9 +1340,7 @@ public class Doador {
     // Solução: Considere índice FULLTEXT ou busca externa (Elasticsearch)
 }
 </code></pre>
-<h3><strong>📈 Análise de Performance</strong></h3>
-<h4><strong>🔍 Como Verificar se Índices Estão Sendo Usados</strong></h4>
-<p><strong>MySQL:</strong></p>
+<h3 id="strong-anlise-de-performancestrong"><strong>📈 Análise de Performance</strong></h3><h4 id="strong-como-verificar-se-ndices-esto-sendo-usadosstrong"><strong>🔍 Como Verificar se Índices Estão Sendo Usados</strong></h4><p><strong>MySQL:</strong></p>
 <pre><code class="language-sql">-- Verificar plano de execução
 EXPLAIN SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
 
@@ -1411,8 +1360,7 @@ EXPLAIN ANALYZE SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
 -- Verificar uso dos índices
 SELECT * FROM pg_stat_user_indexes WHERE relname = &#39;doador&#39;;
 </code></pre>
-<h4><strong>📊 Métricas de Performance</strong></h4>
-<table>
+<h4 id="strong-mtricas-de-performancestrong"><strong>📊 Métricas de Performance</strong></h4><table>
 <thead>
 <tr>
 <th><strong>Cenário</strong></th>
@@ -1452,9 +1400,7 @@ SELECT * FROM pg_stat_user_indexes WHERE relname = &#39;doador&#39;;
 <td><strong>200x mais rápido</strong></td>
 </tr>
 </tbody></table>
-<h3><strong><span class="badge warning">⚠️</span> Cuidados e Trade-offs</strong></h3>
-<h4><strong><span class="badge danger">❌</span> Problemas com Muitos Índices</strong></h4>
-<pre><code class="language-java">// &lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; RUIM: Índices demais
+<h3 id="strongspan-classbadge-warningspan-cuidados-e-trade-offsstrong"><strong><span class="badge warning">⚠️</span> Cuidados e Trade-offs</strong></h3><h4 id="strongspan-classbadge-dangerspan-problemas-com-muitos-ndicesstrong"><strong><span class="badge danger">❌</span> Problemas com Muitos Índices</strong></h4><pre><code class="language-java">// &lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; RUIM: Índices demais
 @Table(indexes = {
     @Index(columnList = &quot;campo1&quot;),
     @Index(columnList = &quot;campo2&quot;), 
@@ -1474,8 +1420,7 @@ SELECT * FROM pg_stat_user_indexes WHERE relname = &#39;doador&#39;;
     @Index(columnList = &quot;createdAt&quot;)                     // Ordenação
 })
 </code></pre>
-<h4><strong>📊 Impacto em Operações de Escrita</strong></h4>
-<pre><code class="language-java">@Service
+<h4 id="strong-impacto-em-operaes-de-escritastrong"><strong>📊 Impacto em Operações de Escrita</strong></h4><pre><code class="language-java">@Service
 public class DoadorService {
 
     // &lt;span class=&quot;badge warning&quot;&gt;⚠️&lt;/span&gt; CUIDADO: INSERT/UPDATE ficam mais lentos com muitos índices
@@ -1492,9 +1437,7 @@ public class DoadorService {
     }
 }
 </code></pre>
-<h3><strong>🛠️ Estratégias de Indexação</strong></h3>
-<h4><strong>1. 🎯 Índices Baseados em Query Patterns</strong></h4>
-<pre><code class="language-java">// Analise suas consultas mais frequentes:
+<h3 id="strong-estratgias-de-indexaostrong"><strong>🛠️ Estratégias de Indexação</strong></h3><h4 id="strong1-ndices-baseados-em-query-patternsstrong"><strong>1. 🎯 Índices Baseados em Query Patterns</strong></h4><pre><code class="language-java">// Analise suas consultas mais frequentes:
 public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 
     // 🔥 CONSULTA FREQUENTE: Login/Autenticação
@@ -1514,8 +1457,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
     // ÍNDICE OPCIONAL: considere busca externa (Elasticsearch)
 }
 </code></pre>
-<h4><strong>2. 📊 Monitoramento de Performance</strong></h4>
-<pre><code class="language-java">// Configuração de logging para queries lentas
+<h4 id="strong2-monitoramento-de-performancestrong"><strong>2. 📊 Monitoramento de Performance</strong></h4><pre><code class="language-java">// Configuração de logging para queries lentas
 # application.properties
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
@@ -1528,8 +1470,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 slow_query_log=1
 long_query_time=1
 </code></pre>
-<h4><strong>3. 🔧 Ferramentas de Análise</strong></h4>
-<pre><code class="language-java">// Bean para monitorar performance
+<h4 id="strong3-ferramentas-de-anlisestrong"><strong>3. 🔧 Ferramentas de Análise</strong></h4><pre><code class="language-java">// Bean para monitorar performance
 @Component
 public class DatabasePerformanceMonitor {
 
@@ -1543,9 +1484,7 @@ public class DatabasePerformanceMonitor {
 }
 </code></pre>
 <hr>
-<h2>🌟 Recursos Avançados</h2>
-<h3><strong>🔧 Custom Repository Implementation</strong></h3>
-<blockquote>
+<h2 id="-recursos-avanados">🌟 Recursos Avançados</h2><h3 id="strong-custom-repository-implementationstrong"><strong>🔧 Custom Repository Implementation</strong></h3><blockquote>
 <p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations">Custom Repository Implementations</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#specifications">Criteria API</a></p>
 </blockquote>
 <pre><code class="language-java">// Interface customizada
@@ -1597,8 +1536,7 @@ public interface DoadorRepository extends
     // Métodos padrão + métodos customizados
 }
 </code></pre>
-<h3><strong>📊 Projeções e DTOs</strong></h3>
-<pre><code class="language-java">// Interface de projeção
+<h3 id="strong-projees-e-dtosstrong"><strong>📊 Projeções e DTOs</strong></h3><pre><code class="language-java">// Interface de projeção
 public interface DoadorProjection {
     String getFullName();
     String getEmail();
@@ -1628,116 +1566,90 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 }
 </code></pre>
 <hr>
-<h2>📚 Documentação Oficial e Referências</h2>
-<h3><strong>🌟 Spring Data JPA - Documentação Principal</strong></h3>
-<h4><strong>📖 Core Documentation:</strong></h4>
-<ul>
+<h2 id="-documentao-oficial-e-referncias">📚 Documentação Oficial e Referências</h2><h3 id="strong-spring-data-jpa-documentao-principalstrong"><strong>🌟 Spring Data JPA - Documentação Principal</strong></h3><h4 id="strong-core-documentationstrong"><strong>📖 Core Documentation:</strong></h4><ul>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/">Spring Data JPA Reference</a></strong> - Documentação completa oficial</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.core-concepts">Repository Interfaces</a></strong> - Conceitos fundamentais</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods">Query Methods</a></strong> - Criação de consultas</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations">Custom Implementations</a></strong> - Implementações customizadas</li>
 </ul>
-<h4><strong>📖 Query Creation:</strong></h4>
-<ul>
+<h4 id="strong-query-creationstrong"><strong>📖 Query Creation:</strong></h4><ul>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords">Supported Keywords</a></strong> - Palavras-chave para queries</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation">Query Creation Examples</a></strong> - Exemplos práticos</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.named-queries">Named Queries</a></strong> - Queries nomeadas</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query">@Query Annotation</a></strong> - Queries customizadas</li>
 </ul>
-<h3><strong>🔧 JPA e Hibernate - Core</strong></h3>
-<h4><strong>📖 JPA Specification:</strong></h4>
-<ul>
+<h3 id="strong-jpa-e-hibernate-corestrong"><strong>🔧 JPA e Hibernate - Core</strong></h3><h4 id="strong-jpa-specificationstrong"><strong>📖 JPA Specification:</strong></h4><ul>
 <li><strong><a href="https://jakarta.ee/specifications/persistence/3.1/">Jakarta Persistence API</a></strong> - Especificação oficial JPA 3.1</li>
 <li><strong><a href="https://docs.oracle.com/javaee/7/tutorial/persistence-intro003.htm">Entity Relationships</a></strong> - Relacionamentos entre entidades</li>
 <li><strong><a href="https://docs.oracle.com/javaee/7/tutorial/persistence-querylanguage.htm">JPQL Guide</a></strong> - Java Persistence Query Language</li>
 </ul>
-<h4><strong>📖 Hibernate Documentation:</strong></h4>
-<ul>
+<h4 id="strong-hibernate-documentationstrong"><strong>📖 Hibernate Documentation:</strong></h4><ul>
 <li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html">Hibernate ORM User Guide</a></strong> - Guia completo</li>
 <li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#hql">HQL Reference</a></strong> - Hibernate Query Language</li>
 <li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#criteria">Criteria API</a></strong> - API de critérios</li>
 </ul>
-<h3><strong>🚀 Spring Framework - Base</strong></h3>
-<h4><strong>📖 Spring Framework Core:</strong></h4>
-<ul>
+<h3 id="strong-spring-framework-basestrong"><strong>🚀 Spring Framework - Base</strong></h3><h4 id="strong-spring-framework-corestrong"><strong>📖 Spring Framework Core:</strong></h4><ul>
 <li><strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/">Spring Framework Reference</a></strong> - Documentação completa</li>
 <li><strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#orm-jpa">Data Access with JPA</a></strong> - Integração JPA</li>
 <li><strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction">Transaction Management</a></strong> - Gerenciamento de transações</li>
 </ul>
-<h4><strong>📖 Spring Boot:</strong></h4>
-<ul>
+<h4 id="strong-spring-bootstrong"><strong>📖 Spring Boot:</strong></h4><ul>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.jpa-and-spring-data">Spring Boot Data JPA</a></strong> - Configuração automática</li>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.data">Application Properties</a></strong> - Propriedades de configuração</li>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/testing.html#testing.spring-boot-applications.testing-autoconfigured-jpa">Testing Data Layer</a></strong> - Testes com @DataJpaTest</li>
 </ul>
-<h3><strong>📊 Testing e Quality</strong></h3>
-<h4><strong>📖 Testing Frameworks:</strong></h4>
-<ul>
+<h3 id="strong-testing-e-qualitystrong"><strong>📊 Testing e Quality</strong></h3><h4 id="strong-testing-frameworksstrong"><strong>📖 Testing Frameworks:</strong></h4><ul>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html">@DataJpaTest</a></strong> - Testes de repositório</li>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.html">TestEntityManager</a></strong> - Gerenciamento de entidades em testes</li>
 <li><strong><a href="https://assertj.github.io/doc/">AssertJ</a></strong> - Assertions fluentes</li>
 <li><strong><a href="https://www.testcontainers.org/modules/databases/">TestContainers</a></strong> - Testes com containers</li>
 </ul>
-<h3><strong>📊 Database Indexes e Performance</strong></h3>
-<h4><strong>📖 Database-Specific Documentation:</strong></h4>
-<ul>
+<h3 id="strong-database-indexes-e-performancestrong"><strong>📊 Database Indexes e Performance</strong></h3><h4 id="strong-database-specific-documentationstrong"><strong>📖 Database-Specific Documentation:</strong></h4><ul>
 <li><strong><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html">MySQL Indexes Guide</a></strong> - Guia completo de índices MySQL</li>
 <li><strong><a href="https://dev.mysql.com/doc/refman/8.0/en/optimization-indexes.html">MySQL Index Optimization</a></strong> - Otimização de índices</li>
 <li><strong><a href="https://www.postgresql.org/docs/current/indexes.html">PostgreSQL Indexes</a></strong> - Documentação oficial PostgreSQL</li>
 <li><strong><a href="https://www.postgresql.org/docs/current/indexes-types.html">PostgreSQL Index Types</a></strong> - Tipos de índices disponíveis</li>
 <li><strong><a href="http://h2database.com/html/performance.html#indexes">H2 Database Indexes</a></strong> - Índices em H2 (testes)</li>
 </ul>
-<h4><strong>📖 JPA Index Annotations:</strong></h4>
-<ul>
+<h4 id="strong-jpa-index-annotationsstrong"><strong>📖 JPA Index Annotations:</strong></h4><ul>
 <li><strong><a href="https://jakarta.ee/specifications/persistence/3.1/apidocs/jakarta.persistence/jakarta/persistence/index">JPA Index Annotation</a></strong> - Especificação oficial @Index</li>
 <li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#schema-generation-database-objects">Hibernate Index Strategies</a></strong> - Estratégias de criação de índices</li>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.datasource.initialization">Spring Boot Database Initialization</a></strong> - Inicialização de esquemas</li>
 </ul>
-<h4><strong>📖 Performance e Monitoring:</strong></h4>
-<ul>
+<h4 id="strong-performance-e-monitoringstrong"><strong>📖 Performance e Monitoring:</strong></h4><ul>
 <li><strong><a href="https://dev.mysql.com/doc/refman/8.0/en/performance-schema.html">MySQL Performance Schema</a></strong> - Monitoramento de performance</li>
 <li><strong><a href="https://www.postgresql.org/docs/current/using-explain.html">PostgreSQL Query Performance</a></strong> - EXPLAIN e análise de queries</li>
 <li><strong><a href="https://vladmihalcea.com/jpa-hibernate-performance-tuning/">JPA Performance Tuning</a></strong> - Blog Vlad Mihalcea sobre performance</li>
 <li><strong><a href="https://use-the-index-luke.com/">Database Index Design</a></strong> - Guia completo sobre design de índices</li>
 </ul>
-<h4><strong>📖 Tools e Profiling:</strong></h4>
-<ul>
+<h4 id="strong-tools-e-profilingstrong"><strong>📖 Tools e Profiling:</strong></h4><ul>
 <li><strong><a href="https://dev.mysql.com/doc/workbench/en/wb-performance.html">MySQL Workbench</a></strong> - Ferramentas de performance</li>
 <li><strong><a href="https://www.pgadmin.org/docs/pgadmin4/latest/query_tool.html">pgAdmin Query Tool</a></strong> - Análise de queries PostgreSQL</li>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.metrics">Spring Boot Actuator</a></strong> - Métricas de aplicação</li>
 <li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#statistics">Hibernate Statistics</a></strong> - Estatísticas do Hibernate</li>
 </ul>
-<h3><strong>🎯 Performance e Optimization</strong></h3>
-<h4><strong>📖 Performance Guides:</strong></h4>
-<ul>
+<h3 id="strong-performance-e-optimizationstrong"><strong>🎯 Performance e Optimization</strong></h3><h4 id="strong-performance-guidesstrong"><strong>📖 Performance Guides:</strong></h4><ul>
 <li><strong><a href="https://vladmihalcea.com/jpa-hibernate-performance-tuning/">JPA Performance Best Practices</a></strong> - Blog Vlad Mihalcea</li>
 <li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#fetching-strategies">N+1 Query Problem</a></strong> - Estratégias de fetch</li>
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.datasource.connection-pool">Connection Pooling</a></strong> - Pool de conexões</li>
 </ul>
-<h3><strong>🎓 Tutorials e Examples</strong></h3>
-<h4><strong>📖 Official Guides:</strong></h4>
-<ul>
+<h3 id="strong-tutorials-e-examplesstrong"><strong>🎓 Tutorials e Examples</strong></h3><h4 id="strong-official-guidesstrong"><strong>📖 Official Guides:</strong></h4><ul>
 <li><strong><a href="https://spring.io/guides/gs/accessing-data-jpa/">Accessing Data with JPA</a></strong> - Tutorial básico oficial</li>
 <li><strong><a href="https://github.com/spring-projects/spring-data-examples/tree/main/jpa">Spring Data JPA Examples</a></strong> - Exemplos oficiais no GitHub</li>
 </ul>
-<h4><strong>📖 Community Resources:</strong></h4>
-<ul>
+<h4 id="strong-community-resourcesstrong"><strong>📖 Community Resources:</strong></h4><ul>
 <li><strong><a href="https://www.baeldung.com/persistence-with-spring-series">Baeldung JPA Tutorials</a></strong> - Série completa sobre persistência</li>
 <li><strong><a href="https://thorben-janssen.com/">Thorben Janssen&#39;s JPA Tips</a></strong> - Blog especializado em JPA/Hibernate</li>
 <li><strong><a href="https://www.petrikainulainen.net/spring-data-jpa-tutorial/">Spring Data JPA Query Methods</a></strong> - Tutorial detalhado</li>
 </ul>
-<h3><strong>⚡ Quick References</strong></h3>
-<h4><strong>🔖 Cheat Sheets:</strong></h4>
-<ul>
+<h3 id="strong-quick-referencesstrong"><strong>⚡ Quick References</strong></h3><h4 id="strong-cheat-sheetsstrong"><strong>🔖 Cheat Sheets:</strong></h4><ul>
 <li><strong><a href="https://www.baeldung.com/jpa-annotations">JPA Annotations Reference</a></strong> - Anotações JPA essenciais</li>
 <li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords">Spring Data Query Keywords</a></strong> - Keywords para query methods</li>
 <li><strong><a href="https://docs.oracle.com/html/E13946_04/ejb3_langref.html">JPQL Syntax Reference</a></strong> - Sintaxe JPQL</li>
 </ul>
 <hr>
-<h2>🎯 Conclusão</h2>
-<p>O <strong>Repository Pattern</strong> com <strong>Spring Data JPA</strong> oferece uma abordagem poderosa e elegante para acesso a dados:</p>
-<h3><strong><span class="badge success">✅</span> Benefícios Principais:</strong></h3>
-<ul>
+<h2 id="-concluso">🎯 Conclusão</h2><p>O <strong>Repository Pattern</strong> com <strong>Spring Data JPA</strong> oferece uma abordagem poderosa e elegante para acesso a dados:</p>
+<h3 id="strongspan-classbadge-successspan-benefcios-principaisstrong"><strong><span class="badge success">✅</span> Benefícios Principais:</strong></h3><ul>
 <li><strong>🤖 Automação</strong> - Spring gera implementações automaticamente</li>
 <li><strong>📝 Convenções</strong> - Query methods por nomenclatura</li>
 <li><strong>🔄 Flexibilidade</strong> - Custom queries quando necessário</li>
@@ -1745,8 +1657,7 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 <li><strong>📊 Performance</strong> - Otimizações automáticas e manuais</li>
 <li><strong>🛡️ Manutenibilidade</strong> - Código limpo e organizado</li>
 </ul>
-<h3><strong>🚀 Próximos Passos:</strong></h3>
-<ol>
+<h3 id="strong-prximos-passosstrong"><strong>🚀 Próximos Passos:</strong></h3><ol>
 <li><strong>Implementar</strong> repository básico para suas entidades</li>
 <li><strong>Explorar</strong> query methods por convenção</li>
 <li><strong>Adicionar</strong> queries customizadas conforme necessário</li>

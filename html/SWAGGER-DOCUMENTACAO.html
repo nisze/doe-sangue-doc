@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 📚 Documentação Swagger/OpenAPI - Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,11 +316,9 @@
         </nav>
         
         <div class="content">
-            <h1>📚 Documentação Swagger/OpenAPI - Sistema DoeSangue</h1>
-<p><strong>Versão:</strong> v1.0<br><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Framework:</strong> Spring Boot 3.5.5 + SpringDoc OpenAPI</p>
+            <h1 id="-documentao-swaggeropenapi-sistema-doesangue">📚 Documentação Swagger/OpenAPI - Sistema DoeSangue</h1><p><strong>Versão:</strong> v1.0<br><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Framework:</strong> Spring Boot 3.5.5 + SpringDoc OpenAPI</p>
 <hr>
-<h2>📋 Índice</h2>
-<ol>
+<h2 id="-ndice">📋 Índice</h2><ol>
 <li><a href="#vis%C3%A3o-geral">Visão Geral</a></li>
 <li><a href="#configura%C3%A7%C3%A3o-atual">Configuração Atual</a></li>
 <li><a href="#como-funciona">Como Funciona</a></li>
@@ -331,8 +329,7 @@
 <li><a href="#boas-pr%C3%A1ticas">Boas Práticas</a></li>
 </ol>
 <hr>
-<h2>🎯 Visão Geral</h2>
-<p>O <strong>Swagger/OpenAPI</strong> é uma ferramenta essencial para documentação automática de APIs REST. No projeto DoeSangue, utilizamos o <strong>SpringDoc OpenAPI 3</strong> para:</p>
+<h2 id="-viso-geral">🎯 Visão Geral</h2><p>O <strong>Swagger/OpenAPI</strong> é uma ferramenta essencial para documentação automática de APIs REST. No projeto DoeSangue, utilizamos o <strong>SpringDoc OpenAPI 3</strong> para:</p>
 <ul>
 <li>📖 <strong>Documentação Automática:</strong> Gera documentação interativa das APIs</li>
 <li>🧪 <strong>Testes Integrados:</strong> Interface para testar endpoints diretamente</li>
@@ -341,9 +338,7 @@
 <li>🌐 <strong>Padrão da Indústria:</strong> OpenAPI 3.0 é o padrão mundial para APIs</li>
 </ul>
 <hr>
-<h2>⚙️ Configuração Atual</h2>
-<h3><strong>📄 Arquivo: <code>Swagger.java</code></strong></h3>
-<pre><code class="language-java">package com.faculdade.doesangue_api.swagger;
+<h2 id="-configurao-atual">⚙️ Configuração Atual</h2><h3 id="strong-arquivo-codeswaggerjavacodestrong"><strong>📄 Arquivo: <code>Swagger.java</code></strong></h3><pre><code class="language-java">package com.faculdade.doesangue_api.swagger;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -363,43 +358,35 @@ public class Swagger {
     }
 }
 </code></pre>
-<h3><strong>🔧 Análise da Configuração:</strong></h3>
-<h4><strong>@Configuration</strong></h4>
-<ul>
+<h3 id="strong-anlise-da-configuraostrong"><strong>🔧 Análise da Configuração:</strong></h3><h4 id="strongconfigurationstrong"><strong>@Configuration</strong></h4><ul>
 <li><strong>O que faz:</strong> Marca a classe como configuração Spring</li>
 <li><strong>Resultado:</strong> Spring carrega automaticamente ao inicializar</li>
 </ul>
-<h4><strong>@Bean</strong></h4>
-<ul>
+<h4 id="strongbeanstrong"><strong>@Bean</strong></h4><ul>
 <li><strong>O que faz:</strong> Registra o método como um bean Spring</li>
 <li><strong>Resultado:</strong> OpenAPI fica disponível para toda aplicação</li>
 </ul>
-<h4><strong>OpenAPI().info()</strong></h4>
-<ul>
+<h4 id="strongopenapiinfostrong"><strong>OpenAPI().info()</strong></h4><ul>
 <li><strong>title:</strong> Nome da API exibido na documentação</li>
 <li><strong>version:</strong> Versão da API (importante para versionamento)</li>
 <li><strong>description:</strong> Descrição detalhada da API</li>
 </ul>
 <hr>
-<h2>🚀 Como Funciona</h2>
-<h3><strong>1. Processo de Inicialização:</strong></h3>
-<pre><code class="language-mermaid">graph TD
+<h2 id="-como-funciona">🚀 Como Funciona</h2><h3 id="strong1-processo-de-inicializaostrong"><strong>1. Processo de Inicialização:</strong></h3><pre><code class="language-mermaid">graph TD
     A[Spring Boot Inicia] --&gt; B[Carrega @Configuration]
     B --&gt; C[Executa @Bean customOpenAPI]
     C --&gt; D[SpringDoc Escaneia Controllers]
     D --&gt; E[Gera Documentação OpenAPI]
     E --&gt; F[Disponibiliza Swagger UI]
 </code></pre>
-<h3><strong>2. Fluxo de Documentação Automática:</strong></h3>
-<ol>
+<h3 id="strong2-fluxo-de-documentao-automticastrong"><strong>2. Fluxo de Documentação Automática:</strong></h3><ol>
 <li><strong>Escaneamento:</strong> SpringDoc busca por classes anotadas com <code>@RestController</code></li>
 <li><strong>Análise:</strong> Examina métodos com <code>@GetMapping</code>, <code>@PostMapping</code>, etc.</li>
 <li><strong>Extração:</strong> Coleta informações de parâmetros, responses, DTOs</li>
 <li><strong>Geração:</strong> Cria especificação OpenAPI 3.0 JSON/YAML</li>
 <li><strong>Interface:</strong> Renderiza Swagger UI interativa</li>
 </ol>
-<h3><strong>3. Auto-Detecção de Endpoints:</strong></h3>
-<pre><code class="language-java">@RestController
+<h3 id="strong3-auto-deteco-de-endpointsstrong"><strong>3. Auto-Detecção de Endpoints:</strong></h3><pre><code class="language-java">@RestController
 @RequestMapping(&quot;/api/doadores&quot;)
 public class DoadorController {
     
@@ -422,23 +409,19 @@ public class DoadorController {
 }
 </code></pre>
 <hr>
-<h2>📦 Dependências</h2>
-<h3><strong>POM.XML - Dependência Principal:</strong></h3>
-<pre><code class="language-xml">&lt;dependency&gt;
+<h2 id="-dependncias">📦 Dependências</h2><h3 id="strongpomxml-dependncia-principalstrong"><strong>POM.XML - Dependência Principal:</strong></h3><pre><code class="language-xml">&lt;dependency&gt;
     &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
     &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
     &lt;version&gt;2.8.9&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h3><strong>📋 O que esta dependência inclui:</strong></h3>
-<ul>
+<h3 id="strong-o-que-esta-dependncia-incluistrong"><strong>📋 O que esta dependência inclui:</strong></h3><ul>
 <li><strong>SpringDoc Core:</strong> Geração automática da especificação OpenAPI</li>
 <li><strong>Swagger UI:</strong> Interface web interativa para testar APIs</li>
 <li><strong>Integration:</strong> Integração nativa com Spring Boot 3.x</li>
 <li><strong>WebMVC Support:</strong> Suporte completo para Spring Web MVC</li>
 </ul>
-<h3><strong>🔄 Dependências Relacionadas:</strong></h3>
-<pre><code class="language-xml">&lt;!-- Para APIs REST --&gt;
+<h3 id="strong-dependncias-relacionadasstrong"><strong>🔄 Dependências Relacionadas:</strong></h3><pre><code class="language-xml">&lt;!-- Para APIs REST --&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
@@ -457,9 +440,7 @@ public class DoadorController {
 &lt;/dependency&gt;
 </code></pre>
 <hr>
-<h2>🔧 Configurações Avançadas Recomendadas</h2>
-<h3><strong>1. Configuração Completa Melhorada:</strong></h3>
-<pre><code class="language-java">package com.faculdade.doesangue_api.swagger;
+<h2 id="-configuraes-avanadas-recomendadas">🔧 Configurações Avançadas Recomendadas</h2><h3 id="strong1-configurao-completa-melhoradastrong"><strong>1. Configuração Completa Melhorada:</strong></h3><pre><code class="language-java">package com.faculdade.doesangue_api.swagger;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -533,8 +514,7 @@ public class SwaggerConfig {
     }
 }
 </code></pre>
-<h3><strong>2. Configurações em application.properties:</strong></h3>
-<pre><code class="language-properties"># Configurações SpringDoc/Swagger
+<h3 id="strong2-configuraes-em-applicationpropertiesstrong"><strong>2. Configurações em application.properties:</strong></h3><pre><code class="language-properties"># Configurações SpringDoc/Swagger
 springdoc.api-docs.path=/api-docs
 springdoc.swagger-ui.path=/swagger-ui.html
 springdoc.swagger-ui.operationsSorter=method
@@ -556,9 +536,7 @@ springdoc.group-configs[3].group=sistema
 springdoc.group-configs[3].paths-to-match=/api/configs/**, /api/notificacoes/**, /api/audit/**
 </code></pre>
 <hr>
-<h2>📖 Exemplos de Uso em Controllers</h2>
-<h3><strong>1. Controller Básico com Documentação:</strong></h3>
-<pre><code class="language-java">@RestController
+<h2 id="-exemplos-de-uso-em-controllers">📖 Exemplos de Uso em Controllers</h2><h3 id="strong1-controller-bsico-com-documentaostrong"><strong>1. Controller Básico com Documentação:</strong></h3><pre><code class="language-java">@RestController
 @RequestMapping(&quot;/api/doadores&quot;)
 @Tag(name = &quot;Doadores&quot;, description = &quot;APIs para gestão de doadores de sangue&quot;)
 public class DoadorController {
@@ -614,8 +592,7 @@ public class DoadorController {
     }
 }
 </code></pre>
-<h3><strong>2. DTOs Documentados:</strong></h3>
-<pre><code class="language-java">@Schema(description = &quot;Dados do doador para exibição&quot;)
+<h3 id="strong2-dtos-documentadosstrong"><strong>2. DTOs Documentados:</strong></h3><pre><code class="language-java">@Schema(description = &quot;Dados do doador para exibição&quot;)
 public class DoadorDTO {
     
     @Schema(description = &quot;ID único do doador&quot;, example = &quot;1&quot;, accessMode = Schema.AccessMode.READ_ONLY)
@@ -641,9 +618,7 @@ public class DoadorDTO {
 }
 </code></pre>
 <hr>
-<h2>🌐 Endpoints de Acesso</h2>
-<h3><strong>📋 URLs Principais:</strong></h3>
-<table>
+<h2 id="-endpoints-de-acesso">🌐 Endpoints de Acesso</h2><h3 id="strong-urls-principaisstrong"><strong>📋 URLs Principais:</strong></h3><table>
 <thead>
 <tr>
 <th><strong>Endpoint</strong></th>
@@ -667,8 +642,7 @@ public class DoadorDTO {
 <td><code>http://localhost:8080/api-docs.yaml</code></td>
 </tr>
 </tbody></table>
-<h3><strong>🔗 Grupos de APIs (após configuração avançada):</strong></h3>
-<table>
+<h3 id="strong-grupos-de-apis-aps-configurao-avanadastrong"><strong>🔗 Grupos de APIs (após configuração avançada):</strong></h3><table>
 <thead>
 <tr>
 <th><strong>Grupo</strong></th>
@@ -698,67 +672,54 @@ public class DoadorDTO {
 </tr>
 </tbody></table>
 <hr>
-<h2>📱 Interface Swagger UI</h2>
-<h3><strong>🎯 Funcionalidades da Interface:</strong></h3>
-<h4><strong>1. Navegação:</strong></h4>
-<ul>
+<h2 id="-interface-swagger-ui">📱 Interface Swagger UI</h2><h3 id="strong-funcionalidades-da-interfacestrong"><strong>🎯 Funcionalidades da Interface:</strong></h3><h4 id="strong1-navegaostrong"><strong>1. Navegação:</strong></h4><ul>
 <li><strong>Tags/Grupos:</strong> APIs organizadas por funcionalidade</li>
 <li><strong>Filtro:</strong> Busca por endpoint específico</li>
 <li><strong>Expand/Collapse:</strong> Visualização controlada</li>
 </ul>
-<h4><strong>2. Teste de APIs:</strong></h4>
-<ul>
+<h4 id="strong2-teste-de-apisstrong"><strong>2. Teste de APIs:</strong></h4><ul>
 <li><strong>Try it out:</strong> Botão para testar endpoints</li>
 <li><strong>Parâmetros:</strong> Formulário para inserir dados</li>
 <li><strong>Execute:</strong> Execução real da API</li>
 <li><strong>Response:</strong> Visualização de resposta e status</li>
 </ul>
-<h4><strong>3. Documentação:</strong></h4>
-<ul>
+<h4 id="strong3-documentaostrong"><strong>3. Documentação:</strong></h4><ul>
 <li><strong>Schemas:</strong> Visualização de DTOs</li>
 <li><strong>Examples:</strong> Exemplos de request/response</li>
 <li><strong>Security:</strong> Informações de autenticação</li>
 </ul>
-<h3><strong>🔐 Autenticação na Interface:</strong></h3>
-<pre><code class="language-javascript">// No Swagger UI, clicar em &quot;Authorize&quot;
+<h3 id="strong-autenticao-na-interfacestrong"><strong>🔐 Autenticação na Interface:</strong></h3><pre><code class="language-javascript">// No Swagger UI, clicar em &quot;Authorize&quot;
 // Inserir token JWT no formato:
 Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkb2VzYW5ndWUiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY5MzQxMjQwMH0...
 </code></pre>
 <hr>
-<h2>🎯 Boas Práticas</h2>
-<h3><strong><span class="badge success">✅</span> Documentação de APIs:</strong></h3>
-<ol>
+<h2 id="-boas-prticas">🎯 Boas Práticas</h2><h3 id="strongspan-classbadge-successspan-documentao-de-apisstrong"><strong><span class="badge success">✅</span> Documentação de APIs:</strong></h3><ol>
 <li><strong>Use @Operation:</strong> Descreva cada endpoint claramente</li>
 <li><strong>Defina @ApiResponses:</strong> Documente todos os status codes possíveis  </li>
 <li><strong>Anote @Parameter:</strong> Explique cada parâmetro</li>
 <li><strong>Schemas Completos:</strong> Use @Schema em DTOs</li>
 <li><strong>Exemplos Reais:</strong> Forneça exemplos práticos</li>
 </ol>
-<h3><strong><span class="badge success">✅</span> Organização:</strong></h3>
-<ol>
+<h3 id="strongspan-classbadge-successspan-organizaostrong"><strong><span class="badge success">✅</span> Organização:</strong></h3><ol>
 <li><strong>Tags Consistentes:</strong> Agrupe APIs logicamente</li>
 <li><strong>Versionamento:</strong> Mantenha versões claras</li>
 <li><strong>Grupos Separados:</strong> Divida por domínio/funcionalidade</li>
 <li><strong>Filtros:</strong> Configure filtros úteis na interface</li>
 </ol>
-<h3><strong><span class="badge success">✅</span> Segurança:</strong></h3>
-<ol>
+<h3 id="strongspan-classbadge-successspan-seguranastrong"><strong><span class="badge success">✅</span> Segurança:</strong></h3><ol>
 <li><strong>Documente Autenticação:</strong> Explique como autenticar</li>
 <li><strong>Schemas de Security:</strong> Configure JWT corretamente</li>
 <li><strong>Ambiente Específico:</strong> URLs diferentes por ambiente</li>
 <li><strong>Sensitive Data:</strong> Não exponha dados sensíveis</li>
 </ol>
-<h3><strong><span class="badge success">✅</span> Performance:</strong></h3>
-<ol>
+<h3 id="strongspan-classbadge-successspan-performancestrong"><strong><span class="badge success">✅</span> Performance:</strong></h3><ol>
 <li><strong>Lazy Loading:</strong> Configure carregamento inteligente</li>
 <li><strong>Cache:</strong> Use cache para especificação</li>
 <li><strong>Filtros de Scan:</strong> Limite escaneamento a pacotes específicos</li>
 <li><strong>Grupos Pequenos:</strong> Divida APIs grandes</li>
 </ol>
 <hr>
-<h2>🚦 Status Atual vs Recomendado</h2>
-<h3><strong><span class="badge danger">❌</span> Configuração Atual (Básica):</strong></h3>
-<ul>
+<h2 id="-status-atual-vs-recomendado">🚦 Status Atual vs Recomendado</h2><h3 id="strongspan-classbadge-dangerspan-configurao-atual-bsicastrong"><strong><span class="badge danger">❌</span> Configuração Atual (Básica):</strong></h3><ul>
 <li><span class="badge success">✅</span> Swagger UI funcional</li>
 <li><span class="badge success">✅</span> Informações básicas da API</li>
 <li><span class="badge danger">❌</span> Sem documentação de segurança</li>
@@ -766,8 +727,7 @@ Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkb2VzYW5ndWUiLCJzdWIiOiJhZG1pbiIsImV4cCI6
 <li><span class="badge danger">❌</span> Sem exemplos detalhados</li>
 <li><span class="badge danger">❌</span> Sem configurações avançadas</li>
 </ul>
-<h3><strong><span class="badge success">✅</span> Configuração Recomendada:</strong></h3>
-<ul>
+<h3 id="strongspan-classbadge-successspan-configurao-recomendadastrong"><strong><span class="badge success">✅</span> Configuração Recomendada:</strong></h3><ul>
 <li><span class="badge success">✅</span> Documentação completa</li>
 <li><span class="badge success">✅</span> Segurança JWT documentada</li>
 <li><span class="badge success">✅</span> APIs organizadas em grupos</li>
@@ -776,21 +736,17 @@ Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJkb2VzYW5ndWUiLCJzdWIiOiJhZG1pbiIsImV4cCI6
 <li><span class="badge success">✅</span> Schemas detalhados</li>
 </ul>
 <hr>
-<h2>🎯 Próximos Passos</h2>
-<h3><strong>1. Imediato:</strong></h3>
-<ul>
+<h2 id="-prximos-passos">🎯 Próximos Passos</h2><h3 id="strong1-imediatostrong"><strong>1. Imediato:</strong></h3><ul>
 <li><input disabled="" type="checkbox"> Aplicar configuração avançada do Swagger</li>
 <li><input disabled="" type="checkbox"> Adicionar documentação de segurança JWT</li>
 <li><input disabled="" type="checkbox"> Configurar grupos de APIs</li>
 </ul>
-<h3><strong>2. Desenvolvimento de Controllers:</strong></h3>
-<ul>
+<h3 id="strong2-desenvolvimento-de-controllersstrong"><strong>2. Desenvolvimento de Controllers:</strong></h3><ul>
 <li><input disabled="" type="checkbox"> Criar controllers REST para cada entidade</li>
 <li><input disabled="" type="checkbox"> Adicionar anotações de documentação</li>
 <li><input disabled="" type="checkbox"> Implementar DTOs com schemas</li>
 </ul>
-<h3><strong>3. Otimização:</strong></h3>
-<ul>
+<h3 id="strong3-otimizaostrong"><strong>3. Otimização:</strong></h3><ul>
 <li><input disabled="" type="checkbox"> Configurar cache de documentação</li>
 <li><input disabled="" type="checkbox"> Adicionar testes automatizados de APIs</li>
 <li><input disabled="" type="checkbox"> Integrar com pipeline CI/CD</li>

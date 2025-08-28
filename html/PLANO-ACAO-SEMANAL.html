@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 🎯 Plano de Ação Imediato - Próximos 7 Dias</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:21:31 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:27:05 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,13 +316,9 @@
         </nav>
         
         <div class="content">
-            <h1>🎯 Plano de Ação Imediato - Próximos 7 Dias</h1>
-<p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Foco:</strong> Implementação das APIs Base e Autenticação</p>
+            <h1 id="-plano-de-ao-imediato-prximos-7-dias">🎯 Plano de Ação Imediato - Próximos 7 Dias</h1><p><strong>Data:</strong> 27 de Agosto de 2025<br><strong>Foco:</strong> Implementação das APIs Base e Autenticação</p>
 <hr>
-<h2>📋 Tarefas Prioritárias (Esta Semana)</h2>
-<h3><strong>DIA 1-2: Autenticação e Segurança</strong></h3>
-<h4><strong><span class="badge success">✅</span> Tarefa 1: Implementar JWT Service</strong></h4>
-<pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/security/JwtService.java
+<h2 id="-tarefas-prioritrias-esta-semana">📋 Tarefas Prioritárias (Esta Semana)</h2><h3 id="strongdia-1-2-autenticao-e-seguranastrong"><strong>DIA 1-2: Autenticação e Segurança</strong></h3><h4 id="strongspan-classbadge-successspan-tarefa-1-implementar-jwt-servicestrong"><strong><span class="badge success">✅</span> Tarefa 1: Implementar JWT Service</strong></h4><pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/security/JwtService.java
 @Service
 public class JwtService {
     public String generateToken(User user);
@@ -331,8 +327,7 @@ public class JwtService {
     public boolean isTokenExpired(String token);
 }
 </code></pre>
-<h4><strong><span class="badge success">✅</span> Tarefa 2: Configurar Spring Security</strong></h4>
-<pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/security/SecurityConfig.java
+<h4 id="strongspan-classbadge-successspan-tarefa-2-configurar-spring-securitystrong"><strong><span class="badge success">✅</span> Tarefa 2: Configurar Spring Security</strong></h4><pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/security/SecurityConfig.java
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -341,8 +336,7 @@ public class SecurityConfig {
     // Configurar CORS
 }
 </code></pre>
-<h4><strong><span class="badge success">✅</span> Tarefa 3: Controller de Autenticação</strong></h4>
-<pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/controllers/AuthController.java
+<h4 id="strongspan-classbadge-successspan-tarefa-3-controller-de-autenticaostrong"><strong><span class="badge success">✅</span> Tarefa 3: Controller de Autenticação</strong></h4><pre><code class="language-java">// Criar: src/main/java/com/faculdade/doesangue_api/controllers/AuthController.java
 @RestController
 @RequestMapping(&quot;/api/auth&quot;)
 public class AuthController {
@@ -351,9 +345,7 @@ public class AuthController {
     @GetMapping(&quot;/me&quot;)
 }
 </code></pre>
-<h3><strong>DIA 3-4: DTOs e Validações</strong></h3>
-<h4><strong><span class="badge success">✅</span> Tarefa 4: DTOs Base</strong></h4>
-<pre><code class="language-java">// Criar DTOs em: src/main/java/com/faculdade/doesangue_api/dtos/
+<h3 id="strongdia-3-4-dtos-e-validaesstrong"><strong>DIA 3-4: DTOs e Validações</strong></h3><h4 id="strongspan-classbadge-successspan-tarefa-4-dtos-basestrong"><strong><span class="badge success">✅</span> Tarefa 4: DTOs Base</strong></h4><pre><code class="language-java">// Criar DTOs em: src/main/java/com/faculdade/doesangue_api/dtos/
 
 1. AuthLoginDTO         // Login request
 2. AuthResponseDTO      // Login response com token
@@ -364,8 +356,7 @@ public class AuthController {
 7. DoadorCreateDTO      // Doador para criação
 8. HemocentroDTO        // Hemocentro básico
 </code></pre>
-<h4><strong><span class="badge success">✅</span> Tarefa 5: Validações Bean Validation</strong></h4>
-<pre><code class="language-java">// Adicionar anotações nos DTOs:
+<h4 id="strongspan-classbadge-successspan-tarefa-5-validaes-bean-validationstrong"><strong><span class="badge success">✅</span> Tarefa 5: Validações Bean Validation</strong></h4><pre><code class="language-java">// Adicionar anotações nos DTOs:
 @NotNull
 @NotBlank
 @Email
@@ -373,9 +364,7 @@ public class AuthController {
 @Size(min = 8, max = 100)
 @Pattern(regexp = &quot;...&quot;)
 </code></pre>
-<h3><strong>DIA 5-6: Controllers Base</strong></h3>
-<h4><strong><span class="badge success">✅</span> Tarefa 6: UserController Completo</strong></h4>
-<pre><code class="language-java">// Implementar: src/main/java/com/faculdade/doesangue_api/controllers/UserController.java
+<h3 id="strongdia-5-6-controllers-basestrong"><strong>DIA 5-6: Controllers Base</strong></h3><h4 id="strongspan-classbadge-successspan-tarefa-6-usercontroller-completostrong"><strong><span class="badge success">✅</span> Tarefa 6: UserController Completo</strong></h4><pre><code class="language-java">// Implementar: src/main/java/com/faculdade/doesangue_api/controllers/UserController.java
 @RestController
 @RequestMapping(&quot;/api/users&quot;)
 public class UserController {
@@ -387,8 +376,7 @@ public class UserController {
     @GetMapping(&quot;/{id}/setores&quot;) // Setores do user
 }
 </code></pre>
-<h4><strong><span class="badge success">✅</span> Tarefa 7: DoadorController Inicial</strong></h4>
-<pre><code class="language-java">// Implementar: DoadorController com endpoints básicos
+<h4 id="strongspan-classbadge-successspan-tarefa-7-doadorcontroller-inicialstrong"><strong><span class="badge success">✅</span> Tarefa 7: DoadorController Inicial</strong></h4><pre><code class="language-java">// Implementar: DoadorController com endpoints básicos
 @RestController
 @RequestMapping(&quot;/api/doadores&quot;)
 public class DoadorController {
@@ -398,22 +386,17 @@ public class DoadorController {
     @PutMapping(&quot;/{id}&quot;)        // Atualizar doador
 }
 </code></pre>
-<h3><strong>DIA 7: Testes e Documentação</strong></h3>
-<h4><strong><span class="badge success">✅</span> Tarefa 8: Testes Básicos</strong></h4>
-<pre><code class="language-java">// Criar testes em: src/test/java/
+<h3 id="strongdia-7-testes-e-documentaostrong"><strong>DIA 7: Testes e Documentação</strong></h3><h4 id="strongspan-classbadge-successspan-tarefa-8-testes-bsicosstrong"><strong><span class="badge success">✅</span> Tarefa 8: Testes Básicos</strong></h4><pre><code class="language-java">// Criar testes em: src/test/java/
 1. AuthControllerTest
 2. UserControllerTest  
 3. JwtServiceTest
 </code></pre>
-<h4><strong><span class="badge success">✅</span> Tarefa 9: Atualizar Swagger</strong></h4>
-<pre><code class="language-java">// Verificar se documentação está sendo gerada corretamente
+<h4 id="strongspan-classbadge-successspan-tarefa-9-atualizar-swaggerstrong"><strong><span class="badge success">✅</span> Tarefa 9: Atualizar Swagger</strong></h4><pre><code class="language-java">// Verificar se documentação está sendo gerada corretamente
 // Testar todos os endpoints no Swagger UI
 // Adicionar exemplos de JSON nos DTOs
 </code></pre>
 <hr>
-<h2>🛠️ Implementação Detalhada</h2>
-<h3><strong>1. Estrutura de Pastas a Criar:</strong></h3>
-<pre><code>src/main/java/com/faculdade/doesangue_api/
+<h2 id="-implementao-detalhada">🛠️ Implementação Detalhada</h2><h3 id="strong1-estrutura-de-pastas-a-criarstrong"><strong>1. Estrutura de Pastas a Criar:</strong></h3><pre><code>src/main/java/com/faculdade/doesangue_api/
 ├── controllers/
 │   ├── AuthController.java
 │   ├── UserController.java
@@ -442,8 +425,7 @@ public class DoadorController {
     ├── GlobalExceptionHandler.java
     └── BusinessException.java
 </code></pre>
-<h3><strong>2. Dependências Necessárias (verificar no pom.xml):</strong></h3>
-<pre><code class="language-xml">&lt;!-- JWT já tem --&gt;
+<h3 id="strong2-dependncias-necessrias-verificar-no-pomxmlstrong"><strong>2. Dependências Necessárias (verificar no pom.xml):</strong></h3><pre><code class="language-xml">&lt;!-- JWT já tem --&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;com.auth0&lt;/groupId&gt;
     &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;
@@ -461,8 +443,7 @@ public class DoadorController {
     &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h3><strong>3. Exemplo de DTO com Validação:</strong></h3>
-<pre><code class="language-java">@Schema(description = &quot;Dados para criação de usuário&quot;)
+<h3 id="strong3-exemplo-de-dto-com-validaostrong"><strong>3. Exemplo de DTO com Validação:</strong></h3><pre><code class="language-java">@Schema(description = &quot;Dados para criação de usuário&quot;)
 public class UserCreateDTO {
     
     @Schema(description = &quot;Nome completo&quot;, example = &quot;João Silva Santos&quot;)
@@ -494,8 +475,7 @@ public class UserCreateDTO {
     private Long hemocentroId;
 }
 </code></pre>
-<h3><strong>4. Exemplo de Controller com Documentação:</strong></h3>
-<pre><code class="language-java">@RestController
+<h3 id="strong4-exemplo-de-controller-com-documentaostrong"><strong>4. Exemplo de Controller com Documentação:</strong></h3><pre><code class="language-java">@RestController
 @RequestMapping(&quot;/api/users&quot;)
 @Tag(name = &quot;Usuários&quot;, description = &quot;Gestão de usuários do sistema&quot;)
 @SecurityRequirement(name = &quot;bearerAuth&quot;)
@@ -530,9 +510,7 @@ public class UserController {
 }
 </code></pre>
 <hr>
-<h2>🧪 Critérios de Aceitação</h2>
-<h3><strong><span class="badge success">✅</span> Ao Final da Semana, Deve Estar Funcionando:</strong></h3>
-<ol>
+<h2 id="-critrios-de-aceitao">🧪 Critérios de Aceitação</h2><h3 id="strongspan-classbadge-successspan-ao-final-da-semana-deve-estar-funcionandostrong"><strong><span class="badge success">✅</span> Ao Final da Semana, Deve Estar Funcionando:</strong></h3><ol>
 <li><p><strong>Autenticação:</strong></p>
 <ul>
 <li>Login em <code>/api/auth/login</code> retorna JWT válido</li>
@@ -564,10 +542,7 @@ public class UserController {
 </li>
 </ol>
 <hr>
-<h2>🎯 Testes de Aceitação</h2>
-<h3><strong>Cenários para Testar:</strong></h3>
-<h4><strong>Autenticação:</strong></h4>
-<pre><code class="language-bash"># 1. Login bem-sucedido
+<h2 id="-testes-de-aceitao">🎯 Testes de Aceitação</h2><h3 id="strongcenrios-para-testarstrong"><strong>Cenários para Testar:</strong></h3><h4 id="strongautenticaostrong"><strong>Autenticação:</strong></h4><pre><code class="language-bash"># 1. Login bem-sucedido
 POST /api/auth/login
 {
   &quot;email&quot;: &quot;admin@doesangue.com&quot;,
@@ -587,8 +562,7 @@ GET /api/users
 Authorization: Bearer &lt;token&gt;
 # Esperado: 200 + lista de usuários
 </code></pre>
-<h4><strong>CRUD de Usuários:</strong></h4>
-<pre><code class="language-bash"># 1. Criar usuário
+<h4 id="strongcrud-de-usuriosstrong"><strong>CRUD de Usuários:</strong></h4><pre><code class="language-bash"># 1. Criar usuário
 POST /api/users
 {
   &quot;fullName&quot;: &quot;Dr. João Silva&quot;,
@@ -609,27 +583,20 @@ GET /api/users?page=0&amp;size=10
 # Esperado: 200 + página de usuários
 </code></pre>
 <hr>
-<h2>🚀 Comandos para Testar</h2>
-<h3><strong>Iniciar Aplicação:</strong></h3>
-<pre><code class="language-bash">cd doesangue_backend
+<h2 id="-comandos-para-testar">🚀 Comandos para Testar</h2><h3 id="stronginiciar-aplicaostrong"><strong>Iniciar Aplicação:</strong></h3><pre><code class="language-bash">cd doesangue_backend
 ./mvnw spring-boot:run
 </code></pre>
-<h3><strong>Acessar Swagger:</strong></h3>
-<pre><code>http://localhost:8080/swagger-ui.html
+<h3 id="strongacessar-swaggerstrong"><strong>Acessar Swagger:</strong></h3><pre><code>http://localhost:8080/swagger-ui.html
 </code></pre>
-<h3><strong>Health Check:</strong></h3>
-<pre><code>http://localhost:8080/api/system/health
+<h3 id="stronghealth-checkstrong"><strong>Health Check:</strong></h3><pre><code>http://localhost:8080/api/system/health
 </code></pre>
 <hr>
-<h2>📞 Próximas Reuniões</h2>
-<h3><strong>Checkpoint Diário (Daily):</strong></h3>
-<ul>
+<h2 id="-prximas-reunies">📞 Próximas Reuniões</h2><h3 id="strongcheckpoint-dirio-dailystrong"><strong>Checkpoint Diário (Daily):</strong></h3><ul>
 <li><strong>Horário:</strong> 9h00</li>
 <li><strong>Duração:</strong> 15min</li>
 <li><strong>Foco:</strong> Progresso do dia, bloqueios, próximas tarefas</li>
 </ul>
-<h3><strong>Review Semanal (Sexta):</strong></h3>
-<ul>
+<h3 id="strongreview-semanal-sextastrong"><strong>Review Semanal (Sexta):</strong></h3><ul>
 <li><strong>Horário:</strong> 16h00</li>
 <li><strong>Duração:</strong> 1h</li>
 <li><strong>Foco:</strong> Demo das funcionalidades, retrospectiva, planejamento</li>
