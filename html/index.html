@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação Completa do Sistema DoeSangue - DoeSangue Documentation</title>
+    <title>🩸 Documentação Completa do Sistema DoeSangue - DoeSangue Documentation</title>
     <style>
         /* Reset e Base */
         * {
@@ -59,6 +58,39 @@
             opacity: 0.8;
         }
         
+        /* Navigation */
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+        }
+        
         /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: #2c3e50;
@@ -94,142 +126,113 @@
         p {
             margin-bottom: 15px;
             text-align: justify;
+            line-height: 1.7;
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
         }
         
         /* Lists */
         ul, ol {
             margin-bottom: 15px;
-            padding-left: 30px;
+            padding-left: 20px;
         }
         
         li {
             margin-bottom: 8px;
         }
         
-        /* Code */
-        code {
-            background: #f8f9fa;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            color: #e74c3c;
-            border: 1px solid #e9ecef;
-        }
-        
-        pre {
-            background: #2d3748;
-            color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 20px 0;
-            border-left: 4px solid #3498db;
-        }
-        
-        pre code {
-            background: none;
-            color: #fff;
-            border: none;
-            padding: 0;
-        }
-        
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            font-weight: 600;
-        }
-        
-        tr:hover {
-            background: #f8f9fa;
-        }
-        
-        /* Blockquotes */
-        blockquote {
-            border-left: 4px solid #3498db;
-            padding: 15px 20px;
-            margin: 20px 0;
-            background: #f8f9fa;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-        }
-        
         /* Links */
         a {
             color: #3498db;
             text-decoration: none;
-            border-bottom: 1px dotted #3498db;
         }
         
         a:hover {
             color: #2980b9;
-            border-bottom: 1px solid #2980b9;
+            text-decoration: underline;
         }
         
-        /* Badges/Tags */
-        .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            background: #3498db;
+        /* Blockquotes */
+        blockquote {
+            background: #ecf0f1;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        blockquote strong {
+            color: #2c3e50;
+        }
+        
+        /* Guia Destacado */
+        .guia-destaque {
+            background: linear-gradient(135deg, #8b5fbf 0%, #b794f6 100%);
             color: white;
-            border-radius: 12px;
-            font-size: 0.8em;
-            margin: 2px;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(139, 95, 191, 0.3);
         }
         
-        .badge.success { background: #27ae60; }
-        .badge.warning { background: #f39c12; }
-        .badge.danger { background: #e74c3c; }
-        .badge.info { background: #3498db; }
-        
-        /* Navigation */
-        .nav {
-            background: #2c3e50;
-            padding: 15px 0;
-            margin: -20px -20px 20px -20px;
-            border-radius: 0 0 8px 8px;
+        .guia-destaque h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
         
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0;
-            margin: 0;
+        .guia-destaque p {
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
         
-        .nav li {
-            margin: 0 15px;
+        .guia-destaque .btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
         }
         
-        .nav a {
-            color: #ecf0f1;
-            padding: 8px 16px;
-            border-radius: 4px;
-            border: none;
-            transition: background 0.3s;
+        .guia-destaque .btn:hover {
+            background: rgba(255,255,255,0.3);
+            text-decoration: none;
         }
         
-        .nav a:hover {
-            background: #34495e;
-            border: none;
+        .guia-destaque .features {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.9;
         }
         
         /* Footer */
@@ -265,34 +268,10 @@
             .nav li {
                 margin: 5px 0;
             }
-        }
-        
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: center;
-            border-left: 4px solid #3498db;
-        }
-        
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #3498db;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
+            
+            .stats {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
     </style>
 </head>
@@ -301,7 +280,7 @@
         <div class="header">
             <h1>🩸 Documentação Completa do Sistema DoeSangue</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 22:24:19 | Versão 1.0</div>
+            <div class="meta">Gerado em 28/08/2025 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -316,149 +295,112 @@
         </nav>
         
         <div class="content">
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Documentos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">Entidades</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">Linhas de Código</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Endpoints API</div>
+                </div>
+            </div>
             
-    <div class="stats">
-        <div class="stat-card">
-            <div class="stat-number">10</div>
-            <div class="stat-label">Documentos</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">17</div>
-            <div class="stat-label">Entidades</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">700+</div>
-            <div class="stat-label">Linhas de Código</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Endpoints API</div>
-        </div>
-    </div>
-    
-    <h2>📚 Documentações Disponíveis</h2>
-    
-    <blockquote>
-        <strong>🎯 Bem-vindo à documentação do Sistema DoeSangue!</strong><br>
-        Esta é uma coleção completa de documentos técnicos para o projeto de gerenciamento de doações de sangue.
-    </blockquote>
-    
-    <h3>🏗️ Arquitetura e Design</h3>
-    <ul>
-        <li><a href="architecture.html"><strong>Arquitetura do Sistema</strong></a> - Visão geral da arquitetura, tecnologias e padrões utilizados</li>
-        <li><a href="DOCUMENTACAO-ENTIDADES.html"><strong>Documentação das Entidades</strong></a> - Detalhamento completo de todas as entidades do sistema</li>
-    </ul>
-    
-    <h3>💻 Desenvolvimento e API</h3>
-    <ul>
-        <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html"><strong>Documentação do Controller</strong></a> - Exemplo completo de implementação de controller REST</li>
-        <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html"><strong>Guia de Boas Práticas</strong></a> - Boas práticas para controllers REST, DTOs e validações</li>
-        <li><a href="TUTORIAL-JPA-SPECIFICATIONS.html"><strong>Tutorial JPA Specifications</strong></a> - Implementação de filtros dinâmicos com Spring Data JPA</li>
-        <li><a href="SWAGGER-DOCUMENTACAO.html"><strong>Configuração Swagger</strong></a> - Documentação detalhada da configuração OpenAPI</li>
-        <li><a href="SWAGGER-RESUMO-IMPLEMENTACAO.html"><strong>Resumo da Implementação Swagger</strong></a> - Guia prático de implementação</li>
-    </ul>
-    
-    <h3>� Guias Fundamentais</h3>
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 20px 0; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <h4 style="color: white; margin-bottom: 15px; font-size: 1.3em;">⚡ Guia Repository Pattern & Spring Data JPA</h4>
-        <p style="margin-bottom: 15px; line-height: 1.6;">
-            <strong>Guia completo e fundamental</strong> sobre Repository Pattern, Spring Data JPA, Query Methods e otimização com índices de banco de dados. 
-            <em>Essencial para entender a base da persistência no projeto!</em>
-        </p>
-        <a href="GUIA-REPOSITORY-PATTERN.html" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.3);">
-            📊 Acessar Guia Repository Pattern →
-        </a>
-        <div style="margin-top: 10px; font-size: 0.9em; opacity: 0.9;">
-            <strong>🎯 Inclui:</strong> Conceitos fundamentais • Implementação prática • Query Methods • Índices para performance • Testes • 60+ links oficiais
-        </div>
-    </div>
-    
-    <h3>�📋 Planejamento e Roadmap</h3>
-    <ul>
-        <li><a href="ROADMAP-PROXIMOS-PASSOS.html"><strong>Roadmap e Próximos Passos</strong></a> - Planejamento de desenvolvimento e melhorias</li>
-        <li><a href="PLANO-ACAO-SEMANAL.html"><strong>Plano de Ação Semanal</strong></a> - Cronograma detalhado de atividades</li>
-    </ul>
-    
-    <h2>🚀 Como Usar Esta Documentação</h2>
-    
-    <blockquote>
-        <strong>👨‍💻 Para Desenvolvedores:</strong><br>
-        Comece pela <a href="architecture.html">Arquitetura</a> para entender a estrutura geral, 
-        depois veja o <a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">Controller</a> para exemplos práticos.
-    </blockquote>
-    
-    <blockquote>
-        <strong>📊 Para Analistas:</strong><br>
-        Foque na <a href="DOCUMENTACAO-ENTIDADES.html">Documentação das Entidades</a> e no 
-        <a href="ROADMAP-PROXIMOS-PASSOS.html">Roadmap</a> para entender os requisitos e planejamento.
-    </blockquote>
-    
-    <h2>🛠️ Tecnologias Utilizadas</h2>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Categoria</th>
-                <th>Tecnologia</th>
-                <th>Versão</th>
-                <th>Propósito</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Backend</td>
-                <td>Spring Boot</td>
-                <td>3.5.5</td>
-                <td>Framework principal</td>
-            </tr>
-            <tr>
-                <td>ORM</td>
-                <td>JPA/Hibernate</td>
-                <td>6.x</td>
-                <td>Mapeamento objeto-relacional</td>
-            </tr>
-            <tr>
-                <td>Database</td>
-                <td>SQL Server</td>
-                <td>2019+</td>
-                <td>Banco de dados principal</td>
-            </tr>
-            <tr>
-                <td>Security</td>
-                <td>Spring Security + JWT</td>
-                <td>6.x</td>
-                <td>Autenticação e autorização</td>
-            </tr>
-            <tr>
-                <td>Documentation</td>
-                <td>SpringDoc OpenAPI</td>
-                <td>3.0</td>
-                <td>Documentação automática da API</td>
-            </tr>
-            <tr>
-                <td>Build</td>
-                <td>Maven</td>
-                <td>3.9+</td>
-                <td>Gerenciamento de dependências</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <h2>📞 Contato e Suporte</h2>
-    
-    <p>Para dúvidas, sugestões ou suporte técnico:</p>
-    
-    <ul>
-        <li><strong>Email:</strong> dev@doesangue.com.br</li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/nisze/doesangue_backend">github.com/nisze/doesangue_backend</a></li>
-        <li><strong>Documentação API:</strong> <a href="http://localhost:8080/swagger-ui.html">localhost:8080/swagger-ui.html</a></li>
-    </ul>
-    
+            <h2>📚 Documentações Disponíveis</h2>
+            
+            <blockquote>
+                <strong>🎯 Bem-vindo à documentação do Sistema DoeSangue!</strong><br>
+                Esta é uma coleção completa de documentos técnicos para o projeto de gerenciamento de doações de sangue.
+            </blockquote>
+            
+            <h3>🏗️ Arquitetura e Design</h3>
+            <ul>
+                <li><a href="architecture.html"><strong>Arquitetura do Sistema</strong></a> - Visão geral da arquitetura, tecnologias e padrões utilizados</li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html"><strong>Documentação das Entidades</strong></a> - Detalhamento completo de todas as entidades do sistema</li>
+            </ul>
+            
+            <h3>💻 Desenvolvimento e API</h3>
+            <ul>
+                <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html"><strong>Documentação do Controller</strong></a> - Exemplo completo de implementação de controller REST</li>
+                <li><a href="GUIA-CONTROLLER-BOAS-PRATICAS.html"><strong>Guia de Boas Práticas</strong></a> - Boas práticas para controllers REST, DTOs e validações</li>
+                <li><a href="TUTORIAL-JPA-SPECIFICATIONS.html"><strong>Tutorial JPA Specifications</strong></a> - Implementação de filtros dinâmicos com Spring Data JPA</li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html"><strong>Configuração Swagger</strong></a> - Documentação detalhada da configuração OpenAPI</li>
+                <li><a href="SWAGGER-RESUMO-IMPLEMENTACAO.html"><strong>Resumo da Implementação Swagger</strong></a> - Guia prático de implementação</li>
+            </ul>
+            
+            <h3>🔧 Guias Fundamentais</h3>
+            <div class="guia-destaque">
+                <h4>⚡ Guia Repository Pattern & Spring Data JPA</h4>
+                <p>
+                    <strong>Guia completo e fundamental</strong> sobre Repository Pattern, Spring Data JPA, Query Methods e otimização com índices de banco de dados. 
+                    <em>Essencial para entender a base da persistência no projeto!</em>
+                </p>
+                <a href="GUIA-REPOSITORY-PATTERN.html" class="btn">
+                    📊 Acessar Guia Repository Pattern →
+                </a>
+                <div class="features">
+                    <strong>🎯 Inclui:</strong> Conceitos fundamentais • Implementação prática • Query Methods • Índices para performance • Testes • 60+ links oficiais
+                </div>
+            </div>
+            
+            <h3>📋 Planejamento e Roadmap</h3>
+            <ul>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html"><strong>Roadmap e Próximos Passos</strong></a> - Planejamento de desenvolvimento e melhorias</li>
+                <li><a href="PLANO-ACAO-SEMANAL.html"><strong>Plano de Ação Semanal</strong></a> - Cronograma detalhado de atividades</li>
+            </ul>
+            
+            <h2>🚀 Como Usar Esta Documentação</h2>
+            
+            <blockquote>
+                <strong>👨‍💻 Para Desenvolvedores:</strong><br>
+                Comece pela <a href="architecture.html">Arquitetura</a> para entender a estrutura geral, 
+                depois veja o <a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">Controller</a> para exemplos práticos.
+            </blockquote>
+            
+            <blockquote>
+                <strong>📊 Para Analistas:</strong><br>
+                Foque na <a href="DOCUMENTACAO-ENTIDADES.html">Documentação das Entidades</a> e no 
+                <a href="ROADMAP-PROXIMOS-PASSOS.html">Roadmap</a> para entender os requisitos e planejamento.
+            </blockquote>
+            
+            <h2>🛠️ Tecnologias Utilizadas</h2>
+            
+            <ul>
+                <li><strong>Backend:</strong> Spring Boot 3.5.5</li>
+                <li><strong>ORM:</strong> JPA/Hibernate 6.x</li>
+                <li><strong>Database:</strong> SQL Server 2019+</li>
+                <li><strong>Segurança:</strong> Spring Security 6.x</li>
+                <li><strong>Documentação:</strong> SpringDoc OpenAPI 3.0</li>
+                <li><strong>Build:</strong> Maven 3.9+</li>
+                <li><strong>Deploy:</strong> GitHub Pages</li>
+            </ul>
+            
+            <h2>📞 Informações do Projeto</h2>
+            
+            <ul>
+                <li><strong>GitHub:</strong> <a href="https://github.com/nisze/doesangue_backend">github.com/nisze/doesangue_backend</a></li>
+                <li><strong>Documentação API:</strong> <a href="http://localhost:8080/swagger-ui.html">localhost:8080/swagger-ui.html</a></li>
+                <li><strong>Desenvolvido para:</strong> Análise e Desenvolvimento de Sistemas</li>
+                <li><strong>Finalidade:</strong> Facilitar a conexão entre doadores e hemocentros</li>
+            </ul>
+            
+            <blockquote>
+                <strong>💡 Dica:</strong> Use Ctrl+F para buscar rapidamente por tópicos específicos nesta documentação.
+            </blockquote>
         </div>
         
         <div class="footer">
-            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
-            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+            📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue<br>
+            💻 Desenvolvido com ❤️ pela equipe de desenvolvimento
         </div>
     </div>
 </body>
