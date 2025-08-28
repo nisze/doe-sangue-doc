@@ -4,6 +4,18 @@
 **Foco:** Implementação do filtro `DoadorRequestFilterDTO` com Specifications  
 **Tecnologia:** Spring Data JPA, Criteria API
 
+## 🔗 Links Rápidos para Documentação Oficial
+
+| **Recurso** | **Link** | **Descrição** |
+|-------------|----------|---------------|
+| 📖 **JPA Specifications** | [Spring Data JPA Specs](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html) | Documentação oficial completa |
+| 🔧 **Criteria API** | [Oracle JPA Criteria](https://docs.oracle.com/javaee/7/tutorial/persistence-criteria.htm) | Tutorial oficial Oracle |
+| 🚀 **Spring Data JPA** | [Reference Guide](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/) | Guia completo Spring Data |
+| 📊 **Hibernate Docs** | [User Guide](https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html) | Documentação Hibernate |
+| 🎯 **Spring Boot** | [Reference Guide](https://docs.spring.io/spring-boot/docs/current/reference/html/) | Guia oficial Spring Boot |
+
+💡 **Mais links detalhados disponíveis na [seção de documentação oficial](#-documentação-oficial-e-referências) no final deste tutorial.**
+
 ---
 
 ## 🎯 Objetivo deste Tutorial
@@ -50,6 +62,8 @@ public record DoadorRequestFilterDTO(
 
 ### **🔧 Atualizar DoadorRepository**
 
+> 📖 **Documentação:** [JpaSpecificationExecutor](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html) | [JPA Repository](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.core-concepts)
+
 ```java
 package com.faculdade.doesangue_api.repository;
 
@@ -80,6 +94,8 @@ public interface DoadorRepository extends
 ## 📋 Passo 2: Criar a Classe de Specifications
 
 ### **🔨 DoadorSpecifications.java**
+
+> 📖 **Documentação:** [Specifications](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html) | [Criteria Builder](https://docs.oracle.com/javaee/7/api/javax/persistence/criteria/CriteriaBuilder.html) | [Predicate](https://docs.oracle.com/javaee/7/api/javax/persistence/criteria/Predicate.html)
 
 ```java
 package com.faculdade.doesangue_api.specifications;
@@ -294,6 +310,8 @@ public class DoadorSpecifications {
 
 ### **🔧 DoadorService.java**
 
+> 📖 **Documentação:** [Spring Transactions](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction) | [Page and Pageable](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/Page.html)
+
 ```java
 package com.faculdade.doesangue_api.service;
 
@@ -367,6 +385,8 @@ public class DoadorService {
 ## 📋 Passo 4: Atualizar o Controller
 
 ### **🎮 DoadorController.java**
+
+> 📖 **Documentação:** [Spring Web MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc) | [OpenAPI Annotations](https://springdoc.org/#migrating-from-springfox) | [Bean Validation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#validation-beanvalidation)
 
 ```java
 package com.faculdade.doesangue_api.controller;
@@ -522,6 +542,8 @@ public class DoadorController {
 ## 📋 Passo 5: Testes e Validação
 
 ### **🧪 Exemplo de Teste Unitário**
+
+> 📖 **Documentação:** [Spring Boot Testing](https://docs.spring.io/spring-boot/docs/current/reference/html/testing.html) | [@DataJpaTest](https://docs.spring.io/spring-boot/docs/current/reference/html/test-auto-configuration.html#test-auto-configuration-data-jpa) | [AssertJ](https://assertj.github.io/doc/)
 
 ```java
 package com.faculdade.doesangue_api.specifications;
@@ -695,7 +717,148 @@ class DoadorRepositoryImpl implements DoadorRepositoryCustom {
 
 ---
 
-## 📚 Recursos Adicionais
+## 📚 Documentação Oficial e Referências
+
+### **🌟 Spring Data JPA - Documentação Principal**
+
+#### **📖 JPA Specifications:**
+- **[Spring Data JPA Specifications](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)** - Guia oficial completo
+- **[JPA Criteria API](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html#specifications.predicate)** - Construção de predicados
+- **[Type-safe Query Methods](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html#specifications.composing)** - Composição de Specifications
+
+#### **📖 Spring Data JPA - Geral:**
+- **[Spring Data JPA Reference](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)** - Documentação completa
+- **[Query Methods](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods)** - Métodos de consulta
+- **[Paging and Sorting](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.special-parameters)** - Paginação e ordenação
+- **[Custom Implementations](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations)** - Implementações customizadas
+
+### **🔧 JPA e Hibernate - Documentação Core**
+
+#### **📖 JPA Criteria API:**
+- **[Oracle JPA Tutorial - Criteria API](https://docs.oracle.com/javaee/7/tutorial/persistence-criteria.htm)** - Tutorial oficial Oracle
+- **[JPA 3.1 Specification](https://jakarta.ee/specifications/persistence/3.1/)** - Especificação oficial JPA
+- **[Criteria API - Building Queries](https://docs.oracle.com/javaee/7/tutorial/persistence-criteria002.htm)** - Construção de queries
+
+#### **📖 Hibernate Documentation:**
+- **[Hibernate User Guide](https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html)** - Guia completo do Hibernate
+- **[Criteria Queries](https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#criteria)** - Hibernate Criteria
+- **[Query by Example](https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#query-by-example)** - QBE com Hibernate
+
+### **🚀 Spring Framework - Base**
+
+#### **📖 Spring Framework Core:**
+- **[Spring Framework Reference](https://docs.spring.io/spring-framework/docs/current/reference/html/)** - Documentação completa
+- **[Data Access with JDBC](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc)** - Acesso a dados
+- **[Transaction Management](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction)** - Gerenciamento de transações
+
+#### **📖 Spring Boot:**
+- **[Spring Boot Reference Guide](https://docs.spring.io/spring-boot/docs/current/reference/html/)** - Guia oficial Spring Boot
+- **[Spring Boot Data JPA](https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.jpa-and-spring-data)** - Configuração JPA
+- **[Auto-configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/auto-configuration.html)** - Configuração automática
+
+### **📊 Validação e DTOs**
+
+#### **📖 Bean Validation:**
+- **[Jakarta Bean Validation](https://jakarta.ee/specifications/bean-validation/3.0/)** - Especificação oficial
+- **[Hibernate Validator](https://docs.jboss.org/hibernate/validator/7.0/reference/en-US/html_single/)** - Implementação de referência
+- **[Spring Validation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#validation)** - Validação no Spring
+
+#### **📖 Java Records (Java 14+):**
+- **[Oracle Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html)** - Documentação oficial
+- **[JEP 395: Records](https://openjdk.org/jeps/395)** - Proposta de especificação
+- **[Java Record Patterns](https://docs.oracle.com/en/java/javase/19/language/pattern-matching-switch-expressions-and-statements.html)** - Pattern matching
+
+### **🎯 Testing e Qualidade**
+
+#### **📖 Spring Boot Testing:**
+- **[Testing in Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/testing.html)** - Testes no Spring Boot
+- **[@DataJpaTest](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html)** - Testes de JPA
+- **[TestContainers](https://www.testcontainers.org/modules/databases/)** - Testes com containers
+
+#### **📖 Frameworks de Teste:**
+- **[JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)** - Framework de testes
+- **[AssertJ](https://assertj.github.io/doc/)** - Assertions fluentes
+- **[Mockito](https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html)** - Framework de mocks
+
+### **📖 Performance e Otimização**
+
+#### **📖 JPA Performance:**
+- **[JPA Performance Tips](https://vladmihalcea.com/jpa-hibernate-performance-tuning/)** - Blog Vlad Mihalcea
+- **[N+1 Query Problem](https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#fetching-strategies)** - Estratégias de fetch
+- **[Second Level Cache](https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#caching)** - Cache de segundo nível
+
+#### **📖 Database Optimization:**
+- **[SQL Server Performance](https://docs.microsoft.com/en-us/sql/relational-databases/performance/performance-monitoring-and-tuning-tools)** - Otimização SQL Server
+- **[Index Tuning](https://docs.microsoft.com/en-us/sql/relational-databases/indexes/indexes)** - Estratégias de índices
+- **[Query Execution Plans](https://docs.microsoft.com/en-us/sql/relational-databases/performance/execution-plans)** - Planos de execução
+
+### **🔧 Ferramentas e IDEs**
+
+#### **📖 Development Tools:**
+- **[IntelliJ IDEA - JPA Support](https://www.jetbrains.com/help/idea/jpa-facet.html)** - Suporte JPA no IntelliJ
+- **[Eclipse - Dali JPA Tools](https://www.eclipse.org/webtools/dali/)** - Ferramentas JPA no Eclipse
+- **[Spring Tools Suite](https://spring.io/tools)** - IDE especializada Spring
+
+#### **📖 Database Tools:**
+- **[SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/)** - SSMS oficial
+- **[DBeaver](https://dbeaver.io/docs/)** - Cliente universal de banco
+- **[pgAdmin](https://www.pgadmin.org/docs/)** - Para PostgreSQL (se aplicável)
+
+### **📱 API Design e Documentação**
+
+#### **📖 OpenAPI/Swagger:**
+- **[OpenAPI Specification](https://swagger.io/specification/)** - Especificação oficial
+- **[SpringDoc OpenAPI](https://springdoc.org/)** - Integração Spring Boot
+- **[Swagger Annotations](https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations)** - Anotações Swagger
+
+#### **📖 REST API Best Practices:**
+- **[REST API Tutorial](https://restfulapi.net/)** - Guia completo REST
+- **[HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)** - Códigos de status
+- **[Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)** - Níveis de maturidade REST
+
+### **🎓 Tutoriais e Guias Práticos**
+
+#### **📖 Spring Guides:**
+- **[Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)** - Tutorial básico
+- **[Building REST services with Spring](https://spring.io/guides/tutorials/rest/)** - Tutorial REST completo
+- **[Consuming REST services](https://spring.io/guides/gs/consuming-rest/)** - Consumindo APIs
+
+#### **📖 Baeldung Tutorials:**
+- **[Spring Data JPA Specifications](https://www.baeldung.com/rest-api-search-language-spring-data-specifications)** - Tutorial prático
+- **[Spring Data JPA Query](https://www.baeldung.com/spring-data-jpa-query)** - Queries com Spring Data
+- **[JPA Criteria Queries](https://www.baeldung.com/hibernate-criteria-queries)** - Criteria API
+
+### **🔍 Blogs e Recursos Especializados**
+
+#### **📖 Especialistas em JPA/Hibernate:**
+- **[Vlad Mihalcea's Blog](https://vladmihalcea.com/)** - Expert em JPA/Hibernate
+- **[Thorben Janssen's Blog](https://thorben-janssen.com/)** - Hibernate tips
+- **[Petri Kainulainen's Blog](https://www.petrikainulainen.net/)** - Spring Data JPA
+
+#### **📖 Spring Community:**
+- **[Spring Blog](https://spring.io/blog)** - Blog oficial Spring
+- **[Spring Academy](https://spring.academy/)** - Cursos oficiais
+- **[Spring Community](https://spring.io/community)** - Comunidade Spring
+
+### **⚡ Quick Reference Links**
+
+#### **🔖 Cheat Sheets:**
+- **[JPA Annotations Cheat Sheet](https://www.baeldung.com/jpa-annotations)** - Anotações JPA
+- **[Spring Data JPA Cheat Sheet](https://springframework.guru/spring-data-jpa-query-derivation/)** - Derivação de queries
+- **[SQL Cheat Sheet](https://www.w3schools.com/sql/)** - Referência SQL
+
+#### **🔖 GitHub Repositories:**
+- **[Spring Data Examples](https://github.com/spring-projects/spring-data-examples)** - Exemplos oficiais
+- **[Spring Boot Samples](https://github.com/spring-projects/spring-boot/tree/main/spring-boot-samples)** - Amostras Spring Boot
+- **[Awesome Spring](https://github.com/ThomasVitale/awesome-spring)** - Recursos curados Spring
+
+---
+
+💡 **Dica:** Marque estes links nos seus favoritos para consulta rápida durante o desenvolvimento!
+
+---
+
+## 📋 Recursos Adicionais
 
 ### **📖 Links Úteis:**
 - [Spring Data JPA Specifications](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
