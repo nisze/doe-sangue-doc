@@ -313,7 +313,7 @@ const HTML_TEMPLATE = `
         
         <nav class="nav">
             <ul>
-                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="../index.html">🏠 Início</a></li>
                 <li><a href="architecture.html">🏗️ Arquitetura</a></li>
                 <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
                 <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">🎮 Controller</a></li>
