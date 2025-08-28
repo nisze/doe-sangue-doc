@@ -1,0 +1,1335 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Repository Pattern e Spring Data JPA - Guia Completo - DoeSangue Documentation</title>
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 25px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Code */
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+            border: 1px solid #e9ecef;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background: none;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        /* Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted #3498db;
+        }
+        
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid #2980b9;
+        }
+        
+        /* Badges/Tags */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #3498db;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        
+        .badge.success { background: #27ae60; }
+        .badge.warning { background: #f39c12; }
+        .badge.danger { background: #e74c3c; }
+        .badge.info { background: #3498db; }
+        
+        /* Navigation */
+        .nav {
+            background: #2c3e50;
+            padding: 15px 0;
+            margin: -20px -20px 20px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav li {
+            margin: 0 15px;
+        }
+        
+        .nav a {
+            color: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #34495e;
+            border: none;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.3em; }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 📊 Repository Pattern e Spring Data JPA - Guia Completo</h1>
+            <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+            <div class="meta">Gerado em 27/08/2025, 21:15:08 | Versão 1.0</div>
+        </div>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">🏠 Início</a></li>
+                <li><a href="architecture.html">🏗️ Arquitetura</a></li>
+                <li><a href="DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
+                <li><a href="DOADOR-CONTROLLER-DOCUMENTACAO.html">🎮 Controller</a></li>
+                <li><a href="SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
+                <li><a href="ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h1>📊 Repository Pattern e Spring Data JPA - Guia Completo</h1>
+<p><strong>Finalidade:</strong> Guia fundamental sobre Repository Pattern e Spring Data JPA<br><strong>Foco:</strong> Conceitos, implementação e boas práticas<br><strong>Tecnologia:</strong> Spring Data JPA, Repository Pattern, Query Methods</p>
+<h2>🔗 Links Rápidos para Documentação Oficial</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Recurso</strong></th>
+<th><strong>Link</strong></th>
+<th><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📖 <strong>Spring Data JPA</strong></td>
+<td><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/">Reference Guide</a></td>
+<td>Documentação completa oficial</td>
+</tr>
+<tr>
+<td>🔧 <strong>Repository Interface</strong></td>
+<td><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.core-concepts">Core Concepts</a></td>
+<td>Conceitos fundamentais</td>
+</tr>
+<tr>
+<td>🎯 <strong>Query Methods</strong></td>
+<td><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods">Query Creation</a></td>
+<td>Criação de consultas</td>
+</tr>
+<tr>
+<td>📊 <strong>JPA Repository</strong></td>
+<td><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories">JPA Repositories</a></td>
+<td>Repositórios JPA específicos</td>
+</tr>
+<tr>
+<td>🚀 <strong>Custom Implementations</strong></td>
+<td><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations">Custom Repository</a></td>
+<td>Implementações customizadas</td>
+</tr>
+</tbody></table>
+<p>💡 <strong>Mais links detalhados disponíveis na <a href="#-documenta%C3%A7%C3%A3o-oficial-e-refer%C3%AAncias">seção de documentação oficial</a> no final deste guia.</strong></p>
+<hr>
+<h2>🎯 O que é Repository Pattern?</h2>
+<h3><strong>🏗️ Conceito Fundamental</strong></h3>
+<p>O <strong>Repository Pattern</strong> é um padrão de design que encapsula a lógica necessária para acessar fontes de dados. Ele centraliza funcionalidades comuns de acesso a dados, proporcionando melhor manutenibilidade e desacoplamento da infraestrutura ou tecnologia usada para acessar bancos de dados.</p>
+<h3><strong>💡 Analogia Prática:</strong></h3>
+<p>Imagine o Repository como um <strong>&quot;bibliotecário digital&quot;</strong>:</p>
+<ul>
+<li>📚 <strong>Você pede</strong> um livro (entidade) pelo título (ID)</li>
+<li>🔍 <strong>Ele busca</strong> na estante (banco de dados)</li>
+<li>📖 <strong>Retorna</strong> o livro (objeto) para você</li>
+<li>📝 <strong>Organiza</strong> novos livros (save) na estante</li>
+<li>🗑️ <strong>Remove</strong> livros antigos (delete) quando necessário</li>
+</ul>
+<h3><strong><span class="badge success">✅</span> Benefícios do Repository Pattern:</strong></h3>
+<ul>
+<li><strong>🔄 Abstração</strong> - Esconde detalhes de acesso aos dados</li>
+<li><strong>🧪 Testabilidade</strong> - Fácil mock para testes unitários</li>
+<li><strong>🔄 Reutilização</strong> - Centraliza operações comuns</li>
+<li><strong>📊 Consistência</strong> - Padroniza acesso aos dados</li>
+<li><strong>🛡️ Manutenibilidade</strong> - Mudanças isoladas em um local</li>
+</ul>
+<hr>
+<h2>🚀 Spring Data JPA - O Poder da Automação</h2>
+<h3><strong>🎯 O que é Spring Data JPA?</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#preface">Spring Data JPA Introduction</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#getting-started">Getting Started</a></p>
+</blockquote>
+<p>Spring Data JPA é um framework que <strong>automatiza</strong> a implementação do Repository Pattern, gerando automaticamente implementações baseadas em convenções de nomenclatura.</p>
+<h3><strong>🔥 Funcionalidades Principais:</strong></h3>
+<h4><strong>1. 🤖 Implementação Automática</strong></h4>
+<pre><code class="language-java">// Você define apenas a interface
+public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+    // Spring Data JPA implementa automaticamente!
+}
+
+// Spring gera automaticamente:
+// - save(doador)
+// - findById(id)
+// - findAll()
+// - delete(doador)
+// - count()
+// - existsById(id)
+// E muito mais!
+</code></pre>
+<h4><strong>2. 📝 Query Methods por Convenção</strong></h4>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+    
+    // Spring entende e gera SQL automaticamente!
+    List&lt;Doador&gt; findByFullName(String fullName);
+    List&lt;Doador&gt; findByEmailContaining(String email);
+    List&lt;Doador&gt; findByCidadeAndEstado(String cidade, String estado);
+    List&lt;Doador&gt; findByIdadeBetween(Integer minIdade, Integer maxIdade);
+    List&lt;Doador&gt; findByAtivoTrue();
+    
+    // Equivale a: SELECT d FROM Doador d WHERE d.fullName = ?1
+    // Equivale a: SELECT d FROM Doador d WHERE d.email LIKE %?1%
+    // E assim por diante...
+}
+</code></pre>
+<h4><strong>3. 📊 Paginação e Ordenação Nativas</strong></h4>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+    
+    // Paginação automática
+    Page&lt;Doador&gt; findByEstado(String estado, Pageable pageable);
+    
+    // Slice para performance
+    Slice&lt;Doador&gt; findByCidade(String cidade, Pageable pageable);
+    
+    // Lista ordenada
+    List&lt;Doador&gt; findByAtivoTrueOrderByFullNameAsc();
+}
+</code></pre>
+<hr>
+<h2>📋 Hierarquia de Interfaces Repository</h2>
+<h3><strong>🏗️ Estrutura Completa</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.core-concepts">Repository Hierarchy</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories">Interface Overview</a></p>
+</blockquote>
+<pre><code class="language-java">// 1. 🔧 Repository (Base) - Marker interface
+Repository&lt;T, ID&gt;
+
+// 2. 📚 CrudRepository - CRUD básico
+CrudRepository&lt;T, ID&gt; extends Repository&lt;T, ID&gt;
+
+// 3. 📄 PagingAndSortingRepository - Adiciona paginação
+PagingAndSortingRepository&lt;T, ID&gt; extends CrudRepository&lt;T, ID&gt;
+
+// 4. 🚀 JpaRepository - Funcionalidades JPA específicas
+JpaRepository&lt;T, ID&gt; extends PagingAndSortingRepository&lt;T, ID&gt;
+</code></pre>
+<h3><strong>🎯 Quando Usar Cada Interface:</strong></h3>
+<h4><strong>1. <code>Repository&lt;T, ID&gt;</code> - Interface Marker</strong></h4>
+<pre><code class="language-java">// Quando você quer controle total
+public interface DoadorRepository extends Repository&lt;Doador, Long&gt; {
+    // Define apenas os métodos que precisa
+    Optional&lt;Doador&gt; findById(Long id);
+    Doador save(Doador doador);
+    // Não herda nenhum método automático
+}
+</code></pre>
+<h4><strong>2. <code>CrudRepository&lt;T, ID&gt;</code> - CRUD Básico</strong></h4>
+<pre><code class="language-java">public interface DoadorRepository extends CrudRepository&lt;Doador, Long&gt; {
+    // Herda automaticamente:
+    // save(S entity)
+    // saveAll(Iterable&lt;S&gt; entities)
+    // findById(ID id)
+    // existsById(ID id)
+    // findAll()
+    // findAllById(Iterable&lt;ID&gt; ids)
+    // count()
+    // deleteById(ID id)
+    // delete(T entity)
+    // deleteAll()
+}
+</code></pre>
+<h4><strong>3. <code>PagingAndSortingRepository&lt;T, ID&gt;</code> - Com Paginação</strong></h4>
+<pre><code class="language-java">public interface DoadorRepository extends PagingAndSortingRepository&lt;Doador, Long&gt; {
+    // Herda tudo do CrudRepository +
+    // findAll(Sort sort)
+    // findAll(Pageable pageable)
+}
+</code></pre>
+<h4><strong>4. <code>JpaRepository&lt;T, ID&gt;</code> - Completo (RECOMENDADO)</strong></h4>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+    // Herda tudo dos anteriores +
+    // flush()
+    // saveAndFlush(S entity)
+    // deleteInBatch(Iterable&lt;T&gt; entities)
+    // deleteAllInBatch()
+    // getReferenceById(ID id)
+    // findAll(Example&lt;S&gt; example)
+    // findAll(Example&lt;S&gt; example, Pageable pageable)
+}
+</code></pre>
+<hr>
+<h2>🔧 Implementação Prática - Projeto DoeSangue</h2>
+<h3><strong>📋 Passo 1: Definir a Interface Repository</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.definition">Defining Repository Interfaces</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation">Repository Methods</a></p>
+</blockquote>
+<pre><code class="language-java">package com.faculdade.doesangue_api.repository;
+
+import com.faculdade.doesangue_api.entities.Doador;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // 🔍 QUERY METHODS - Spring gera SQL automaticamente
+    
+    /**
+     * Busca doador por CPF
+     * SQL gerado: SELECT d FROM Doador d WHERE d.cpf = ?1
+     */
+    Optional&lt;Doador&gt; findByCpf(String cpf);
+    
+    /**
+     * Busca doadores por nome (parcial, case-insensitive)
+     * SQL gerado: SELECT d FROM Doador d WHERE LOWER(d.fullName) LIKE LOWER(?1)
+     */
+    List&lt;Doador&gt; findByFullNameContainingIgnoreCase(String nome);
+    
+    /**
+     * Busca doadores por email
+     * SQL gerado: SELECT d FROM Doador d WHERE d.email = ?1
+     */
+    Optional&lt;Doador&gt; findByEmail(String email);
+    
+    /**
+     * Busca doadores ativos por cidade
+     * SQL gerado: SELECT d FROM Doador d WHERE d.cidade = ?1 AND d.deletedAt IS NULL
+     */
+    List&lt;Doador&gt; findByCidadeAndDeletedAtIsNull(String cidade);
+    
+    /**
+     * Busca doadores por estado com paginação
+     */
+    Page&lt;Doador&gt; findByEstadoAndDeletedAtIsNull(String estado, Pageable pageable);
+    
+    /**
+     * Busca doadores habituais ativos
+     */
+    List&lt;Doador&gt; findByDoadorHabitudeTrueAndDeletedAtIsNull();
+    
+    /**
+     * Busca doadores por faixa de idade
+     */
+    List&lt;Doador&gt; findByIdadeBetweenAndDeletedAtIsNull(Integer minIdade, Integer maxIdade);
+    
+    /**
+     * Busca doadores que podem doar (baseado na última doação)
+     */
+    List&lt;Doador&gt; findByUltimaDoacaoBeforeOrUltimaDoacaoIsNull(LocalDate dataLimite);
+    
+    // 📝 CUSTOM QUERIES - Quando precisar de controle maior
+    
+    /**
+     * Busca doadores com JOIN customizado
+     */
+    @Query(&quot;SELECT d FROM Doador d &quot; +
+           &quot;JOIN d.tipoSanguineo ts &quot; +
+           &quot;WHERE ts.tipoAbo = :tipoAbo &quot; +
+           &quot;AND ts.fatorRh = :fatorRh &quot; +
+           &quot;AND d.deletedAt IS NULL&quot;)
+    List&lt;Doador&gt; findByTipoSanguineo(
+        @Param(&quot;tipoAbo&quot;) String tipoAbo, 
+        @Param(&quot;fatorRh&quot;) String fatorRh
+    );
+    
+    /**
+     * Estatísticas de doadores por cidade
+     */
+    @Query(&quot;SELECT d.cidade, COUNT(d) &quot; +
+           &quot;FROM Doador d &quot; +
+           &quot;WHERE d.deletedAt IS NULL &quot; +
+           &quot;GROUP BY d.cidade &quot; +
+           &quot;ORDER BY COUNT(d) DESC&quot;)
+    List&lt;Object[]&gt; countDoadoresPorCidade();
+    
+    /**
+     * Busca doadores aptos para doar urgente
+     */
+    @Query(&quot;SELECT d FROM Doador d &quot; +
+           &quot;WHERE d.deletedAt IS NULL &quot; +
+           &quot;AND d.doadorHabitudel = true &quot; +
+           &quot;AND (d.ultimaDoacao IS NULL OR d.ultimaDoacao &lt;= :dataLimite) &quot; +
+           &quot;AND d.idade BETWEEN 18 AND 65 &quot; +
+           &quot;ORDER BY d.ultimaDoacao ASC NULLS FIRST&quot;)
+    List&lt;Doador&gt; findDoadoresAptosParaDoarUrgente(@Param(&quot;dataLimite&quot;) LocalDate dataLimite);
+    
+    // 🔢 QUERIES DE CONTAGEM
+    
+    /**
+     * Conta doadores ativos por estado
+     */
+    long countByEstadoAndDeletedAtIsNull(String estado);
+    
+    /**
+     * Verifica se existe doador com CPF
+     */
+    boolean existsByCpfAndDeletedAtIsNull(String cpf);
+    
+    /**
+     * Verifica se existe doador com email
+     */
+    boolean existsByEmailAndDeletedAtIsNull(String email);
+    
+    // 🗑️ SOFT DELETE QUERIES
+    
+    /**
+     * Busca apenas doadores ativos (não deletados)
+     */
+    List&lt;Doador&gt; findByDeletedAtIsNull();
+    
+    /**
+     * Busca doadores deletados (para auditoria)
+     */
+    List&lt;Doador&gt; findByDeletedAtIsNotNull();
+}
+</code></pre>
+<h3><strong>📋 Passo 2: Usar no Service</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-stereotypes">Service Layer</a> | <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction">Transaction Management</a></p>
+</blockquote>
+<pre><code class="language-java">package com.faculdade.doesangue_api.service;
+
+import com.faculdade.doesangue_api.entities.Doador;
+import com.faculdade.doesangue_api.repository.DoadorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional(readOnly = true) // Otimização para operações de leitura
+public class DoadorService {
+
+    private final DoadorRepository doadorRepository;
+
+    public DoadorService(DoadorRepository doadorRepository) {
+        this.doadorRepository = doadorRepository;
+    }
+
+    // 📋 OPERAÇÕES BÁSICAS
+    
+    public List&lt;Doador&gt; listarTodos() {
+        return doadorRepository.findByDeletedAtIsNull();
+    }
+    
+    public Page&lt;Doador&gt; listarComPaginacao(Pageable pageable) {
+        return doadorRepository.findAll(pageable);
+    }
+    
+    public Optional&lt;Doador&gt; buscarPorId(Long id) {
+        return doadorRepository.findById(id)
+            .filter(doador -&gt; doador.getDeletedAt() == null);
+    }
+    
+    public Optional&lt;Doador&gt; buscarPorCpf(String cpf) {
+        return doadorRepository.findByCpf(cpf);
+    }
+    
+    public Optional&lt;Doador&gt; buscarPorEmail(String email) {
+        return doadorRepository.findByEmail(email);
+    }
+    
+    // 🔍 OPERAÇÕES DE BUSCA
+    
+    public List&lt;Doador&gt; buscarPorNome(String nome) {
+        return doadorRepository.findByFullNameContainingIgnoreCase(nome);
+    }
+    
+    public List&lt;Doador&gt; buscarPorCidade(String cidade) {
+        return doadorRepository.findByCidadeAndDeletedAtIsNull(cidade);
+    }
+    
+    public Page&lt;Doador&gt; buscarPorEstado(String estado, Pageable pageable) {
+        return doadorRepository.findByEstadoAndDeletedAtIsNull(estado, pageable);
+    }
+    
+    public List&lt;Doador&gt; buscarDoadoresHabituais() {
+        return doadorRepository.findByDoadorHabitudeTrueAndDeletedAtIsNull();
+    }
+    
+    public List&lt;Doador&gt; buscarPorFaixaIdade(Integer minIdade, Integer maxIdade) {
+        return doadorRepository.findByIdadeBetweenAndDeletedAtIsNull(minIdade, maxIdade);
+    }
+    
+    // 🩸 OPERAÇÕES ESPECÍFICAS DO DOMÍNIO
+    
+    public List&lt;Doador&gt; buscarDoadoresAptos() {
+        // Doadores que podem doar (últim doação &gt; 60 dias ou nunca doaram)
+        LocalDate dataLimite = LocalDate.now().minusDays(60);
+        return doadorRepository.findByUltimaDoacaoBeforeOrUltimaDoacaoIsNull(dataLimite);
+    }
+    
+    public List&lt;Doador&gt; buscarPorTipoSanguineo(String tipoAbo, String fatorRh) {
+        return doadorRepository.findByTipoSanguineo(tipoAbo, fatorRh);
+    }
+    
+    public List&lt;Doador&gt; buscarDoadoresUrgente() {
+        LocalDate dataLimite = LocalDate.now().minusDays(60);
+        return doadorRepository.findDoadoresAptosParaDoarUrgente(dataLimite);
+    }
+    
+    // 💾 OPERAÇÕES DE PERSISTÊNCIA
+    
+    @Transactional // Remove readOnly para operações de escrita
+    public Doador salvar(Doador doador) {
+        return doadorRepository.save(doador);
+    }
+    
+    @Transactional
+    public Doador atualizar(Doador doador) {
+        return doadorRepository.save(doador);
+    }
+    
+    @Transactional
+    public void deletar(Long id) {
+        doadorRepository.findById(id)
+            .ifPresent(doador -&gt; {
+                doador.setDeletedAt(LocalDateTime.now());
+                doadorRepository.save(doador); // Soft delete
+            });
+    }
+    
+    // 📊 OPERAÇÕES DE ESTATÍSTICA
+    
+    public long contarPorEstado(String estado) {
+        return doadorRepository.countByEstadoAndDeletedAtIsNull(estado);
+    }
+    
+    public boolean existePorCpf(String cpf) {
+        return doadorRepository.existsByCpfAndDeletedAtIsNull(cpf);
+    }
+    
+    public boolean existePorEmail(String email) {
+        return doadorRepository.existsByEmailAndDeletedAtIsNull(email);
+    }
+    
+    public List&lt;Object[]&gt; obterEstatisticasPorCidade() {
+        return doadorRepository.countDoadoresPorCidade();
+    }
+}
+</code></pre>
+<h3><strong>📋 Passo 3: Usar no Controller</strong></h3>
+<pre><code class="language-java">package com.faculdade.doesangue_api.controller;
+
+import com.faculdade.doesangue_api.entities.Doador;
+import com.faculdade.doesangue_api.service.DoadorService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/doadores&quot;)
+public class DoadorController {
+
+    private final DoadorService doadorService;
+
+    public DoadorController(DoadorService doadorService) {
+        this.doadorService = doadorService;
+    }
+
+    @GetMapping
+    public ResponseEntity&lt;Page&lt;Doador&gt;&gt; listar(Pageable pageable) {
+        Page&lt;Doador&gt; doadores = doadorService.listarComPaginacao(pageable);
+        return ResponseEntity.ok(doadores);
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Doador&gt; buscarPorId(@PathVariable Long id) {
+        return doadorService.buscarPorId(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(&quot;/cpf/{cpf}&quot;)
+    public ResponseEntity&lt;Doador&gt; buscarPorCpf(@PathVariable String cpf) {
+        return doadorService.buscarPorCpf(cpf)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(&quot;/buscar&quot;)
+    public ResponseEntity&lt;List&lt;Doador&gt;&gt; buscarPorNome(@RequestParam String nome) {
+        List&lt;Doador&gt; doadores = doadorService.buscarPorNome(nome);
+        return ResponseEntity.ok(doadores);
+    }
+    
+    // Outros endpoints...
+}
+</code></pre>
+<hr>
+<h2>🔍 Query Methods - Convenções de Nomenclatura</h2>
+<h3><strong>📚 Keywords Principais</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords">Supported Keywords</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation">Query Creation Examples</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>Keyword</strong></th>
+<th><strong>Exemplo</strong></th>
+<th><strong>SQL Gerado</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>findBy</code></td>
+<td><code>findByName(String name)</code></td>
+<td><code>WHERE name = ?1</code></td>
+</tr>
+<tr>
+<td><code>findByAnd</code></td>
+<td><code>findByNameAndEmail(String name, String email)</code></td>
+<td><code>WHERE name = ?1 AND email = ?2</code></td>
+</tr>
+<tr>
+<td><code>findByOr</code></td>
+<td><code>findByNameOrEmail(String name, String email)</code></td>
+<td><code>WHERE name = ?1 OR email = ?2</code></td>
+</tr>
+<tr>
+<td><code>findByContaining</code></td>
+<td><code>findByNameContaining(String name)</code></td>
+<td><code>WHERE name LIKE %?1%</code></td>
+</tr>
+<tr>
+<td><code>findByStartingWith</code></td>
+<td><code>findByNameStartingWith(String prefix)</code></td>
+<td><code>WHERE name LIKE ?1%</code></td>
+</tr>
+<tr>
+<td><code>findByEndingWith</code></td>
+<td><code>findByNameEndingWith(String suffix)</code></td>
+<td><code>WHERE name LIKE %?1</code></td>
+</tr>
+<tr>
+<td><code>findByIgnoreCase</code></td>
+<td><code>findByNameIgnoreCase(String name)</code></td>
+<td><code>WHERE UPPER(name) = UPPER(?1)</code></td>
+</tr>
+<tr>
+<td><code>findByBetween</code></td>
+<td><code>findByAgeBetween(int start, int end)</code></td>
+<td><code>WHERE age BETWEEN ?1 AND ?2</code></td>
+</tr>
+<tr>
+<td><code>findByLessThan</code></td>
+<td><code>findByAgeLessThan(int age)</code></td>
+<td><code>WHERE age &lt; ?1</code></td>
+</tr>
+<tr>
+<td><code>findByGreaterThan</code></td>
+<td><code>findByAgeGreaterThan(int age)</code></td>
+<td><code>WHERE age &gt; ?1</code></td>
+</tr>
+<tr>
+<td><code>findByIsNull</code></td>
+<td><code>findByEmailIsNull()</code></td>
+<td><code>WHERE email IS NULL</code></td>
+</tr>
+<tr>
+<td><code>findByIsNotNull</code></td>
+<td><code>findByEmailIsNotNull()</code></td>
+<td><code>WHERE email IS NOT NULL</code></td>
+</tr>
+<tr>
+<td><code>findByTrue</code></td>
+<td><code>findByActiveTrue()</code></td>
+<td><code>WHERE active = true</code></td>
+</tr>
+<tr>
+<td><code>findByFalse</code></td>
+<td><code>findByActiveFalse()</code></td>
+<td><code>WHERE active = false</code></td>
+</tr>
+<tr>
+<td><code>findByOrderBy</code></td>
+<td><code>findByAgeOrderByNameAsc(int age)</code></td>
+<td><code>WHERE age = ?1 ORDER BY name ASC</code></td>
+</tr>
+</tbody></table>
+<h3><strong>🎯 Exemplos Práticos para DoeSangue:</strong></h3>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // Busca simples
+    List&lt;Doador&gt; findByFullName(String fullName);
+    
+    // Busca com LIKE (contém)
+    List&lt;Doador&gt; findByFullNameContaining(String nome);
+    
+    // Busca case-insensitive
+    List&lt;Doador&gt; findByFullNameContainingIgnoreCase(String nome);
+    
+    // Busca com múltiplos campos
+    List&lt;Doador&gt; findByCidadeAndEstado(String cidade, String estado);
+    
+    // Busca com OR
+    List&lt;Doador&gt; findByEmailOrTelefonePrincipal(String email, String telefone);
+    
+    // Busca por range
+    List&lt;Doador&gt; findByIdadeBetween(Integer minIdade, Integer maxIdade);
+    
+    // Busca com condições nulas
+    List&lt;Doador&gt; findByDeletedAtIsNull();
+    List&lt;Doador&gt; findByUltimaDoacaoIsNotNull();
+    
+    // Busca com boolean
+    List&lt;Doador&gt; findByDoadorHabitudereTrue();
+    List&lt;Doador&gt; findByAtivoFalse();
+    
+    // Busca com ordenação
+    List&lt;Doador&gt; findByEstadoOrderByFullNameAsc(String estado);
+    List&lt;Doador&gt; findByCidadeOrderByIdadeDescFullNameAsc(String cidade);
+    
+    // Busca com LIKE e wildcards
+    List&lt;Doador&gt; findByEmailStartingWith(String prefixo); // email LIKE &#39;prefix%&#39;
+    List&lt;Doador&gt; findByFullNameEndingWith(String sufixo); // nome LIKE &#39;%sufixo&#39;
+    
+    // Busca por data
+    List&lt;Doador&gt; findByDataNascimentoBefore(LocalDate data);
+    List&lt;Doador&gt; findByCreatedAtAfter(LocalDateTime data);
+    
+    // Contadores
+    long countByCidade(String cidade);
+    long countByEstadoAndAtivoTrue(String estado);
+    
+    // Verificação de existência
+    boolean existsByCpf(String cpf);
+    boolean existsByEmailAndDeletedAtIsNull(String email);
+    
+    // Primeira ocorrência
+    Optional&lt;Doador&gt; findFirstByOrderByCreatedAtDesc();
+    Optional&lt;Doador&gt; findTopByEstadoOrderByIdadeAsc(String estado);
+}
+</code></pre>
+<hr>
+<h2>🧪 Testes com Repository</h2>
+<h3><strong>🔧 Teste Unitário com @DataJpaTest</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/testing.html#testing.spring-boot-applications.testing-autoconfigured-jpa">Testing Data Layer</a> | <a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html">@DataJpaTest</a></p>
+</blockquote>
+<pre><code class="language-java">package com.faculdade.doesangue_api.repository;
+
+import com.faculdade.doesangue_api.entities.Doador;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@DataJpaTest
+class DoadorRepositoryTest {
+
+    @Autowired
+    private TestEntityManager entityManager;
+
+    @Autowired
+    private DoadorRepository doadorRepository;
+
+    @Test
+    void deveBuscarDoadorPorCpf() {
+        // Given
+        Doador doador = new Doador();
+        doador.setCpf(&quot;12345678901&quot;);
+        doador.setFullName(&quot;João Silva&quot;);
+        doador.setEmail(&quot;joao@email.com&quot;);
+        entityManager.persistAndFlush(doador);
+
+        // When
+        Optional&lt;Doador&gt; resultado = doadorRepository.findByCpf(&quot;12345678901&quot;);
+
+        // Then
+        assertThat(resultado).isPresent();
+        assertThat(resultado.get().getFullName()).isEqualTo(&quot;João Silva&quot;);
+    }
+
+    @Test
+    void deveBuscarDoadoresPorNomeContendo() {
+        // Given
+        Doador doador1 = criarDoador(&quot;João Silva&quot;, &quot;joao@email.com&quot;);
+        Doador doador2 = criarDoador(&quot;Maria João&quot;, &quot;maria@email.com&quot;);
+        Doador doador3 = criarDoador(&quot;Pedro Santos&quot;, &quot;pedro@email.com&quot;);
+        
+        entityManager.persistAndFlush(doador1);
+        entityManager.persistAndFlush(doador2);
+        entityManager.persistAndFlush(doador3);
+
+        // When
+        List&lt;Doador&gt; resultado = doadorRepository.findByFullNameContainingIgnoreCase(&quot;joão&quot;);
+
+        // Then
+        assertThat(resultado).hasSize(2);
+        assertThat(resultado).extracting(Doador::getFullName)
+            .containsExactlyInAnyOrder(&quot;João Silva&quot;, &quot;Maria João&quot;);
+    }
+
+    @Test
+    void deveRetornarPaginacaoCorretamente() {
+        // Given
+        for (int i = 1; i &lt;= 25; i++) {
+            Doador doador = criarDoador(&quot;Doador &quot; + i, &quot;doador&quot; + i + &quot;@email.com&quot;);
+            entityManager.persist(doador);
+        }
+        entityManager.flush();
+
+        // When
+        Page&lt;Doador&gt; primeiraPagina = doadorRepository.findAll(PageRequest.of(0, 10));
+        Page&lt;Doador&gt; segundaPagina = doadorRepository.findAll(PageRequest.of(1, 10));
+
+        // Then
+        assertThat(primeiraPagina.getContent()).hasSize(10);
+        assertThat(primeiraPagina.getTotalElements()).isEqualTo(25);
+        assertThat(primeiraPagina.getTotalPages()).isEqualTo(3);
+        assertThat(segundaPagina.getContent()).hasSize(10);
+    }
+
+    @Test
+    void deveContarDoadoresPorEstado() {
+        // Given
+        entityManager.persist(criarDoadorComEstado(&quot;Doador 1&quot;, &quot;SP&quot;));
+        entityManager.persist(criarDoadorComEstado(&quot;Doador 2&quot;, &quot;SP&quot;));
+        entityManager.persist(criarDoadorComEstado(&quot;Doador 3&quot;, &quot;RJ&quot;));
+        entityManager.flush();
+
+        // When
+        long countSP = doadorRepository.countByEstadoAndDeletedAtIsNull(&quot;SP&quot;);
+        long countRJ = doadorRepository.countByEstadoAndDeletedAtIsNull(&quot;RJ&quot;);
+
+        // Then
+        assertThat(countSP).isEqualTo(2);
+        assertThat(countRJ).isEqualTo(1);
+    }
+
+    @Test
+    void deveVerificarExistenciaPorEmail() {
+        // Given
+        Doador doador = criarDoador(&quot;João Silva&quot;, &quot;joao@email.com&quot;);
+        entityManager.persistAndFlush(doador);
+
+        // When/Then
+        assertThat(doadorRepository.existsByEmailAndDeletedAtIsNull(&quot;joao@email.com&quot;)).isTrue();
+        assertThat(doadorRepository.existsByEmailAndDeletedAtIsNull(&quot;inexistente@email.com&quot;)).isFalse();
+    }
+
+    // Métodos auxiliares
+    private Doador criarDoador(String nome, String email) {
+        Doador doador = new Doador();
+        doador.setFullName(nome);
+        doador.setEmail(email);
+        doador.setCpf(&quot;12345678901&quot;);
+        doador.setDataNascimento(LocalDate.of(1990, 1, 1));
+        return doador;
+    }
+
+    private Doador criarDoadorComEstado(String nome, String estado) {
+        Doador doador = criarDoador(nome, nome.toLowerCase().replace(&quot; &quot;, &quot;&quot;) + &quot;@email.com&quot;);
+        doador.setEstado(estado);
+        return doador;
+    }
+}
+</code></pre>
+<hr>
+<h2>💡 Boas Práticas e Dicas Avançadas</h2>
+<h3><strong><span class="badge success">✅</span> Convenções de Nomenclatura</strong></h3>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; GOOD: Nomes descritivos e claros
+    List&lt;Doador&gt; findByFullNameContainingIgnoreCase(String nome);
+    Optional&lt;Doador&gt; findByEmailAndDeletedAtIsNull(String email);
+    Page&lt;Doador&gt; findByEstadoOrderByCreatedAtDesc(String estado, Pageable pageable);
+
+    // &lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; BAD: Nomes ambíguos ou confusos
+    List&lt;Doador&gt; findByName(String nome); // Qual nome? Full? First? Last?
+    List&lt;Doador&gt; find(String value); // Busca por qual campo?
+    List&lt;Doador&gt; getStuff(); // Muito genérico
+}
+</code></pre>
+<h3><strong><span class="badge success">✅</span> Performance e Otimização</strong></h3>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Use Slice quando não precisar do total de elementos
+    Slice&lt;Doador&gt; findByEstado(String estado, Pageable pageable);
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Use Stream para processamento de grandes volumes
+    @Query(&quot;SELECT d FROM Doador d WHERE d.ativo = true&quot;)
+    Stream&lt;Doador&gt; streamAllActiveDoadores();
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Use projeções para buscar apenas campos necessários
+    @Query(&quot;SELECT d.id, d.fullName, d.email FROM Doador d WHERE d.estado = :estado&quot;)
+    List&lt;Object[]&gt; findBasicInfoByEstado(@Param(&quot;estado&quot;) String estado);
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; Use EXISTS para verificações de existência (mais eficiente)
+    @Query(&quot;SELECT CASE WHEN COUNT(d) &gt; 0 THEN true ELSE false END FROM Doador d WHERE d.cpf = :cpf&quot;)
+    boolean existsByCpfCustom(@Param(&quot;cpf&quot;) String cpf);
+}
+</code></pre>
+<h3><strong><span class="badge success">✅</span> Tratamento de Null e Optional</strong></h3>
+<pre><code class="language-java">@Service
+public class DoadorService {
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; GOOD: Use Optional para retornos que podem ser nulos
+    public Optional&lt;Doador&gt; buscarPorId(Long id) {
+        return doadorRepository.findById(id);
+    }
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; GOOD: Trate parâmetros nulos adequadamente
+    public List&lt;Doador&gt; buscarPorNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            return List.of(); // Retorna lista vazia em vez de null
+        }
+        return doadorRepository.findByFullNameContainingIgnoreCase(nome.trim());
+    }
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; GOOD: Use orElse para valores padrão
+    public Doador buscarOuCriarDefault(Long id) {
+        return doadorRepository.findById(id)
+            .orElse(new Doador()); // Retorna instância padrão
+    }
+}
+</code></pre>
+<hr>
+<h2>🌟 Recursos Avançados</h2>
+<h3><strong>🔧 Custom Repository Implementation</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations">Custom Repository Implementations</a> | <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#specifications">Criteria API</a></p>
+</blockquote>
+<pre><code class="language-java">// Interface customizada
+public interface DoadorRepositoryCustom {
+    List&lt;Doador&gt; findWithComplexCriteria(String nome, String cidade, Integer minIdade);
+    Page&lt;DoadorStatisticsDTO&gt; findStatisticsGroupedByCity(Pageable pageable);
+}
+
+// Implementação customizada
+@Repository
+public class DoadorRepositoryImpl implements DoadorRepositoryCustom {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public List&lt;Doador&gt; findWithComplexCriteria(String nome, String cidade, Integer minIdade) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery&lt;Doador&gt; query = cb.createQuery(Doador.class);
+        Root&lt;Doador&gt; root = query.from(Doador.class);
+
+        List&lt;Predicate&gt; predicates = new ArrayList&lt;&gt;();
+
+        if (nome != null &amp;&amp; !nome.trim().isEmpty()) {
+            predicates.add(
+                cb.like(cb.lower(root.get(&quot;fullName&quot;)), &quot;%&quot; + nome.toLowerCase() + &quot;%&quot;)
+            );
+        }
+
+        if (cidade != null &amp;&amp; !cidade.trim().isEmpty()) {
+            predicates.add(cb.equal(root.get(&quot;cidade&quot;), cidade));
+        }
+
+        if (minIdade != null) {
+            predicates.add(cb.greaterThanOrEqualTo(root.get(&quot;idade&quot;), minIdade));
+        }
+
+        query.where(predicates.toArray(new Predicate[0]));
+        query.orderBy(cb.asc(root.get(&quot;fullName&quot;)));
+
+        return entityManager.createQuery(query).getResultList();
+    }
+}
+
+// Repository principal herda da customizada
+public interface DoadorRepository extends 
+    JpaRepository&lt;Doador, Long&gt;, 
+    DoadorRepositoryCustom {
+    // Métodos padrão + métodos customizados
+}
+</code></pre>
+<h3><strong>📊 Projeções e DTOs</strong></h3>
+<pre><code class="language-java">// Interface de projeção
+public interface DoadorProjection {
+    String getFullName();
+    String getEmail();
+    String getCidade();
+    Integer getIdade();
+}
+
+// DTO de projeção
+public class DoadorSummaryDTO {
+    private String nome;
+    private String cidade;
+    private String estado;
+    
+    // Construtores, getters, setters
+}
+
+// Uso no Repository
+public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // Projeção com interface
+    List&lt;DoadorProjection&gt; findProjectedByEstado(String estado);
+
+    // Projeção com DTO e construtor
+    @Query(&quot;SELECT new com.faculdade.doesangue_api.dto.DoadorSummaryDTO(d.fullName, d.cidade, d.estado) &quot; +
+           &quot;FROM Doador d WHERE d.ativo = true&quot;)
+    List&lt;DoadorSummaryDTO&gt; findSummaryOfActiveDoadores();
+}
+</code></pre>
+<hr>
+<h2>📚 Documentação Oficial e Referências</h2>
+<h3><strong>🌟 Spring Data JPA - Documentação Principal</strong></h3>
+<h4><strong>📖 Core Documentation:</strong></h4>
+<ul>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/">Spring Data JPA Reference</a></strong> - Documentação completa oficial</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.core-concepts">Repository Interfaces</a></strong> - Conceitos fundamentais</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods">Query Methods</a></strong> - Criação de consultas</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations">Custom Implementations</a></strong> - Implementações customizadas</li>
+</ul>
+<h4><strong>📖 Query Creation:</strong></h4>
+<ul>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords">Supported Keywords</a></strong> - Palavras-chave para queries</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation">Query Creation Examples</a></strong> - Exemplos práticos</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.named-queries">Named Queries</a></strong> - Queries nomeadas</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query">@Query Annotation</a></strong> - Queries customizadas</li>
+</ul>
+<h3><strong>🔧 JPA e Hibernate - Core</strong></h3>
+<h4><strong>📖 JPA Specification:</strong></h4>
+<ul>
+<li><strong><a href="https://jakarta.ee/specifications/persistence/3.1/">Jakarta Persistence API</a></strong> - Especificação oficial JPA 3.1</li>
+<li><strong><a href="https://docs.oracle.com/javaee/7/tutorial/persistence-intro003.htm">Entity Relationships</a></strong> - Relacionamentos entre entidades</li>
+<li><strong><a href="https://docs.oracle.com/javaee/7/tutorial/persistence-querylanguage.htm">JPQL Guide</a></strong> - Java Persistence Query Language</li>
+</ul>
+<h4><strong>📖 Hibernate Documentation:</strong></h4>
+<ul>
+<li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html">Hibernate ORM User Guide</a></strong> - Guia completo</li>
+<li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#hql">HQL Reference</a></strong> - Hibernate Query Language</li>
+<li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#criteria">Criteria API</a></strong> - API de critérios</li>
+</ul>
+<h3><strong>🚀 Spring Framework - Base</strong></h3>
+<h4><strong>📖 Spring Framework Core:</strong></h4>
+<ul>
+<li><strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/">Spring Framework Reference</a></strong> - Documentação completa</li>
+<li><strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#orm-jpa">Data Access with JPA</a></strong> - Integração JPA</li>
+<li><strong><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction">Transaction Management</a></strong> - Gerenciamento de transações</li>
+</ul>
+<h4><strong>📖 Spring Boot:</strong></h4>
+<ul>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.jpa-and-spring-data">Spring Boot Data JPA</a></strong> - Configuração automática</li>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.data">Application Properties</a></strong> - Propriedades de configuração</li>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/testing.html#testing.spring-boot-applications.testing-autoconfigured-jpa">Testing Data Layer</a></strong> - Testes com @DataJpaTest</li>
+</ul>
+<h3><strong>📊 Testing e Quality</strong></h3>
+<h4><strong>📖 Testing Frameworks:</strong></h4>
+<ul>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html">@DataJpaTest</a></strong> - Testes de repositório</li>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.html">TestEntityManager</a></strong> - Gerenciamento de entidades em testes</li>
+<li><strong><a href="https://assertj.github.io/doc/">AssertJ</a></strong> - Assertions fluentes</li>
+<li><strong><a href="https://www.testcontainers.org/modules/databases/">TestContainers</a></strong> - Testes com containers</li>
+</ul>
+<h3><strong>🎯 Performance e Optimization</strong></h3>
+<h4><strong>📖 Performance Guides:</strong></h4>
+<ul>
+<li><strong><a href="https://vladmihalcea.com/jpa-hibernate-performance-tuning/">JPA Performance Best Practices</a></strong> - Blog Vlad Mihalcea</li>
+<li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#fetching-strategies">N+1 Query Problem</a></strong> - Estratégias de fetch</li>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.datasource.connection-pool">Connection Pooling</a></strong> - Pool de conexões</li>
+</ul>
+<h3><strong>🎓 Tutorials e Examples</strong></h3>
+<h4><strong>📖 Official Guides:</strong></h4>
+<ul>
+<li><strong><a href="https://spring.io/guides/gs/accessing-data-jpa/">Accessing Data with JPA</a></strong> - Tutorial básico oficial</li>
+<li><strong><a href="https://github.com/spring-projects/spring-data-examples/tree/main/jpa">Spring Data JPA Examples</a></strong> - Exemplos oficiais no GitHub</li>
+</ul>
+<h4><strong>📖 Community Resources:</strong></h4>
+<ul>
+<li><strong><a href="https://www.baeldung.com/persistence-with-spring-series">Baeldung JPA Tutorials</a></strong> - Série completa sobre persistência</li>
+<li><strong><a href="https://thorben-janssen.com/">Thorben Janssen&#39;s JPA Tips</a></strong> - Blog especializado em JPA/Hibernate</li>
+<li><strong><a href="https://www.petrikainulainen.net/spring-data-jpa-tutorial/">Spring Data JPA Query Methods</a></strong> - Tutorial detalhado</li>
+</ul>
+<h3><strong>⚡ Quick References</strong></h3>
+<h4><strong>🔖 Cheat Sheets:</strong></h4>
+<ul>
+<li><strong><a href="https://www.baeldung.com/jpa-annotations">JPA Annotations Reference</a></strong> - Anotações JPA essenciais</li>
+<li><strong><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords">Spring Data Query Keywords</a></strong> - Keywords para query methods</li>
+<li><strong><a href="https://docs.oracle.com/html/E13946_04/ejb3_langref.html">JPQL Syntax Reference</a></strong> - Sintaxe JPQL</li>
+</ul>
+<hr>
+<h2>🎯 Conclusão</h2>
+<p>O <strong>Repository Pattern</strong> com <strong>Spring Data JPA</strong> oferece uma abordagem poderosa e elegante para acesso a dados:</p>
+<h3><strong><span class="badge success">✅</span> Benefícios Principais:</strong></h3>
+<ul>
+<li><strong>🤖 Automação</strong> - Spring gera implementações automaticamente</li>
+<li><strong>📝 Convenções</strong> - Query methods por nomenclatura</li>
+<li><strong>🔄 Flexibilidade</strong> - Custom queries quando necessário</li>
+<li><strong>🧪 Testabilidade</strong> - Fácil mock e teste unitário</li>
+<li><strong>📊 Performance</strong> - Otimizações automáticas e manuais</li>
+<li><strong>🛡️ Manutenibilidade</strong> - Código limpo e organizado</li>
+</ul>
+<h3><strong>🚀 Próximos Passos:</strong></h3>
+<ol>
+<li><strong>Implementar</strong> repository básico para suas entidades</li>
+<li><strong>Explorar</strong> query methods por convenção</li>
+<li><strong>Adicionar</strong> queries customizadas conforme necessário</li>
+<li><strong>Testar</strong> com @DataJpaTest</li>
+<li><strong>Evoluir</strong> para Specifications para filtros complexos</li>
+</ol>
+<hr>
+<p><em>Este guia fornece uma base sólida para compreender e implementar o Repository Pattern com Spring Data JPA no projeto DoeSangue.</em></p>
+
+        </div>
+        
+        <div class="footer">
+            <p>📋 Documentação gerada automaticamente | 🎯 Projeto DoeSangue</p>
+            <p>💻 Desenvolvido com ❤️ pela equipe de desenvolvimento</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -544,6 +544,7 @@ async function main() {
             'DOCUMENTACAO-ENTIDADES.md',
             'DOADOR-CONTROLLER-DOCUMENTACAO.md',
             'GUIA-CONTROLLER-BOAS-PRATICAS.md',
+            'GUIA-REPOSITORY-PATTERN.md',
             'PLANO-ACAO-SEMANAL.md',
             'ROADMAP-PROXIMOS-PASSOS.md',
             'SWAGGER-DOCUMENTACAO.md',
