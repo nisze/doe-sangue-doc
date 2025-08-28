@@ -1,4 +1,27 @@
-# 🩸 Doe Sangue - Documentação Oficial
+# 🩸 Doe Sangue ### 📖 D### 🌐 Versão Online
+Acesse a documentação formatada em: **https://nisze.github.io/doe-sangue-doc/**
+
+### 🎯 Guias Essenciais
+
+| **📚 Guia** | **🎯 Finalidade** | **🔗 Link** |
+|------------|------------------|------------|
+| **🔧 Repository Pattern** | Fundamentos de Spring Data JPA, Query Methods e Índices | **[Acessar Guia](GUIA-REPOSITORY-PATTERN.md)** |
+| **⚙️ JPA Specifications** | Filtros dinâmicos e consultas complexas | **[Acessar Tutorial](TUTORIAL-JPA-SPECIFICATIONS.md)** |
+| **🎮 Controller Práticas** | Boas práticas para Controllers REST | **[Acessar Guia](GUIA-CONTROLLER-BOAS-PRATICAS.md)** |
+| **🏗️ Arquitetura** | Visão geral do sistema | **[Acessar Arquitetura](architecture.md)** |
+
+### 📖 Documentos Disponíveisentos Disponíveis
+
+1. **[Documentação das Entidades](DOCUMENTACAO-ENTIDADES.md)** - Detalhes das entidades do sistema
+2. **[Arquitetura do Sistema](architecture.md)** - Visão geral da arquitetura
+3. **[Controller Doador](DOADOR-CONTROLLER-DOCUMENTACAO.md)** - Documentação específica do controller
+4. **[Guia de Boas Práticas](GUIA-CONTROLLER-BOAS-PRATICAS.md)** - Padrões e convenções
+5. **[🔧 Guia Repository Pattern](GUIA-REPOSITORY-PATTERN.md)** - Repository Pattern e Spring Data JPA
+6. **[Tutorial JPA Specifications](TUTORIAL-JPA-SPECIFICATIONS.md)** - Filtros dinâmicos avançados
+7. **[Documentação Swagger](SWAGGER-DOCUMENTACAO.md)** - Configuração da API docs
+8. **[Implementação Swagger](SWAGGER-RESUMO-IMPLEMENTACAO.md)** - Resumo da implementação
+9. **[Plano de Ação](PLANO-ACAO-SEMANAL.md)** - Cronograma de desenvolvimento
+10. **[Roadmap](ROADMAP-PROXIMOS-PASSOS.md)** - Próximas funcionalidadesação Oficial
 
 > Documentação completa do sistema de doação de sangue, uma API REST desenvolvida em Spring Boot para conectar doadores e hemocentros.
 
