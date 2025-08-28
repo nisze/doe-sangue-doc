@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação Completa do Sistema DoeSangue - DoeSangue Documentation</title>
+    <title>Sistema DoeSangue - Documentação Técnica</title>
     <style>
-        /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
@@ -14,340 +13,279 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
+            background: #f5f5f5;
+            color: #333;
         }
         
+        /* Header Principal */
+        .main-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .main-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00bcd4, #4caf50, #ff9800, #f44336);
+        }
+        
+        .main-header .blood-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        .main-header h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .main-header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .main-header .meta {
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            background: #2c3e50;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-bottom-color: #3498db;
+        }
+        
+        .nav-item.active {
+            background: rgba(255,255,255,0.15);
+            border-bottom-color: #e74c3c;
+        }
+        
+        /* Container Principal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 0 30px rgba(0,0,0,0.08);
-            border-radius: 12px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 12px 12px 0 0;
-            margin: -20px -20px 30px -20px;
-            text-align: center;
-        }
-        
-        .header .subtitle {
-            font-size: 1.2em;
-            opacity: 0.95;
-            font-weight: 400;
-        }
-        
-        .header .meta {
-            margin-top: 15px;
-            font-size: 0.9em;
-            opacity: 0.85;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            color: #1e293b;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        
-        h1 {
-            font-size: 2.5em;
-            border-bottom: 3px solid #3b82f6;
-            padding-bottom: 12px;
-        }
-        
-        /* Header específico - sobrescreve h1 geral */
-        .header h1 {
-            color: white;
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            font-weight: 700;
-        }
-        
-        h2 {
-            font-size: 2em;
-            color: #1e40af;
-            margin-top: 32px;
-            border-left: 4px solid #3b82f6;
-            padding-left: 16px;
-        }
-        
-        h3 {
-            font-size: 1.5em;
-            color: #0f172a;
-            margin-top: 28px;
-            margin-bottom: 16px;
-        }
-        
-        h4 {
-            font-size: 1.3em;
-            color: #374151;
-            margin-bottom: 12px;
-        }
-        
-        p {
-            margin-bottom: 16px;
-            text-align: justify;
-            color: #475569;
-            line-height: 1.7;
-        }
-        
-        /* Links */
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        a:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-        
-        /* Lists */
-        ul, ol {
-            margin-bottom: 20px;
-            padding-left: 25px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-            color: #475569;
-            line-height: 1.6;
-        }
-        
-        li strong {
-            color: #1e293b;
+            padding: 40px 20px;
+            background: white;
+            min-height: calc(100vh - 200px);
         }
         
         /* Stats Cards */
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
         
         .stat-card {
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            padding: 25px;
-            border-radius: 12px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
             text-align: center;
-            border: 1px solid #cbd5e1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #3498db;
             transition: transform 0.3s ease;
         }
         
         .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         
         .stat-number {
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 700;
-            color: #1e40af;
-            margin-bottom: 8px;
+            color: #3498db;
+            margin-bottom: 10px;
         }
         
         .stat-label {
-            font-size: 0.9em;
-            color: #64748b;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Guia Destacado */
-        .guia-destaque {
-            background: linear-gradient(135deg, #8b5fbf 0%, #b794f6 100%);
-            padding: 30px;
-            border-radius: 12px;
-            margin: 30px 0;
-            color: white;
-            box-shadow: 0 8px 25px rgba(139, 95, 191, 0.25);
-        }
-        
-        .guia-destaque h4 {
-            color: white;
-            margin-bottom: 16px;
-            font-size: 1.4em;
-            font-weight: 700;
-        }
-        
-        .guia-destaque p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-            color: #e0e7ff;
-        }
-        
-        .guia-destaque .btn {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            padding: 14px 24px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        .guia-destaque .btn:hover {
-            background: rgba(255,255,255,0.25);
-            border-color: rgba(255,255,255,0.4);
-            transform: translateY(-1px);
-            text-decoration: none;
-        }
-        
-        .guia-destaque .features {
-            margin-top: 16px;
-            font-size: 0.9em;
-            color: #c7d2fe;
+            font-size: 1em;
+            color: #7f8c8d;
             font-weight: 500;
         }
         
-        /* Blockquotes */
-        blockquote {
-            background: #f1f5f9;
-            border-left: 4px solid #3b82f6;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
         }
         
-        blockquote strong {
-            color: #1e40af;
+        .section-header .icon {
+            font-size: 1.5em;
         }
         
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        th {
-            background: #f8fafc;
+        .section-header h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
             font-weight: 600;
-            color: #374151;
+            margin: 0;
         }
         
-        tr:hover {
-            background: #f8fafc;
+        /* Welcome Message */
+        .welcome-message {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #17a2b8;
+            margin: 30px 0;
         }
         
-        /* Navigation */
-        .nav {
-            background: #f8fafc;
-            padding: 15px 0;
-            margin: -20px -20px 20px -20px;
-            border-bottom: 1px solid #e2e8f0;
+        .welcome-message strong {
+            color: #17a2b8;
+            font-size: 1.1em;
         }
         
-        .nav ul {
+        .welcome-message p {
+            margin: 8px 0 0 0;
+            color: #495057;
+            line-height: 1.6;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin: 35px 0;
+        }
+        
+        .content-section h3 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .doc-list {
             list-style: none;
             padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
         }
         
-        .nav li {
-            margin: 0 15px;
+        .doc-list li {
+            margin-bottom: 12px;
+            padding-left: 0;
         }
         
-        .nav a {
-            color: #475569;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav a:hover {
-            background: #e2e8f0;
-            color: #1e40af;
+        .doc-list a {
+            color: #3498db;
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .doc-list a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        .doc-list strong {
+            color: #2c3e50;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
+            .main-header {
+                padding: 30px 15px;
             }
             
-            .header {
-                margin: -15px -15px 20px -15px;
-                padding: 20px;
-            }
-            
-            .header h1 {
+            .main-header h1 {
                 font-size: 2em;
             }
             
-            .stats {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-            }
-            
-            .nav ul {
+            .nav {
                 flex-direction: column;
-                align-items: center;
             }
             
-            .nav li {
-                margin: 5px 0;
+            .nav-item {
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🩸 Documentação DoeSangue</h1>
-            <div class="subtitle">Sistema de Gerenciamento de Doações de Sangue</div>
-            <div class="meta">Spring Boot 3.5.5 • JPA/Hibernate • SQL Server • GitHub Pages</div>
-        </div>
-
-        <!-- Navigation -->
+    <!-- Header Principal -->
+    <div class="main-header">
+        <div class="blood-icon">🩸</div>
+        <h1>Documentação Completa do Sistema DoeSangue</h1>
+        <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
+        <div class="meta">Gerado em 27/08/2025, 21:41:27 | Versão 1.0</div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="nav-container">
         <nav class="nav">
-            <ul>
-                <li><a href="index.html">🏠 Início</a></li>
-                <li><a href="html/architecture.html">🏗️ Arquitetura</a></li>
-                <li><a href="html/DOCUMENTACAO-ENTIDADES.html">📊 Entidades</a></li>
-                <li><a href="html/DOADOR-CONTROLLER-DOCUMENTACAO.html">🎮 Controller</a></li>
-                <li><a href="html/SWAGGER-DOCUMENTACAO.html">📖 Swagger</a></li>
-                <li><a href="html/ROADMAP-PROXIMOS-PASSOS.html">🗺️ Roadmap</a></li>
-            </ul>
+            <a href="index.html" class="nav-item active">
+                🏠 Início
+            </a>
+            <a href="html/architecture.html" class="nav-item">
+                🏗️ Arquitetura
+            </a>
+            <a href="html/DOCUMENTACAO-ENTIDADES.html" class="nav-item">
+                📊 Entidades
+            </a>
+            <a href="html/DOADOR-CONTROLLER-DOCUMENTACAO.html" class="nav-item">
+                🎮 Controller
+            </a>
+            <a href="html/SWAGGER-DOCUMENTACAO.html" class="nav-item">
+                📖 Swagger
+            </a>
+            <a href="html/ROADMAP-PROXIMOS-PASSOS.html" class="nav-item">
+                🗺️ Roadmap
+            </a>
         </nav>
-
+    </div>
+    
+    <!-- Container Principal -->
+    <div class="container">
         <!-- Stats -->
         <div class="stats">
             <div class="stat-card">
@@ -368,135 +306,61 @@
             </div>
         </div>
         
-        <h2>📚 Documentações Disponíveis</h2>
+        <!-- Section Header -->
+        <div class="section-header">
+            <span class="icon">📚</span>
+            <h2>Documentações Disponíveis</h2>
+        </div>
         
-        <blockquote>
-            <strong>🎯 Bem-vindo à documentação do Sistema DoeSangue!</strong><br>
-            Esta é uma coleção completa de documentos técnicos para o projeto de gerenciamento de doações de sangue.
-        </blockquote>
+        <!-- Welcome Message -->
+        <div class="welcome-message">
+            <strong>🎯 Bem-vindo à documentação do Sistema DoeSangue!</strong>
+            <p>Esta é uma coleção completa de documentos técnicos para o projeto de gerenciamento de doações de sangue.</p>
+        </div>
         
-        <h3>🏗️ Arquitetura e Design</h3>
-        <ul>
-            <li><a href="html/architecture.html"><strong>Arquitetura do Sistema</strong></a> - Visão geral da arquitetura, tecnologias e padrões utilizados</li>
-            <li><a href="html/DOCUMENTACAO-ENTIDADES.html"><strong>Documentação das Entidades</strong></a> - Detalhamento completo de todas as entidades do sistema</li>
-        </ul>
+        <!-- Content Sections -->
+        <div class="content-section">
+            <h3>🏗️ Arquitetura e Design</h3>
+            <ul class="doc-list">
+                <li><a href="html/architecture.html"><strong>Arquitetura do Sistema</strong></a> - Visão geral da arquitetura, tecnologias e padrões utilizados</li>
+                <li><a href="html/DOCUMENTACAO-ENTIDADES.html"><strong>Documentação das Entidades</strong></a> - Detalhamento completo de todas as entidades do sistema</li>
+            </ul>
+        </div>
         
-        <h3>💻 Desenvolvimento e API</h3>
-        <ul>
-            <li><a href="html/DOADOR-CONTROLLER-DOCUMENTACAO.html"><strong>Documentação do Controller</strong></a> - Exemplo completo de implementação de controller REST</li>
-            <li><a href="html/GUIA-CONTROLLER-BOAS-PRATICAS.html"><strong>Guia de Boas Práticas</strong></a> - Boas práticas para controllers REST, DTOs e validações</li>
-            <li><a href="html/TUTORIAL-JPA-SPECIFICATIONS.html"><strong>Tutorial JPA Specifications</strong></a> - Implementação de filtros dinâmicos com Spring Data JPA</li>
-            <li><a href="html/SWAGGER-DOCUMENTACAO.html"><strong>Configuração Swagger</strong></a> - Documentação detalhada da configuração OpenAPI</li>
-            <li><a href="html/SWAGGER-RESUMO-IMPLEMENTACAO.html"><strong>Resumo da Implementação Swagger</strong></a> - Guia prático de implementação</li>
-        </ul>
+        <div class="content-section">
+            <h3>💻 Desenvolvimento e API</h3>
+            <ul class="doc-list">
+                <li><a href="html/DOADOR-CONTROLLER-DOCUMENTACAO.html"><strong>Documentação do Controller</strong></a> - Exemplo completo de implementação de controller REST</li>
+                <li><a href="html/GUIA-CONTROLLER-BOAS-PRATICAS.html"><strong>Guia de Boas Práticas</strong></a> - Boas práticas para controllers REST, DTOs e validações</li>
+                <li><a href="html/TUTORIAL-JPA-SPECIFICATIONS.html"><strong>Tutorial JPA Specifications</strong></a> - Implementação de filtros dinâmicos com Spring Data JPA</li>
+                <li><a href="html/SWAGGER-DOCUMENTACAO.html"><strong>Configuração Swagger</strong></a> - Documentação detalhada da configuração OpenAPI</li>
+                <li><a href="html/SWAGGER-RESUMO-IMPLEMENTACAO.html"><strong>Resumo da Implementação Swagger</strong></a> - Guia prático de implementação</li>
+            </ul>
+        </div>
         
-        <h3>🔧 Guias Fundamentais</h3>
-        <div class="guia-destaque">
-            <h4>⚡ Guia Repository Pattern & Spring Data JPA</h4>
-            <p>
-                <strong>Guia completo e fundamental</strong> sobre Repository Pattern, Spring Data JPA, Query Methods e otimização com índices de banco de dados. 
-                <em>Essencial para entender a base da persistência no projeto!</em>
-            </p>
-            <a href="html/GUIA-REPOSITORY-PATTERN.html" class="btn">
-                📊 Acessar Guia Repository Pattern →
-            </a>
-            <div class="features">
-                <strong>🎯 Inclui:</strong> Conceitos fundamentais • Implementação prática • Query Methods • Índices para performance • Testes • 60+ links oficiais
+        <div class="content-section">
+            <h3>🔧 Guias Fundamentais</h3>
+            <div style="background: linear-gradient(135deg, #8b5fbf 0%, #b794f6 100%); color: white; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                <h4 style="color: white; margin-bottom: 15px; font-size: 1.3em;">⚡ Guia Repository Pattern & Spring Data JPA</h4>
+                <p style="margin-bottom: 20px; line-height: 1.6;">
+                    <strong>Guia completo e fundamental</strong> sobre Repository Pattern, Spring Data JPA, Query Methods e otimização com índices de banco de dados. 
+                    <em>Essencial para entender a base da persistência no projeto!</em>
+                </p>
+                <a href="html/GUIA-REPOSITORY-PATTERN.html" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: 600; border: 2px solid rgba(255,255,255,0.3);">
+                    📊 Acessar Guia Repository Pattern →
+                </a>
+                <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">
+                    <strong>🎯 Inclui:</strong> Conceitos fundamentais • Implementação prática • Query Methods • Índices para performance • Testes • 60+ links oficiais
+                </div>
             </div>
         </div>
         
-        <h3>📋 Planejamento e Roadmap</h3>
-        <ul>
-            <li><a href="html/ROADMAP-PROXIMOS-PASSOS.html"><strong>Roadmap e Próximos Passos</strong></a> - Planejamento de desenvolvimento e melhorias</li>
-            <li><a href="html/PLANO-ACAO-SEMANAL.html"><strong>Plano de Ação Semanal</strong></a> - Cronograma detalhado de atividades</li>
-        </ul>
-        
-        <h2>🚀 Como Usar Esta Documentação</h2>
-        
-        <blockquote>
-            <strong>👨‍💻 Para Desenvolvedores:</strong><br>
-            Comece pela <a href="html/architecture.html">Arquitetura</a> para entender a estrutura geral, 
-            depois veja o <a href="html/DOADOR-CONTROLLER-DOCUMENTACAO.html">Controller</a> para exemplos práticos.
-        </blockquote>
-        
-        <blockquote>
-            <strong>📊 Para Analistas:</strong><br>
-            Foque na <a href="html/DOCUMENTACAO-ENTIDADES.html">Documentação das Entidades</a> e no 
-            <a href="html/ROADMAP-PROXIMOS-PASSOS.html">Roadmap</a> para entender os requisitos e planejamento.
-        </blockquote>
-        
-        <h2>🛠️ Tecnologias Utilizadas</h2>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Tecnologia</th>
-                    <th>Versão</th>
-                    <th>Propósito</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Backend</td>
-                    <td>Spring Boot</td>
-                    <td>3.5.5</td>
-                    <td>Framework principal</td>
-                </tr>
-                <tr>
-                    <td>ORM</td>
-                    <td>JPA/Hibernate</td>
-                    <td>6.x</td>
-                    <td>Mapeamento objeto-relacional</td>
-                </tr>
-                <tr>
-                    <td>Database</td>
-                    <td>SQL Server</td>
-                    <td>2019+</td>
-                    <td>Banco de dados principal</td>
-                </tr>
-                <tr>
-                    <td>Segurança</td>
-                    <td>Spring Security</td>
-                    <td>6.x</td>
-                    <td>Autenticação e autorização</td>
-                </tr>
-                <tr>
-                    <td>Documentação</td>
-                    <td>SpringDoc OpenAPI</td>
-                    <td>3.0</td>
-                    <td>Documentação da API</td>
-                </tr>
-                <tr>
-                    <td>Build</td>
-                    <td>Maven</td>
-                    <td>3.9+</td>
-                    <td>Gerenciamento de dependências</td>
-                </tr>
-                <tr>
-                    <td>Deploy</td>
-                    <td>GitHub Pages</td>
-                    <td>-</td>
-                    <td>Hospedagem da documentação</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h2>📞 Informações do Projeto</h2>
-        
-        <ul>
-            <li><strong>GitHub:</strong> <a href="https://github.com/nisze/doesangue_backend">github.com/nisze/doesangue_backend</a></li>
-            <li><strong>Documentação API:</strong> <a href="http://localhost:8080/swagger-ui.html">localhost:8080/swagger-ui.html</a></li>
-            <li><strong>Desenvolvido para:</strong> Análise e Desenvolvimento de Sistemas</li>
-            <li><strong>Finalidade:</strong> Facilitar a conexão entre doadores e hemocentros</li>
-        </ul>
-        
-        <blockquote>
-            <strong>💡 Dica:</strong> Use Ctrl+F para buscar rapidamente por tópicos específicos nesta documentação.
-        </blockquote>
-        
-        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 8px; color: #64748b;">
-            <em>Salvando vidas através da tecnologia</em> ❤️
+        <div class="content-section">
+            <h3>📋 Planejamento e Roadmap</h3>
+            <ul class="doc-list">
+                <li><a href="html/ROADMAP-PROXIMOS-PASSOS.html"><strong>Roadmap e Próximos Passos</strong></a> - Planejamento de desenvolvimento e melhorias</li>
+                <li><a href="html/PLANO-ACAO-SEMANAL.html"><strong>Plano de Ação Semanal</strong></a> - Cronograma detalhado de atividades</li>
+            </ul>
         </div>
     </div>
 </body>
