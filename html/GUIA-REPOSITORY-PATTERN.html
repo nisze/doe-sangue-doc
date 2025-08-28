@@ -301,7 +301,7 @@
         <div class="header">
             <h1>🩸 📊 Repository Pattern e Spring Data JPA - Guia Completo</h1>
             <div class="subtitle">Sistema DoeSangue - Documentação Técnica</div>
-            <div class="meta">Gerado em 27/08/2025, 21:15:08 | Versão 1.0</div>
+            <div class="meta">Gerado em 27/08/2025, 21:17:49 | Versão 1.0</div>
         </div>
         
         <nav class="nav">
@@ -1140,6 +1140,409 @@ public class DoadorService {
 }
 </code></pre>
 <hr>
+<h2>📊 Índices de Banco de Dados - Performance e Otimização</h2>
+<h3><strong>🎯 O que são Índices?</strong></h3>
+<blockquote>
+<p>📖 <strong>Documentação:</strong> <a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html">MySQL Indexes</a> | <a href="https://www.postgresql.org/docs/current/indexes.html">PostgreSQL Indexes</a> | <a href="https://jakarta.ee/specifications/persistence/3.1/apidocs/jakarta.persistence/jakarta/persistence/index">JPA Index Annotation</a></p>
+</blockquote>
+<p><strong>Índices</strong> são estruturas de dados especiais que melhoram a velocidade de operações de consulta em uma tabela de banco de dados. Funcionam como um <strong>&quot;índice de livro&quot;</strong> - permitem localizar dados rapidamente sem varrer toda a tabela.</p>
+<h3><strong>🏗️ Analogia Prática:</strong></h3>
+<p>Imagine uma <strong>biblioteca com 10.000 livros</strong>:</p>
+<ul>
+<li><strong>📚 Sem índice</strong> - Você precisa verificar livro por livro para encontrar &quot;Dom Casmurro&quot;</li>
+<li><strong>📇 Com índice</strong> - Você consulta o catálogo por título e vai direto à estante correta</li>
+</ul>
+<h3><strong>🚀 Por que Usar Índices?</strong></h3>
+<h4><strong>1. 🔍 Performance de Consultas</strong></h4>
+<pre><code class="language-sql">-- SEM ÍNDICE: Busca sequencial em 1 milhão de registros
+SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
+-- Tempo: ~500ms (varre toda a tabela)
+
+-- COM ÍNDICE: Busca logarítmica
+CREATE INDEX idx_doador_cpf ON doador(cpf);
+SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
+-- Tempo: ~2ms (acesso direto)
+</code></pre>
+<h4><strong>2. 📈 Escalabilidade</strong></h4>
+<pre><code class="language-java">// Repository que se beneficia de índices
+public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+    
+    // Busca por CPF - DEVE ter índice único
+    Optional&lt;Doador&gt; findByCpf(String cpf);
+    
+    // Busca por email - DEVE ter índice único  
+    Optional&lt;Doador&gt; findByEmail(String email);
+    
+    // Filtros combinados - DEVE ter índice composto
+    List&lt;Doador&gt; findByCidadeAndEstado(String cidade, String estado);
+    
+    // Ordenação - DEVE ter índice para performance
+    List&lt;Doador&gt; findByAtivoTrueOrderByCreatedAtDesc();
+}
+</code></pre>
+<h4><strong>3. 🎯 Integridade Referencial</strong></h4>
+<pre><code class="language-java">@Entity
+@Table(name = &quot;doador&quot;)
+public class Doador {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Índice automático (PRIMARY KEY)
+    
+    @Column(unique = true) // Cria índice único automaticamente
+    private String cpf;
+    
+    @Column(unique = true) // Cria índice único automaticamente
+    private String email;
+}
+</code></pre>
+<h3><strong><span class="badge success">✅</span> Principais Benefícios dos Índices</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Benefício</strong></th>
+<th><strong>Descrição</strong></th>
+<th><strong>Impacto</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>⚡ Velocidade</strong></td>
+<td>Consultas até 1000x mais rápidas</td>
+<td>Reduz tempo de resposta drasticamente</td>
+</tr>
+<tr>
+<td><strong>📈 Escalabilidade</strong></td>
+<td>Performance mantida com milhões de registros</td>
+<td>Sistema cresce sem degradação</td>
+</tr>
+<tr>
+<td><strong>🔒 Unicidade</strong></td>
+<td>Garante valores únicos (CPF, email)</td>
+<td>Integridade de dados automática</td>
+</tr>
+<tr>
+<td><strong>🔍 Busca Eficiente</strong></td>
+<td>Localização logarítmica vs linear</td>
+<td>O(log n) vs O(n)</td>
+</tr>
+<tr>
+<td><strong>📊 Ordenação Rápida</strong></td>
+<td>ORDER BY otimizado</td>
+<td>Resultados ordenados sem overhead</td>
+</tr>
+<tr>
+<td><strong>🔗 JOINs Eficientes</strong></td>
+<td>Relacionamentos mais rápidos</td>
+<td>Consultas complexas otimizadas</td>
+</tr>
+</tbody></table>
+<h3><strong>🎯 Tipos de Índices e Quando Usar</strong></h3>
+<h4><strong>1. 🔑 Primary Key Index (Automático)</strong></h4>
+<pre><code class="language-java">@Entity
+public class Doador {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // MySQL cria CLUSTERED INDEX automaticamente
+}
+</code></pre>
+<h4><strong>2. 🔐 Unique Index (Constraints)</strong></h4>
+<pre><code class="language-java">@Entity
+@Table(name = &quot;doador&quot;, indexes = {
+    @Index(name = &quot;idx_doador_cpf&quot;, columnList = &quot;cpf&quot;, unique = true),
+    @Index(name = &quot;idx_doador_email&quot;, columnList = &quot;email&quot;, unique = true)
+})
+public class Doador {
+    
+    @Column(unique = true, length = 11)
+    private String cpf; // Índice único para consultas rápidas
+    
+    @Column(unique = true, length = 100)
+    private String email; // Índice único para login/validação
+}
+</code></pre>
+<h4><strong>3. 📊 Single Column Index</strong></h4>
+<pre><code class="language-java">@Entity
+@Table(name = &quot;doador&quot;, indexes = {
+    @Index(name = &quot;idx_doador_cidade&quot;, columnList = &quot;cidade&quot;),
+    @Index(name = &quot;idx_doador_estado&quot;, columnList = &quot;estado&quot;),
+    @Index(name = &quot;idx_doador_ativo&quot;, columnList = &quot;ativo&quot;),
+    @Index(name = &quot;idx_doador_created_at&quot;, columnList = &quot;createdAt&quot;)
+})
+public class Doador {
+    
+    private String cidade; // Para filtros por localização
+    private String estado; // Para relatórios estaduais
+    private Boolean ativo; // Para filtros de status
+    private LocalDateTime createdAt; // Para ordenação temporal
+}
+</code></pre>
+<h4><strong>4. 🎯 Composite Index (Múltiplas Colunas)</strong></h4>
+<pre><code class="language-java">@Entity
+@Table(name = &quot;doador&quot;, indexes = {
+    // Índice composto para filtros combinados
+    @Index(name = &quot;idx_doador_cidade_estado&quot;, columnList = &quot;cidade, estado&quot;),
+    
+    // Índice para soft delete + filtros
+    @Index(name = &quot;idx_doador_ativo_cidade&quot;, columnList = &quot;ativo, cidade&quot;),
+    
+    // Índice para busca com ordenação
+    @Index(name = &quot;idx_doador_estado_created&quot;, columnList = &quot;estado, createdAt&quot;)
+})
+public class Doador {
+    // A ordem das colunas no índice é IMPORTANTE!
+    // cidade, estado != estado, cidade
+}
+</code></pre>
+<h4><strong>5. 🔍 Functional Index (Casos Especiais)</strong></h4>
+<pre><code class="language-sql">-- Para busca case-insensitive em nomes
+CREATE INDEX idx_doador_nome_lower ON doador(LOWER(full_name));
+
+-- Para busca por prefixo de telefone
+CREATE INDEX idx_doador_ddd ON doador(LEFT(telefone_principal, 2));
+</code></pre>
+<h3><strong>🔧 Implementação Prática com JPA</strong></h3>
+<h4><strong>📋 Exemplo Completo - Entidade Doador Otimizada</strong></h4>
+<pre><code class="language-java">@Entity
+@Table(name = &quot;doador&quot;, indexes = {
+    // 🔐 Índices únicos para integridade
+    @Index(name = &quot;idx_doador_cpf&quot;, columnList = &quot;cpf&quot;, unique = true),
+    @Index(name = &quot;idx_doador_email&quot;, columnList = &quot;email&quot;, unique = true),
+    
+    // 🔍 Índices para consultas frequentes
+    @Index(name = &quot;idx_doador_cidade&quot;, columnList = &quot;cidade&quot;),
+    @Index(name = &quot;idx_doador_estado&quot;, columnList = &quot;estado&quot;),
+    @Index(name = &quot;idx_doador_tipo_sanguineo&quot;, columnList = &quot;tipoSanguineoId&quot;),
+    
+    // 🎯 Índices compostos para filtros combinados
+    @Index(name = &quot;idx_doador_cidade_estado&quot;, columnList = &quot;cidade, estado&quot;),
+    @Index(name = &quot;idx_doador_ativo_cidade&quot;, columnList = &quot;ativo, cidade&quot;),
+    
+    // ⏰ Índices para ordenação e data
+    @Index(name = &quot;idx_doador_created_at&quot;, columnList = &quot;createdAt&quot;),
+    @Index(name = &quot;idx_doador_ultima_doacao&quot;, columnList = &quot;ultimaDoacao&quot;),
+    
+    // 🗑️ Soft delete otimizado
+    @Index(name = &quot;idx_doador_deleted_at&quot;, columnList = &quot;deletedAt&quot;),
+    @Index(name = &quot;idx_doador_ativo_deleted&quot;, columnList = &quot;ativo, deletedAt&quot;)
+})
+public class Doador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // PRIMARY KEY (índice automático)
+
+    @Column(unique = true, length = 11, nullable = false)
+    private String cpf; // Índice único
+
+    @Column(unique = true, length = 100, nullable = false)  
+    private String email; // Índice único
+
+    @Column(length = 100, nullable = false)
+    private String fullName; // Pode precisar de índice para busca
+
+    @Column(length = 50)
+    private String cidade; // Índice simples
+
+    @Column(length = 2)
+    private String estado; // Índice simples
+
+    @Column(nullable = false)
+    private Boolean ativo = true; // Índice para filtros
+
+    @Column(name = &quot;created_at&quot;, nullable = false)
+    private LocalDateTime createdAt; // Índice para ordenação
+
+    @Column(name = &quot;deleted_at&quot;)
+    private LocalDateTime deletedAt; // Soft delete
+
+    @Column(name = &quot;ultima_doacao&quot;)
+    private LocalDate ultimaDoacao; // Índice para regras de negócio
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = &quot;tipo_sanguineo_id&quot;)
+    private TipoSanguineo tipoSanguineo; // Foreign key (índice automático)
+}
+</code></pre>
+<h4><strong>📊 Repository Otimizado com Índices</strong></h4>
+<pre><code class="language-java">public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_cpf (único)
+    Optional&lt;Doador&gt; findByCpf(String cpf);
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_email (único)  
+    Optional&lt;Doador&gt; findByEmail(String email);
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_cidade_estado (composto)
+    List&lt;Doador&gt; findByCidadeAndEstado(String cidade, String estado);
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_ativo_deleted
+    List&lt;Doador&gt; findByAtivoTrueAndDeletedAtIsNull();
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_created_at para ORDER BY
+    List&lt;Doador&gt; findByEstadoOrderByCreatedAtDesc(String estado);
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; OTIMIZADO: usa idx_doador_ultima_doacao
+    List&lt;Doador&gt; findByUltimaDoacaoBeforeAndAtivoTrue(LocalDate data);
+
+    // &lt;span class=&quot;badge warning&quot;&gt;⚠️&lt;/span&gt; CUIDADO: busca por nome pode ser lenta sem índice
+    List&lt;Doador&gt; findByFullNameContainingIgnoreCase(String nome);
+    // Solução: Considere índice FULLTEXT ou busca externa (Elasticsearch)
+}
+</code></pre>
+<h3><strong>📈 Análise de Performance</strong></h3>
+<h4><strong>🔍 Como Verificar se Índices Estão Sendo Usados</strong></h4>
+<p><strong>MySQL:</strong></p>
+<pre><code class="language-sql">-- Verificar plano de execução
+EXPLAIN SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
+
+-- Analisar índices da tabela
+SHOW INDEXES FROM doador;
+
+-- Estatísticas de uso dos índices
+SELECT * FROM information_schema.STATISTICS WHERE table_name = &#39;doador&#39;;
+</code></pre>
+<p><strong>PostgreSQL:</strong></p>
+<pre><code class="language-sql">-- Verificar plano de execução
+EXPLAIN ANALYZE SELECT * FROM doador WHERE cpf = &#39;12345678901&#39;;
+
+-- Listar índices
+\d+ doador
+
+-- Verificar uso dos índices
+SELECT * FROM pg_stat_user_indexes WHERE relname = &#39;doador&#39;;
+</code></pre>
+<h4><strong>📊 Métricas de Performance</strong></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Cenário</strong></th>
+<th><strong>Sem Índice</strong></th>
+<th><strong>Com Índice</strong></th>
+<th><strong>Melhoria</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Busca por CPF (1M registros)</td>
+<td>500ms</td>
+<td>2ms</td>
+<td><strong>250x mais rápido</strong></td>
+</tr>
+<tr>
+<td>Login por email</td>
+<td>300ms</td>
+<td>1ms</td>
+<td><strong>300x mais rápido</strong></td>
+</tr>
+<tr>
+<td>Filtro cidade + estado</td>
+<td>800ms</td>
+<td>5ms</td>
+<td><strong>160x mais rápido</strong></td>
+</tr>
+<tr>
+<td>Ordenação por data</td>
+<td>1200ms</td>
+<td>10ms</td>
+<td><strong>120x mais rápido</strong></td>
+</tr>
+<tr>
+<td>COUNT(*) com WHERE</td>
+<td>600ms</td>
+<td>3ms</td>
+<td><strong>200x mais rápido</strong></td>
+</tr>
+</tbody></table>
+<h3><strong><span class="badge warning">⚠️</span> Cuidados e Trade-offs</strong></h3>
+<h4><strong><span class="badge danger">❌</span> Problemas com Muitos Índices</strong></h4>
+<pre><code class="language-java">// &lt;span class=&quot;badge danger&quot;&gt;❌&lt;/span&gt; RUIM: Índices demais
+@Table(indexes = {
+    @Index(columnList = &quot;campo1&quot;),
+    @Index(columnList = &quot;campo2&quot;), 
+    @Index(columnList = &quot;campo3&quot;),
+    @Index(columnList = &quot;campo4&quot;),
+    @Index(columnList = &quot;campo5&quot;),
+    @Index(columnList = &quot;campo1, campo2&quot;),
+    @Index(columnList = &quot;campo1, campo3&quot;),
+    // ... 20+ índices
+})
+
+// &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; BOM: Índices estratégicos
+@Table(indexes = {
+    @Index(columnList = &quot;cpf&quot;, unique = true),           // Busca única
+    @Index(columnList = &quot;cidade, estado&quot;),               // Filtro comum
+    @Index(columnList = &quot;ativo, deletedAt&quot;),            // Soft delete
+    @Index(columnList = &quot;createdAt&quot;)                     // Ordenação
+})
+</code></pre>
+<h4><strong>📊 Impacto em Operações de Escrita</strong></h4>
+<pre><code class="language-java">@Service
+public class DoadorService {
+
+    // &lt;span class=&quot;badge warning&quot;&gt;⚠️&lt;/span&gt; CUIDADO: INSERT/UPDATE ficam mais lentos com muitos índices
+    @Transactional
+    public Doador salvar(Doador doador) {
+        // MySQL precisa atualizar TODOS os índices na inserção
+        return doadorRepository.save(doador);
+    }
+
+    // &lt;span class=&quot;badge success&quot;&gt;✅&lt;/span&gt; SOLUÇÃO: Batch inserts para grandes volumes
+    @Transactional
+    public List&lt;Doador&gt; salvarLote(List&lt;Doador&gt; doadores) {
+        return doadorRepository.saveAll(doadores); // Mais eficiente
+    }
+}
+</code></pre>
+<h3><strong>🛠️ Estratégias de Indexação</strong></h3>
+<h4><strong>1. 🎯 Índices Baseados em Query Patterns</strong></h4>
+<pre><code class="language-java">// Analise suas consultas mais frequentes:
+public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
+
+    // 🔥 CONSULTA FREQUENTE: Login/Autenticação
+    Optional&lt;Doador&gt; findByEmail(String email);
+    // ÍNDICE NECESSÁRIO: email (único)
+
+    // 🔥 CONSULTA FREQUENTE: Busca por documento
+    Optional&lt;Doador&gt; findByCpf(String cpf);
+    // ÍNDICE NECESSÁRIO: cpf (único)
+
+    // 🔥 CONSULTA FREQUENTE: Relatórios por região
+    List&lt;Doador&gt; findByCidadeAndEstado(String cidade, String estado);
+    // ÍNDICE NECESSÁRIO: (cidade, estado) composto
+
+    // 🔍 CONSULTA RARA: Busca por nome
+    List&lt;Doador&gt; findByFullNameLike(String nome);
+    // ÍNDICE OPCIONAL: considere busca externa (Elasticsearch)
+}
+</code></pre>
+<h4><strong>2. 📊 Monitoramento de Performance</strong></h4>
+<pre><code class="language-java">// Configuração de logging para queries lentas
+# application.properties
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Logging de queries lentas (&gt; 1 segundo)
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+# MySQL: log de queries lentas
+slow_query_log=1
+long_query_time=1
+</code></pre>
+<h4><strong>3. 🔧 Ferramentas de Análise</strong></h4>
+<pre><code class="language-java">// Bean para monitorar performance
+@Component
+public class DatabasePerformanceMonitor {
+
+    @EventListener
+    public void handleQueryExecution(QueryExecutionEvent event) {
+        if (event.getDuration() &gt; 1000) { // &gt; 1 segundo
+            log.warn(&quot;Slow query detected: {} ms - {}&quot;, 
+                event.getDuration(), event.getSql());
+        }
+    }
+}
+</code></pre>
+<hr>
 <h2>🌟 Recursos Avançados</h2>
 <h3><strong>🔧 Custom Repository Implementation</strong></h3>
 <blockquote>
@@ -1274,6 +1677,35 @@ public interface DoadorRepository extends JpaRepository&lt;Doador, Long&gt; {
 <li><strong><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.html">TestEntityManager</a></strong> - Gerenciamento de entidades em testes</li>
 <li><strong><a href="https://assertj.github.io/doc/">AssertJ</a></strong> - Assertions fluentes</li>
 <li><strong><a href="https://www.testcontainers.org/modules/databases/">TestContainers</a></strong> - Testes com containers</li>
+</ul>
+<h3><strong>📊 Database Indexes e Performance</strong></h3>
+<h4><strong>📖 Database-Specific Documentation:</strong></h4>
+<ul>
+<li><strong><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html">MySQL Indexes Guide</a></strong> - Guia completo de índices MySQL</li>
+<li><strong><a href="https://dev.mysql.com/doc/refman/8.0/en/optimization-indexes.html">MySQL Index Optimization</a></strong> - Otimização de índices</li>
+<li><strong><a href="https://www.postgresql.org/docs/current/indexes.html">PostgreSQL Indexes</a></strong> - Documentação oficial PostgreSQL</li>
+<li><strong><a href="https://www.postgresql.org/docs/current/indexes-types.html">PostgreSQL Index Types</a></strong> - Tipos de índices disponíveis</li>
+<li><strong><a href="http://h2database.com/html/performance.html#indexes">H2 Database Indexes</a></strong> - Índices em H2 (testes)</li>
+</ul>
+<h4><strong>📖 JPA Index Annotations:</strong></h4>
+<ul>
+<li><strong><a href="https://jakarta.ee/specifications/persistence/3.1/apidocs/jakarta.persistence/jakarta/persistence/index">JPA Index Annotation</a></strong> - Especificação oficial @Index</li>
+<li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#schema-generation-database-objects">Hibernate Index Strategies</a></strong> - Estratégias de criação de índices</li>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.datasource.initialization">Spring Boot Database Initialization</a></strong> - Inicialização de esquemas</li>
+</ul>
+<h4><strong>📖 Performance e Monitoring:</strong></h4>
+<ul>
+<li><strong><a href="https://dev.mysql.com/doc/refman/8.0/en/performance-schema.html">MySQL Performance Schema</a></strong> - Monitoramento de performance</li>
+<li><strong><a href="https://www.postgresql.org/docs/current/using-explain.html">PostgreSQL Query Performance</a></strong> - EXPLAIN e análise de queries</li>
+<li><strong><a href="https://vladmihalcea.com/jpa-hibernate-performance-tuning/">JPA Performance Tuning</a></strong> - Blog Vlad Mihalcea sobre performance</li>
+<li><strong><a href="https://use-the-index-luke.com/">Database Index Design</a></strong> - Guia completo sobre design de índices</li>
+</ul>
+<h4><strong>📖 Tools e Profiling:</strong></h4>
+<ul>
+<li><strong><a href="https://dev.mysql.com/doc/workbench/en/wb-performance.html">MySQL Workbench</a></strong> - Ferramentas de performance</li>
+<li><strong><a href="https://www.pgadmin.org/docs/pgadmin4/latest/query_tool.html">pgAdmin Query Tool</a></strong> - Análise de queries PostgreSQL</li>
+<li><strong><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.metrics">Spring Boot Actuator</a></strong> - Métricas de aplicação</li>
+<li><strong><a href="https://docs.jboss.org/hibernate/orm/6.2/userguide/html_single/Hibernate_User_Guide.html#statistics">Hibernate Statistics</a></strong> - Estatísticas do Hibernate</li>
 </ul>
 <h3><strong>🎯 Performance e Optimization</strong></h3>
 <h4><strong>📖 Performance Guides:</strong></h4>
