@@ -16,6 +16,21 @@
 
 💡 **Mais links detalhados disponíveis na [seção de documentação oficial](#-documentação-oficial-e-referências) no final deste guia.**
 
+## 🧭 Navegação Rápida no Guia
+
+| **📋 Seção** | **🎯 Conteúdo** | **🔗 Link Direto** |
+|-------------|----------------|-------------------|
+| **🏗️ Conceitos** | O que é Repository Pattern | [Ir para seção](#-o-que-é-repository-pattern) |
+| **🚀 Spring Data JPA** | Automação e funcionalidades | [Ir para seção](#-spring-data-jpa---o-poder-da-automação) |
+| **📋 Hierarquia** | Interfaces Repository disponíveis | [Ir para seção](#-hierarquia-de-interfaces-repository) |
+| **🔧 Implementação** | Código prático do projeto | [Ir para seção](#-implementação-prática---projeto-doesangue) |
+| **🔍 Query Methods** | Convenções de nomenclatura | [Ir para seção](#-query-methods---convenções-de-nomenclatura) |
+| **📊 Índices** | Performance com índices de BD | [**⚡ Ir para Índices**](#-índices-de-banco-de-dados---performance-e-otimização) |
+| **🧪 Testes** | Testes com @DataJpaTest | [Ir para seção](#-testes-com-repository) |
+| **🌟 Avançado** | Custom implementations | [Ir para seção](#-recursos-avançados) |
+
+💡 **Mais links detalhados disponíveis na [seção de documentação oficial](#-documentação-oficial-e-referências) no final deste guia.**
+
 ---
 
 ## 🎯 O que é Repository Pattern?
